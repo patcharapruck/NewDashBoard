@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.fragment.FragmentBill;
+import com.example.pchrp.newdashboard.fragment.FragmentDrink;
 
 public class DrinkActivity extends AppCompatActivity {
 
@@ -15,7 +16,7 @@ public class DrinkActivity extends AppCompatActivity {
 
         if (savedInstanceState == null){
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.frame_drink, FragmentBill.newInstance())
+                    .add(R.id.frame_drink, FragmentDrink.newInstance())
                     .commit();
         }
     }

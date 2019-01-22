@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.CreditActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:background="#FAFAFA">
+
+        </View>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="#DADADA">
+
+        </View>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4.5">
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/barchart">
+
+            </com.github.mikephil.charting.charts.BarChart>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="ยอดรวมทั้งหมด"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="20dp"
+            android:padding="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="2,181,312.00"
+                android:textColor="@color/text_money_pay"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5.5">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    app:alignmentMode="alignMargins"
+                    app:columnCount="2"
+                    app:columnOrderPreserved="false"
+                    app:rowCount="1">
+
+                    <!--ธนาคารธนชาต-->
+                    <android.support.v7.widget.CardView
+                        style="@style/marginCardBank"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="5dp"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:weightSum="10">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="2"
+                                android:orientation="horizontal">
+                                <android.support.v7.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:cardBackgroundColor="#f37023"
+                                    >
+                                    <ImageView
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:src="@drawable/imb1"/>
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="ธนาคารธนชาต"
+                                        android:gravity="center"
+                                        android:layout_marginLeft="50dp"
+                                        android:textColor="@color/white"
+                                        />
+
+                                </android.support.v7.widget.CardView>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="8">
+                                <android.support.v7.widget.GridLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:columnCount="2"
+                                    app:rowCount="5"
+                                    app:columnOrderPreserved="false">
+
+                                    <!--A-MAX-->
+                                    <TextView
+                                        android:textColor="@color/black"
+                                        android:text="A-MAX"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="10dp"
+
+
+                                        />
+
+                                    <TextView
+                                        android:textColor="#FF0000"
+                                        android:text="0.00"
+                                        android:layout_marginLeft="50dp"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="10dp"
+                                        />
+
+                                    <!--JCB-->
+                                    <TextView
+                                        android:textColor="@color/black"
+                                        android:text="JCB"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="5dp"
+                                        />
+
+                                    <TextView
+                                        android:textColor="#FF0000"
+                                        android:text="0.00"
+                                        android:layout_marginLeft="50dp"
+                                        android:layout_marginBottom="5dp"
+                                        />
+
+                                    <!--MASTER-->
+                                    <TextView
+                                        android:textColor="@color/black"
+                                        android:text="MASTER"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="5dp"
+                                        />
+
+                                    <TextView
+                                        android:textColor="#4CAF50"
+                                        android:text="176,690.00"
+                                        android:layout_marginLeft="50dp"
+                                        android:layout_marginBottom="5dp"
+                                        />
+
+                                    <!--Unipay-->
+                                    <TextView
+                                        android:textColor="@color/black"
+                                        android:text="UNIPAY"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="5dp"
+                                        />
+
+                                    <TextView
+                                        android:textColor="#FF0000"
+                                        android:text="0.00"
+                                        android:layout_marginLeft="50dp"
+                                        android:layout_marginBottom="5dp"
+                                        />
+
+                                    <!--VISA-->
+                                    <TextView
+                                        android:textColor="@color/black"
+                                        android:text="VISA"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="5dp"
+                                        />
+
+                                    <TextView
+                                        android:textColor="#4CAF50"
+                                        android:text="716,770.00"
+                                        android:layout_marginLeft="50dp"
+                                        android:layout_marginBottom="5dp"
+                                        />
+
+                                </android.support.v7.widget.GridLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+
+                    <!--ธนาคารกรุงเทพ-->
+                    <android.support.v7.widget.CardView
+                        style="@style/marginCardBank"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="5dp"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:weightSum="10">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="2"
+                                android:orientation="horizontal">
+                                <android.support.v7.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:cardBackgroundColor="#001B7A"
+                                    >
+                                    <ImageView
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:src="@drawable/imb2"/>
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="ธนาคารกรุงเทพ"
+                                        android:gravity="center"
+                                        android:layout_marginLeft="50dp"
+                                        android:textColor="@color/white"
+                                        />
+
+                                </android.support.v7.widget.CardView>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="8">
+                                <android.support.v7.widget.GridLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:columnCount="2"
+                                    app:rowCount="5"
+                                    app:columnOrderPreserved="false">
+
+                                    <!--A-MAX-->
+                                    <TextView
+                                        android:textColor="@color/black"
+                                        android:text="A-MAX"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="5dp"
+
+                                        />
+
+                                    <TextView
+                                        android:textColor="#FF0000"
+                                        android:text="0.00"
+                                        android:layout_marginLeft="50dp"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="10dp"
+                                        />
+
+                                    <!--JCB-->
+                                    <TextView
+                                        android:textColor="@color/black"
+                                        android:text="JCB"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="5dp"
+                                        />
+
+                                    <TextView
+                                        android:textColor="#FF0000"
+                                        android:text="0.00"
+                                        android:layout_marginLeft="50dp"
+                                        android:layout_marginBottom="5dp"
+                                        />
+
+                                    <!--MASTER-->
+                                    <TextView
+                                        android:textColor="@color/black"
+                                        android:text="MASTER"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="5dp"
+                                        />
+
+                                    <TextView
+                                        android:textColor="#4CAF50"
+                                        android:text="176,690.00"
+                                        android:layout_marginLeft="50dp"
+                                        android:layout_marginBottom="5dp"
+                                        />
+
+                                    <!--Unipay-->
+                                    <TextView
+                                        android:textColor="@color/black"
+                                        android:text="UNIPAY"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="5dp"
+                                        />
+
+                                    <TextView
+                                        android:textColor="#FF0000"
+                                        android:text="0.00"
+                                        android:layout_marginLeft="50dp"
+                                        android:layout_marginBottom="5dp"
+                                        />
+
+                                    <!--VISA-->
+                                    <TextView
+                                        android:textColor="@color/black"
+                                        android:text="VISA"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="5dp"
+                                        />
+
+                                    <TextView
+                                        android:textColor="#4CAF50"
+                                        android:text="716,770.00"
+                                        android:layout_marginLeft="50dp"
+                                        android:layout_marginBottom="5dp"
+                                        />
+
+
+                                </android.support.v7.widget.GridLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+
+
+
+                </android.support.v7.widget.GridLayout>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

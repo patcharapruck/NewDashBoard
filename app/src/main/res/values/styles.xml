@@ -66,5 +66,10 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="marginCardBank">
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+    </style>
 
 </resources>

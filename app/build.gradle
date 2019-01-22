@@ -16,6 +16,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
 }
 
 dependencies {
@@ -31,4 +34,5 @@ dependencies {
     implementation 'com.android.support:gridlayout-v7:28.0.0'
     implementation 'com.github.razerdp:AnimatedPieView:1.2.4'
     implementation project(':TheCheeseLibrary-master')
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
 }

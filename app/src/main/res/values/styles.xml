@@ -27,6 +27,10 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="font_head_pay" parent="font_card_main">
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="font_card_bill">
         <item name="android:textColor">@color/text_money_pay</item>
         <item name="android:textStyle">bold</item>
@@ -50,6 +54,16 @@
 
     <style name="font_notpay_data" parent="font_pay_data">
         <item name="android:textColor">@color/color_not_pay</item>
+    </style>
+
+    <style name="textPay">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@color/colorfontpay</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 

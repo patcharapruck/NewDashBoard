@@ -6,13 +6,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.example.pchrp.newdashboard.R;
+import com.example.pchrp.newdashboard.adapter.PayMentAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragmentPay extends Fragment {
+
+    ListView listViewPay;
+    PayMentAdapter payMentAdapter;
 
     public FragmentPay() {
         super();
@@ -34,7 +39,10 @@ public class FragmentPay extends Fragment {
     }
 
     private void initInstances(View rootView) {
-        // Init 'View' instance(s) with rootView.findViewById here
+
+        listViewPay = (ListView) rootView.findViewById(R.id.list_pay);
+        payMentAdapter = new PayMentAdapter();
+        listViewPay.setAdapter(payMentAdapter);
     }
 
     @Override

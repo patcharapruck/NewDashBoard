@@ -10,4 +10,5 @@
     <color name="color_not_pay">#FF0707</color>
     <color name="bg1">#EFEFEF</color>
     <color name="bg2">#FAFAFA</color>
+    <color name="colorfontpay">#949494</color>
 </resources>

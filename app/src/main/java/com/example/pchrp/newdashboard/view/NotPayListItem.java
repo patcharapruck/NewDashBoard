@@ -13,22 +13,22 @@ import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
 /**
  * Created by nuuneoi on 11/16/2014.
  */
-public class PaymentListItem extends BaseCustomViewGroup {
+public class NotPayListItem extends BaseCustomViewGroup {
 
-    public PaymentListItem(Context context) {
+    public NotPayListItem(Context context) {
         super(context);
         initInflate();
         initInstances();
     }
 
-    public PaymentListItem(Context context, AttributeSet attrs) {
+    public NotPayListItem(Context context, AttributeSet attrs) {
         super(context, attrs);
         initInflate();
         initInstances();
         initWithAttrs(attrs, 0, 0);
     }
 
-    public PaymentListItem(Context context, AttributeSet attrs, int defStyleAttr) {
+    public NotPayListItem(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initInflate();
         initInstances();
@@ -36,7 +36,7 @@ public class PaymentListItem extends BaseCustomViewGroup {
     }
 
     @TargetApi(21)
-    public PaymentListItem(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public NotPayListItem(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initInflate();
         initInstances();
@@ -44,8 +44,7 @@ public class PaymentListItem extends BaseCustomViewGroup {
     }
 
     private void initInflate() {
-
-        inflate(getContext(), R.layout.customview_payment, this);
+        inflate(getContext(), R.layout.customview_notpay, this);
     }
 
     private void initInstances() {
@@ -93,4 +92,5 @@ public class PaymentListItem extends BaseCustomViewGroup {
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
+
 }

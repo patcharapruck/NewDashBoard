@@ -6,13 +6,19 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.example.pchrp.newdashboard.R;
+import com.example.pchrp.newdashboard.adapter.NotPayAdapter;
+import com.example.pchrp.newdashboard.view.NotPayListItem;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragmentNotPay extends Fragment {
+
+    ListView listNotpay;
+    NotPayAdapter notPayAdapter;
 
     public FragmentNotPay() {
         super();
@@ -35,6 +41,9 @@ public class FragmentNotPay extends Fragment {
 
     private void initInstances(View rootView) {
         // Init 'View' instance(s) with rootView.findViewById here
+        listNotpay = (ListView)rootView.findViewById(R.id.list_notpay);
+        notPayAdapter = new NotPayAdapter();
+        listNotpay.setAdapter(notPayAdapter);
     }
 
     @Override

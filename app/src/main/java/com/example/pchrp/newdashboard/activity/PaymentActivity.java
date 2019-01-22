@@ -44,11 +44,8 @@ public class PaymentActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-
-
             switch (position){
                 case 0:
-                    Log.v("vbvb", String.valueOf(position));
                     return new FragmentPay();
                 default:
                     return new FragmentNotPay();

@@ -13,7 +13,7 @@ import com.example.pchrp.newdashboard.R;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
 
-        CardView cv_bill,Cv_pay,Cv_drink,Cv_real,Cv_credit,Cv_graph;
+        CardView cv_bill = (CardView)findViewById(R.id.Cv_bill),Cv_pay,Cv_drink,Cv_real,Cv_credit,Cv_graph;
 
         CardView cv_in_bill,cv_in_pay,cv_in_drink,cv_in_real,cv_in_credit,cv_in_graph;
 
@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         private void initInstances() {
-            cv_bill = (CardView)findViewById(R.id.Cv_bill);
             Cv_pay = (CardView)findViewById(R.id.Cv_pay);
             Cv_drink = (CardView)findViewById(R.id.Cv_drink);
             Cv_real = (CardView)findViewById(R.id.Cv_real);
@@ -111,12 +110,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             if (v==Cv_real||v==cv_in_real||v==menureal||v==imgreal){
-//                Intent intent = new Intent(MainActivity.this,BillActivity.class);
-//                this.startActivity(intent);  ทำให้ไปหน้ารายรับจริง
+                Intent intent = new Intent(MainActivity.this,RealIncomeActivity.class);
+                this.startActivity(intent);
             }
             if (v==Cv_credit||v==cv_in_credit||v==menucredit||v==imgcredit){
-//                Intent intent = new Intent(MainActivity.this,PaymentActivity.class);
-//                this.startActivity(intent);  หน้าบัตรเครดิต
+                Intent intent = new Intent(MainActivity.this,CreditActivity.class);
+                this.startActivity(intent);
             }
             if (v==Cv_graph||v==cv_in_graph||v==menugraph||v==imggraph){
 //                Intent intent = new Intent(MainActivity.this,DrinkActivity.class);

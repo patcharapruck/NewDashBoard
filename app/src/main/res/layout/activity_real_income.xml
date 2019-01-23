@@ -50,36 +50,34 @@
                     app:cardCornerRadius="75dp"
                    >
 
-                    <android.support.v7.widget.CardView
-                        android:layout_width="135dp"
-                        android:layout_height="135dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="6.5dp"
-                        app:cardBackgroundColor="#FFFF"
-                        app:cardCornerRadius="67.5dp">
-                        />
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="145dp"
+                    android:layout_height="145dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="17dp"
+                    app:cardBackgroundColor="#FFFF"
+                    app:cardCornerRadius="72.5dp">
+                    />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="40dp"
-                            android:gravity="center"
-                            android:text="รายรับจริง"
-                            android:textColor="@color/black" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_marginBottom="70dp"
+                        android:text="รายรับจริง"
+                        android:textSize="12sp"
+                        android:textColor="@color/black" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="15dp"
-                            android:gravity="center"
-                            android:text="1,665,525.00"
-                            android:textColor="#4CAF50"
-                            android:textSize="20dp" />
-
-                    </android.support.v7.widget.CardView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="1,665,525.00"
+                        android:textColor="#4CAF50"
+                        android:textSize="18sp" />
 
                 </android.support.v7.widget.CardView>
-
 
             </RelativeLayout>
 
@@ -123,7 +121,7 @@
                             android:gravity="center"
                             android:text="2,181,312.00"
                             android:textColor="#4CAF50"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
 
                             />
                     </android.support.v7.widget.CardView>
@@ -156,7 +154,7 @@
                             android:gravity="center"
                             android:text="1,247,540.00"
                             android:textColor="#4CAF50"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
 
                             />
                     </android.support.v7.widget.CardView>

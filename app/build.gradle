@@ -35,4 +35,5 @@ dependencies {
     implementation 'com.github.razerdp:AnimatedPieView:1.2.4'
     implementation project(':TheCheeseLibrary-master')
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
+    implementation 'de.codecrafters.tableview:tableview:2.8.0'
 }

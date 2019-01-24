@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pchrp.newdashboard.Dao.DashBoardDao;
 import com.example.pchrp.newdashboard.Dao.TestDao;
 import com.example.pchrp.newdashboard.Dao.object.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
@@ -49,9 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         private void initInstances() {
             TestDao testDao = new TestDao();
             Gson gson = new Gson(); // Or use new GsonBuilder().create();
-            ObjectItemDao daoo = gson.fromJson(testDao.jj(),ObjectItemDao.class);
+            ObjectItemDao dao = gson.fromJson(testDao.Sj(),ObjectItemDao.class);
 
-            Log.v("aaa",daoo.getIncome().toString());
+            Log.v("aaa",dao.getCreditPayments().toString());
 
 
             cv_bill = (CardView)findViewById(R.id.Cv_bill);

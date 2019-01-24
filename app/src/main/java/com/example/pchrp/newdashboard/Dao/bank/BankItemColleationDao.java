@@ -4,7 +4,6 @@ import java.util.List;
 
 public class BankItemColleationDao {
 
-    public class Codebeautify {
         private List<BankItemDao> bankdata;
         private Double visa;
         private Double master;
@@ -60,4 +59,4 @@ public class BankItemColleationDao {
             this.unipay = unipay;
         }
     }
-}
+

@@ -1,12 +1,13 @@
 package com.example.pchrp.newdashboard.Dao.object;
 
 import com.example.pchrp.newdashboard.Dao.bank.BankItemColleationDao;
+import com.example.pchrp.newdashboard.Dao.product.DrinkProductItemCollectionDao;
 
 import java.util.List;
 
 public class ObjectItemDao {
 
-        private float pax;
+        private Long pax;
         private Double cashPayments;
         private Double creditPayments;
         private Double creditCardPayments;
@@ -21,7 +22,7 @@ public class ObjectItemDao {
         private String invoice = null;
         private Long memberNew;
         private Long memberRenew;
-        private List<String> t;
+        private List<DrinkProductItemCollectionDao> drinkdata;
         private String summaryOrderFoodList = null;
         private String summaryServiceDrinkList = null;
         private Double serivceDrinkCharge;
@@ -39,7 +40,7 @@ public class ObjectItemDao {
         return pax;
     }
 
-    public void setPax(float pax) {
+    public void setPax(Long pax) {
         this.pax = pax;
     }
 
@@ -155,12 +156,12 @@ public class ObjectItemDao {
         this.memberRenew = memberRenew;
     }
 
-    public List<String> getT() {
-        return t;
+    public List<DrinkProductItemCollectionDao> getDrinkdata() {
+        return drinkdata;
     }
 
-    public void setT(List<String> t) {
-        this.t = t;
+    public void setDrinkdata(List<DrinkProductItemCollectionDao> drinkdata) {
+        this.drinkdata = drinkdata;
     }
 
     public String getSummaryOrderFoodList() {

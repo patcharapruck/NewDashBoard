@@ -10,7 +10,7 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Contextor.getInstance().init(getApplicationContext());
+        com.example.pchrp.newdashboard.manager.Contextor.getInstance().init(getApplicationContext());
 
     }
 

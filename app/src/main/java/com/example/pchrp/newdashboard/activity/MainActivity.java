@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,9 +17,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.pchrp.newdashboard.Dao.TestDao;
+import com.example.pchrp.newdashboard.Dao.object.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.http.HttpKrystal;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +30,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -49,6 +54,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         private void initInstances() {
+            TestDao testDao = new TestDao();
+            Gson gson = new Gson(); // Or use new GsonBuilder().create();
+            ObjectItemDao daoo = gson.fromJson(testDao.jj(),ObjectItemDao.class);
+
+            Log.v("aaa",daoo.getIncome().toString());
+
 
             cv_bill = (CardView)findViewById(R.id.Cv_bill);
             Cv_pay = (CardView)findViewById(R.id.Cv_pay);
@@ -126,12 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (v==Cv_drink||v==cv_in_drink||v==menudrink||v==imgdrink){
 //                Intent intent = new Intent(MainActivity.this,DrinkActivity.class);
 //                this.startActivity(intent);
-                HttpKrystal httpKrystal = new HttpKrystal();
-                try {
-                    Toast.makeText(MainActivity.this,httpKrystal.getTest(),Toast.LENGTH_LONG).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
 
             }
 

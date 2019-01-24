@@ -7,13 +7,30 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.pchrp.newdashboard.R;
+import com.example.pchrp.newdashboard.manager.Contextor;
+import com.example.pchrp.newdashboard.manager.http.HttpKrystal;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
 
-        CardView cv_bill = (CardView)findViewById(R.id.Cv_bill),Cv_pay,Cv_drink,Cv_real,Cv_credit,Cv_graph;
+        CardView cv_bill,Cv_pay,Cv_drink,Cv_real,Cv_credit,Cv_graph;
 
         CardView cv_in_bill,cv_in_pay,cv_in_drink,cv_in_real,cv_in_credit,cv_in_graph;
 
@@ -32,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         private void initInstances() {
+
+            cv_bill = (CardView)findViewById(R.id.Cv_bill);
             Cv_pay = (CardView)findViewById(R.id.Cv_pay);
             Cv_drink = (CardView)findViewById(R.id.Cv_drink);
             Cv_real = (CardView)findViewById(R.id.Cv_real);
@@ -90,7 +109,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             imggraph.setOnClickListener(this);
         }
 
-        @Override
+
+    @Override
         public void onClick(View v) {
 
             if (v==cv_bill||v==cv_in_bill||v==menutextbill||v==imgbill){
@@ -104,9 +124,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //this.finish();
             }
             if (v==Cv_drink||v==cv_in_drink||v==menudrink||v==imgdrink){
-                Intent intent = new Intent(MainActivity.this,DrinkActivity.class);
-                this.startActivity(intent);
-                //this.finish();
+//                Intent intent = new Intent(MainActivity.this,DrinkActivity.class);
+//                this.startActivity(intent);
+                HttpKrystal httpKrystal = new HttpKrystal();
+                try {
+                    Toast.makeText(MainActivity.this,httpKrystal.getTest(),Toast.LENGTH_LONG).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
 
             if (v==Cv_real||v==cv_in_real||v==menureal||v==imgreal){

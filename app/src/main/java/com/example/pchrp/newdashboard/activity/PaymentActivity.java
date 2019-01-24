@@ -31,8 +31,8 @@ public class PaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
-        mAnimatedPieView = findViewById(R.id.drew1);
-        DrawPiePay();
+       // mAnimatedPieView = findViewById(R.id.drew1);
+       // DrawPiePay();
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         mViewPager = (ViewPager) findViewById(R.id.pager);

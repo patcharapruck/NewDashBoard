@@ -7,9 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.pchrp.newdashboard.Dao.PayItemColleationDao;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.adapter.PayMentAdapter;
+import com.example.pchrp.newdashboard.manager.http.HttpManager;
+
+import java.io.IOException;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,6 +53,30 @@ public class FragmentPay extends Fragment {
         listViewPay = (ListView) rootView.findViewById(R.id.list_pay);
         payMentAdapter = new PayMentAdapter();
         listViewPay.setAdapter(payMentAdapter);
+
+        Call<PayItemColleationDao> call = HttpManager.getInstance().getService().loadlist();
+        call.enqueue(new Callback<PayItemColleationDao>() {
+
+            @Override
+            public void onResponse(Call<PayItemColleationDao> call, Response<PayItemColleationDao> response) {
+
+                if(response.isSuccessful()){
+                    PayItemColleationDao dao = response.body();
+                    Toast.makeText(getActivity(),dao.getData().get(0).getCaption(),Toast.LENGTH_SHORT).show();
+                }else {
+                    try {
+                        Toast.makeText(getActivity(),response.errorBody().string(),Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PayItemColleationDao> call, Throwable t) {
+                Toast.makeText(getActivity(),t.toString(),Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

@@ -124,8 +124,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             if (v==Cv_drink||v==cv_in_drink||v==menudrink||v==imgdrink){
-//                Intent intent = new Intent(MainActivity.this,DrinkActivity.class);
-//                this.startActivity(intent);
+                Intent intent = new Intent(MainActivity.this,DrinkActivity.class);
+                this.startActivity(intent);
 
 
             }

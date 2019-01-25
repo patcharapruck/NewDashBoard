@@ -61,10 +61,11 @@
                     app:cardElevation="5dp">
 
                     <TextView
+                        android:id="@+id/tvincomebill"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="2,181,312.00"
+                        android:text="0.00"
                         android:textColor="@color/text_money_pay"
                         android:textSize="24dp"
                         android:textStyle="bold" />
@@ -124,11 +125,12 @@
                                     android:text="ค่าดื่ม" />
 
                                 <TextView
+                                    android:id="@+id/tvserivceDrinkCharge"
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="1,197,980.00" />
+                                    android:text="0.00" />
 
                             </LinearLayout>
 
@@ -172,11 +174,12 @@
                                     android:text="ค่าMember" />
 
                                 <TextView
+                                    android:id="@+id/tvmemberCharge"
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="830,000.00" />
+                                    android:text="0.00" />
 
                             </LinearLayout>
 
@@ -220,11 +223,12 @@
                                     android:text="ค่าบริการ" />
 
                                 <TextView
+                                    android:id="@+id/tvserviceCharge"
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="90,000.00" />
+                                    android:text="0.00" />
 
                             </LinearLayout>
 
@@ -268,11 +272,12 @@
                                     android:text="ค่าสินค้า/เครื่องดื่ม" />
 
                                 <TextView
+                                    android:id="@+id/tvproductPrice"
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="12,260.00" />
+                                    android:text="0.00" />
 
                             </LinearLayout>
 
@@ -317,11 +322,12 @@
                                     android:text="ค่าอาหาร" />
 
                                 <TextView
+                                    android:id="@+id/tvfoodPrice"
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="51,072.00" />
+                                    android:text="0.00" />
 
                             </LinearLayout>
 
@@ -366,11 +372,13 @@
                                     android:text="จำนวนMember(คน)" />
 
                                 <TextView
+                                    android:id="@+id/tvopenMemberAccount"
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="27" />
+                                    android:text="0" />
+
 
                             </LinearLayout>
 
@@ -415,11 +423,13 @@
                                     android:text="ดื่มทั้งหมด(ดื่ม)" />
 
                                 <TextView
+
+                                    android:id="@+id/tvserviceDringQty"
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="3,165" />
+                                    android:text="0" />
 
                             </LinearLayout>
 
@@ -464,11 +474,12 @@
                                     android:text="จำนวนลูกค้า(คน)" />
 
                                 <TextView
+                                    android:id="@+id/tvpax"
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="86" />
+                                    android:text="0" />
 
                             </LinearLayout>
 

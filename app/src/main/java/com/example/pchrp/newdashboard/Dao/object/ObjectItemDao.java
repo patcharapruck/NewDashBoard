@@ -26,7 +26,7 @@ public class ObjectItemDao {
         private String summaryOrderFoodList = null;
         private String summaryServiceDrinkList = null;
         private Double serivceDrinkCharge;
-        private Double serviceDringQty;
+        private Long serviceDringQty;
         private Double foodPrice;
         private Double serviceCharge;
         private Double productPrice;
@@ -36,7 +36,7 @@ public class ObjectItemDao {
         private Long openRenewMemberAccount;
 
 
-    public float getPax() {
+    public Long getPax() {
         return pax;
     }
 
@@ -188,11 +188,11 @@ public class ObjectItemDao {
         this.serivceDrinkCharge = serivceDrinkCharge;
     }
 
-    public Double getServiceDringQty() {
+    public Long getServiceDringQty() {
         return serviceDringQty;
     }
 
-    public void setServiceDringQty(Double serviceDringQty) {
+    public void setServiceDringQty(Long serviceDringQty) {
         this.serviceDringQty = serviceDringQty;
     }
 

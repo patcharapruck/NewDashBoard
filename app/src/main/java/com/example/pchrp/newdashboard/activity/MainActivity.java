@@ -15,6 +15,7 @@ import com.example.pchrp.newdashboard.Dao.TestDao;
 import com.example.pchrp.newdashboard.Dao.object.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.Contextor;
+import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.example.pchrp.newdashboard.manager.http.HttpKrystal;
 import com.google.gson.Gson;
 
@@ -49,10 +50,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         private void initInstances() {
             TestDao testDao = new TestDao();
-            Gson gson = new Gson(); // Or use new GsonBuilder().create();
+            Gson gson = new Gson();
             ObjectItemDao dao = gson.fromJson(testDao.Sj(),ObjectItemDao.class);
+            DashBoradManager.getInstance().setDao(dao);
 
-            Log.v("aaa",dao.getCreditPayments().toString());
+            Log.v("aaa",dao.getIncome().toString());
 
 
             cv_bill = (CardView)findViewById(R.id.Cv_bill);

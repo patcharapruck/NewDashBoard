@@ -15,7 +15,10 @@ import com.example.pchrp.newdashboard.Dao.bankdao.BankItemDao;
 import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
+import com.example.pchrp.newdashboard.manager.http.HttpKrystal;
 import com.google.gson.Gson;
+
+import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -126,7 +129,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (v==Cv_drink||v==cv_in_drink||v==menudrink||v==imgdrink){
                 Intent intent = new Intent(MainActivity.this,DrinkActivity.class);
                 this.startActivity(intent);
-
+                HttpKrystal httpKrystal = new HttpKrystal();
+                try {
+                    String ddd = httpKrystal.getTest().toString();
+                    Log.v("OK","fff");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
             }
 

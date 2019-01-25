@@ -146,8 +146,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 this.startActivity(intent);
             }
             if (v==Cv_graph||v==cv_in_graph||v==menugraph||v==imggraph){
-//                Intent intent = new Intent(MainActivity.this,DrinkActivity.class);
-//                this.startActivity(intent); หย้ากราฟ
+                Intent intent = new Intent(MainActivity.this,CompareReceipts.class);
+                this.startActivity(intent);
 
             }
         }

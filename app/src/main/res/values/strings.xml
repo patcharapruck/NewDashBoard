@@ -3,4 +3,24 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="menu">
+        <item>รายวัน</item>
+        <item>รายเดือน</item>
+        <item>รายปี</item>
+
+    </string-array>
+    <string-array name="datestart">
+        <item>รายวัน</item>
+        <item>รายเดือน</item>
+        <item>รายปี</item>
+
+    </string-array>
+    <string-array name="datestop">
+        <item>รายวัน</item>
+        <item>รายเดือน</item>
+        <item>รายปี</item>
+
+    </string-array>
+
+
 </resources>

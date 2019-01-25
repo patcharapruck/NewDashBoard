@@ -65,7 +65,7 @@ public class FragmentPay extends Fragment {
                     Toast.makeText(getActivity(),dao.getData().get(0).getCaption(),Toast.LENGTH_SHORT).show();
                 }else {
                     try {
-                        Toast.makeText(getActivity(),response.errorBody().string(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(),response.errorBody().string()+"aaaa",Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -74,7 +74,7 @@ public class FragmentPay extends Fragment {
 
             @Override
             public void onFailure(Call<PayItemColleationDao> call, Throwable t) {
-                Toast.makeText(getActivity(),t.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),t.toString()+"sssss",Toast.LENGTH_LONG).show();
             }
         });
     }

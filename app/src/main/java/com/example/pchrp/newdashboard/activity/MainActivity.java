@@ -8,23 +8,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.pchrp.newdashboard.Dao.DashBoardDao;
 import com.example.pchrp.newdashboard.Dao.TestDao;
-import com.example.pchrp.newdashboard.Dao.object.ObjectItemDao;
+import com.example.pchrp.newdashboard.Dao.bankdao.BankItemColleationDao;
+import com.example.pchrp.newdashboard.Dao.bankdao.BankItemDao;
+import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
-import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
-import com.example.pchrp.newdashboard.manager.http.HttpKrystal;
 import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -49,12 +40,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         private void initInstances() {
+
             TestDao testDao = new TestDao();
             Gson gson = new Gson();
-            ObjectItemDao dao = gson.fromJson(testDao.Sj(),ObjectItemDao.class);
+           // DashBoardDao dao = gson.fromJson(testDao.jj(),DashBoardDao.class);
+            ObjectItemDao dao = gson.fromJson(testDao.jjj(),ObjectItemDao.class);
             DashBoradManager.getInstance().setDao(dao);
-
-            Log.v("aaa",dao.getIncome().toString());
 
 
             cv_bill = (CardView)findViewById(R.id.Cv_bill);
@@ -119,17 +110,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
         public void onClick(View v) {
-
+            //บิล
             if (v==cv_bill||v==cv_in_bill||v==menutextbill||v==imgbill){
                 Intent intent = new Intent(MainActivity.this,BillActivity.class);
                 this.startActivity(intent);
                 //this.finish();
             }
+            //ยฟั
             if (v==Cv_pay||v==cv_in_pay||v==menupay||v==imgpay){
                 Intent intent = new Intent(MainActivity.this,PaymentActivity.class);
                 this.startActivity(intent);
                 //this.finish();
             }
+
             if (v==Cv_drink||v==cv_in_drink||v==menudrink||v==imgdrink){
 //                Intent intent = new Intent(MainActivity.this,DrinkActivity.class);
 //                this.startActivity(intent);

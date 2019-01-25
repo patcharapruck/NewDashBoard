@@ -1,9 +1,8 @@
-package com.example.pchrp.newdashboard.Dao.bank;
+package com.example.pchrp.newdashboard.Dao.bankdao;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class RecorderItemDao {
     @SerializedName("recorder") private String recorder = null;

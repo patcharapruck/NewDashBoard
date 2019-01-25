@@ -1,13 +1,13 @@
-package com.example.pchrp.newdashboard.Dao.bank;
+package com.example.pchrp.newdashboard.Dao.bankdao;
 
 import java.sql.Timestamp;
 import java.util.List;
 
 public class BankItemDao {
 
-        private List<RecorderItemDao> recorderdata;
+        private Object recorder;
         private Timestamp createDate;
-        private List<EditorItemBankDao> editordata;
+        private Object editor;
         private Timestamp lastUpdate;
         private Long id;
         private String bankName;
@@ -15,12 +15,20 @@ public class BankItemDao {
         private boolean active;
         private boolean deleted;
 
-    public List<RecorderItemDao> getRecorderdata() {
-        return recorderdata;
+    public Object getRecorder() {
+        return recorder;
     }
 
-    public void setRecorderdata(List<RecorderItemDao> recorderdata) {
-        this.recorderdata = recorderdata;
+    public void setRecorder(Object recorder) {
+        this.recorder = recorder;
+    }
+
+    public Object getEditor() {
+        return editor;
+    }
+
+    public void setEditor(Object editor) {
+        this.editor = editor;
     }
 
     public Timestamp getCreateDate() {
@@ -31,13 +39,6 @@ public class BankItemDao {
         this.createDate = createDate;
     }
 
-    public List<EditorItemBankDao> getEditordata() {
-        return editordata;
-    }
-
-    public void setEditordata(List<EditorItemBankDao> editordata) {
-        this.editordata = editordata;
-    }
 
     public Timestamp getLastUpdate() {
         return lastUpdate;

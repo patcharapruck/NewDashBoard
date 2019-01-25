@@ -45,15 +45,6 @@ public class PaymentActivity extends AppCompatActivity {
 
     }
 
-    private void DrawPiePay() {
-        config = new AnimatedPieViewConfig();
-        config.startAngle(-90)// Starting angle offset
-                .addData(new SimplePieInfo(1197980.00f, Color.parseColor("#C0FF8C"), "ค่าดื่ม"))//Data (bean that implements the IPieInfo interface)
-                .addData(new SimplePieInfo(90000.00f+12260.00f+51072.00,
-                        Color.parseColor("#FFF78C"), "ค่าบริการ")).drawText(true).duration(2000).textSize(20);
-        mAnimatedPieView.applyConfig(config);
-        mAnimatedPieView.start();
-    }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 

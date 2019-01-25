@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -13,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.DrinkReportActivity"></activity>
+        <activity android:name=".activity.CompareReceipts"></activity>
+        <activity android:name=".activity.DrinkReportActivity" />
         <activity android:name=".activity.RealIncomeActivity" />
         <activity android:name=".activity.CreditActivity" />
         <activity android:name=".activity.MainActivity">

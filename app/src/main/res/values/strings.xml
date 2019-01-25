@@ -7,7 +7,6 @@
         <item>รายวัน</item>
         <item>รายเดือน</item>
         <item>รายปี</item>
-
     </string-array>
     <string-array name="datestart">
         <item>รายวัน</item>

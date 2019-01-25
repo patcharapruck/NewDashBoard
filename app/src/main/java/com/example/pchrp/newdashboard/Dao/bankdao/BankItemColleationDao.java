@@ -1,25 +1,33 @@
-package com.example.pchrp.newdashboard.Dao.bank;
+package com.example.pchrp.newdashboard.Dao.bankdao;
 
 import java.util.List;
 
 public class BankItemColleationDao {
 
-        private List<BankItemDao> bankdata;
+        private Object bank ;
         private Double visa;
         private Double master;
         private Double jcb;
         private Double amax;
         private Double unipay;
 
-        public List<BankItemDao> getBankdata() {
-            return bankdata;
-        }
+    public Object getBank() {
+        return bank;
+    }
 
-        public void setBankdata(List<BankItemDao> bankdata) {
-            this.bankdata = bankdata;
-        }
+    public void setBank(Object bank) {
+        this.bank = bank;
+    }
 
-        public Double getVisa() {
+    //    public List<BankItemDao> getBank() {
+//        return bank;
+//    }
+//
+//    public void setBank(List<BankItemDao> bank) {
+//        this.bank = bank;
+//    }
+
+    public Double getVisa() {
             return visa;
         }
 

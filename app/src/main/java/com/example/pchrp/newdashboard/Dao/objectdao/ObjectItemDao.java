@@ -1,8 +1,9 @@
-package com.example.pchrp.newdashboard.Dao.object;
+package com.example.pchrp.newdashboard.Dao.objectdao;
 
-import com.example.pchrp.newdashboard.Dao.bank.BankItemColleationDao;
+import com.example.pchrp.newdashboard.Dao.bankdao.BankItemColleationDao;
 import com.example.pchrp.newdashboard.Dao.product.DrinkProductItemCollectionDao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ObjectItemDao {
@@ -18,11 +19,11 @@ public class ObjectItemDao {
         private Double receipts;
         private Double revenue;
         private Double totalServiceCharge;
-        private List<BankItemColleationDao> incomecredit;
+        private List<BankItemColleationDao> incomeByCreditCardList;
         private String invoice = null;
         private Long memberNew;
         private Long memberRenew;
-        private List<DrinkProductItemCollectionDao> drinkdata;
+        private List<DrinkProductItemCollectionDao> summaryUseProductList;
         private String summaryOrderFoodList = null;
         private String summaryServiceDrinkList = null;
         private Double serivceDrinkCharge;
@@ -124,12 +125,12 @@ public class ObjectItemDao {
         this.totalServiceCharge = totalServiceCharge;
     }
 
-    public List<BankItemColleationDao> getIncomecredit() {
-        return incomecredit;
+    public List<BankItemColleationDao> getIncomeByCreditCardList() {
+        return incomeByCreditCardList;
     }
 
-    public void setIncomecredit(List<BankItemColleationDao> incomecredit) {
-        this.incomecredit = incomecredit;
+    public void setIncomeByCreditCardList(List<BankItemColleationDao> incomeByCreditCardList) {
+        this.incomeByCreditCardList = incomeByCreditCardList;
     }
 
     public String getInvoice() {
@@ -156,12 +157,12 @@ public class ObjectItemDao {
         this.memberRenew = memberRenew;
     }
 
-    public List<DrinkProductItemCollectionDao> getDrinkdata() {
-        return drinkdata;
+    public List<DrinkProductItemCollectionDao> getSummaryUseProductList() {
+        return summaryUseProductList;
     }
 
-    public void setDrinkdata(List<DrinkProductItemCollectionDao> drinkdata) {
-        this.drinkdata = drinkdata;
+    public void setSummaryUseProductList(List<DrinkProductItemCollectionDao> summaryUseProductList) {
+        this.summaryUseProductList = summaryUseProductList;
     }
 
     public String getSummaryOrderFoodList() {

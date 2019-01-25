@@ -1,11 +1,13 @@
 package com.example.pchrp.newdashboard.Dao.product;
 
+import java.sql.Timestamp;
+
 public class DrinkUnitDao {
 
     private String recorder;
-    private String createDate;
+    private Timestamp createDate;
     private String editor;
-    private String lastUpdate;
+    private Timestamp lastUpdate;
     private int id;
     private String unitNameTh;
     private String unitNameEn;
@@ -21,28 +23,12 @@ public class DrinkUnitDao {
         this.recorder = recorder;
     }
 
-    public String getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate;
-    }
-
     public String getEditor() {
         return editor;
     }
 
     public void setEditor(String editor) {
         this.editor = editor;
-    }
-
-    public String getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(String lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     public int getId() {
@@ -91,5 +77,21 @@ public class DrinkUnitDao {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public Timestamp getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Timestamp createDate) {
+        this.createDate = createDate;
+    }
+
+    public Timestamp getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Timestamp lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 }

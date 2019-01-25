@@ -21,6 +21,11 @@ public class TestDao {
         return JSON;
     }
 
+    public String jjj(){
+        String JSON = "{\"pax\":110,\"cashPayments\":125783,\"creditPayments\":512747,\"creditCardPayments\":1651255,\"memberDebitPayments\":268764,\"entertainPayments\":6763,\"income\":2565312,\"unpaid\":0,\"receipts\":0,\"revenue\":2289785,\"totalServiceCharge\":546,\"incomeByCreditCardList\":[{\"bank\":{\"recorder\":{\"recorder\":null,\"createDate\":null,\"editor\":null,\"lastUpdate\":null,\"id\":1,\"userType\":null,\"authentication\":null,\"permissionGroup\":null,\"active\":null,\"deleted\":null},\"createDate\":1543525993000,\"editor\":{\"recorder\":null,\"createDate\":null,\"editor\":null,\"lastUpdate\":null,\"id\":1,\"userType\":null,\"authentication\":null,\"permissionGroup\":null,\"active\":null,\"deleted\":null},\"lastUpdate\":1546428511000,\"id\":1,\"bankName\":\"ธนาคารธนชาต (T-BANK)\",\"image\":null,\"active\":true,\"deleted\":false},\"visa\":974377,\"master\":119601,\"jcb\":0,\"amax\":0,\"unipay\":0},{\"bank\":{\"recorder\":{\"recorder\":null,\"createDate\":null,\"editor\":null,\"lastUpdate\":null,\"id\":1,\"userType\":null,\"authentication\":null,\"permissionGroup\":null,\"active\":null,\"deleted\":null},\"createDate\":1543526013000,\"editor\":{\"recorder\":null,\"createDate\":null,\"editor\":null,\"lastUpdate\":null,\"id\":1,\"userType\":null,\"authentication\":null,\"permissionGroup\":null,\"active\":null,\"deleted\":null},\"lastUpdate\":1543526097000,\"id\":2,\"bankName\":\"ธนาคารกรุงเทพ (BBL)\",\"image\":null,\"active\":true,\"deleted\":false},\"visa\":428272,\"master\":62335,\"jcb\":0,\"amax\":66670,\"unipay\":0}],\"invoice\":null,\"memberNew\":0,\"memberRenew\":0,\"summaryUseProductList\":[],\"summaryOrderFoodList\":null,\"summaryServiceDrinkList\":null,\"serivceDrinkCharge\":1399920,\"serviceDringQty\":3680,\"foodPrice\":106206,\"serviceCharge\":99650,\"productPrice\":8990,\"memberCharge\":950000,\"openMemberAccount\":29,\"openNewMemberAccount\":11,\"openRenewMemberAccount\":18}";
+        return JSON;
+    }
+
 
 //    private float pax = 110;
 //    private Double cashPayments = 125783D;

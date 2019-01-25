@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.pchrp.newdashboard.Dao.object.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.razerdp.widget.animatedpieview.AnimatedPieView;
@@ -24,6 +23,9 @@ public class FragmentBill extends Fragment {
 
     TextView tvincomebill,tvserivceDrinkCharge,tvmemberCharge,tvserviceCharge,tvproductPrice
             ,tvfoodPrice,tvopenMemberAccount,tvserviceDringQty,tvpax;
+
+    Double serivceDrinkCharge,memberCharge,foodPrice,productPrice,serviceCharge,incomebill;
+    Long pax,serviceDringQty,memberaccount;
 
     public FragmentBill() {
         super();
@@ -43,7 +45,6 @@ public class FragmentBill extends Fragment {
         initInstances(rootView);
         return rootView;
 
-
     }
 
     private void initInstances(View rootView) {
@@ -51,6 +52,17 @@ public class FragmentBill extends Fragment {
 
         mAnimatedPieView = rootView.findViewById(R.id.drew2);
         DrawPie();
+
+        serivceDrinkCharge = DashBoradManager.getInstance().getDao().getSerivceDrinkCharge();
+        memberCharge = DashBoradManager.getInstance().getDao().getMemberCharge();
+        foodPrice = DashBoradManager.getInstance().getDao().getFoodPrice();
+        productPrice = DashBoradManager.getInstance().getDao().getProductPrice();
+        serviceCharge = DashBoradManager.getInstance().getDao().getServiceCharge();
+        incomebill = DashBoradManager.getInstance().getDao().getIncome();
+
+        serviceDringQty = DashBoradManager.getInstance().getDao().getServiceDringQty();
+        pax = DashBoradManager.getInstance().getDao().getPax();
+        memberaccount = DashBoradManager.getInstance().getDao().getOpenMemberAccount();
 
         tvincomebill = (TextView)rootView.findViewById(R.id.tvincomebill);
         tvmemberCharge  = (TextView)rootView.findViewById(R.id.tvmemberCharge);
@@ -62,24 +74,31 @@ public class FragmentBill extends Fragment {
         tvpax = (TextView)rootView.findViewById(R.id.tvpax);
         tvopenMemberAccount = (TextView)rootView.findViewById(R.id.tvopenMemberAccount);
 
-        tvincomebill.setText(DashBoradManager.getInstance().getDao().getIncome().toString());
-        tvmemberCharge.setText(DashBoradManager.getInstance().getDao().getMemberCharge().toString());
-        tvfoodPrice.setText(DashBoradManager.getInstance().getDao().getFoodPrice().toString());
-        tvserviceDringQty.setText(DashBoradManager.getInstance().getDao().getServiceDringQty().toString());
-        tvserviceCharge.setText(DashBoradManager.getInstance().getDao().getServiceCharge().toString());
-        tvserivceDrinkCharge.setText(DashBoradManager.getInstance().getDao().getSerivceDrinkCharge().toString());
-        tvproductPrice.setText(DashBoradManager.getInstance().getDao().getProductPrice().toString());
-        tvpax.setText(DashBoradManager.getInstance().getDao().getPax().toString());
-        tvopenMemberAccount.setText(DashBoradManager.getInstance().getDao().getOpenMemberAccount().toString());
+
+        tvincomebill.setText(incomebill.toString());
+        tvmemberCharge.setText(memberCharge.toString());
+        tvfoodPrice.setText(foodPrice.toString());
+        tvserviceDringQty.setText(serviceDringQty.toString());
+        tvserviceCharge.setText(serviceCharge.toString());
+        tvserivceDrinkCharge.setText(serivceDrinkCharge.toString());
+        tvproductPrice.setText(productPrice.toString());
+        tvpax.setText(pax.toString());
+        tvopenMemberAccount.setText(memberaccount.toString());
     }
 
     private void DrawPie() {
 
+        serivceDrinkCharge = DashBoradManager.getInstance().getDao().getSerivceDrinkCharge();
+        memberCharge = DashBoradManager.getInstance().getDao().getMemberCharge();
+        foodPrice = DashBoradManager.getInstance().getDao().getFoodPrice();
+        productPrice = DashBoradManager.getInstance().getDao().getProductPrice();
+        serviceCharge = DashBoradManager.getInstance().getDao().getServiceCharge();
+
         config = new AnimatedPieViewConfig();
         config.startAngle(-90)// Starting angle offset
-                .addData(new SimplePieInfo(DashBoradManager.getInstance().getDao().getSerivceDrinkCharge(), Color.parseColor("#C0FF8C"), "ค่าดื่ม"))//Data (bean that implements the IPieInfo interface)
-                .addData(new SimplePieInfo(DashBoradManager.getInstance().getDao().getMemberCharge(), Color.parseColor("#FF8C9D"), "ค่า Member"))
-                .addData(new SimplePieInfo(90000.00f+12260.00f+51072.00f, Color.parseColor("#FFF78C"), "ค่าบริการ")).drawText(true).duration(2000).textSize(20);
+                .addData(new SimplePieInfo(serivceDrinkCharge, Color.parseColor("#C0FF8C"), "ค่าดื่ม"))//Data (bean that implements the IPieInfo interface)
+                .addData(new SimplePieInfo(memberCharge, Color.parseColor("#FF8C9D"), "ค่า Member"))
+                .addData(new SimplePieInfo(foodPrice+productPrice+serviceCharge, Color.parseColor("#FFF78C"), "ค่าบริการ")).drawText(true).duration(2000).textSize(20);
         //.addData(new SimplePieInfo(12260.00f, Color.parseColor("#8BEAFE"), "ค่าสินค้า/เครื่องดื่ม"))
         //.addData(new SimplePieInfo(51072.00f, Color.parseColor("#FFD08C"), "ค่าอาหาร"))// draw pie animation duration
 

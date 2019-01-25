@@ -1,7 +1,6 @@
 package com.example.pchrp.newdashboard.Dao;
 
-import com.example.pchrp.newdashboard.Dao.bank.BankItemDao;
-import com.example.pchrp.newdashboard.Dao.object.ObjectItemDao;
+import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 
 import java.util.List;
 

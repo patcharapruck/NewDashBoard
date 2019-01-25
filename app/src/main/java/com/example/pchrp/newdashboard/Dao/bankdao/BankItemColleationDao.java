@@ -2,7 +2,7 @@ package com.example.pchrp.newdashboard.Dao.bankdao;
 
 import java.util.List;
 
-public class BankItemColleationDao {
+public class BankItemColleationDao{
 
         private Object bank ;
         private Double visa;

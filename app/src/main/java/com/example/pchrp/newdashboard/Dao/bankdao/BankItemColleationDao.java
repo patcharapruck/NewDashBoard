@@ -11,6 +11,15 @@ public class BankItemColleationDao{
         private Double amax;
         private Double unipay;
 
+//    public String getBank() {
+//        return bank;
+//    }
+//
+//    public void setBank(String bank) {
+//        this.bank = bank;
+//    }
+
+
     public Object getBank() {
         return bank;
     }
@@ -18,14 +27,6 @@ public class BankItemColleationDao{
     public void setBank(Object bank) {
         this.bank = bank;
     }
-
-    //    public List<BankItemDao> getBank() {
-//        return bank;
-//    }
-//
-//    public void setBank(List<BankItemDao> bank) {
-//        this.bank = bank;
-//    }
 
     public Double getVisa() {
             return visa;

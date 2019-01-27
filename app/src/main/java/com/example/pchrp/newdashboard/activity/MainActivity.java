@@ -17,8 +17,13 @@ import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.example.pchrp.newdashboard.manager.http.HttpKrystal;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -46,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             TestDao testDao = new TestDao();
             Gson gson = new Gson();
-           // DashBoardDao dao = gson.fromJson(testDao.jj(),DashBoardDao.class);
             ObjectItemDao dao = gson.fromJson(testDao.jjj(),ObjectItemDao.class);
             DashBoradManager.getInstance().setDao(dao);
 
@@ -129,13 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (v==Cv_drink||v==cv_in_drink||v==menudrink||v==imgdrink){
                 Intent intent = new Intent(MainActivity.this,DrinkActivity.class);
                 this.startActivity(intent);
-                HttpKrystal httpKrystal = new HttpKrystal();
-                try {
-                    String ddd = httpKrystal.getTest().toString();
-                    Log.v("OK","fff");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
 
             }
 

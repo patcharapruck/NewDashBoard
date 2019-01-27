@@ -69,10 +69,11 @@
             app:cardElevation="5dp">
 
             <TextView
+                android:id="@+id/tvcreditall"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="2,181,312.00"
+                android:text="0.0"
                 android:textColor="@color/text_money_pay"
                 android:textSize="24dp"
                 android:textStyle="bold" />
@@ -162,8 +163,9 @@
                                         />
 
                                     <TextView
+                                        android:id="@+id/tvamaxt"
                                         android:textColor="#FF0000"
-                                        android:text="0.00"
+                                        android:text="0.0"
                                         android:layout_marginLeft="50dp"
                                         android:layout_marginBottom="5dp"
                                         android:layout_marginTop="10dp"
@@ -178,8 +180,9 @@
                                         />
 
                                     <TextView
+                                        android:id="@+id/tvjcbt"
                                         android:textColor="#FF0000"
-                                        android:text="0.00"
+                                        android:text="0.0"
                                         android:layout_marginLeft="50dp"
                                         android:layout_marginBottom="5dp"
                                         />
@@ -193,8 +196,9 @@
                                         />
 
                                     <TextView
-                                        android:textColor="#4CAF50"
-                                        android:text="176,690.00"
+                                        android:id="@+id/tvmastert"
+                                        android:textColor="#FF0000"
+                                        android:text="0.0"
                                         android:layout_marginLeft="50dp"
                                         android:layout_marginBottom="5dp"
                                         />
@@ -208,8 +212,9 @@
                                         />
 
                                     <TextView
+                                        android:id="@+id/tvunipayt"
                                         android:textColor="#FF0000"
-                                        android:text="0.00"
+                                        android:text="0.0"
                                         android:layout_marginLeft="50dp"
                                         android:layout_marginBottom="5dp"
                                         />
@@ -223,8 +228,9 @@
                                         />
 
                                     <TextView
-                                        android:textColor="#4CAF50"
-                                        android:text="716,770.00"
+                                        android:id="@+id/tvvisat"
+                                        android:textColor="#FF0000"
+                                        android:text="0.0"
                                         android:layout_marginLeft="50dp"
                                         android:layout_marginBottom="5dp"
                                         />
@@ -301,8 +307,9 @@
                                         />
 
                                     <TextView
+                                        android:id="@+id/tvamaxk"
                                         android:textColor="#FF0000"
-                                        android:text="0.00"
+                                        android:text="0.0"
                                         android:layout_marginLeft="50dp"
                                         android:layout_marginBottom="5dp"
                                         android:layout_marginTop="10dp"
@@ -317,8 +324,9 @@
                                         />
 
                                     <TextView
+                                        android:id="@+id/tvjcbk"
                                         android:textColor="#FF0000"
-                                        android:text="0.00"
+                                        android:text="0.0"
                                         android:layout_marginLeft="50dp"
                                         android:layout_marginBottom="5dp"
                                         />
@@ -332,8 +340,9 @@
                                         />
 
                                     <TextView
-                                        android:textColor="#4CAF50"
-                                        android:text="176,690.00"
+                                        android:id="@+id/tvmasterk"
+                                        android:textColor="#FF0000"
+                                        android:text="0.0"
                                         android:layout_marginLeft="50dp"
                                         android:layout_marginBottom="5dp"
                                         />
@@ -347,8 +356,9 @@
                                         />
 
                                     <TextView
+                                        android:id="@+id/tvunipayk"
                                         android:textColor="#FF0000"
-                                        android:text="0.00"
+                                        android:text="0.0"
                                         android:layout_marginLeft="50dp"
                                         android:layout_marginBottom="5dp"
                                         />
@@ -362,8 +372,9 @@
                                         />
 
                                     <TextView
-                                        android:textColor="#4CAF50"
-                                        android:text="716,770.00"
+                                        android:id="@+id/tvvisak"
+                                        android:textColor="#FF0000"
+                                        android:text="0.0"
                                         android:layout_marginLeft="50dp"
                                         android:layout_marginBottom="5dp"
                                         />

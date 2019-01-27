@@ -1,34 +1,44 @@
 package com.example.pchrp.newdashboard.Dao.bankdao;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.DoubleToLongFunction;
 
-public class BankItemDao {
+public class BankItemDao{
 
-        private Object recorder;
+        private Object recorde;
         private Timestamp createDate;
         private Object editor;
         private Timestamp lastUpdate;
         private Long id;
         private String bankName;
-        private String image = null;
+        private String image;
         private boolean active;
         private boolean deleted;
 
-    public Object getRecorder() {
-        return recorder;
+
+        public BankItemDao(Object valuebank){
+            HashMap newMap = new HashMap((Map) valuebank);
+            this.recorde = (Object) newMap.get("recorde");
+           // this.createDate = (Timestamp) newMap.get("createDate");
+            this.editor = (Object) newMap.get("editor");
+           // this.lastUpdate = (Timestamp) newMap.get("lastUpdate");
+            Double idd = (Double) newMap.get("id");
+            this.id = (new Double(idd)).longValue();
+            this.bankName = (String) newMap.get("bankName");
+            this.image = (String) newMap.get("image");
+            this.active = (boolean) newMap.get("active");
+            this.deleted = (boolean) newMap.get("deleted");
+        }
+
+    public Object getRecorde() {
+        return recorde;
     }
 
-    public void setRecorder(Object recorder) {
-        this.recorder = recorder;
-    }
-
-    public Object getEditor() {
-        return editor;
-    }
-
-    public void setEditor(Object editor) {
-        this.editor = editor;
+    public void setRecorde(Object recorde) {
+        this.recorde = recorde;
     }
 
     public Timestamp getCreateDate() {
@@ -39,6 +49,13 @@ public class BankItemDao {
         this.createDate = createDate;
     }
 
+    public Object getEditor() {
+        return editor;
+    }
+
+    public void setEditor(Object editor) {
+        this.editor = editor;
+    }
 
     public Timestamp getLastUpdate() {
         return lastUpdate;

@@ -206,7 +206,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="โต๊ะที่ชำระแล้ว" />
+                                android:text="ชำระแล้ว" />
 
                             <TextView
                                 style="@style/font_pay"
@@ -288,7 +288,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="โต๊ะที่รอชำระ" />
+                                android:text="รอชำระ" />
 
                             <TextView
                                 style="@style/font_notpay"

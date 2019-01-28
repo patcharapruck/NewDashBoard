@@ -39,7 +39,7 @@ public class PaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
 
     toolbar = findViewById(R.id.tbPayment);
-    toolbar.setTitle("ยอดชำระปัจจุบัน");
+    toolbar.setTitle("สถานะชำระเงินปัจจุบัน");
     toolbar.setSubtitle(" day / month / year ");
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);

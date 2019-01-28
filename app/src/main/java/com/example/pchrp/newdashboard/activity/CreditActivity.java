@@ -29,7 +29,7 @@ public class CreditActivity extends AppCompatActivity {
     BarChart barChart;
     Toolbar toolbar;
     TextView tvcreditall,tvamaxt,tvamaxk,tvjcbt,tvjcbk,tvmastert,tvmasterk,tvunipayt,tvunipayk,tvvisat,tvvisak;
-    Double creditall,amaxt,amaxk,jcbt,jcbk,mastert,masterk,unipayt,unipayk,visat,visak;
+    Double creditall,amaxt=0.0,amaxk=0.0,jcbt=0.0,jcbk=0.0,mastert=0.0,masterk=0.0,unipayt=0.0,unipayk=0.0,visat=0.0,visak=0.0;
 
     //วันปัจจุบัน
     String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
@@ -61,62 +61,62 @@ public class CreditActivity extends AppCompatActivity {
         tvvisak = (TextView) findViewById(R.id.tvvisak);
 
 
-        creditall=DashBoradManager.getInstance().getDao().getCreditCardPayments();
-        amaxt=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getAmax();
-        jcbt=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getJcb();
-        mastert=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getMaster();
-        visat=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getVisa();
-        unipayt=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getUnipay();
-        amaxk=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getAmax();
-        jcbk=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getJcb();
-        masterk=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getMaster();
-        visak=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getVisa();
-        unipayk=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getUnipay();
+//        creditall=DashBoradManager.getInstance().getDao().getCreditCardPayments();
+//        amaxt=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getAmax();
+//        jcbt=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getJcb();
+//        mastert=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getMaster();
+//        visat=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getVisa();
+//        unipayt=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getUnipay();
+//        amaxk=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getAmax();
+//        jcbk=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getJcb();
+//        masterk=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getMaster();
+//        visak=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getVisa();
+//        unipayk=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getUnipay();
 
 
-        tvcreditall.setText(creditall.toString());
-
-        tvamaxt.setText(amaxt.toString());
-        if(amaxt>0){
-            tvamaxt.setTextColor(Color.parseColor("#4CAF50"));
-        }
-        tvjcbt.setText(jcbt.toString());
-        if(jcbt>0){
-            tvjcbt.setTextColor(Color.parseColor("#4CAF50"));
-        }
-        tvmastert.setText(mastert.toString());
-        if(mastert>0){
-            tvmastert.setTextColor(Color.parseColor("#4CAF50"));
-        }
-        tvvisat.setText(visat.toString());
-        if(visat>0){
-            tvvisat.setTextColor(Color.parseColor("#4CAF50"));
-        }
-        tvunipayt.setText(unipayt.toString());
-        if(unipayt>0){
-            tvunipayt.setTextColor(Color.parseColor("#4CAF50"));
-        }
-
-        tvamaxk.setText(amaxk.toString());
-        if(amaxk>0){
-            tvamaxk.setTextColor(Color.parseColor("#4CAF50"));
-        }
-        tvjcbk.setText(jcbk.toString());
-        if(jcbk>0){
-            tvjcbk.setTextColor(Color.parseColor("#4CAF50"));
-        }
-        tvmasterk.setText(masterk.toString());
-        if(masterk>0){
-            tvmasterk.setTextColor(Color.parseColor("#4CAF50"));
-        }
-        tvvisak.setText(visak.toString());
-        if(visak>0){
-            tvvisak.setTextColor(Color.parseColor("#4CAF50"));
-        }
-        tvunipayk.setText(unipayk.toString());
-        if(unipayk>0){
-            tvunipayk.setTextColor(Color.parseColor("#4CAF50"));
-        }
+//        tvcreditall.setText(creditall.toString());
+//
+//        tvamaxt.setText(amaxt.toString());
+//        if(amaxt>0){
+//            tvamaxt.setTextColor(Color.parseColor("#4CAF50"));
+//        }
+//        tvjcbt.setText(jcbt.toString());
+//        if(jcbt>0){
+//            tvjcbt.setTextColor(Color.parseColor("#4CAF50"));
+//        }
+//        tvmastert.setText(mastert.toString());
+//        if(mastert>0){
+//            tvmastert.setTextColor(Color.parseColor("#4CAF50"));
+//        }
+//        tvvisat.setText(visat.toString());
+//        if(visat>0){
+//            tvvisat.setTextColor(Color.parseColor("#4CAF50"));
+//        }
+//        tvunipayt.setText(unipayt.toString());
+//        if(unipayt>0){
+//            tvunipayt.setTextColor(Color.parseColor("#4CAF50"));
+//        }
+//
+//        tvamaxk.setText(amaxk.toString());
+//        if(amaxk>0){
+//            tvamaxk.setTextColor(Color.parseColor("#4CAF50"));
+//        }
+//        tvjcbk.setText(jcbk.toString());
+//        if(jcbk>0){
+//            tvjcbk.setTextColor(Color.parseColor("#4CAF50"));
+//        }
+//        tvmasterk.setText(masterk.toString());
+//        if(masterk>0){
+//            tvmasterk.setTextColor(Color.parseColor("#4CAF50"));
+//        }
+//        tvvisak.setText(visak.toString());
+//        if(visak>0){
+//            tvvisak.setTextColor(Color.parseColor("#4CAF50"));
+//        }
+//        tvunipayk.setText(unipayk.toString());
+//        if(unipayk>0){
+//            tvunipayk.setTextColor(Color.parseColor("#4CAF50"));
+//        }
 
         BarDataSet barDataSet1 = new BarDataSet(bar_B1(), "ธนาคารธนชาต");
         barDataSet1.setColors(Color.rgb(243,112,35));
@@ -165,10 +165,10 @@ public class CreditActivity extends AppCompatActivity {
 
     private ArrayList<BarEntry> bar_B1(){
         ArrayList<BarEntry> barBnk1 = new ArrayList<>();
-        barBnk1.add(new BarEntry(1,amaxt.longValue()));
-        barBnk1.add(new BarEntry(2,jcbt.longValue()));
-        barBnk1.add(new BarEntry(3,mastert.longValue()));
-        barBnk1.add(new BarEntry(4,unipayt.longValue()));
+        barBnk1.add(new BarEntry(1, amaxt.longValue()));
+        barBnk1.add(new BarEntry(2, jcbt.longValue()));
+        barBnk1.add(new BarEntry(3, mastert.longValue()));
+        barBnk1.add(new BarEntry(4, unipayt.longValue()));
         barBnk1.add(new BarEntry(5, visat.longValue()));
         return barBnk1;
     }

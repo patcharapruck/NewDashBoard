@@ -1,4 +1,5 @@
 import com.example.pchrp.newdashboard.Dao.DashBoardDao;
+import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -28,7 +29,10 @@ public class Test {
 //        Gson gson = new Gson();
         DashBoardDao obj = gson.fromJson(json,DashBoardDao.class);
 
+        ObjectItemDao obDao =  obj.getObject();
+
 
         System.out.println(obj.getObject().getIncomeByCreditCardList().get(1).getBank().getBankName());
+        System.out.println(obDao.getIncome());
     }
 }

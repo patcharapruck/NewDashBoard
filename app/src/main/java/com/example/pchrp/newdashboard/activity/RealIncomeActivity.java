@@ -57,15 +57,15 @@ public class RealIncomeActivity extends AppCompatActivity {
         tvtotal = (TextView)findViewById(R.id.tvtotal);
         tvbill = (TextView)findViewById(R.id.tvbill);
 
-        income = DashBoradManager.getInstance().getDao().getIncome();
-        cashPayments = DashBoradManager.getInstance().getDao().getCashPayments();
-        creditPayments = DashBoradManager.getInstance().getDao().getCreditPayments();
-        revenue = DashBoradManager.getInstance().getDao().getRevenue();
-        creditCardPayments = DashBoradManager.getInstance().getDao().getCreditCardPayments();
-        memberDebitPayments = DashBoradManager.getInstance().getDao().getMemberDebitPayments();
-        entertainPayments = DashBoradManager.getInstance().getDao().getEntertainPayments();
-        unpaid = DashBoradManager.getInstance().getDao().getUnpaid();
-        totalServiceCharge = DashBoradManager.getInstance().getDao().getTotalServiceCharge();
+//        income = DashBoradManager.getInstance().getDao().getIncome();
+//        cashPayments = DashBoradManager.getInstance().getDao().getCashPayments();
+//        creditPayments = DashBoradManager.getInstance().getDao().getCreditPayments();
+//        revenue = DashBoradManager.getInstance().getDao().getRevenue();
+//        creditCardPayments = DashBoradManager.getInstance().getDao().getCreditCardPayments();
+//        memberDebitPayments = DashBoradManager.getInstance().getDao().getMemberDebitPayments();
+//        entertainPayments = DashBoradManager.getInstance().getDao().getEntertainPayments();
+//        unpaid = DashBoradManager.getInstance().getDao().getUnpaid();
+//        totalServiceCharge = DashBoradManager.getInstance().getDao().getTotalServiceCharge();
 //        total =  DashBoradManager.getInstance().getDao().getIncome();
 //        credit = DashBoradManager.getInstance().getDao().getCreditPayments();
 

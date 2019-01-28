@@ -2,6 +2,7 @@ package com.example.pchrp.newdashboard.manager;
 
 import android.content.Context;
 
+import com.example.pchrp.newdashboard.Dao.DashBoardDao;
 import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.inthecheesefactory.thecheeselibrary.manager.Contextor;
 
@@ -12,7 +13,7 @@ public class DashBoradManager {
 
     private static DashBoradManager instance;
     //private DashBoardDao Dao;
-    private ObjectItemDao Dao;
+    private DashBoardDao Dao;
     public static DashBoradManager getInstance() {
         if (instance == null)
             instance = new DashBoradManager();
@@ -27,11 +28,12 @@ public class DashBoradManager {
 //        Dao = dao;
 //    }
 
-        public ObjectItemDao getDao() {
+
+    public DashBoardDao getDao() {
         return Dao;
     }
 
-    public void setDao(ObjectItemDao dao) {
+    public void setDao(DashBoardDao dao) {
         Dao = dao;
     }
 

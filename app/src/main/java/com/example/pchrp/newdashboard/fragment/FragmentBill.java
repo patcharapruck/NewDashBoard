@@ -3,11 +3,14 @@ package com.example.pchrp.newdashboard.fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.pchrp.newdashboard.Dao.DashBoardDao;
+import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.razerdp.widget.animatedpieview.AnimatedPieView;
@@ -26,6 +29,8 @@ public class FragmentBill extends Fragment {
 
     Double serivceDrinkCharge,memberCharge,foodPrice,productPrice,serviceCharge,incomebill;
     Long pax,serviceDringQty,memberaccount;
+
+    ObjectItemDao ODao;
 
     public FragmentBill() {
         super();
@@ -51,18 +56,9 @@ public class FragmentBill extends Fragment {
 
 
         mAnimatedPieView = rootView.findViewById(R.id.drew2);
+        this.ODao = DashBoradManager.getInstance().getDao().getObject();
+
         DrawPie();
-
-        serivceDrinkCharge = DashBoradManager.getInstance().getDao().getSerivceDrinkCharge();
-        memberCharge = DashBoradManager.getInstance().getDao().getMemberCharge();
-        foodPrice = DashBoradManager.getInstance().getDao().getFoodPrice();
-        productPrice = DashBoradManager.getInstance().getDao().getProductPrice();
-        serviceCharge = DashBoradManager.getInstance().getDao().getServiceCharge();
-        incomebill = DashBoradManager.getInstance().getDao().getIncome();
-
-        serviceDringQty = DashBoradManager.getInstance().getDao().getServiceDringQty();
-        pax = DashBoradManager.getInstance().getDao().getPax();
-        memberaccount = DashBoradManager.getInstance().getDao().getOpenMemberAccount();
 
         tvincomebill = (TextView)rootView.findViewById(R.id.tvincomebill);
         tvmemberCharge  = (TextView)rootView.findViewById(R.id.tvmemberCharge);
@@ -74,35 +70,35 @@ public class FragmentBill extends Fragment {
         tvpax = (TextView)rootView.findViewById(R.id.tvpax);
         tvopenMemberAccount = (TextView)rootView.findViewById(R.id.tvopenMemberAccount);
 
+        setTextView(ODao);
+    }
 
-        tvincomebill.setText(incomebill.toString());
-        tvmemberCharge.setText(memberCharge.toString());
-        tvfoodPrice.setText(foodPrice.toString());
-        tvserviceDringQty.setText(serviceDringQty.toString());
-        tvserviceCharge.setText(serviceCharge.toString());
-        tvserivceDrinkCharge.setText(serivceDrinkCharge.toString());
-        tvproductPrice.setText(productPrice.toString());
-        tvpax.setText(pax.toString());
-        tvopenMemberAccount.setText(memberaccount.toString());
+    private void setTextView(ObjectItemDao ODao) {
+
+        tvincomebill.setText(ODao.getIncome().toString());
+        tvmemberCharge.setText(ODao.getMemberCharge().toString());
+        tvfoodPrice.setText(ODao.getFoodPrice().toString());
+        tvserviceDringQty.setText(ODao.getServiceDringQty().toString());
+        tvserviceCharge.setText(ODao.getServiceCharge().toString());
+        tvserivceDrinkCharge.setText(ODao.getSerivceDrinkCharge().toString());
+        tvproductPrice.setText(ODao.getProductPrice().toString());
+        tvpax.setText(ODao.getPax().toString());
+        tvopenMemberAccount.setText(ODao.getOpenMemberAccount().toString());
     }
 
     private void DrawPie() {
 
-        serivceDrinkCharge = DashBoradManager.getInstance().getDao().getSerivceDrinkCharge();
-        memberCharge = DashBoradManager.getInstance().getDao().getMemberCharge();
-        foodPrice = DashBoradManager.getInstance().getDao().getFoodPrice();
-        productPrice = DashBoradManager.getInstance().getDao().getProductPrice();
-        serviceCharge = DashBoradManager.getInstance().getDao().getServiceCharge();
+        serivceDrinkCharge = ODao.getSerivceDrinkCharge();
+        memberCharge = ODao.getMemberCharge();
+        foodPrice = ODao.getFoodPrice();
+        productPrice = ODao.getProductPrice();
+        serviceCharge = ODao.getServiceCharge();
 
         config = new AnimatedPieViewConfig();
         config.startAngle(-90)// Starting angle offset
                 .addData(new SimplePieInfo(serivceDrinkCharge, Color.parseColor("#C0FF8C"), "ค่าดื่ม"))//Data (bean that implements the IPieInfo interface)
                 .addData(new SimplePieInfo(memberCharge, Color.parseColor("#FF8C9D"), "ค่า Member"))
                 .addData(new SimplePieInfo(foodPrice+productPrice+serviceCharge, Color.parseColor("#FFF78C"), "ค่าบริการ")).drawText(true).duration(2000).textSize(20);
-        //.addData(new SimplePieInfo(12260.00f, Color.parseColor("#8BEAFE"), "ค่าสินค้า/เครื่องดื่ม"))
-        //.addData(new SimplePieInfo(51072.00f, Color.parseColor("#FFD08C"), "ค่าอาหาร"))// draw pie animation duration
-
-// The following two sentences can be replace directly 'mAnimatedPieView.start (config); '
         mAnimatedPieView.applyConfig(config);
         mAnimatedPieView.start();
     }

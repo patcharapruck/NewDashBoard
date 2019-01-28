@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.pchrp.newdashboard.Dao.DashBoardDao;
 import com.example.pchrp.newdashboard.Dao.TestDao;
 import com.example.pchrp.newdashboard.Dao.bankdao.BankItemColleationDao;
 import com.example.pchrp.newdashboard.Dao.bankdao.BankItemDao;
@@ -17,6 +18,11 @@ import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.example.pchrp.newdashboard.manager.http.HttpKrystal;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
@@ -24,6 +30,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,23 +59,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         private void initInstances() {
 
             TestDao testDao = new TestDao();
-            Gson gson = new Gson();
-            ObjectItemDao dao = gson.fromJson(testDao.jj(),ObjectItemDao.class);
+            GsonBuilder builder = new GsonBuilder();
+            builder.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
+                public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                    return new Date(json.getAsJsonPrimitive().getAsLong());
+                }
+            });
+            Gson gson = builder.create();
+            DashBoardDao dao = gson.fromJson(testDao.jj(),DashBoardDao.class);
             DashBoradManager.getInstance().setDao(dao);
-
-            int size = DashBoradManager.getInstance().getDao().getSummaryUseProductList().size();
-
-            Log.v("abc",size+"");
-
-            String[] test  = {"A","B","C","D","E","F","G"};
-            int[] itest = {6,12,1,20,18,2,5};
-            Arrays.sort(itest);
-
-            for(int i =0;i<7;i++){
-
-            }
-
-
 
             cv_bill = (CardView)findViewById(R.id.Cv_bill);
             Cv_pay = (CardView)findViewById(R.id.Cv_pay);

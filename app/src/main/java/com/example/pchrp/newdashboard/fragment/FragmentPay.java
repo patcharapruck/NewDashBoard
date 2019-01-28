@@ -3,20 +3,26 @@ package com.example.pchrp.newdashboard.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.pchrp.newdashboard.Dao.DashBoardDao;
 import com.example.pchrp.newdashboard.Dao.PayItemColleationDao;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.adapter.PayMentAdapter;
 import com.example.pchrp.newdashboard.manager.http.HttpManager;
 
+import org.json.JSONStringer;
+
 import java.io.IOException;
 
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,18 +60,22 @@ public class FragmentPay extends Fragment {
         payMentAdapter = new PayMentAdapter();
         listViewPay.setAdapter(payMentAdapter);
 
-        Call<PayItemColleationDao> call = HttpManager.getInstance().getService().loadlist();
-        call.enqueue(new Callback<PayItemColleationDao>() {
+        String nn = "{\"property\":[],\"criteria\":{\"sql-obj-command\":\"( tb_sales_shift.open_date >= '2019-01-23 00:00:00' AND tb_sales_shift.open_date <= '2019-01-23 23:59:59')\",\"summary-date\":\"*\"},\"orderBy\":{\"InvoiceDocument-id\":\"desc\"},\"pagination\":{}}";
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
+        Log.v("https",nn);
+        Call<DashBoardDao> call = HttpManager.getInstance().getService().loadAPI(requestBody);
+        call.enqueue(new Callback<DashBoardDao>() {
 
             @Override
-            public void onResponse(Call<PayItemColleationDao> call, Response<PayItemColleationDao> response) {
-
+            public void onResponse(Call<DashBoardDao> call, Response<DashBoardDao> response) {
+                Log.v("http",response.raw().body().toString());
+                Log.v("http",String.valueOf(response.raw().code()));
                 if(response.isSuccessful()){
-                    PayItemColleationDao dao = response.body();
-                    Toast.makeText(getActivity(),dao.getData().get(0).getCaption(),Toast.LENGTH_SHORT).show();
+                    DashBoardDao dao = response.body();
+                    Toast.makeText(getActivity(),dao.getObject().getIncome().toString(),Toast.LENGTH_SHORT).show();
                 }else {
                     try {
-                        Toast.makeText(getActivity(),response.errorBody().string()+"aaaa",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(),"aaaa"+response.errorBody().string(),Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -73,8 +83,8 @@ public class FragmentPay extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<PayItemColleationDao> call, Throwable t) {
-                Toast.makeText(getActivity(),t.toString()+"sssss",Toast.LENGTH_LONG).show();
+            public void onFailure(Call<DashBoardDao> call, Throwable t) {
+                Toast.makeText(getActivity(),"sssss"+t.toString(),Toast.LENGTH_LONG).show();
             }
         });
     }

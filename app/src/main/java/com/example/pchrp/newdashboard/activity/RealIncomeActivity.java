@@ -2,6 +2,8 @@ package com.example.pchrp.newdashboard.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.pchrp.newdashboard.R;
@@ -16,12 +18,29 @@ public class RealIncomeActivity extends AppCompatActivity {
     Double income,cashPayments,creditPayments,revenue,creditCardPayments
             ,memberDebitPayments,entertainPayments,unpaid,totalServiceCharge;
 
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_real_income);
+    toolbar = findViewById(R.id.tbIncome);
+    toolbar.setTitle("รายรับจริง");
+    toolbar.setSubtitle("วัน เดือน ปี");
+    setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initInstances();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void initInstances() {

@@ -41,7 +41,7 @@ public class CreditActivity extends AppCompatActivity {
         barChart = findViewById(R.id.barchart);
 
         toolbar = findViewById(R.id.tbCredit);
-        toolbar.setTitle("รายรับจากบัตรเครดิต");
+        toolbar.setTitle("รายรับบัตรเครดิต");
         toolbar.setSubtitle(currentDateTimeString);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -162,7 +162,7 @@ public class CreditActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+    //Bank-T(ธนาคารธนชาต)
     private ArrayList<BarEntry> bar_B1(){
         ArrayList<BarEntry> barBnk1 = new ArrayList<>();
         barBnk1.add(new BarEntry(1,amaxt.longValue()));

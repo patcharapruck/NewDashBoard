@@ -43,7 +43,7 @@ public class PaymentActivity extends AppCompatActivity {
     toolbar.setSubtitle(" day / month / year ");
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
 
         // mAnimatedPieView = findViewById(R.id.drew1);

@@ -28,7 +28,6 @@ public class RealIncomeActivity extends AppCompatActivity {
     toolbar.setSubtitle("วัน เดือน ปี");
     setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initInstances();
     }

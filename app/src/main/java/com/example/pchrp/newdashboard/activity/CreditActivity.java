@@ -45,7 +45,7 @@ public class CreditActivity extends AppCompatActivity {
         toolbar.setSubtitle(currentDateTimeString);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
 
         tvcreditall = (TextView) findViewById(R.id.tvcreditall);

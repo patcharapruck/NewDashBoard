@@ -3,6 +3,7 @@ package com.example.pchrp.newdashboard.activity;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -18,21 +19,31 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class CreditActivity extends AppCompatActivity {
     BarChart barChart;
-
+    Toolbar toolbar;
     TextView tvcreditall,tvamaxt,tvamaxk,tvjcbt,tvjcbk,tvmastert,tvmasterk,tvunipayt,tvunipayk,tvvisat,tvvisak;
     Double creditall,amaxt,amaxk,jcbt,jcbk,mastert,masterk,unipayt,unipayk,visat,visak;
 
-
+    //วันปัจจุบัน
+    String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credit);
         barChart = findViewById(R.id.barchart);
+
+        toolbar = findViewById(R.id.tbCredit);
+        toolbar.setTitle("รายรับจากบัตรเครดิต");
+        toolbar.setSubtitle(currentDateTimeString);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         tvcreditall = (TextView) findViewById(R.id.tvcreditall);

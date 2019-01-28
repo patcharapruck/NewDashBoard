@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.pchrp.newdashboard.Dao.bankdao.BankItemColleationDao;
 import com.example.pchrp.newdashboard.Dao.bankdao.BankItemDao;
 import com.example.pchrp.newdashboard.Dao.bankdao.BankItemKrungthaiDao;
 import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
@@ -60,13 +61,20 @@ public class CreditActivity extends AppCompatActivity {
         tvunipayk = (TextView) findViewById(R.id.tvunipayk);
         tvvisak = (TextView) findViewById(R.id.tvvisak);
 
+        // ตัวแปร เก็บค่า ธนาคาร 1
+        BankItemColleationDao B1 = DashBoradManager.getInstance().getDao().getObject().getIncomeByCreditCardList().get(0);
+        BankItemColleationDao B2 = DashBoradManager.getInstance().getDao().getObject().getIncomeByCreditCardList().get(1);
 
-//        creditall=DashBoradManager.getInstance().getDao().getCreditCardPayments();
-//        amaxt=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getAmax();
+        /// ตัวอย่าง
+        creditall=DashBoradManager.getInstance().getDao().getObject().getCreditCardPayments(); // ค่าบัตรเครดิต
+//
+          amaxt=B1.getAmax(); //แล้วเรียกใช้
+
 //        jcbt=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getJcb();
 //        mastert=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getMaster();
 //        visat=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getVisa();
 //        unipayt=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(0).getUnipay();
+
 //        amaxk=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getAmax();
 //        jcbk=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getJcb();
 //        masterk=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getMaster();
@@ -74,7 +82,46 @@ public class CreditActivity extends AppCompatActivity {
 //        unipayk=DashBoradManager.getInstance().getDao().getIncomeByCreditCardList().get(1).getUnipay();
 
 
-//        tvcreditall.setText(creditall.toString());
+        setTextAndColor();
+//
+
+        BarDataSet barDataSet1 = new BarDataSet(bar_B1(), "ธนาคารธนชาต");
+        barDataSet1.setColors(Color.rgb(243,112,35));
+        BarDataSet barDataSet2 = new BarDataSet(bar_B2(), "ธานคารกรุงเทพ");
+        barDataSet2.setColors(Color.rgb(0,28,122));
+
+        BarData data = new BarData(barDataSet1, barDataSet2);
+        barChart.setData(data);
+
+        String[] creditName = new String[]{"A-MAX ", " JCB ", "MASTER", "UNIPAY", "VISA"};
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(creditName));
+        xAxis.setCenterAxisLabels(true);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setGranularity(1);
+        xAxis.setGranularityEnabled(true);
+
+        barChart.setDragEnabled(true);
+        barChart.setVisibleXRangeMaximum(3);
+
+        float barSpace = 0.05f;
+        float groupSpace = 0.66f;
+        data.setBarWidth(0.12f);
+        //set Label Center
+        //(barwidth + barspace) * no of bars + groupspace = 1
+
+        barChart.getXAxis().setAxisMinimum(0);
+        barChart.getXAxis().setAxisMaximum(0+barChart.getBarData().getGroupWidth(groupSpace,barSpace)*5);
+        barChart.getAxisLeft().setAxisMinimum(0);
+
+        barChart.groupBars(0,groupSpace,barSpace);
+        barChart.invalidate();
+
+
+    }
+
+    private void setTextAndColor() {
+        tvcreditall.setText(creditall.toString());
 //
 //        tvamaxt.setText(amaxt.toString());
 //        if(amaxt>0){
@@ -117,40 +164,6 @@ public class CreditActivity extends AppCompatActivity {
 //        if(unipayk>0){
 //            tvunipayk.setTextColor(Color.parseColor("#4CAF50"));
 //        }
-
-        BarDataSet barDataSet1 = new BarDataSet(bar_B1(), "ธนาคารธนชาต");
-        barDataSet1.setColors(Color.rgb(243,112,35));
-        BarDataSet barDataSet2 = new BarDataSet(bar_B2(), "ธานคารกรุงเทพ");
-        barDataSet2.setColors(Color.rgb(0,28,122));
-
-        BarData data = new BarData(barDataSet1, barDataSet2);
-        barChart.setData(data);
-
-        String[] creditName = new String[]{"A-MAX ", " JCB ", "MASTER", "UNIPAY", "VISA"};
-        XAxis xAxis = barChart.getXAxis();
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(creditName));
-        xAxis.setCenterAxisLabels(true);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setGranularity(1);
-        xAxis.setGranularityEnabled(true);
-
-        barChart.setDragEnabled(true);
-        barChart.setVisibleXRangeMaximum(3);
-
-        float barSpace = 0.05f;
-        float groupSpace = 0.66f;
-        data.setBarWidth(0.12f);
-        //set Label Center
-        //(barwidth + barspace) * no of bars + groupspace = 1
-
-        barChart.getXAxis().setAxisMinimum(0);
-        barChart.getXAxis().setAxisMaximum(0+barChart.getBarData().getGroupWidth(groupSpace,barSpace)*5);
-        barChart.getAxisLeft().setAxisMinimum(0);
-
-        barChart.groupBars(0,groupSpace,barSpace);
-        barChart.invalidate();
-
-
     }
 
     @Override

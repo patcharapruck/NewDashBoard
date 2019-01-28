@@ -5,6 +5,8 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,6 +28,7 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
     LineChart lineChart;
     LineData lineData;
     Spinner sp1, sp2, sp3;
+ Toolbar toolbar;
 
     ArrayList<String> data = new ArrayList<String>();
 
@@ -34,8 +37,31 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare_receipts);
 
+        toolbar = findViewById(R.id.tbCompare);
+        toolbar.setTitle("เปรียบเทียบรายรับ");
+        toolbar.setSubtitle(" day / month / year ");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-          sp1 = findViewById(R.id.item);
+
+        ChartCompare();
+        InitInstant();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void ChartCompare(){
+        sp1 = findViewById(R.id.item);
         sp2 = findViewById(R.id.dateStart);
         sp3 = findViewById(R.id.dateStop);
 
@@ -52,22 +78,12 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
         dataSets.add(lineDataSet);
         ArrayList<ILineDataSet> dataSets1 = new ArrayList<>();
         dataSets1.add(lineDataSet1);
-
-
-
-
         LineData data = new LineData(lineDataSet,lineDataSet1);
 
         lineChart.setData(data);
         lineChart.invalidate();
 
-
-        InitInstant();
-
-
-
     }
-
     private ArrayList<Entry> dataValues1(){
         ArrayList<Entry> dataVals = new ArrayList<Entry>();
         dataVals.add(new Entry(0,20));
@@ -78,7 +94,6 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
 
         return dataVals;
     }
-
     private ArrayList<Entry> dataValues2(){
         ArrayList<Entry> dataVals = new ArrayList<Entry>();
         dataVals.add(new Entry(0,20));
@@ -89,8 +104,6 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
 
         return dataVals;
     }
-
-
     private void InitInstant() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.menu,R.layout.support_simple_spinner_dropdown_item);
@@ -119,7 +132,6 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
         sp3.setOnItemSelectedListener(this);
 
     }
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

@@ -51,9 +51,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             TestDao testDao = new TestDao();
             Gson gson = new Gson();
-            ObjectItemDao dao = gson.fromJson(testDao.jjj(),ObjectItemDao.class);
+            ObjectItemDao dao = gson.fromJson(testDao.jj(),ObjectItemDao.class);
             DashBoradManager.getInstance().setDao(dao);
 
+            int size = DashBoradManager.getInstance().getDao().getSummaryUseProductList().size();
+
+            Log.v("abc",size+"");
+            
 
             cv_bill = (CardView)findViewById(R.id.Cv_bill);
             Cv_pay = (CardView)findViewById(R.id.Cv_pay);

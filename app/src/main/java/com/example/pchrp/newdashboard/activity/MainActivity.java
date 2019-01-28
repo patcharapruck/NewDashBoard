@@ -20,7 +20,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,7 +59,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             int size = DashBoradManager.getInstance().getDao().getSummaryUseProductList().size();
 
             Log.v("abc",size+"");
-            
+
+            String[] test  = {"A","B","C","D","E","F","G"};
+            int[] itest = {6,12,1,20,18,2,5};
+            Arrays.sort(itest);
+
+            for(int i =0;i<7;i++){
+
+            }
+
+
 
             cv_bill = (CardView)findViewById(R.id.Cv_bill);
             Cv_pay = (CardView)findViewById(R.id.Cv_pay);

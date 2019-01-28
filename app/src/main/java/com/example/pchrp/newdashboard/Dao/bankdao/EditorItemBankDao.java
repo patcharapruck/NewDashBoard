@@ -6,22 +6,22 @@ import java.sql.Timestamp;
 
 public class EditorItemBankDao {
 
-    @SerializedName("recorder") private String recorderData = null;
-    @SerializedName("createDate") private Timestamp createDateEdit = null;
-    @SerializedName("editor") private String editorData = null;
-    @SerializedName("lastUpdate") private Timestamp lastUpdateEdit = null;
+    @SerializedName("recorder") private Long recorderData;
+    @SerializedName("createDate") private Timestamp createDateEdit;
+    @SerializedName("editor") private Long editorData;
+    @SerializedName("lastUpdate") private Timestamp lastUpdateEdit;
     @SerializedName("id") private Long idEdit;
-    @SerializedName("userType") private String userTypeData = null;
-    @SerializedName("authentication") private String authenticationData = null;
-    @SerializedName("permissionGroup") private String permissionGroupData = null;
-    @SerializedName("active") private boolean activeEdit;
-    @SerializedName("deleted") private boolean deletedEdit;
+    @SerializedName("userType") private String userTypeData;
+    @SerializedName("authentication") private String authenticationData;
+    @SerializedName("permissionGroup") private String permissionGroupData;
+    @SerializedName("active") private Boolean activeEdit;
+    @SerializedName("deleted") private Boolean deletedEdit;
 
-    public String getRecorderData() {
+    public Long getRecorderData() {
         return recorderData;
     }
 
-    public void setRecorderData(String recorderData) {
+    public void setRecorderData(Long recorderData) {
         this.recorderData = recorderData;
     }
 
@@ -33,11 +33,11 @@ public class EditorItemBankDao {
         this.createDateEdit = createDateEdit;
     }
 
-    public String getEditorData() {
+    public Long getEditorData() {
         return editorData;
     }
 
-    public void setEditorData(String editorData) {
+    public void setEditorData(Long editorData) {
         this.editorData = editorData;
     }
 
@@ -81,19 +81,19 @@ public class EditorItemBankDao {
         this.permissionGroupData = permissionGroupData;
     }
 
-    public boolean isActiveEdit() {
+    public Boolean getActiveEdit() {
         return activeEdit;
     }
 
-    public void setActiveEdit(boolean activeEdit) {
+    public void setActiveEdit(Boolean activeEdit) {
         this.activeEdit = activeEdit;
     }
 
-    public boolean isDeletedEdit() {
+    public Boolean getDeletedEdit() {
         return deletedEdit;
     }
 
-    public void setDeletedEdit(boolean deletedEdit) {
+    public void setDeletedEdit(Boolean deletedEdit) {
         this.deletedEdit = deletedEdit;
     }
 }

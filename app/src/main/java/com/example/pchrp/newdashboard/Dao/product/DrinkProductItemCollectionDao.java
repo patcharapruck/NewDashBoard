@@ -4,17 +4,17 @@ import java.util.List;
 
 public class DrinkProductItemCollectionDao {
 
-    private Object product;
+    private DrinkProductItemDao product;
     private Long withdrawUse;
     private Long purchaseAmount;
     private Long entertainAmount;
     private Long totalAll;
 
-    public Object getProduct() {
+    public DrinkProductItemDao getProduct() {
         return product;
     }
 
-    public void setProduct(Object product) {
+    public void setProduct(DrinkProductItemDao product) {
         this.product = product;
     }
 

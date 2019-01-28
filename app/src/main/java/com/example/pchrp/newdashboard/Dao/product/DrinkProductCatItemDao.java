@@ -1,55 +1,57 @@
 package com.example.pchrp.newdashboard.Dao.product;
 
+import java.sql.Timestamp;
+
 public class DrinkProductCatItemDao {
 
-    private String recorder;
-    private String createDate;
-    private String editor;
-    private String lastUpdate;
-    private int id;
+    private Long recorder;
+    private Timestamp createDate;
+    private Long editor;
+    private Timestamp lastUpdate;
+    private Long id;
     private String categoryNameTh;
     private String categoryNameEn;
     private String description;
-    private boolean active;
-    private boolean deleted;
+    private Boolean active;
+    private Boolean deleted;
 
-    public String getRecorder() {
+    public Long getRecorder() {
         return recorder;
     }
 
-    public void setRecorder(String recorder) {
+    public void setRecorder(Long recorder) {
         this.recorder = recorder;
     }
 
-    public String getCreateDate() {
+    public Timestamp getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(Timestamp createDate) {
         this.createDate = createDate;
     }
 
-    public String getEditor() {
+    public Long getEditor() {
         return editor;
     }
 
-    public void setEditor(String editor) {
+    public void setEditor(Long editor) {
         this.editor = editor;
     }
 
-    public String getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(String lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -77,19 +79,19 @@ public class DrinkProductCatItemDao {
         this.description = description;
     }
 
-    public boolean isActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
-    public boolean isDeleted() {
+    public Boolean getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
     }
 }

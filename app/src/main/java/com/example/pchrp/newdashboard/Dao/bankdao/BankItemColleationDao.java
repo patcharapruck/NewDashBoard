@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BankItemColleationDao{
 
-        private Object bank ;
+        private BankItemDao bank ;
         private Double visa;
         private Double master;
         private Double jcb;
@@ -20,11 +20,11 @@ public class BankItemColleationDao{
 //    }
 
 
-    public Object getBank() {
+    public BankItemDao getBank() {
         return bank;
     }
 
-    public void setBank(Object bank) {
+    public void setBank(BankItemDao bank) {
         this.bank = bank;
     }
 

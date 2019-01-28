@@ -11,6 +11,4 @@ public interface ApiService {
     @POST("list")
     Call<PayItemColleationDao> loadlist();
 
-    @GET("1")
-    Call<String> STRING_CALL();
 }

@@ -8,7 +8,7 @@ public class DashBoardDao {
 
     private Long statusCode;
     private String message;
-    private List<ObjectItemDao> object;
+    private ObjectItemDao object;
 
     public Long getStatusCode() {
         return statusCode;
@@ -26,11 +26,11 @@ public class DashBoardDao {
         this.message = message;
     }
 
-    public List<ObjectItemDao> getObject() {
+    public ObjectItemDao getObject() {
         return object;
     }
 
-    public void setObject(List<ObjectItemDao> object) {
+    public void setObject(ObjectItemDao object) {
         this.object = object;
     }
 }

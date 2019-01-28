@@ -8,23 +8,19 @@ import java.util.function.DoubleToLongFunction;
 
 public class BankItemDao{
 
-        private Object recorde;
+        private RecorderItemDao recorde;
         private Timestamp createDate;
-        private Object editor;
+        private EditorItemBankDao editor;
         private Timestamp lastUpdate;
         private Long id;
         private String bankName;
         private String image;
-        private boolean active;
-        private boolean deleted;
+        private Boolean active;
+        private Boolean deleted;
 
 
         public BankItemDao(Object valuebank){
             HashMap newMap = new HashMap((Map) valuebank);
-            this.recorde = (Object) newMap.get("recorde");
-           // this.createDate = (Timestamp) newMap.get("createDate");
-            this.editor = (Object) newMap.get("editor");
-           // this.lastUpdate = (Timestamp) newMap.get("lastUpdate");
             Double idd = (Double) newMap.get("id");
             this.id = (new Double(idd)).longValue();
             this.bankName = (String) newMap.get("bankName");
@@ -33,11 +29,11 @@ public class BankItemDao{
             this.deleted = (boolean) newMap.get("deleted");
         }
 
-    public Object getRecorde() {
+    public RecorderItemDao getRecorde() {
         return recorde;
     }
 
-    public void setRecorde(Object recorde) {
+    public void setRecorde(RecorderItemDao recorde) {
         this.recorde = recorde;
     }
 
@@ -49,11 +45,11 @@ public class BankItemDao{
         this.createDate = createDate;
     }
 
-    public Object getEditor() {
+    public EditorItemBankDao getEditor() {
         return editor;
     }
 
-    public void setEditor(Object editor) {
+    public void setEditor(EditorItemBankDao editor) {
         this.editor = editor;
     }
 
@@ -89,19 +85,19 @@ public class BankItemDao{
         this.image = image;
     }
 
-    public boolean isActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
-    public boolean isDeleted() {
+    public Boolean getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
     }
 }

@@ -1,14 +1,17 @@
 package com.example.pchrp.newdashboard.Dao.product;
 
+import android.widget.TextView;
+
+import java.sql.Timestamp;
 import java.util.List;
 
 public class DrinkProductItemDao {
 
-    private String reorder;
-    private String createDate;
-    private List<DrinkEditItemDao> editor;
-    private String lastUpdate;
-    private int id;
+    private Long reorder;
+    private Timestamp createDate;
+    private DrinkEditItemDao editor;
+    private Timestamp lastUpdate;
+    private Long id;
     private String productCode;
     private String productNameTh;
     private String productNameEn;
@@ -21,50 +24,50 @@ public class DrinkProductItemDao {
     private Double discountForNoneMember;
     private String discountType;
     private String image;
-    private List<DrinkBrandItemDao> brand;
-    private List<DrinkProductCatItemDao> productCategory;
-    private List<DrinkUnitDao> unit;
+    private DrinkBrandItemDao brand;
+    private DrinkProductCatItemDao productCategory;
+    private DrinkUnitDao unit;
     private Boolean drink;
     private Boolean active;
     private Boolean deleted;
 
-    public String getReorder() {
+    public Long getReorder() {
         return reorder;
     }
 
-    public void setReorder(String reorder) {
+    public void setReorder(Long reorder) {
         this.reorder = reorder;
     }
 
-    public String getCreateDate() {
+    public Timestamp getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(Timestamp createDate) {
         this.createDate = createDate;
     }
 
-    public List<DrinkEditItemDao> getEditor() {
+    public DrinkEditItemDao getEditor() {
         return editor;
     }
 
-    public void setEditor(List<DrinkEditItemDao> editor) {
+    public void setEditor(DrinkEditItemDao editor) {
         this.editor = editor;
     }
 
-    public String getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(String lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -164,27 +167,27 @@ public class DrinkProductItemDao {
         this.image = image;
     }
 
-    public List<DrinkBrandItemDao> getBrand() {
+    public DrinkBrandItemDao getBrand() {
         return brand;
     }
 
-    public void setBrand(List<DrinkBrandItemDao> brand) {
+    public void setBrand(DrinkBrandItemDao brand) {
         this.brand = brand;
     }
 
-    public List<DrinkProductCatItemDao> getProductCategory() {
+    public DrinkProductCatItemDao getProductCategory() {
         return productCategory;
     }
 
-    public void setProductCategory(List<DrinkProductCatItemDao> productCategory) {
+    public void setProductCategory(DrinkProductCatItemDao productCategory) {
         this.productCategory = productCategory;
     }
 
-    public List<DrinkUnitDao> getUnit() {
+    public DrinkUnitDao getUnit() {
         return unit;
     }
 
-    public void setUnit(List<DrinkUnitDao> unit) {
+    public void setUnit(DrinkUnitDao unit) {
         this.unit = unit;
     }
 

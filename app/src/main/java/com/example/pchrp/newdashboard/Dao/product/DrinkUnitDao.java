@@ -4,38 +4,54 @@ import java.sql.Timestamp;
 
 public class DrinkUnitDao {
 
-    private String recorder;
+    private Long recorder;
     private Timestamp createDate;
-    private String editor;
+    private Long editor;
     private Timestamp lastUpdate;
-    private int id;
+    private Long id;
     private String unitNameTh;
     private String unitNameEn;
     private String description;
-    private boolean active;
-    private boolean deleted;
+    private Boolean active;
+    private Boolean deleted;
 
-    public String getRecorder() {
+    public Long getRecorder() {
         return recorder;
     }
 
-    public void setRecorder(String recorder) {
+    public void setRecorder(Long recorder) {
         this.recorder = recorder;
     }
 
-    public String getEditor() {
+    public Timestamp getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Timestamp createDate) {
+        this.createDate = createDate;
+    }
+
+    public Long getEditor() {
         return editor;
     }
 
-    public void setEditor(String editor) {
+    public void setEditor(Long editor) {
         this.editor = editor;
     }
 
-    public int getId() {
+    public Timestamp getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Timestamp lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -63,35 +79,19 @@ public class DrinkUnitDao {
         this.description = description;
     }
 
-    public boolean isActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
-    public boolean isDeleted() {
+    public Boolean getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
-    }
-
-    public Timestamp getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Timestamp createDate) {
-        this.createDate = createDate;
-    }
-
-    public Timestamp getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Timestamp lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 }

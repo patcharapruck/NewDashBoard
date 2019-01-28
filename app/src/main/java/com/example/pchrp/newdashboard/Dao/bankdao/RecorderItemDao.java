@@ -5,22 +5,22 @@ import com.google.gson.annotations.SerializedName;
 import java.sql.Timestamp;
 
 public class RecorderItemDao {
-    @SerializedName("recorder") private String recorder = null;
-    @SerializedName("createDate") private Timestamp createDate = null;
-    @SerializedName("editor") private String editor = null;
-    @SerializedName("lastUpdate") private Timestamp lastUpdate = null;
+    @SerializedName("recorder") private Long recorder;
+    @SerializedName("createDate") private Timestamp createDate;
+    @SerializedName("editor") private Long editor;
+    @SerializedName("lastUpdate") private Timestamp lastUpdate;
     @SerializedName("id") private Long id;
-    @SerializedName("userType") private String userType = null;
-    @SerializedName("authentication") private String authentication = null;
-    @SerializedName("permissionGroup") private String permissionGroup = null;
-    @SerializedName("active") private boolean active;
-    @SerializedName("deleted") private boolean deleted;
+    @SerializedName("userType") private String userType;
+    @SerializedName("authentication") private String authentication;
+    @SerializedName("permissionGroup") private String permissionGroup;
+    @SerializedName("active") private Boolean active;
+    @SerializedName("deleted") private Boolean deleted;
 
-    public String getRecorder() {
+    public Long getRecorder() {
         return recorder;
     }
 
-    public void setRecorder(String recorder) {
+    public void setRecorder(Long recorder) {
         this.recorder = recorder;
     }
 
@@ -32,11 +32,11 @@ public class RecorderItemDao {
         this.createDate = createDate;
     }
 
-    public String getEditor() {
+    public Long getEditor() {
         return editor;
     }
 
-    public void setEditor(String editor) {
+    public void setEditor(Long editor) {
         this.editor = editor;
     }
 
@@ -52,7 +52,7 @@ public class RecorderItemDao {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -80,19 +80,19 @@ public class RecorderItemDao {
         this.permissionGroup = permissionGroup;
     }
 
-    public boolean isActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
-    public boolean isDeleted() {
+    public Boolean getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
     }
 }

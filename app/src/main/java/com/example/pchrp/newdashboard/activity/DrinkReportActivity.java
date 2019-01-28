@@ -3,6 +3,8 @@ package com.example.pchrp.newdashboard.activity;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.example.pchrp.newdashboard.R;
 
@@ -13,10 +15,19 @@ import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
 public class DrinkReportActivity extends AppCompatActivity {
 
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drink_report);
+
+        toolbar = findViewById(R.id.tbDrinkReport);
+        toolbar.setTitle("รายงานการใช้เครื่องดื่ม");
+        toolbar.setSubtitle("Day month Year");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         final TableView<String[]> tableView =(TableView) findViewById(R.id.tableView);
         tableView.setColumnCount(3);
@@ -32,6 +43,7 @@ public class DrinkReportActivity extends AppCompatActivity {
         });
 
     }
+
 
 
     String[] drinkHeader={"ลำดับ","ชื่อสินค้า","จำนวนที่ขาย"};

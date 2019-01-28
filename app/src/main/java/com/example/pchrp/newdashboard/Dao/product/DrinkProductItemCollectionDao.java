@@ -4,49 +4,49 @@ import java.util.List;
 
 public class DrinkProductItemCollectionDao {
 
-    private List<DrinkProductItemDao> product;
-    private int withdrawUse;
-    private int purchaseAmount;
-    private int entertainAmount;
-    private int totalAll;
+    private Object product;
+    private Long withdrawUse;
+    private Long purchaseAmount;
+    private Long entertainAmount;
+    private Long totalAll;
 
-    public List<DrinkProductItemDao> getProduct() {
+    public Object getProduct() {
         return product;
     }
 
-    public void setProduct(List<DrinkProductItemDao> product) {
+    public void setProduct(Object product) {
         this.product = product;
     }
 
-    public int getWithdrawUse() {
+    public Long getWithdrawUse() {
         return withdrawUse;
     }
 
-    public void setWithdrawUse(int withdrawUse) {
+    public void setWithdrawUse(Long withdrawUse) {
         this.withdrawUse = withdrawUse;
     }
 
-    public int getPurchaseAmount() {
+    public Long getPurchaseAmount() {
         return purchaseAmount;
     }
 
-    public void setPurchaseAmount(int purchaseAmount) {
+    public void setPurchaseAmount(Long purchaseAmount) {
         this.purchaseAmount = purchaseAmount;
     }
 
-    public int getEntertainAmount() {
+    public Long getEntertainAmount() {
         return entertainAmount;
     }
 
-    public void setEntertainAmount(int entertainAmount) {
+    public void setEntertainAmount(Long entertainAmount) {
         this.entertainAmount = entertainAmount;
     }
 
-    public int getTotalAll() {
+    public Long getTotalAll() {
         return totalAll;
     }
 
-    public void setTotalAll(int totalAll) {
+    public void setTotalAll(Long totalAll) {
         this.totalAll = totalAll;
     }
 }

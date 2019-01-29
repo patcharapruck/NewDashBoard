@@ -110,20 +110,25 @@ public class FragmentDrink extends Fragment {
         dataSet2.setColors(Color.parseColor("#0277BD"));
         BarDataSet dataSet3 = new BarDataSet(entertainAmount(), "");
         dataSet3.setColors(Color.parseColor("#00695C"));
+        dataSet1.setDrawValues(true);
+        dataSet2.setDrawValues(true);
+        dataSet3.setDrawValues(true);
 
         BarData data = new BarData(dataSet1, dataSet2, dataSet3);
         hbarChart.setData(data);
+        final  ArrayList<String> xVals = new ArrayList<>();
+        xVals.add("J.W.AA");
+        xVals.add("J.W.BB");
+        xVals.add("J.W.CC");
+        xVals.add("J.W.DD");
 
-        String[] creditName = new String[]{"J.W.BLACK", "J.W.BLACK",
-                "J.W.BLACK", "J.W.BLACK", "J.W.BLACK"};
 
         YAxis rightYAxis = hbarChart.getAxisRight();
         rightYAxis.setEnabled(false);
-        rightYAxis.setValueFormatter(new IndexAxisValueFormatter(creditName));
+        rightYAxis.setValueFormatter(new IndexAxisValueFormatter(xVals));
         rightYAxis.setCenterAxisLabels(true);
         rightYAxis.setGranularity(1);
         rightYAxis.setGranularityEnabled(true);
-
 
         hbarChart.setDragEnabled(true);
         hbarChart.setVisibleXRangeMaximum(3);
@@ -133,9 +138,14 @@ public class FragmentDrink extends Fragment {
         data.setBarWidth(0.12f);
 
         hbarChart.groupBars(0, groupSpace, barSpace);
+        // Hide grid lines
+        hbarChart.getAxisLeft().setEnabled(false);
+        hbarChart.getAxisRight().setEnabled(true);
+        // Hide graph description
+        hbarChart.getDescription().setEnabled(false);
+        // Hide graph legend
+        hbarChart.getLegend().setEnabled(true);
         hbarChart.invalidate();
-
-
     }
 
     private Long getWithdraw(int i) {

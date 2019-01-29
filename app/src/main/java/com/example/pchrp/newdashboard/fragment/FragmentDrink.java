@@ -101,6 +101,14 @@ public class FragmentDrink extends Fragment {
         System.out.println(sumpurchase);
         System.out.println(sumwithdraw);
 
+        System.out.println(size);
+
+        System.out.println(nameProduct);
+        System.out.println(totalAllProduct);
+        System.out.println(entertainProduct);
+        System.out.println(purchaseProduct);
+        System.out.println(withdrawProduct);
+
         // Init 'View' instance(s) with rootView.findViewById here
         hbarChart = (BarChart) rootView.findViewById(R.id.Hbarchart);
 

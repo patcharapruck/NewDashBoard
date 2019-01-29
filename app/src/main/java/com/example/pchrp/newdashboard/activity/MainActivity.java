@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void reqAPI() {
 
         final Context mcontext = Contextor.getInstance().getContext();
-        String nn = "{\"property\":[],\"criteria\":{\"sql-obj-command\":\"( tb_sales_shift.open_date >= '2019-01-23 00:00:00' AND tb_sales_shift.open_date <= '2019-01-23 23:59:59')\",\"summary-date\":\"*\"},\"orderBy\":{\"InvoiceDocument-id\":\"desc\"},\"pagination\":{}}";
+        String nn = "{\"property\":[],\"criteria\":{\"sql-obj-command\":\"( tb_sales_shift.open_date >= '2019-01-28 00:00:00' AND tb_sales_shift.open_date <= '2019-01-28 23:59:59')\",\"summary-date\":\"*\"},\"orderBy\":{\"InvoiceDocument-id\":\"desc\"},\"pagination\":{}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
         Log.v("https",nn);
         Call<DashBoardDao> call = HttpManager.getInstance().getService().loadAPI(requestBody);

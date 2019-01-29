@@ -12,9 +12,6 @@ import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.adapter.NotPayAdapter;
 import com.example.pchrp.newdashboard.view.NotPayListItem;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class FragmentNotPay extends Fragment {
 
     ListView listNotpay;
@@ -56,23 +53,16 @@ public class FragmentNotPay extends Fragment {
         super.onStop();
     }
 
-    /*
-     * Save Instance State Here
-     */
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        // Save Instance State here
     }
 
-    /*
-     * Restore Instance State Here
-     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState != null) {
-            // Restore Instance State here
         }
     }
 }

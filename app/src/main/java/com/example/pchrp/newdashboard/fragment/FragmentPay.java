@@ -60,33 +60,6 @@ public class FragmentPay extends Fragment {
         payMentAdapter = new PayMentAdapter();
         listViewPay.setAdapter(payMentAdapter);
 
-        String nn = "{\"property\":[],\"criteria\":{\"sql-obj-command\":\"( tb_sales_shift.open_date >= '2019-01-23 00:00:00' AND tb_sales_shift.open_date <= '2019-01-23 23:59:59')\",\"summary-date\":\"*\"},\"orderBy\":{\"InvoiceDocument-id\":\"desc\"},\"pagination\":{}}";
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
-        Log.v("https",nn);
-        Call<DashBoardDao> call = HttpManager.getInstance().getService().loadAPI(requestBody);
-        call.enqueue(new Callback<DashBoardDao>() {
-
-            @Override
-            public void onResponse(Call<DashBoardDao> call, Response<DashBoardDao> response) {
-                Log.v("http",response.raw().body().toString());
-                Log.v("http",String.valueOf(response.raw().code()));
-                if(response.isSuccessful()){
-                    DashBoardDao dao = response.body();
-                    Toast.makeText(getActivity(),dao.getObject().getIncome().toString(),Toast.LENGTH_SHORT).show();
-                }else {
-                    try {
-                        Toast.makeText(getActivity(),"aaaa"+response.errorBody().string(),Toast.LENGTH_LONG).show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<DashBoardDao> call, Throwable t) {
-                Toast.makeText(getActivity(),"sssss"+t.toString(),Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.pchrp.newdashboard.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pchrp.newdashboard.Dao.DashBoardDao;
 import com.example.pchrp.newdashboard.Dao.TestDao;
@@ -15,8 +17,10 @@ import com.example.pchrp.newdashboard.Dao.bankdao.BankItemColleationDao;
 import com.example.pchrp.newdashboard.Dao.bankdao.BankItemDao;
 import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
+import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.example.pchrp.newdashboard.manager.http.HttpKrystal;
+import com.example.pchrp.newdashboard.manager.http.HttpManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -33,6 +37,12 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -51,23 +61,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-
+            reqAPI();
             initInstances();
-
         }
 
         private void initInstances() {
 
-            TestDao testDao = new TestDao();
-            GsonBuilder builder = new GsonBuilder();
-            builder.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
-                public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-                    return new Date(json.getAsJsonPrimitive().getAsLong());
-                }
-            });
-            Gson gson = builder.create();
-            DashBoardDao dao = gson.fromJson(testDao.jj(),DashBoardDao.class);
-            DashBoradManager.getInstance().setDao(dao);
 
             cv_bill = (CardView)findViewById(R.id.Cv_bill);
             Cv_pay = (CardView)findViewById(R.id.Cv_pay);
@@ -96,7 +95,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             imgreal = (ImageView)findViewById(R.id.imgreal);
             imgcredit = (ImageView)findViewById(R.id.imgcredit);
             imggraph = (ImageView)findViewById(R.id.imggraph);
-
 
 
             cv_bill.setOnClickListener(this);
@@ -128,6 +126,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             imggraph.setOnClickListener(this);
         }
 
+    private void reqAPI() {
+
+        final Context mcontext = Contextor.getInstance().getContext();
+        String nn = "{\"property\":[],\"criteria\":{\"sql-obj-command\":\"( tb_sales_shift.open_date >= '2019-01-23 00:00:00' AND tb_sales_shift.open_date <= '2019-01-23 23:59:59')\",\"summary-date\":\"*\"},\"orderBy\":{\"InvoiceDocument-id\":\"desc\"},\"pagination\":{}}";
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
+        Log.v("https",nn);
+        Call<DashBoardDao> call = HttpManager.getInstance().getService().loadAPI(requestBody);
+        call.enqueue(new Callback<DashBoardDao>() {
+
+            @Override
+            public void onResponse(Call<DashBoardDao> call, Response<DashBoardDao> response) {
+                if(response.isSuccessful()){
+                    DashBoardDao dao = response.body();
+                    DashBoradManager.getInstance().setDao(dao);
+                    Toast.makeText(mcontext,dao.getObject().getIncome().toString(),Toast.LENGTH_SHORT).show();
+                }else {
+                    try {
+                        Toast.makeText(mcontext,"aaaa"+response.errorBody().string(),Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<DashBoardDao> call, Throwable t) {
+                Toast.makeText(mcontext,"sssss"+t.toString(),Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 
     @Override
         public void onClick(View v) {
@@ -147,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (v==Cv_drink||v==cv_in_drink||v==menudrink||v==imgdrink){
                 Intent intent = new Intent(MainActivity.this,DrinkActivity.class);
                 this.startActivity(intent);
-
 
             }
 

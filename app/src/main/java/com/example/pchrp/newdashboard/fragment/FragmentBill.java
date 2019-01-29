@@ -23,7 +23,6 @@ public class FragmentBill extends Fragment {
     AnimatedPieViewConfig config;
 
 
-
     TextView tvincomebill,tvserivceDrinkCharge,tvmemberCharge,tvserviceCharge,tvproductPrice
             ,tvfoodPrice,tvopenMemberAccount,tvserviceDringQty,tvpax;
 
@@ -98,7 +97,7 @@ public class FragmentBill extends Fragment {
         config.startAngle(-90)// Starting angle offset
                 .addData(new SimplePieInfo(serivceDrinkCharge, Color.parseColor("#C0FF8C"), "ค่าดื่ม"))//Data (bean that implements the IPieInfo interface)
                 .addData(new SimplePieInfo(memberCharge, Color.parseColor("#FF8C9D"), "ค่า Member"))
-                .addData(new SimplePieInfo(foodPrice+productPrice+serviceCharge, Color.parseColor("#FFF78C"), "ค่าบริการ")).drawText(true).duration(2000).textSize(20);
+                .addData(new SimplePieInfo(foodPrice+productPrice+serviceCharge, Color.parseColor("#FFF78C"), "ค่าบริการต่างๆ")).drawText(true).duration(2000).textSize(20);
         mAnimatedPieView.applyConfig(config);
         mAnimatedPieView.start();
     }

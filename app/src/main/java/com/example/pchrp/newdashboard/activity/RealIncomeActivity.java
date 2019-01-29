@@ -6,11 +6,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 
 public class RealIncomeActivity extends AppCompatActivity {
 
+    ObjectItemDao ODao;
 
     TextView tvincome,tvcashPayments,tvcreditPayments,tvrevenue,tvcreditCardPayments
             ,tvmemberDebitPayments,tventertainPayments,tvunpaid,tvtotalServiceCharge,tvtotal,tvcredit,tvbill;
@@ -57,19 +59,22 @@ public class RealIncomeActivity extends AppCompatActivity {
         tvtotal = (TextView)findViewById(R.id.tvtotal);
         tvbill = (TextView)findViewById(R.id.tvbill);
 
-//        income = DashBoradManager.getInstance().getDao().getIncome();
-//        cashPayments = DashBoradManager.getInstance().getDao().getCashPayments();
-//        creditPayments = DashBoradManager.getInstance().getDao().getCreditPayments();
-//        revenue = DashBoradManager.getInstance().getDao().getRevenue();
-//        creditCardPayments = DashBoradManager.getInstance().getDao().getCreditCardPayments();
-//        memberDebitPayments = DashBoradManager.getInstance().getDao().getMemberDebitPayments();
-//        entertainPayments = DashBoradManager.getInstance().getDao().getEntertainPayments();
-//        unpaid = DashBoradManager.getInstance().getDao().getUnpaid();
-//        totalServiceCharge = DashBoradManager.getInstance().getDao().getTotalServiceCharge();
-//        total =  DashBoradManager.getInstance().getDao().getIncome();
-//        credit = DashBoradManager.getInstance().getDao().getCreditPayments();
+        setTextViewIncome();
 
+    }
 
+    private void setTextViewIncome() {
+        ODao = DashBoradManager.getInstance().getDao().getObject();
+
+        income = ODao.getIncome();
+        cashPayments = ODao.getCashPayments();
+        creditPayments = ODao.getCreditPayments();
+        revenue = ODao.getRevenue();
+        creditCardPayments = ODao.getCreditCardPayments();
+        memberDebitPayments = ODao.getMemberDebitPayments();
+        entertainPayments = ODao.getEntertainPayments();
+        unpaid = ODao.getUnpaid();
+        totalServiceCharge = ODao.getTotalServiceCharge();
 
         tvincome.setText(income.toString());
         tvcashPayments.setText(cashPayments.toString());
@@ -83,6 +88,5 @@ public class RealIncomeActivity extends AppCompatActivity {
         tvtotalServiceCharge.setText(totalServiceCharge.toString());
         tvtotal.setText(revenue.toString());
         tvbill.setText(income.toString());
-
     }
 }

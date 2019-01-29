@@ -4,10 +4,13 @@ package com.example.pchrp.newdashboard.fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
@@ -25,9 +28,10 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentDrink extends Fragment {
+public class FragmentDrink extends Fragment implements View.OnClickListener {
 
     TextView tvtotalpd,tventertainpd,tvpurchasepd,tvwithdrawpd;
+    Button btndrink;
 
     ArrayList<String> nameProduct;
     ArrayList<Long> totalAllProduct;
@@ -72,7 +76,9 @@ public class FragmentDrink extends Fragment {
         tventertainpd = (TextView)rootView.findViewById(R.id.tventertainpd);
         tvpurchasepd = (TextView)rootView.findViewById(R.id.tvpurchasepd);
         tvwithdrawpd = (TextView)rootView.findViewById(R.id.tvwithdrawpd);
+        btndrink = (Button)rootView.findViewById(R.id.btndrink);
 
+        btndrink.setOnClickListener(this);
 
         for(int i=0;i<size;i++){
             String name =  getnameProduct(i);
@@ -96,18 +102,22 @@ public class FragmentDrink extends Fragment {
             sumwithdraw = sumwithdraw + withdrawProduct.get(i);
         }
 
-        System.out.println(sumtotal);
-        System.out.println(sumentertain);
-        System.out.println(sumpurchase);
-        System.out.println(sumwithdraw);
-
-        System.out.println(size);
-
-        System.out.println(nameProduct);
-        System.out.println(totalAllProduct);
-        System.out.println(entertainProduct);
-        System.out.println(purchaseProduct);
-        System.out.println(withdrawProduct);
+        tvtotalpd.setText(sumtotal.toString());
+        if (sumtotal > 0){
+            tvtotalpd.setTextColor(Color.parseColor("#62BB47"));
+        }
+        tventertainpd.setText(sumentertain.toString());
+        if (sumentertain > 0){
+            tventertainpd.setTextColor(Color.parseColor("#62BB47"));
+        }
+        tvpurchasepd.setText(sumpurchase.toString());
+        if (sumpurchase > 0){
+            tvpurchasepd.setTextColor(Color.parseColor("#62BB47"));
+        }
+        tvwithdrawpd.setText(sumwithdraw.toString());
+        if (sumwithdraw > 0){
+            tvwithdrawpd.setTextColor(Color.parseColor("#62BB47"));
+        }
 
         // Init 'View' instance(s) with rootView.findViewById here
         hbarChart = (BarChart) rootView.findViewById(R.id.Hbarchart);
@@ -243,11 +253,6 @@ public class FragmentDrink extends Fragment {
         for(int i=0;i<size;i++){
             barBnk2.add(new BarEntry(i, purchaseProduct.get(i)));
         }
-//        barBnk2.add(new BarEntry(1, 20f));
-//        barBnk2.add(new BarEntry(2, 50f));
-//        barBnk2.add(new BarEntry(3, 20f));
-//        barBnk2.add(new BarEntry(4, 79f));
-//        barBnk2.add(new BarEntry(5, 35f));
         return barBnk2;
     }
 
@@ -258,12 +263,27 @@ public class FragmentDrink extends Fragment {
         for(int i=0;i<size;i++){
             barBnk2.add(new BarEntry(i, entertainProduct.get(i)));
         }
-
-//        barBnk2.add(new BarEntry(1, 29f));
-//        barBnk2.add(new BarEntry(2, 2f));
-//        barBnk2.add(new BarEntry(3, 4f));
-//        barBnk2.add(new BarEntry(4, 0f));
-//        barBnk2.add(new BarEntry(5, 0f));
         return barBnk2;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == btndrink){
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frame_drink,FragmentDrinkReport.newInstance())
+                    .addToBackStack(null)
+                    .commit();
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

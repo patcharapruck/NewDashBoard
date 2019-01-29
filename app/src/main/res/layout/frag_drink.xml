@@ -33,6 +33,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tbDrink"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/bg1">
+
+        </android.support.v7.widget.Toolbar>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
@@ -86,7 +94,11 @@
 
                 </android.support.v7.widget.CardView>
 
-
+                <Button
+                    android:id="@+id/btndrink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"/>
             </LinearLayout>
 
             <LinearLayout

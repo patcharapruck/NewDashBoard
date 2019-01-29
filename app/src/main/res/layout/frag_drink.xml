@@ -74,11 +74,12 @@
                                 android:text="TOTAL" />
 
                             <TextView
-                                style="@style/font_pay"
+                                android:id="@+id/tvtotalpd"
+                                style="@style/font_notpay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="290" />
+                                android:text="0" />
                         </LinearLayout>
 
                     </RelativeLayout>
@@ -125,11 +126,12 @@
                                 android:text="เบิกใช้สิทธิ์" />
 
                             <TextView
-                                style="@style/font_pay"
+                                android:id="@+id/tvwithdrawpd"
+                                style="@style/font_notpay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="123" />
+                                android:text="0" />
                         </LinearLayout>
 
                     </RelativeLayout>
@@ -166,11 +168,12 @@
                                 android:text="ซื้อ" />
 
                             <TextView
-                                style="@style/font_card_bill"
+                                android:id="@+id/tvpurchasepd"
+                                style="@style/font_notpay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="167" />
+                                android:text="0" />
                         </LinearLayout>
 
                     </RelativeLayout>
@@ -207,6 +210,7 @@
                                 android:text="Entertain" />
 
                             <TextView
+                                android:id="@+id/tventertainpd"
                                 style="@style/font_notpay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

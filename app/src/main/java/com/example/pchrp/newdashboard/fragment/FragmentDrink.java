@@ -4,11 +4,15 @@ package com.example.pchrp.newdashboard.fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
+import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -22,6 +26,16 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentDrink extends Fragment {
+
+    TextView tvtotalpd,tventertainpd,tvpurchasepd,tvwithdrawpd;
+
+    ArrayList<String> nameProduct;
+    ArrayList<Long> totalAllProduct;
+    ArrayList<Long> entertainProduct;
+    ArrayList<Long> purchaseProduct;
+    ArrayList<Long> withdrawProduct;
+    ObjectItemDao Odao;
+    int size;
 
     public FragmentDrink() {
         super();
@@ -45,6 +59,48 @@ public class FragmentDrink extends Fragment {
     }
 
     private void initInstances(View rootView) {
+        Odao =  DashBoradManager.getInstance().getDao().getObject();
+        this.size = Odao.getSummaryUseProductList().size();
+
+        nameProduct = new ArrayList<>(size);
+        totalAllProduct = new ArrayList<>(size);
+        entertainProduct = new ArrayList<>(size);
+        purchaseProduct = new ArrayList<>(size);
+        withdrawProduct = new ArrayList<>(size);
+
+        tvtotalpd = (TextView)rootView.findViewById(R.id.tvtotalpd);
+        tventertainpd = (TextView)rootView.findViewById(R.id.tventertainpd);
+        tvpurchasepd = (TextView)rootView.findViewById(R.id.tvpurchasepd);
+        tvwithdrawpd = (TextView)rootView.findViewById(R.id.tvwithdrawpd);
+
+
+        for(int i=0;i<size;i++){
+            String name =  getnameProduct(i);
+            Long total = gettotalProduct(i);
+            Long entertain = getEntertain(i);
+            Long purchase = getPurchase(i);
+            Long withdraw = getWithdraw(i);
+
+            nameProduct.add(name);
+            totalAllProduct.add(total);
+            entertainProduct.add(entertain);
+            purchaseProduct.add(purchase);
+            withdrawProduct.add(withdraw);
+        }
+
+        Long sumtotal=0L,sumentertain=0L,sumpurchase=0L,sumwithdraw=0L;
+        for (int i=0;i<size;i++){
+            sumtotal = sumtotal + totalAllProduct.get(i);
+            sumentertain = sumentertain + entertainProduct.get(i);
+            sumpurchase = sumpurchase + purchaseProduct.get(i);
+            sumwithdraw = sumwithdraw + withdrawProduct.get(i);
+        }
+
+        System.out.println(sumtotal);
+        System.out.println(sumentertain);
+        System.out.println(sumpurchase);
+        System.out.println(sumwithdraw);
+
         // Init 'View' instance(s) with rootView.findViewById here
         hbarChart = (BarChart) rootView.findViewById(R.id.Hbarchart);
 
@@ -82,6 +138,56 @@ public class FragmentDrink extends Fragment {
 
     }
 
+    private Long getWithdraw(int i) {
+        Long withdraw;
+        try {
+            withdraw  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getWithdrawUse();
+        }catch (NullPointerException e){
+            return 0L;
+        }
+        return withdraw;
+    }
+
+    private Long getPurchase(int i) {
+        Long purchase;
+        try {
+            purchase  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getPurchaseAmount();
+        }catch (NullPointerException e){
+            return 0L;
+        }
+        return purchase;
+    }
+
+    private Long getEntertain(int i) {
+        Long enter;
+        try {
+            enter  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getEntertainAmount();
+        }catch (NullPointerException e){
+            return 0L;
+        }
+        return enter;
+    }
+
+    private Long gettotalProduct(int i) {
+        Long total;
+        try {
+            total  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getTotalAll();
+        }catch (NullPointerException e){
+            return 0L;
+        }
+        return total;
+    }
+
+    private String getnameProduct(int i) {
+        String name;
+        try {
+           name  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getProduct().getProductNameEn();
+        }catch (NullPointerException e){
+            return "";
+        }
+        return name;
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -115,33 +221,41 @@ public class FragmentDrink extends Fragment {
     //เบิกใช้
     private ArrayList<BarEntry> withdrawUse() {
         ArrayList<BarEntry> barBnk1 = new ArrayList<>();
-        barBnk1.add(new BarEntry(1, 10f));
-        barBnk1.add(new BarEntry(2, 20f));
-        barBnk1.add(new BarEntry(3, 30f));
-        barBnk1.add(new BarEntry(4, 40f));
-        barBnk1.add(new BarEntry(5, 20f));
+
+        for(int i=0;i<size;i++){
+            barBnk1.add(new BarEntry(i, withdrawProduct.get(i)));
+        }
         return barBnk1;
     }
 
     //ซื้อ
     private ArrayList<BarEntry> purchaseAmount() {
         ArrayList<BarEntry> barBnk2 = new ArrayList<>();
-        barBnk2.add(new BarEntry(1, 20f));
-        barBnk2.add(new BarEntry(2, 50f));
-        barBnk2.add(new BarEntry(3, 20f));
-        barBnk2.add(new BarEntry(4, 79f));
-        barBnk2.add(new BarEntry(5, 35f));
+
+        for(int i=0;i<size;i++){
+            barBnk2.add(new BarEntry(i, purchaseProduct.get(i)));
+        }
+//        barBnk2.add(new BarEntry(1, 20f));
+//        barBnk2.add(new BarEntry(2, 50f));
+//        barBnk2.add(new BarEntry(3, 20f));
+//        barBnk2.add(new BarEntry(4, 79f));
+//        barBnk2.add(new BarEntry(5, 35f));
         return barBnk2;
     }
 
     //Entertain
     private ArrayList<BarEntry> entertainAmount() {
         ArrayList<BarEntry> barBnk2 = new ArrayList<>();
-        barBnk2.add(new BarEntry(1, 29f));
-        barBnk2.add(new BarEntry(2, 2f));
-        barBnk2.add(new BarEntry(3, 4f));
-        barBnk2.add(new BarEntry(4, 0f));
-        barBnk2.add(new BarEntry(5, 0f));
+
+        for(int i=0;i<size;i++){
+            barBnk2.add(new BarEntry(i, entertainProduct.get(i)));
+        }
+
+//        barBnk2.add(new BarEntry(1, 29f));
+//        barBnk2.add(new BarEntry(2, 2f));
+//        barBnk2.add(new BarEntry(3, 4f));
+//        barBnk2.add(new BarEntry(4, 0f));
+//        barBnk2.add(new BarEntry(5, 0f));
         return barBnk2;
     }
 }

@@ -87,7 +87,7 @@ public class CreditActivity extends AppCompatActivity {
 
         BarDataSet barDataSet1 = new BarDataSet(bar_B1(), "ธนาคารธนชาต");
         barDataSet1.setColors(Color.rgb(243,112,35));
-        BarDataSet barDataSet2 = new BarDataSet(bar_B2(), "ธานคารกรุงเทพ");
+        BarDataSet barDataSet2 = new BarDataSet(bar_B2(), "ธนาคารกรุงเทพ");
         barDataSet2.setColors(Color.rgb(0,28,122));
 
         BarData data = new BarData(barDataSet1, barDataSet2);
@@ -101,6 +101,7 @@ public class CreditActivity extends AppCompatActivity {
         xAxis.setGranularity(1);
         xAxis.setGranularityEnabled(true);
 
+
         barChart.setDragEnabled(true);
         barChart.setVisibleXRangeMaximum(3);
 
@@ -111,10 +112,21 @@ public class CreditActivity extends AppCompatActivity {
         //(barwidth + barspace) * no of bars + groupspace = 1
 
         barChart.getXAxis().setAxisMinimum(0);
-        barChart.getXAxis().setAxisMaximum(0+barChart.getBarData().getGroupWidth(groupSpace,barSpace)*5);
+//        barChart.getXAxis().setAxisMaximum(0+barChart.getBarData().getGroupWidth(groupSpace,barSpace)*5);
+//        barChart.getAxisLeft().setAxisMinimum(0);
+        barChart.getAxisLeft().setAxisMaximum(100);
         barChart.getAxisLeft().setAxisMinimum(0);
-
         barChart.groupBars(0,groupSpace,barSpace);
+
+
+        // Hide grid lines
+        barChart.getAxisLeft().setEnabled(false);
+        barChart.getAxisRight().setEnabled(false);
+        // Hide graph description
+        barChart.getDescription().setEnabled(false);
+        // Hide graph legend
+        barChart.getLegend().setEnabled(false);
+
         barChart.invalidate();
 
 

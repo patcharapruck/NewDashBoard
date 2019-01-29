@@ -12,395 +12,392 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/bg1"
         android:id="@+id/tbCredit">
-
     </android.support.v7.widget.Toolbar>
-
-
-
-    <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.5"
-            android:background="#FAFAFA">
-
-        </View>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:background="#DADADA">
-
-        </View>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="10">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4">
-            <com.github.mikephil.charting.charts.BarChart
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/barchart">
+                android:orientation="vertical">
 
-            </com.github.mikephil.charting.charts.BarChart>
-
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="ยอดรวมทั้งหมด"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginBottom="20dp"
-            android:padding="20dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="5dp">
-
-            <TextView
-                android:id="@+id/tvcreditall"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="0.0"
-                android:textColor="@color/text_money_pay"
-                android:textSize="24dp"
-                android:textStyle="bold" />
-
-        </android.support.v7.widget.CardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <android.support.v7.widget.GridLayout
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="5dp"
-                    app:alignmentMode="alignMargins"
-                    app:columnCount="2"
-                    app:columnOrderPreserved="false"
-                    app:rowCount="1">
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5"
+                    android:background="#FAFAFA">
 
-                    <!--ธนาคารธนชาต-->
+                </View>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:background="#DADADA">
+
+                </View>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="12">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="4">
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/barchart">
+
+                    </com.github.mikephil.charting.charts.BarChart>
+
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:text="ยอดรวมทั้งหมด"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
                     <android.support.v7.widget.CardView
-                        style="@style/marginCardBank"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginBottom="0dp"
+                        android:padding="5dp"
                         app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="15dp"
-                        app:cardElevation="5dp"
-                        app:layout_columnWeight="1"
-                        app:layout_rowWeight="1">
+                        app:cardElevation="5dp">
 
-                        <LinearLayout
+                        <TextView
+                            android:id="@+id/tvcreditall"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:weightSum="10"
-                            >
-                            <android.support.v7.widget.CardView
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            app:cardBackgroundColor="#f37023"
-                                android:layout_weight="3"
-                            >
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/imb1"/>
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="ธนาคารธนชาต"
-                                android:gravity="center"
-                                android:layout_marginLeft="40dp"
-                                android:textColor="@color/white"
-                                />
-
-                        </android.support.v7.widget.CardView>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="7">
-                                <android.support.v7.widget.GridLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    app:columnCount="2"
-                                    app:rowCount="5"
-                                    app:columnOrderPreserved="false">
-
-                                    <!--A-MAX-->
-                                    <TextView
-                                        android:textColor="@color/black"
-                                        android:text="A-MAX"
-                                        android:layout_marginBottom="10dp"
-                                        android:layout_marginLeft="5dp"
-                                        android:layout_marginTop="10dp"
-                                        />
-
-                                    <TextView
-                                        android:id="@+id/tvamaxt"
-                                        android:textColor="#FF0000"
-                                        android:text="0.0"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginBottom="5dp"
-                                        android:layout_marginTop="10dp"
-                                        />
-
-                                    <!--JCB-->
-                                    <TextView
-                                        android:textColor="@color/black"
-                                        android:text="JCB"
-                                        android:layout_marginBottom="10dp"
-                                        android:layout_marginLeft="5dp"
-                                        />
-
-                                    <TextView
-                                        android:id="@+id/tvjcbt"
-                                        android:textColor="#FF0000"
-                                        android:text="0.0"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginBottom="5dp"
-                                        />
-
-                                    <!--MASTER-->
-                                    <TextView
-                                        android:textColor="@color/black"
-                                        android:text="MASTER"
-                                        android:layout_marginBottom="10dp"
-                                        android:layout_marginLeft="5dp"
-                                        />
-
-                                    <TextView
-                                        android:id="@+id/tvmastert"
-                                        android:textColor="#FF0000"
-                                        android:text="0.0"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginBottom="5dp"
-                                        />
-
-                                    <!--Unipay-->
-                                    <TextView
-                                        android:textColor="@color/black"
-                                        android:text="UNIPAY"
-                                        android:layout_marginBottom="10dp"
-                                        android:layout_marginLeft="5dp"
-                                        />
-
-                                    <TextView
-                                        android:id="@+id/tvunipayt"
-                                        android:textColor="#FF0000"
-                                        android:text="0.0"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginBottom="5dp"
-                                        />
-
-                                    <!--VISA-->
-                                    <TextView
-                                        android:textColor="@color/black"
-                                        android:text="VISA"
-                                        android:layout_marginBottom="10dp"
-                                        android:layout_marginLeft="5dp"
-                                        />
-
-                                    <TextView
-                                        android:id="@+id/tvvisat"
-                                        android:textColor="#FF0000"
-                                        android:text="0.0"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginBottom="5dp"
-                                        />
-
-                                </android.support.v7.widget.GridLayout>
-                            </LinearLayout>
-                        </LinearLayout>
-
+                            android:gravity="center"
+                            android:text="0.0"
+                            android:textColor="@color/text_money_pay"
+                            android:textSize="24dp"
+                            android:textStyle="bold" />
 
                     </android.support.v7.widget.CardView>
 
 
-                    <!--ธนาคารกรุงเทพ-->
-                    <android.support.v7.widget.CardView
-                        style="@style/marginCardBank"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        app:cardBackgroundColor="@color/white"
-                        app:cardCornerRadius="15dp"
-                        app:cardElevation="5dp"
-                        app:layout_columnWeight="1"
-                        app:layout_rowWeight="1">
+                </LinearLayout>
 
-                        <LinearLayout
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="6">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <android.support.v7.widget.GridLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:weightSum="10">
+                            android:padding="5dp"
+                            app:alignmentMode="alignMargins"
+                            app:columnCount="2"
+                            app:columnOrderPreserved="false"
+                            app:rowCount="1">
+
+                            <!--ธนาคารธนชาต-->
                             <android.support.v7.widget.CardView
-                                android:layout_width="match_parent"
+                                style="@style/marginCardBank"
+                                android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                app:cardBackgroundColor="#001B7A"
-                                android:layout_weight="3"
-                                >
-                                <ImageView
-                                    android:layout_width="50dp"
-                                    android:layout_height="50dp"
-                                    android:src="@drawable/imb2"/>
-                                <TextView
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="15dp"
+                                app:cardElevation="5dp"
+                                app:layout_columnWeight="1"
+                                app:layout_rowWeight="1">
+
+                                <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:text="ธนาคารกรุงเทพ"
-                                    android:gravity="center"
-                                    android:layout_marginLeft="30dp"
-                                    android:textColor="@color/white"
-                                    />
+                                    android:orientation="vertical"
+                                    android:weightSum="10"
+                                    >
+                                    <android.support.v7.widget.CardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        app:cardBackgroundColor="#f37023"
+                                        android:layout_weight="3"
+                                        >
+                                        <ImageView
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:src="@drawable/imb1"/>
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="ธนาคารธนชาต"
+                                            android:gravity="center"
+                                            android:layout_marginLeft="40dp"
+                                            android:textColor="@color/white"
+                                            />
+
+                                    </android.support.v7.widget.CardView>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="7">
+                                        <android.support.v7.widget.GridLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            app:columnCount="2"
+                                            app:rowCount="5"
+                                            app:columnOrderPreserved="false">
+
+                                            <!--A-MAX-->
+                                            <TextView
+                                                android:textColor="@color/black"
+                                                android:text="A-MAX"
+                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="10dp"
+                                                />
+
+                                            <TextView
+                                                android:id="@+id/tvamaxt"
+                                                android:textColor="#FF0000"
+                                                android:text="0.0"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginBottom="5dp"
+                                                android:layout_marginTop="10dp"
+                                                />
+
+                                            <!--JCB-->
+                                            <TextView
+                                                android:textColor="@color/black"
+                                                android:text="JCB"
+                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="5dp"
+                                                />
+
+                                            <TextView
+                                                android:id="@+id/tvjcbt"
+                                                android:textColor="#FF0000"
+                                                android:text="0.0"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginBottom="5dp"
+                                                />
+
+                                            <!--MASTER-->
+                                            <TextView
+                                                android:textColor="@color/black"
+                                                android:text="MASTER"
+                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="5dp"
+                                                />
+
+                                            <TextView
+                                                android:id="@+id/tvmastert"
+                                                android:textColor="#FF0000"
+                                                android:text="0.0"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginBottom="5dp"
+                                                />
+
+                                            <!--Unipay-->
+                                            <TextView
+                                                android:textColor="@color/black"
+                                                android:text="UNIPAY"
+                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="5dp"
+                                                />
+
+                                            <TextView
+                                                android:id="@+id/tvunipayt"
+                                                android:textColor="#FF0000"
+                                                android:text="0.0"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginBottom="5dp"
+                                                />
+
+                                            <!--VISA-->
+                                            <TextView
+                                                android:textColor="@color/black"
+                                                android:text="VISA"
+                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="5dp"
+                                                />
+
+                                            <TextView
+                                                android:id="@+id/tvvisat"
+                                                android:textColor="#FF0000"
+                                                android:text="0.0"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginBottom="5dp"
+                                                />
+
+                                        </android.support.v7.widget.GridLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+
 
                             </android.support.v7.widget.CardView>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+
+                            <!--ธนาคารกรุงเทพ-->
+                            <android.support.v7.widget.CardView
+                                style="@style/marginCardBank"
+                                android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:layout_weight="7">
-                                <android.support.v7.widget.GridLayout
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="15dp"
+                                app:cardElevation="5dp"
+                                app:layout_columnWeight="1"
+                                app:layout_rowWeight="1">
+
+                                <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    app:columnCount="2"
-                                    app:rowCount="5"
-                                    app:columnOrderPreserved="false">
+                                    android:orientation="vertical"
+                                    android:weightSum="10">
+                                    <android.support.v7.widget.CardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        app:cardBackgroundColor="#001B7A"
+                                        android:layout_weight="3"
+                                        >
+                                        <ImageView
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:src="@drawable/imb2"/>
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="ธนาคารกรุงเทพ"
+                                            android:gravity="center"
+                                            android:layout_marginLeft="30dp"
+                                            android:textColor="@color/white"
+                                            />
 
-                                    <!--A-MAX-->
-                                    <TextView
-                                        android:textColor="@color/black"
-                                        android:text="A-MAX"
-                                        android:layout_marginTop="10dp"
-                                        android:layout_marginBottom="10dp"
-                                        android:layout_marginLeft="5dp"
+                                    </android.support.v7.widget.CardView>
 
-                                        />
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="7">
+                                        <android.support.v7.widget.GridLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            app:columnCount="2"
+                                            app:rowCount="5"
+                                            app:columnOrderPreserved="false">
 
-                                    <TextView
-                                        android:id="@+id/tvamaxk"
-                                        android:textColor="#FF0000"
-                                        android:text="0.0"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginBottom="5dp"
-                                        android:layout_marginTop="10dp"
-                                        />
+                                            <!--A-MAX-->
+                                            <TextView
+                                                android:textColor="@color/black"
+                                                android:text="A-MAX"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="5dp"
 
-                                    <!--JCB-->
-                                    <TextView
-                                        android:textColor="@color/black"
-                                        android:text="JCB"
-                                        android:layout_marginBottom="10dp"
-                                        android:layout_marginLeft="5dp"
-                                        />
+                                                />
 
-                                    <TextView
-                                        android:id="@+id/tvjcbk"
-                                        android:textColor="#FF0000"
-                                        android:text="0.0"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginBottom="5dp"
-                                        />
+                                            <TextView
+                                                android:id="@+id/tvamaxk"
+                                                android:textColor="#FF0000"
+                                                android:text="0.0"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginBottom="5dp"
+                                                android:layout_marginTop="10dp"
+                                                />
 
-                                    <!--MASTER-->
-                                    <TextView
-                                        android:textColor="@color/black"
-                                        android:text="MASTER"
-                                        android:layout_marginBottom="10dp"
-                                        android:layout_marginLeft="5dp"
-                                        />
+                                            <!--JCB-->
+                                            <TextView
+                                                android:textColor="@color/black"
+                                                android:text="JCB"
+                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="5dp"
+                                                />
 
-                                    <TextView
-                                        android:id="@+id/tvmasterk"
-                                        android:textColor="#FF0000"
-                                        android:text="0.0"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginBottom="5dp"
-                                        />
+                                            <TextView
+                                                android:id="@+id/tvjcbk"
+                                                android:textColor="#FF0000"
+                                                android:text="0.0"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginBottom="5dp"
+                                                />
 
-                                    <!--Unipay-->
-                                    <TextView
-                                        android:textColor="@color/black"
-                                        android:text="UNIPAY"
-                                        android:layout_marginBottom="10dp"
-                                        android:layout_marginLeft="5dp"
-                                        />
+                                            <!--MASTER-->
+                                            <TextView
+                                                android:textColor="@color/black"
+                                                android:text="MASTER"
+                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="5dp"
+                                                />
 
-                                    <TextView
-                                        android:id="@+id/tvunipayk"
-                                        android:textColor="#FF0000"
-                                        android:text="0.0"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginBottom="5dp"
-                                        />
+                                            <TextView
+                                                android:id="@+id/tvmasterk"
+                                                android:textColor="#FF0000"
+                                                android:text="0.0"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginBottom="5dp"
+                                                />
 
-                                    <!--VISA-->
-                                    <TextView
-                                        android:textColor="@color/black"
-                                        android:text="VISA"
-                                        android:layout_marginBottom="10dp"
-                                        android:layout_marginLeft="5dp"
-                                        />
+                                            <!--Unipay-->
+                                            <TextView
+                                                android:textColor="@color/black"
+                                                android:text="UNIPAY"
+                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="5dp"
+                                                />
 
-                                    <TextView
-                                        android:id="@+id/tvvisak"
-                                        android:textColor="#FF0000"
-                                        android:text="0.0"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginBottom="5dp"
-                                        />
+                                            <TextView
+                                                android:id="@+id/tvunipayk"
+                                                android:textColor="#FF0000"
+                                                android:text="0.0"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginBottom="5dp"
+                                                />
+
+                                            <!--VISA-->
+                                            <TextView
+                                                android:textColor="@color/black"
+                                                android:text="VISA"
+                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="5dp"
+                                                />
+
+                                            <TextView
+                                                android:id="@+id/tvvisak"
+                                                android:textColor="#FF0000"
+                                                android:text="0.0"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginBottom="5dp"
+                                                />
+                                        </android.support.v7.widget.GridLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </android.support.v7.widget.CardView>
+                        </android.support.v7.widget.GridLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
 
 
-                                </android.support.v7.widget.GridLayout>
-                            </LinearLayout>
-                        </LinearLayout>
-
-
-                    </android.support.v7.widget.CardView>
-
-
-
-
-                </android.support.v7.widget.GridLayout>
-            </RelativeLayout>
-
-
-        </LinearLayout>
-    </LinearLayout>
-
-    </RelativeLayout>
 
 
 

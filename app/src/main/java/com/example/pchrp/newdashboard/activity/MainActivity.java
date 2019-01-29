@@ -1,7 +1,11 @@
 package com.example.pchrp.newdashboard.activity;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.provider.ContactsContract;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -18,6 +22,12 @@ import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.example.pchrp.newdashboard.manager.http.HttpManager;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -30,24 +40,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         CardView cv_bill,Cv_pay,Cv_drink,Cv_real,Cv_credit,Cv_graph;
-
         CardView cv_in_bill,cv_in_pay,cv_in_drink,cv_in_real,cv_in_credit,cv_in_graph;
-
         TextView menutextbill,menupay,menudrink,menureal,menucredit,menugraph;
-
         ImageView imgbill,imgpay,imgdrink,imgreal,imgcredit,imggraph;
+
+        TextView tvmaindate;
+        ImageView mainImgDate;
+
+        String DateMain="";
+
 
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-            reqAPI();
             initInstances();
         }
 
         private void initInstances() {
 
+            DateMain = getDateTime();
 
             cv_bill = (CardView)findViewById(R.id.Cv_bill);
             Cv_pay = (CardView)findViewById(R.id.Cv_pay);
@@ -77,6 +90,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             imgcredit = (ImageView)findViewById(R.id.imgcredit);
             imggraph = (ImageView)findViewById(R.id.imggraph);
 
+            tvmaindate = (TextView)findViewById(R.id.tvmaindate);
+            mainImgDate = (ImageView)findViewById(R.id.mainImgDate);
+
+            tvmaindate.setText(DateMain);
+
+            reqAPI();
 
             cv_bill.setOnClickListener(this);
             Cv_pay.setOnClickListener(this);
@@ -106,6 +125,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             imgcredit.setOnClickListener(this);
             imggraph.setOnClickListener(this);
         }
+
+
+    private String getDateTime() {
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.ENGLISH);
+        Date date = new Date();
+        String formatDateTime = dateFormat.format(date);
+
+        return formatDateTime;
+    }
 
     private void reqAPI() {
 

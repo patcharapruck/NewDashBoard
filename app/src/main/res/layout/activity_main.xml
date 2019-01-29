@@ -46,13 +46,36 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/krystal" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_below="@id/logo"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="Day / month / year " />
+                android:layout_marginTop="5dp">
+
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="20dp">
+
+                   <TextView
+                       android:id="@+id/tvmaindate"
+                       android:layout_width="wrap_content"                       android:layout_height="wrap_content"
+                       android:layout_weight="1"
+                       android:gravity="center"
+                       android:layout_centerInParent="true"
+                       android:text="" />
+
+                   <ImageView
+                       android:id="@+id/mainImgDate"
+                       android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       android:background="@color/colorPrimary"
+                       android:layout_toRightOf="@id/tvmaindate"
+                   />
+
+               </RelativeLayout>
+
+            </LinearLayout>
 
 
             <TextView

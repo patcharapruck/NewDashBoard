@@ -80,16 +80,17 @@
                             android:gravity="center"
                             android:text="รายรับจริง"
                             android:textColor="@color/black"
-                            android:textSize="12sp" />
+                            android:textSize="20sp" />
 
                         <TextView
                             android:id="@+id/tvrevenue"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
+                            android:layout_marginTop="20dp"
                             android:text="0.0"
                             android:textColor="#4CAF50"
-                            android:textSize="18sp" />
+                            android:textSize="25sp" />
 
                     </android.support.v7.widget.CardView>
 
@@ -127,16 +128,20 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="50dp"
                                 android:gravity="center"
-                                android:text="รายรับตามบิล" />
+                                android:textColor="@color/black"
+                                android:text="รายรับตามบิล"
+                                android:textSize="20sp"
+                                />
 
                             <TextView
                                 android:id="@+id/tvincome"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
+                                android:layout_marginTop="20dp"
                                 android:text="0.0"
                                 android:textColor="#4CAF50"
-                                android:textSize="18sp"
+                                android:textSize="25sp"
 
                                 />
                         </android.support.v7.widget.CardView>
@@ -161,16 +166,19 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="50dp"
                                 android:gravity="center"
-                                android:text="ยอดบัตรเครดิต" />
+                                android:textColor="@color/black"
+                                android:text="ยอดบัตรเครดิต"
+                                android:textSize="20sp"/>
 
                             <TextView
                                 android:id="@+id/tvcreditCardPayments"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
+                                android:layout_marginTop="20dp"
                                 android:text="0.0"
                                 android:textColor="#4CAF50"
-                                android:textSize="18sp"
+                                android:textSize="25sp"
 
                                 />
                         </android.support.v7.widget.CardView>
@@ -192,14 +200,15 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="350dp">
+                    android:layout_height="350dp"
+                    >
 
                     <TableLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:weightSum="10">
 
-                        <TableRow android:background="@color/white">
+                        <TableRow android:background="#BAFFC9">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -207,6 +216,7 @@
                                 android:layout_weight="5"
                                 android:gravity="center"
                                 android:text="รายการ"
+                                android:textColor="@color/black"
                                 android:textSize="25sp" />
 
                             <TextView
@@ -214,6 +224,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
                                 android:gravity="center"
+                                android:textColor="@color/black"
                                 android:text="ยอดรวม"
                                 android:textSize="25sp" />
                         </TableRow>
@@ -238,7 +249,7 @@
                                 android:textSize="18sp" />
                         </TableRow>
 
-                        <TableRow android:background="@color/white">
+                        <TableRow android:background="#BAFFC9">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -283,7 +294,7 @@
 
                         </TableRow>
 
-                        <TableRow android:background="@color/white">
+                        <TableRow android:background="#BAFFC9">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -326,7 +337,7 @@
 
                         </TableRow>
 
-                        <TableRow android:background="@color/white">
+                        <TableRow android:background="#BAFFC9">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -370,7 +381,7 @@
 
                         </TableRow>
 
-                        <TableRow android:background="@color/white">
+                        <TableRow android:background="#BAFFC9">
 
                             <TextView
                                 android:layout_width="wrap_content"

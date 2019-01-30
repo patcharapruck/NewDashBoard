@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.example.pchrp.newdashboard.Dao.CompareDao;
 import com.example.pchrp.newdashboard.Dao.DashBoardDao;
+import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
+import com.example.pchrp.newdashboard.Dao.objectdao.ObjectListItemDao;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.CompareManager;
 import com.example.pchrp.newdashboard.manager.Contextor;
@@ -43,7 +45,12 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
     LineChart lineChart;
     LineData lineData;
     Spinner sp1, sp2, sp3;
- Toolbar toolbar;
+    Toolbar toolbar;
+    ArrayList<Double> income;
+    ArrayList<Double> revenue;
+
+    int size;
+    CompareDao Dao;
 
     ArrayList<String> data = new ArrayList<String>();
 
@@ -113,7 +120,6 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
         lineChart = (LineChart) findViewById(R.id.lineChart);
 
 
-
         LineDataSet lineDataSet = new LineDataSet(dataValues1(),"รายรับจริง");
         lineDataSet.setColor(Color.parseColor("#2567EB"));
         LineDataSet lineDataSet1 = new LineDataSet(dataValues2(),"รายรับตามบิล");
@@ -150,6 +156,24 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
         return dataVals;
     }
     private void InitInstant() {
+
+
+        Dao = CompareManager.getInstance().getCompareDao();
+
+        System.out.println("Dao");
+//        this.size = Dao.getObject().size();
+//
+//        for(int i=0;i<size;i++){
+//
+//            Double Sum = Dao.getObject().get(i).getCashPayments()
+//                    +Dao.getObject().get(i).getCreditCardPayments()
+//                    +Dao.getObject().get(i).getCreditPayments();
+//
+//            income.add(Dao.getObject().get(i).getTotalIncome());
+//            revenue.add(Sum);
+//        }
+
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.menu,R.layout.support_simple_spinner_dropdown_item);
 

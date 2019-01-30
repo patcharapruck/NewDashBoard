@@ -11,9 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.activity.DrinkActivity;
 import com.example.pchrp.newdashboard.activity.MainActivity;
+import com.example.pchrp.newdashboard.manager.DashBoradManager;
+
+import java.util.ArrayList;
 import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 
@@ -28,26 +32,34 @@ import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 public class FragmentDrinkReport extends Fragment {
 
     Toolbar toolbar;
-    String[] drinkHeader={"ลำดับ","ชื่อสินค้า","จำนวนที่ขาย"};
-    String[][] drinkData={
-            {"1","J.W. BLACK","106"},
-            {"2","J.W. BLUE","68"},
-            {"3","J.W. GOLD","10"},
-            {"4","J.W. SWING","5"},
-            {"1","J.W. BLACK","106"},
-            {"2","J.W. BLUE","68"},
-            {"3","J.W. GOLD","10"},
-            {"4","J.W. SWING","5"},
-            {"1","J.W. BLACK","106"},
-            {"2","J.W. BLUE","68"},
-            {"3","J.W. GOLD","10"},
-            {"4","J.W. SWING","5"},
-            {"1","J.W. BLACK","106"},
-            {"2","J.W. BLUE","68"},
-            {"3","J.W. GOLD","10"},
-            {"4","J.W. SWING","5"}
 
-    };
+    ObjectItemDao Odao;
+    int size;
+
+    ArrayList<Long> totalAllProduct;
+    ArrayList<String> nameProduct;
+
+    String[] drinkHeader={"ลำดับ","ชื่อสินค้า","จำนวนที่ขาย"};
+    String[][] drinkData;
+//            ={
+//            {"1","J.W. BLACK","106"},
+//            {"2","J.W. BLUE","68"},
+//            {"3","J.W. GOLD","10"},
+//            {"4","J.W. SWING","5"},
+//            {"1","J.W. BLACK","106"},
+//            {"2","J.W. BLUE","68"},
+//            {"3","J.W. GOLD","10"},
+//            {"4","J.W. SWING","5"},
+//            {"1","J.W. BLACK","106"},
+//            {"2","J.W. BLUE","68"},
+//            {"3","J.W. GOLD","10"},
+//            {"4","J.W. SWING","5"},
+//            {"1","J.W. BLACK","106"},
+//            {"2","J.W. BLUE","68"},
+//            {"3","J.W. GOLD","10"},
+//            {"4","J.W. SWING","5"}
+//
+//    };
 
     public static FragmentDrinkReport newInstance() {
         FragmentDrinkReport fragment = new FragmentDrinkReport();
@@ -89,6 +101,29 @@ public class FragmentDrinkReport extends Fragment {
     }
 
     private void initInstances(View rootView) {
+
+
+        Odao = DashBoradManager.getInstance().getDao().getObject();
+        this.size = Odao.getSummaryUseProductList().size();
+        drinkData = new String[size][2];
+
+        nameProduct = new ArrayList<>(size);
+        totalAllProduct = new ArrayList<>(size);
+
+        for(int i=0;i<size;i++){
+            String name = getnameProduct(i);
+            Long total = gettotalProduct(i);
+
+            nameProduct.add(name);
+            totalAllProduct.add(total);
+        }
+
+        for (int i=0;i<size;i++){
+            drinkData[i][0] = nameProduct.get(i);
+            drinkData[i][1] = totalAllProduct.get(i).toString();
+        }
+
+
         final TableView<String[]> tableView =(TableView)rootView.findViewById(R.id.tableView);
         tableView.setColumnCount(3);
         tableView.setHeaderBackgroundColor(Color.parseColor("#F6FDF7"));
@@ -103,6 +138,25 @@ public class FragmentDrinkReport extends Fragment {
 
     }
 
+    private Long gettotalProduct(int i) {
+        Long total;
+        try {
+            total = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getTotalAll();
+        } catch (NullPointerException e) {
+            return 0L;
+        }
+        return total;
+    }
+
+    private String getnameProduct(int i) {
+        String name;
+        try {
+            name = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getProduct().getProductNameEn();
+        } catch (NullPointerException e) {
+            return "";
+        }
+        return name;
+    }
 
 
 }

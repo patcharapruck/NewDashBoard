@@ -1,14 +1,19 @@
 package com.example.pchrp.newdashboard.fragment;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.pchrp.newdashboard.R;
+import com.example.pchrp.newdashboard.activity.DrinkActivity;
+import com.example.pchrp.newdashboard.activity.MainActivity;
 
 import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.listeners.TableDataClickListener;
@@ -20,7 +25,7 @@ import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
  */
 public class FragmentDrinkReport extends Fragment {
 
-
+    Toolbar toolbar;
     String[] drinkHeader={"ลำดับ","ชื่อสินค้า","จำนวนที่ขาย"};
     String[][] drinkData={
             {"1","J.W. BLACK","106"},
@@ -60,6 +65,22 @@ public class FragmentDrinkReport extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_fragment_drink_report, container, false);
         initInstances(rootView);
+        toolbar = rootView.findViewById(R.id.tbDrinkReport);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setTitle("รายงานปริมาณเครื่องดื่ม");
+        activity.getSupportActionBar().setSubtitle(" ว ัน เดือน ปี ");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getContext(), DrinkActivity.class));
+                getActivity().finish();
+            }
+        });
+
+
         return rootView;
     }
 

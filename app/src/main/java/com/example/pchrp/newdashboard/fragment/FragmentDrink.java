@@ -1,9 +1,11 @@
 package com.example.pchrp.newdashboard.fragment;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,13 +17,19 @@ import android.widget.TextView;
 
 import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
+import com.example.pchrp.newdashboard.activity.MainActivity;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.formatter.LargeValueFormatter;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 
 import java.util.ArrayList;
 
@@ -30,9 +38,9 @@ import java.util.ArrayList;
  */
 public class FragmentDrink extends Fragment implements View.OnClickListener {
 
-    TextView tvtotalpd,tventertainpd,tvpurchasepd,tvwithdrawpd;
+    TextView tvtotalpd, tventertainpd, tvpurchasepd, tvwithdrawpd;
     Button btndrink;
-
+    Toolbar toolbar;
     ArrayList<String> nameProduct;
     ArrayList<Long> totalAllProduct;
     ArrayList<Long> entertainProduct;
@@ -40,6 +48,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     ArrayList<Long> withdrawProduct;
     ObjectItemDao Odao;
     int size;
+
+    HorizontalBarChart barChart;
 
     public FragmentDrink() {
         super();
@@ -52,18 +62,31 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         return fragment;
     }
 
-    BarChart hbarChart;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_drink, container, false);
         initInstances(rootView);
+
+        toolbar = (Toolbar) rootView.findViewById(R.id.tbDrink);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setTitle("ปริมาณเครื่องดื่ม");
+        activity.getSupportActionBar().setSubtitle(" ว ัน เดือน ปี ");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), MainActivity.class));
+                getActivity().finish();
+            }
+        });
         return rootView;
     }
 
     private void initInstances(View rootView) {
-        Odao =  DashBoradManager.getInstance().getDao().getObject();
+        Odao = DashBoradManager.getInstance().getDao().getObject();
         this.size = Odao.getSummaryUseProductList().size();
 
         nameProduct = new ArrayList<>(size);
@@ -72,16 +95,16 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         purchaseProduct = new ArrayList<>(size);
         withdrawProduct = new ArrayList<>(size);
 
-        tvtotalpd = (TextView)rootView.findViewById(R.id.tvtotalpd);
-        tventertainpd = (TextView)rootView.findViewById(R.id.tventertainpd);
-        tvpurchasepd = (TextView)rootView.findViewById(R.id.tvpurchasepd);
-        tvwithdrawpd = (TextView)rootView.findViewById(R.id.tvwithdrawpd);
-        btndrink = (Button)rootView.findViewById(R.id.btndrink);
+        tvtotalpd = (TextView) rootView.findViewById(R.id.tvtotalpd);
+        tventertainpd = (TextView) rootView.findViewById(R.id.tventertainpd);
+        tvpurchasepd = (TextView) rootView.findViewById(R.id.tvpurchasepd);
+        tvwithdrawpd = (TextView) rootView.findViewById(R.id.tvwithdrawpd);
+        btndrink = (Button) rootView.findViewById(R.id.btndrink);
 
         btndrink.setOnClickListener(this);
 
-        for(int i=0;i<size;i++){
-            String name =  getnameProduct(i);
+        for (int i = 0; i < size; i++) {
+            String name = getnameProduct(i);
             Long total = gettotalProduct(i);
             Long entertain = getEntertain(i);
             Long purchase = getPurchase(i);
@@ -94,8 +117,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
             withdrawProduct.add(withdraw);
         }
 
-        Long sumtotal=0L,sumentertain=0L,sumpurchase=0L,sumwithdraw=0L;
-        for (int i=0;i<size;i++){
+        Long sumtotal = 0L, sumentertain = 0L, sumpurchase = 0L, sumwithdraw = 0L;
+        for (int i = 0; i < size; i++) {
             sumtotal = sumtotal + totalAllProduct.get(i);
             sumentertain = sumentertain + entertainProduct.get(i);
             sumpurchase = sumpurchase + purchaseProduct.get(i);
@@ -103,64 +126,81 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         }
 
         tvtotalpd.setText(sumtotal.toString());
-        if (sumtotal > 0){
+        if (sumtotal > 0) {
             tvtotalpd.setTextColor(Color.parseColor("#62BB47"));
         }
         tventertainpd.setText(sumentertain.toString());
-        if (sumentertain > 0){
+        if (sumentertain > 0) {
             tventertainpd.setTextColor(Color.parseColor("#62BB47"));
         }
         tvpurchasepd.setText(sumpurchase.toString());
-        if (sumpurchase > 0){
+        if (sumpurchase > 0) {
             tvpurchasepd.setTextColor(Color.parseColor("#62BB47"));
         }
         tvwithdrawpd.setText(sumwithdraw.toString());
-        if (sumwithdraw > 0){
+        if (sumwithdraw > 0) {
             tvwithdrawpd.setTextColor(Color.parseColor("#62BB47"));
         }
 
+
+        barChart = rootView.findViewById(R.id.Hbarchart);
         // Init 'View' instance(s) with rootView.findViewById here
-        hbarChart = (BarChart) rootView.findViewById(R.id.Hbarchart);
+//        hbarChart = (BarChart) rootView.findViewById(R.id.Hbarchart);
 
-        BarDataSet dataSet1 = new BarDataSet(withdrawUse(), "");
-        dataSet1.setColors(Color.parseColor("#0097A7"));
-        BarDataSet dataSet2 = new BarDataSet(purchaseAmount(), "");
-        dataSet2.setColors(Color.parseColor("#0277BD"));
-        BarDataSet dataSet3 = new BarDataSet(entertainAmount(), "");
-        dataSet3.setColors(Color.parseColor("#00695C"));
+        BarDataSet Set1 = new BarDataSet(withdrawUse(), "เบิกใช้");
+        Set1.setColors(Color.parseColor("#0097A7"));
+        BarDataSet Set2 = new BarDataSet(purchaseAmount(), "ซื้อ");
+        Set2.setColors(Color.parseColor("#0277BD"));
+        BarDataSet Set3 = new BarDataSet(entertainAmount(), "Entertrain");
+        Set3.setColors(Color.parseColor("#00695C"));
+        Set1.setDrawValues(true);
+        Set2.setDrawValues(true);
+        Set3.setDrawValues(true);
 
-        BarData data = new BarData(dataSet1, dataSet2, dataSet3);
-        hbarChart.setData(data);
-
-        String[] creditName = new String[]{"J.W.BLACK", "J.W.BLACK",
-                "J.W.BLACK", "J.W.BLACK", "J.W.BLACK"};
-
-        YAxis rightYAxis = hbarChart.getAxisRight();
-        rightYAxis.setEnabled(false);
-        rightYAxis.setValueFormatter(new IndexAxisValueFormatter(creditName));
-        rightYAxis.setCenterAxisLabels(true);
-        rightYAxis.setGranularity(1);
-        rightYAxis.setGranularityEnabled(true);
+        BarData data = new BarData(Set1, Set2, Set3);
+        barChart.setData(data);
+        data.setValueTextSize(15f);
 
 
-        hbarChart.setDragEnabled(true);
-        hbarChart.setVisibleXRangeMaximum(3);
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(nameProduct));
+        xAxis.setCenterAxisLabels(true);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setGranularity(1);
+        xAxis.setGranularityEnabled(true);
+        xAxis.setTextSize(10f);
+        xAxis.setLabelRotationAngle(90);
 
-        float barSpace = 0.05f;
-        float groupSpace = 0.66f;
-        data.setBarWidth(0.12f);
+        barChart.setDragEnabled(true);
+        barChart.setVisibleXRangeMaximum(2);
 
-        hbarChart.groupBars(0, groupSpace, barSpace);
-        hbarChart.invalidate();
+        //set Label Center
+        float groupSpace = 0.5f;
+        float barSpace = 0f;
+        float barWidth = 0.20f;
+        data.setBarWidth(barWidth);
+        //(barwidth + barspace) * no of bars + groupspace = 1
 
+        barChart.getAxisLeft().setAxisMinimum(0);
+        barChart.groupBars(0f, groupSpace, barSpace);
+        barChart.setDrawValueAboveBar(true);
+        // Hide grid lines
+        barChart.getAxisLeft().setEnabled(false);
+        barChart.getAxisRight().setEnabled(false);
+        // Hide graph description
+        barChart.getDescription().setEnabled(false);
+        // Hide graph legend
+        barChart.getLegend().setEnabled(false);
+        barChart.invalidate();
 
     }
+
 
     private Long getWithdraw(int i) {
         Long withdraw;
         try {
-            withdraw  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getWithdrawUse();
-        }catch (NullPointerException e){
+            withdraw = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getWithdrawUse();
+        } catch (NullPointerException e) {
             return 0L;
         }
         return withdraw;
@@ -169,8 +209,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private Long getPurchase(int i) {
         Long purchase;
         try {
-            purchase  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getPurchaseAmount();
-        }catch (NullPointerException e){
+            purchase = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getPurchaseAmount();
+        } catch (NullPointerException e) {
             return 0L;
         }
         return purchase;
@@ -179,8 +219,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private Long getEntertain(int i) {
         Long enter;
         try {
-            enter  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getEntertainAmount();
-        }catch (NullPointerException e){
+            enter = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getEntertainAmount();
+        } catch (NullPointerException e) {
             return 0L;
         }
         return enter;
@@ -189,8 +229,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private Long gettotalProduct(int i) {
         Long total;
         try {
-            total  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getTotalAll();
-        }catch (NullPointerException e){
+            total = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getTotalAll();
+        } catch (NullPointerException e) {
             return 0L;
         }
         return total;
@@ -199,8 +239,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private String getnameProduct(int i) {
         String name;
         try {
-           name  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getProduct().getProductNameEn();
-        }catch (NullPointerException e){
+            name = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getProduct().getProductNameEn();
+        } catch (NullPointerException e) {
             return "";
         }
         return name;
@@ -240,7 +280,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private ArrayList<BarEntry> withdrawUse() {
         ArrayList<BarEntry> barBnk1 = new ArrayList<>();
 
-        for(int i=0;i<size;i++){
+        for (int i = 0; i < size; i++) {
             barBnk1.add(new BarEntry(i, withdrawProduct.get(i)));
         }
         return barBnk1;
@@ -250,9 +290,14 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private ArrayList<BarEntry> purchaseAmount() {
         ArrayList<BarEntry> barBnk2 = new ArrayList<>();
 
-        for(int i=0;i<size;i++){
+        for (int i = 0; i < size; i++) {
             barBnk2.add(new BarEntry(i, purchaseProduct.get(i)));
         }
+//        barBnk2.add(new BarEntry(1, 20f));
+//        barBnk2.add(new BarEntry(2, 50f));
+//        barBnk2.add(new BarEntry(3, 20f));
+//        barBnk2.add(new BarEntry(4, 79f));
+//        barBnk2.add(new BarEntry(5, 35f));
         return barBnk2;
     }
 
@@ -260,30 +305,26 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private ArrayList<BarEntry> entertainAmount() {
         ArrayList<BarEntry> barBnk2 = new ArrayList<>();
 
-        for(int i=0;i<size;i++){
+        for (int i = 0; i < size; i++) {
             barBnk2.add(new BarEntry(i, entertainProduct.get(i)));
         }
+
+//        barBnk2.add(new BarEntry(1, 29f));
+//        barBnk2.add(new BarEntry(2, 2f));
+//        barBnk2.add(new BarEntry(3, 4f));
+//        barBnk2.add(new BarEntry(4, 0f));
+//        barBnk2.add(new BarEntry(5, 0f));
         return barBnk2;
     }
 
     @Override
     public void onClick(View v) {
-        if(v == btndrink){
+        if (v == btndrink) {
             getFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.frame_drink,FragmentDrinkReport.newInstance())
+                    .replace(R.id.frame_drink, FragmentDrinkReport.newInstance())
                     .addToBackStack(null)
                     .commit();
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == android.R.id.home) {
-
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

@@ -7,12 +7,13 @@
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/krystal"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.CompareReceipts"></activity>
+        <activity android:name=".activity.LogInActivity"></activity>
+        <activity android:name=".activity.CompareReceipts" />
         <activity android:name=".activity.RealIncomeActivity" />
         <activity android:name=".activity.CreditActivity" />
         <activity android:name=".activity.MainActivity">

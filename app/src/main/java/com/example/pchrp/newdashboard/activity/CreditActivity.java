@@ -43,8 +43,8 @@ public class CreditActivity extends AppCompatActivity {
             unipayt = 0.0, unipayk = 0.0,
             visat = 0.0, visak = 0.0;
 
-    //วันปัจจุบัน
-    String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+//    //วันปัจจุบัน
+//    String st =" ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class CreditActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.tbCredit);
         toolbar.setTitle("รายรับบัตรเครดิต");
-        toolbar.setSubtitle(currentDateTimeString);
+//        toolbar.setSubtitle(currentDateTimeString);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

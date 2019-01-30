@@ -1,6 +1,7 @@
 package com.example.pchrp.newdashboard.fragment;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
+import com.example.pchrp.newdashboard.activity.MainActivity;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
@@ -67,13 +69,19 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         View rootView = inflater.inflate(R.layout.frag_drink, container, false);
         initInstances(rootView);
 
-    toolbar = (Toolbar)rootView.findViewById(R.id.tbDrink);
+        toolbar = (Toolbar) rootView.findViewById(R.id.tbDrink);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.getSupportActionBar().setTitle("ปริมาณเครื่องดื่ม");
         activity.getSupportActionBar().setSubtitle(" ว ัน เดือน ปี ");
-
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), MainActivity.class));
+                getActivity().finish();
+            }
+        });
         return rootView;
     }
 
@@ -154,11 +162,10 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         data.setValueTextSize(15f);
 
 
-
         XAxis xAxis = barChart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(nameProduct));
         xAxis.setCenterAxisLabels(true);
-       xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setGranularity(1);
         xAxis.setGranularityEnabled(true);
         xAxis.setTextSize(10f);
@@ -174,7 +181,6 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         data.setBarWidth(barWidth);
         //(barwidth + barspace) * no of bars + groupspace = 1
 
-//        barChart.getXAxis().setAxisMaximum(0 + barChart.getBarData().getGroupWidth(groupSpace, barSpace) );
         barChart.getAxisLeft().setAxisMinimum(0);
         barChart.groupBars(0f, groupSpace, barSpace);
         barChart.setDrawValueAboveBar(true);
@@ -187,18 +193,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         barChart.getLegend().setEnabled(false);
         barChart.invalidate();
 
-        Legend l = barChart.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
-        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
-        l.setDrawInside(true);
-        l.setYOffset(20f);
-        l.setXOffset(0f);
-        l.setYEntrySpace(0f);
-        l.setTextSize(8f);
-
-//
     }
+
 
     private Long getWithdraw(int i) {
         Long withdraw;
@@ -323,10 +319,10 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if(v == btndrink){
+        if (v == btndrink) {
             getFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.frame_drink,FragmentDrinkReport.newInstance())
+                    .replace(R.id.frame_drink, FragmentDrinkReport.newInstance())
                     .addToBackStack(null)
                     .commit();
         }

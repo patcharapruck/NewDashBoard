@@ -5,13 +5,10 @@ import android.content.Context;
 import com.example.pchrp.newdashboard.Dao.CompareDao;
 import com.inthecheesefactory.thecheeselibrary.manager.Contextor;
 
-/**
- * Created by nuuneoi on 11/16/2014.
- */
 public class CompareManager {
 
     private static CompareManager instance;
-    CompareDao compareDao;
+    private CompareDao compareDao;
     public static CompareManager getInstance() {
         if (instance == null)
             instance = new CompareManager();

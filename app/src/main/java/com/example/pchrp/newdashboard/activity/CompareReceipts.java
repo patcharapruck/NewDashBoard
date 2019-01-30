@@ -40,11 +40,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CompareReceipts extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class CompareReceipts extends AppCompatActivity  {
 
     LineChart lineChart;
     LineData lineData;
-    Spinner sp1, sp2, sp3;
     Toolbar toolbar;
     ArrayList<Double> income;
     ArrayList<Double> revenue;
@@ -58,18 +57,6 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare_receipts);
-
-        teqAPICompare();
-        toolbar = findViewById(R.id.tbCompare);
-        toolbar.setTitle("เปรียบเทียบรายรับ");
-        toolbar.setSubtitle(" day / month / year ");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
-        ChartCompare();
         InitInstant();
     }
 
@@ -86,7 +73,7 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
                 if(response.isSuccessful()){
                     CompareDao dao = response.body();
                     CompareManager.getInstance().setCompareDao(dao);
-                    Toast.makeText(mcontext,dao.getObject().get(2).getCashPayments().toString(),Toast.LENGTH_SHORT).show();
+                    setListData();
                 }else {
                     try {
                         Toast.makeText(mcontext,response.errorBody().string(),Toast.LENGTH_LONG).show();
@@ -95,11 +82,30 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<CompareDao> call, Throwable t) {
                 Toast.makeText(mcontext,t.toString(),Toast.LENGTH_LONG).show();
             }
         });
+
+    }
+
+    private void setListData() {
+        Dao = CompareManager.getInstance().getCompareDao();
+
+        System.out.println("Dao");
+        this.size = Dao.getObject().size();
+        income = new ArrayList<Double>(size);
+        revenue = new ArrayList<Double>(size);
+        for(int i=0;i<size;i++){
+
+            Double Sum = Dao.getObject().get(i).getCashPayments()
+                    +Dao.getObject().get(i).getCreditCardPayments()
+                    +Dao.getObject().get(i).getCreditPayments();
+            income.add(Dao.getObject().get(i).getTotalIncome());
+            revenue.add(Sum);
+        }
     }
 
     @Override
@@ -113,12 +119,8 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
     }
 
     private void ChartCompare(){
-        sp1 = findViewById(R.id.item);
-        sp2 = findViewById(R.id.dateStart);
-        sp3 = findViewById(R.id.dateStop);
 
         lineChart = (LineChart) findViewById(R.id.lineChart);
-
 
         LineDataSet lineDataSet = new LineDataSet(dataValues1(),"รายรับจริง");
         lineDataSet.setColor(Color.parseColor("#2567EB"));
@@ -137,79 +139,42 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
     }
     private ArrayList<Entry> dataValues1(){
         ArrayList<Entry> dataVals = new ArrayList<Entry>();
-        dataVals.add(new Entry(0,20));
-        dataVals.add(new Entry(1,24));
-        dataVals.add(new Entry(2,25));
-        dataVals.add(new Entry(3,26));
-        dataVals.add(new Entry(4,20));
-
+        ArrayList<Double> t1 = new ArrayList<Double>(5);
+        t1.add(1200D);
+        t1.add(1300D);
+        t1.add(1400D);
+        t1.add(1500D);
+        t1.add(1600D);
+       // t1.add(1700);
+        for(int i=0;i<size;i++){
+            dataVals.add(new Entry(i,t1.get(i).floatValue()));
+        }
         return dataVals;
     }
     private ArrayList<Entry> dataValues2(){
         ArrayList<Entry> dataVals = new ArrayList<Entry>();
-        dataVals.add(new Entry(0,20));
-        dataVals.add(new Entry(1,34));
-        dataVals.add(new Entry(2,35));
-        dataVals.add(new Entry(3,36));
-        dataVals.add(new Entry(4,30));
-
+        ArrayList<Float> t1 = new ArrayList<Float>(5);
+        t1.add(1000f);
+        t1.add(1100f);
+        t1.add(1200f);
+        t1.add(1300f);
+        t1.add(1400f);
+       // t1.add(1500f);
+        for(int i=0;i<5;i++){
+            dataVals.add(new Entry(i,t1.get(i)));
+        }
         return dataVals;
     }
     private void InitInstant() {
 
+        teqAPICompare();
+        toolbar = findViewById(R.id.tbCompare);
+        toolbar.setTitle("เปรียบเทียบรายรับ");
+        toolbar.setSubtitle(" day / month / year ");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        Dao = CompareManager.getInstance().getCompareDao();
-
-        System.out.println("Dao");
-//        this.size = Dao.getObject().size();
-//
-//        for(int i=0;i<size;i++){
-//
-//            Double Sum = Dao.getObject().get(i).getCashPayments()
-//                    +Dao.getObject().get(i).getCreditCardPayments()
-//                    +Dao.getObject().get(i).getCreditPayments();
-//
-//            income.add(Dao.getObject().get(i).getTotalIncome());
-//            revenue.add(Sum);
-//        }
-
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.menu,R.layout.support_simple_spinner_dropdown_item);
-
-        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-
-        sp1.setAdapter(adapter);
-        sp1.setOnItemSelectedListener(this);
-
-
-
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
-                R.array.datestart,
-                R.layout.support_simple_spinner_dropdown_item);
-        adapter1.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-
-        sp2.setAdapter(adapter1);
-        sp2.setOnItemSelectedListener(this);
-
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-                R.array.datestop,
-                R.layout.support_simple_spinner_dropdown_item);
-        adapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-
-        sp3.setAdapter(adapter2);
-        sp3.setOnItemSelectedListener(this);
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-       // Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
+        ChartCompare();
     }
 }

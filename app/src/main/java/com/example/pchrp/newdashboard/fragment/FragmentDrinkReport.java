@@ -26,9 +26,6 @@ import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class FragmentDrinkReport extends Fragment {
 
     Toolbar toolbar;
@@ -41,25 +38,6 @@ public class FragmentDrinkReport extends Fragment {
 
     String[] drinkHeader={"ลำดับ","ชื่อสินค้า","จำนวนที่ขาย"};
     String[][] drinkData;
-//            ={
-//            {"1","J.W. BLACK","106"},
-//            {"2","J.W. BLUE","68"},
-//            {"3","J.W. GOLD","10"},
-//            {"4","J.W. SWING","5"},
-//            {"1","J.W. BLACK","106"},
-//            {"2","J.W. BLUE","68"},
-//            {"3","J.W. GOLD","10"},
-//            {"4","J.W. SWING","5"},
-//            {"1","J.W. BLACK","106"},
-//            {"2","J.W. BLUE","68"},
-//            {"3","J.W. GOLD","10"},
-//            {"4","J.W. SWING","5"},
-//            {"1","J.W. BLACK","106"},
-//            {"2","J.W. BLUE","68"},
-//            {"3","J.W. GOLD","10"},
-//            {"4","J.W. SWING","5"}
-//
-//    };
 
     public static FragmentDrinkReport newInstance() {
         FragmentDrinkReport fragment = new FragmentDrinkReport();

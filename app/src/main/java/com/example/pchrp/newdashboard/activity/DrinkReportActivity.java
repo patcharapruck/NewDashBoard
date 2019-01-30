@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.example.pchrp.newdashboard.R;
 
@@ -17,7 +16,6 @@ import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 public class DrinkReportActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +35,12 @@ public class DrinkReportActivity extends AppCompatActivity {
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this,drinkHeader));
         tableView.setDataAdapter(new SimpleTableDataAdapter(this,drinkData));
 
-
+        tableView.addDataClickListener(new TableDataClickListener<String[]>() {
+            @Override
+            public void onDataClicked(int rowIndex, String[] clickedData) {
+//                Collections.sort();
+            }
+        });
 
     }
 

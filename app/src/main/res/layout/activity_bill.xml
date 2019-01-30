@@ -12,6 +12,12 @@
         android:background="@color/bg1"
         android:id="@+id/tbBill">
 
+        <Button
+            android:id="@+id/btncalendarbill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"/>
+
     </android.support.v7.widget.Toolbar>
 
     <FrameLayout

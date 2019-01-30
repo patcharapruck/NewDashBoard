@@ -1,12 +1,8 @@
 package com.example.pchrp.newdashboard.activity;
 
-import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.provider.ContactsContract;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -22,14 +18,11 @@ import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.example.pchrp.newdashboard.manager.http.HttpManager;
-import com.example.pchrp.newdashboard.util.DateTimeReq;
 import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -52,8 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView tvmaindate;
         ImageView mainImgDate;
 
-        String DateMain="";
-
 
 
         @Override
@@ -65,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         private void initInstances() {
 
-            DateMain = getDateTime();
+            getDateTime();
 
             cv_bill = (CardView)findViewById(R.id.Cv_bill);
             Cv_pay = (CardView)findViewById(R.id.Cv_pay);
@@ -98,9 +89,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             tvmaindate = (TextView)findViewById(R.id.tvmaindate);
             mainImgDate = (ImageView)findViewById(R.id.mainImgDate);
 
-            tvmaindate.setText(DateMain);
+            tvmaindate.setText(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
 
-            reqAPI(DateMain);
+            reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
 
             mainImgDate.setOnClickListener(this);
 
@@ -134,19 +125,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-    private String getDateTime() {
+    private void getDateTime() {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.add(Calendar.DATE, -1);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
         String formatDateTime = dateFormat.format(calendar.getTime());
-        DateTimeReq req = new DateTimeReq();
-        return formatDateTime;
+        SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                .saveDatereq(formatDateTime);
+        SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                .saveDateCalendar(day,month,year);
+
     }
 
-    private void reqAPI(String date) {
+    public void reqAPI(String date) {
 
         final Context mcontext = Contextor.getInstance().getContext();
         String nn = "{\"property\":[],\"criteria\":{\"sql-obj-command\":\"( tb_sales_shift.open_date >= '"+date+" 00:00:00' AND tb_sales_shift.open_date <= '"+date+" 23:59:59')\",\"summary-date\":\"*\"},\"orderBy\":{\"InvoiceDocument-id\":\"desc\"},\"pagination\":{}}";
@@ -213,18 +210,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             if(v == mainImgDate){
 
-
-                Calendar c = Calendar.getInstance(Locale.ENGLISH);
-                c.add(Calendar.DATE,-1);
-                final int day = c.get(Calendar.DAY_OF_MONTH);
-                final int month = c.get(Calendar.MONTH);
-                final int year = c.get(Calendar.YEAR);
-
                 final DatePickerDialog dialog = new DatePickerDialog(MainActivity.this,new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         month++;
-                        String mm = ""+(month);
+                        String mm = ""+month;
                         String dd = ""+dayOfMonth;
 
                         if (month<10){
@@ -233,14 +223,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (dayOfMonth < 10){
                             dd = "0"+dayOfMonth;
                         }
-                        String A;
+                        String datecalendat;
                         tvmaindate.setText(year+ "/" + mm + "/" +dd);
+                        datecalendat = year+ "/" + mm + "/" +dd;
+
+                        SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                                .saveDatereq(datecalendat);
+
+                        reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+
                         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                                 .saveDateCalendar(dayOfMonth,month,year);
-                        A = year+ "/" + mm + "/" +dd;
-                        reqAPI(A);
+
+                        System.out.println(dayOfMonth+"/"+month+"/"+year);
+
+
                     }
-                },year,month,day);
+                },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
+                        ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()
+                        ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
+
+                Calendar c = Calendar.getInstance(Locale.ENGLISH);
+                c.add(Calendar.DATE,-1);
                 Date date = c.getTime();
                 dialog.getDatePicker().setMaxDate(date.getTime());
                 dialog.show();

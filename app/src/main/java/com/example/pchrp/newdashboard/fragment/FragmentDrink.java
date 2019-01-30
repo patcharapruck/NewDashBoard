@@ -4,6 +4,7 @@ package com.example.pchrp.newdashboard.fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,9 +35,9 @@ import java.util.ArrayList;
  */
 public class FragmentDrink extends Fragment implements View.OnClickListener {
 
-    TextView tvtotalpd,tventertainpd,tvpurchasepd,tvwithdrawpd;
+    TextView tvtotalpd, tventertainpd, tvpurchasepd, tvwithdrawpd;
     Button btndrink;
-
+    Toolbar toolbar;
     ArrayList<String> nameProduct;
     ArrayList<Long> totalAllProduct;
     ArrayList<Long> entertainProduct;
@@ -44,6 +45,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     ArrayList<Long> withdrawProduct;
     ObjectItemDao Odao;
     int size;
+
+    HorizontalBarChart barChart;
 
     public FragmentDrink() {
         super();
@@ -56,18 +59,25 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         return fragment;
     }
 
-    HorizontalBarChart barChart;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_drink, container, false);
         initInstances(rootView);
+
+    toolbar = (Toolbar)rootView.findViewById(R.id.tbDrink);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setTitle("ปริมาณเครื่องดื่ม");
+        activity.getSupportActionBar().setSubtitle(" ว ัน เดือน ปี ");
+
         return rootView;
     }
 
     private void initInstances(View rootView) {
-        Odao =  DashBoradManager.getInstance().getDao().getObject();
+        Odao = DashBoradManager.getInstance().getDao().getObject();
         this.size = Odao.getSummaryUseProductList().size();
 
         nameProduct = new ArrayList<>(size);
@@ -76,16 +86,16 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         purchaseProduct = new ArrayList<>(size);
         withdrawProduct = new ArrayList<>(size);
 
-        tvtotalpd = (TextView)rootView.findViewById(R.id.tvtotalpd);
-        tventertainpd = (TextView)rootView.findViewById(R.id.tventertainpd);
-        tvpurchasepd = (TextView)rootView.findViewById(R.id.tvpurchasepd);
-        tvwithdrawpd = (TextView)rootView.findViewById(R.id.tvwithdrawpd);
-        btndrink = (Button)rootView.findViewById(R.id.btndrink);
+        tvtotalpd = (TextView) rootView.findViewById(R.id.tvtotalpd);
+        tventertainpd = (TextView) rootView.findViewById(R.id.tventertainpd);
+        tvpurchasepd = (TextView) rootView.findViewById(R.id.tvpurchasepd);
+        tvwithdrawpd = (TextView) rootView.findViewById(R.id.tvwithdrawpd);
+        btndrink = (Button) rootView.findViewById(R.id.btndrink);
 
         btndrink.setOnClickListener(this);
 
-        for(int i=0;i<size;i++){
-            String name =  getnameProduct(i);
+        for (int i = 0; i < size; i++) {
+            String name = getnameProduct(i);
             Long total = gettotalProduct(i);
             Long entertain = getEntertain(i);
             Long purchase = getPurchase(i);
@@ -98,8 +108,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
             withdrawProduct.add(withdraw);
         }
 
-        Long sumtotal=0L,sumentertain=0L,sumpurchase=0L,sumwithdraw=0L;
-        for (int i=0;i<size;i++){
+        Long sumtotal = 0L, sumentertain = 0L, sumpurchase = 0L, sumwithdraw = 0L;
+        for (int i = 0; i < size; i++) {
             sumtotal = sumtotal + totalAllProduct.get(i);
             sumentertain = sumentertain + entertainProduct.get(i);
             sumpurchase = sumpurchase + purchaseProduct.get(i);
@@ -107,19 +117,19 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         }
 
         tvtotalpd.setText(sumtotal.toString());
-        if (sumtotal > 0){
+        if (sumtotal > 0) {
             tvtotalpd.setTextColor(Color.parseColor("#62BB47"));
         }
         tventertainpd.setText(sumentertain.toString());
-        if (sumentertain > 0){
+        if (sumentertain > 0) {
             tventertainpd.setTextColor(Color.parseColor("#62BB47"));
         }
         tvpurchasepd.setText(sumpurchase.toString());
-        if (sumpurchase > 0){
+        if (sumpurchase > 0) {
             tvpurchasepd.setTextColor(Color.parseColor("#62BB47"));
         }
         tvwithdrawpd.setText(sumwithdraw.toString());
-        if (sumwithdraw > 0){
+        if (sumwithdraw > 0) {
             tvwithdrawpd.setTextColor(Color.parseColor("#62BB47"));
         }
 
@@ -138,8 +148,12 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         Set2.setDrawValues(true);
         Set3.setDrawValues(true);
 
-        BarData data = new BarData(Set1,Set2,Set3);
+
+        BarData data = new BarData(Set1, Set2, Set3);
         barChart.setData(data);
+        data.setValueTextSize(15f);
+
+
 
         XAxis xAxis = barChart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(nameProduct));
@@ -147,6 +161,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setGranularity(1);
         xAxis.setGranularityEnabled(true);
+        xAxis.setTextSize(10f);
 
         barChart.setDragEnabled(true);
         barChart.setVisibleXRangeMaximum(2);
@@ -158,9 +173,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         data.setBarWidth(barWidth);
         //(barwidth + barspace) * no of bars + groupspace = 1
 
-        barChart.getXAxis().setAxisMinimum(0);
 //        barChart.getXAxis().setAxisMaximum(0 + barChart.getBarData().getGroupWidth(groupSpace, barSpace) );
-//        barChart.getAxisLeft().setAxisMinimum(0);
+        barChart.getAxisLeft().setAxisMinimum(0);
         barChart.groupBars(0f, groupSpace, barSpace);
 
         // Hide grid lines
@@ -173,15 +187,14 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         barChart.invalidate();
 
 
-
 //
     }
 
     private Long getWithdraw(int i) {
         Long withdraw;
         try {
-            withdraw  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getWithdrawUse();
-        }catch (NullPointerException e){
+            withdraw = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getWithdrawUse();
+        } catch (NullPointerException e) {
             return 0L;
         }
         return withdraw;
@@ -190,8 +203,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private Long getPurchase(int i) {
         Long purchase;
         try {
-            purchase  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getPurchaseAmount();
-        }catch (NullPointerException e){
+            purchase = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getPurchaseAmount();
+        } catch (NullPointerException e) {
             return 0L;
         }
         return purchase;
@@ -200,8 +213,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private Long getEntertain(int i) {
         Long enter;
         try {
-            enter  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getEntertainAmount();
-        }catch (NullPointerException e){
+            enter = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getEntertainAmount();
+        } catch (NullPointerException e) {
             return 0L;
         }
         return enter;
@@ -210,8 +223,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private Long gettotalProduct(int i) {
         Long total;
         try {
-            total  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getTotalAll();
-        }catch (NullPointerException e){
+            total = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getTotalAll();
+        } catch (NullPointerException e) {
             return 0L;
         }
         return total;
@@ -220,8 +233,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private String getnameProduct(int i) {
         String name;
         try {
-           name  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getProduct().getProductNameEn();
-        }catch (NullPointerException e){
+            name = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getProduct().getProductNameEn();
+        } catch (NullPointerException e) {
             return "";
         }
         return name;
@@ -261,7 +274,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private ArrayList<BarEntry> withdrawUse() {
         ArrayList<BarEntry> barBnk1 = new ArrayList<>();
 
-        for(int i=0;i<size;i++){
+        for (int i = 0; i < size; i++) {
             barBnk1.add(new BarEntry(i, withdrawProduct.get(i)));
         }
         return barBnk1;
@@ -271,7 +284,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private ArrayList<BarEntry> purchaseAmount() {
         ArrayList<BarEntry> barBnk2 = new ArrayList<>();
 
-        for(int i=0;i<size;i++){
+        for (int i = 0; i < size; i++) {
             barBnk2.add(new BarEntry(i, purchaseProduct.get(i)));
         }
 //        barBnk2.add(new BarEntry(1, 20f));
@@ -286,7 +299,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private ArrayList<BarEntry> entertainAmount() {
         ArrayList<BarEntry> barBnk2 = new ArrayList<>();
 
-        for(int i=0;i<size;i++){
+        for (int i = 0; i < size; i++) {
             barBnk2.add(new BarEntry(i, entertainProduct.get(i)));
         }
 

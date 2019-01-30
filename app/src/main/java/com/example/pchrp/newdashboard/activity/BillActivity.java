@@ -7,6 +7,8 @@ import android.view.MenuItem;
 
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.fragment.FragmentBill;
+import com.example.pchrp.newdashboard.manager.Contextor;
+import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 
 public class BillActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -17,7 +19,7 @@ public class BillActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bill);
         toolbar = findViewById(R.id.tbBill);
         toolbar.setTitle("รายรับตามบิล");
-        toolbar.setSubtitle("วัน เดือน ปี");
+        int tt = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear();
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

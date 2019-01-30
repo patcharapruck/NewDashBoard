@@ -22,6 +22,8 @@ import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.example.pchrp.newdashboard.manager.http.HttpManager;
+import com.example.pchrp.newdashboard.util.DateTimeReq;
+import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -140,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         calendar.setTime(date);
         calendar.add(Calendar.DATE, -1);
         String formatDateTime = dateFormat.format(calendar.getTime());
-
+        DateTimeReq req = new DateTimeReq();
         return formatDateTime;
     }
 
@@ -213,10 +215,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                 Calendar c = Calendar.getInstance(Locale.ENGLISH);
-
+                c.add(Calendar.DATE,-1);
                 final int day = c.get(Calendar.DAY_OF_MONTH);
-                int month = c.get(Calendar.MONTH);
-                int year = c.get(Calendar.YEAR);
+                final int month = c.get(Calendar.MONTH);
+                final int year = c.get(Calendar.YEAR);
 
                 final DatePickerDialog dialog = new DatePickerDialog(MainActivity.this,new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -233,11 +235,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                         String A;
                         tvmaindate.setText(year+ "/" + mm + "/" +dd);
+                        SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                                .saveDateCalendar(dayOfMonth,month,year);
                         A = year+ "/" + mm + "/" +dd;
                         reqAPI(A);
                     }
                 },year,month,day);
-                dialog.getDatePicker().setMaxDate(new Date().getTime());
+                Date date = c.getTime();
+                dialog.getDatePicker().setMaxDate(date.getTime());
                 dialog.show();
             }
         }

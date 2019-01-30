@@ -118,13 +118,6 @@ public class CreditActivity extends AppCompatActivity {
         visats = formatter.format(visat);
         visaks = formatter.format(visak);
 
-//        Log.i("AMMM", creditall.toString()+"\n K -- T");
-//        Log.i("AMMM", amaxk.toString()+" --  " + amaxt.toString());
-//        Log.i("AMMM", jcbk.toString()+" --  " + jcbt.toString());
-//        Log.i("AMMM", masterk.toString()+"  --  " + mastert.toString());
-//        Log.i("AMMM", unipayk.toString()+"  -- " + unipayt.toString());
-//        Log.i("AMMM", visak.toString()+" --  " +visat.toString());
-
 
         setTextAndColor();
 

@@ -19,7 +19,7 @@ public class LogInActivity extends AppCompatActivity {
         username = (EditText)findViewById(R.id.userId);
         password = (EditText)findViewById(R.id.passId);
         btnlogin = (Button)findViewById(R.id.btnLogin);
-
+        InitInstances();
 
 
     }

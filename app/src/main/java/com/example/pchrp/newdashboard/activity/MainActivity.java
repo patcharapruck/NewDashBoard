@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(mcontext,dao.getObject().getIncome().toString(),Toast.LENGTH_SHORT).show();
                 }else {
                     try {
-                        Toast.makeText(mcontext,"aaaa"+response.errorBody().string(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(mcontext,response.errorBody().string(),Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             @Override
             public void onFailure(Call<DashBoardDao> call, Throwable t) {
-                Toast.makeText(mcontext,"sssss"+t.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(mcontext,t.toString(),Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -210,7 +210,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
             if(v == mainImgDate){
-                Calendar c = Calendar.getInstance();
+
+
+                Calendar c = Calendar.getInstance(Locale.ENGLISH);
 
                 final int day = c.get(Calendar.DAY_OF_MONTH);
                 int month = c.get(Calendar.MONTH);
@@ -219,8 +221,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 final DatePickerDialog dialog = new DatePickerDialog(MainActivity.this,new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month = month+1;
-                        String mm = ""+month;
+                        month++;
+                        String mm = ""+(month);
                         String dd = ""+dayOfMonth;
 
                         if (month<10){
@@ -234,7 +236,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         A = year+ "/" + mm + "/" +dd;
                         reqAPI(A);
                     }
-                },day,month,year);
+                },year,month,day);
+                dialog.getDatePicker().setMaxDate(new Date().getTime());
                 dialog.show();
             }
         }

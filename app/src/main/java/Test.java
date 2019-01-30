@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,21 +25,24 @@ public class Test {
 
     public static void main(String args[]){
 
+
 //        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
 //        Date date = new Date();
-//        System.out.println(dateFormat.format(date));
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTime(date);
+//        calendar.add(Calendar.DATE, -1);
+//        String yesterdayAsString = dateFormat.format(calendar.getTime());
+//          System.out.println(dateFormat.format(calendar.getTime()));
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
-        Date date = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.add(Calendar.DATE, -1);
-        String yesterdayAsString = dateFormat.format(calendar.getTime());
+        Calendar c = Calendar.getInstance(Locale.ENGLISH);
 
-        System.out.println(dateFormat.format(calendar.getTime()));
-//        LocalDateTime now = LocalDateTime.now();
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").withLocale(Locale.US);
-//        String formatDateTime = now.format(formatter);
-//        System.out.println(formatDateTime);
+        final int day = c.get(Calendar.DAY_OF_MONTH);
+        int month = c.get(Calendar.MONTH)+1;
+        int year = c.get(Calendar.YEAR);
+
+        System.out.println(year);
+        System.out.println(month);
+        System.out.println(day);
+
     }
 }

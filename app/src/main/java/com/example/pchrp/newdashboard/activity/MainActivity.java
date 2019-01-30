@@ -22,6 +22,8 @@ import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.example.pchrp.newdashboard.manager.http.HttpManager;
+import com.example.pchrp.newdashboard.util.DateTimeReq;
+import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -140,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         calendar.setTime(date);
         calendar.add(Calendar.DATE, -1);
         String formatDateTime = dateFormat.format(calendar.getTime());
-
+        DateTimeReq req = new DateTimeReq();
         return formatDateTime;
     }
 
@@ -161,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(mcontext,dao.getObject().getIncome().toString(),Toast.LENGTH_SHORT).show();
                 }else {
                     try {
-                        Toast.makeText(mcontext,"aaaa"+response.errorBody().string(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(mcontext,response.errorBody().string(),Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -169,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             @Override
             public void onFailure(Call<DashBoardDao> call, Throwable t) {
-                Toast.makeText(mcontext,"sssss"+t.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(mcontext,t.toString(),Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -210,17 +212,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
             if(v == mainImgDate){
-                Calendar c = Calendar.getInstance();
 
+
+                Calendar c = Calendar.getInstance(Locale.ENGLISH);
+                c.add(Calendar.DATE,-1);
                 final int day = c.get(Calendar.DAY_OF_MONTH);
-                int month = c.get(Calendar.MONTH);
-                int year = c.get(Calendar.YEAR);
+                final int month = c.get(Calendar.MONTH);
+                final int year = c.get(Calendar.YEAR);
 
                 final DatePickerDialog dialog = new DatePickerDialog(MainActivity.this,new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month = month+1;
-                        String mm = ""+month;
+                        month++;
+                        String mm = ""+(month);
                         String dd = ""+dayOfMonth;
 
                         if (month<10){
@@ -231,10 +235,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                         String A;
                         tvmaindate.setText(year+ "/" + mm + "/" +dd);
+                        SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                                .saveDateCalendar(dayOfMonth,month,year);
                         A = year+ "/" + mm + "/" +dd;
                         reqAPI(A);
                     }
-                },day,month,year);
+                },year,month,day);
+                Date date = c.getTime();
+                dialog.getDatePicker().setMaxDate(date.getTime());
                 dialog.show();
             }
         }

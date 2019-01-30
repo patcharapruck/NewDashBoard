@@ -165,7 +165,8 @@
                                             android:layout_height="match_parent"
                                             app:columnCount="2"
                                             app:rowCount="5"
-                                            app:columnOrderPreserved="false">
+                                            app:columnOrderPreserved="false"
+                                            >
 
                                             <!--A-MAX-->
                                             <TextView
@@ -177,6 +178,7 @@
                                                 />
 
                                             <TextView
+                                                app:layout_gravity="right"
                                                 android:id="@+id/tvamaxt"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"
@@ -187,6 +189,7 @@
 
                                             <!--JCB-->
                                             <TextView
+
                                                 android:textColor="@color/black"
                                                 android:text="JCB"
                                                 android:layout_marginBottom="10dp"
@@ -194,6 +197,8 @@
                                                 />
 
                                             <TextView
+                                                app:layout_gravity="right"
+
                                                 android:id="@+id/tvjcbt"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"
@@ -210,10 +215,12 @@
                                                 />
 
                                             <TextView
+                                                app:layout_gravity="right"
                                                 android:id="@+id/tvmastert"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"
                                                 android:layout_marginLeft="10dp"
+
                                                 android:layout_marginBottom="5dp"
                                                 />
 
@@ -226,6 +233,7 @@
                                                 />
 
                                             <TextView
+                                                app:layout_gravity="right"
                                                 android:id="@+id/tvunipayt"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"
@@ -243,11 +251,11 @@
 
                                             <TextView
                                                 android:id="@+id/tvvisat"
+                                                app:layout_gravity="right"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"
                                                 android:layout_marginLeft="10dp"
-                                                android:layout_marginBottom="5dp"
-                                                />
+                                                android:layout_marginBottom="5dp"/>
 
                                         </android.support.v7.widget.GridLayout>
                                     </LinearLayout>
@@ -316,6 +324,7 @@
                                                 />
 
                                             <TextView
+                                                app:layout_gravity="right"
                                                 android:id="@+id/tvamaxk"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"
@@ -333,6 +342,7 @@
                                                 />
 
                                             <TextView
+                                                app:layout_gravity="right"
                                                 android:id="@+id/tvjcbk"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"
@@ -349,6 +359,7 @@
                                                 />
 
                                             <TextView
+                                                app:layout_gravity="right"
                                                 android:id="@+id/tvmasterk"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"
@@ -358,6 +369,7 @@
 
                                             <!--Unipay-->
                                             <TextView
+
                                                 android:textColor="@color/black"
                                                 android:text="UNIPAY"
                                                 android:layout_marginBottom="10dp"
@@ -365,6 +377,7 @@
                                                 />
 
                                             <TextView
+                                                app:layout_gravity="right"
                                                 android:id="@+id/tvunipayk"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"
@@ -381,6 +394,7 @@
                                                 />
 
                                             <TextView
+                                                app:layout_gravity="right"
                                                 android:id="@+id/tvvisak"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"

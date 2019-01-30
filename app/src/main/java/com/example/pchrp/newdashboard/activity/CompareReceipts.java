@@ -40,10 +40,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CompareReceipts extends AppCompatActivity  {
+public class CompareReceipts extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     LineChart lineChart;
     LineData lineData;
+    Button sp2, sp3;
     Toolbar toolbar;
     ArrayList<Double> income;
     ArrayList<Double> revenue;
@@ -73,7 +74,7 @@ public class CompareReceipts extends AppCompatActivity  {
                 if(response.isSuccessful()){
                     CompareDao dao = response.body();
                     CompareManager.getInstance().setCompareDao(dao);
-                    setListData();
+                    Toast.makeText(mcontext,dao.getObject().get(2).getCashPayments().toString(),Toast.LENGTH_SHORT).show();
                 }else {
                     try {
                         Toast.makeText(mcontext,response.errorBody().string(),Toast.LENGTH_LONG).show();
@@ -120,7 +121,11 @@ public class CompareReceipts extends AppCompatActivity  {
 
     private void ChartCompare(){
 
+        sp2 = findViewById(R.id.datestart);
+        sp3 = findViewById(R.id.datestop);
+
         lineChart = (LineChart) findViewById(R.id.lineChart);
+
 
         LineDataSet lineDataSet = new LineDataSet(dataValues1(),"รายรับจริง");
         lineDataSet.setColor(Color.parseColor("#2567EB"));

@@ -24,6 +24,7 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -45,6 +46,12 @@ public class CreditActivity extends AppCompatActivity {
             unipayt = 0.0, unipayk = 0.0,
             visat = 0.0, visak = 0.0;
 
+    String creditalls,
+            amaxts, amaxks,
+            jcbts, jcbks,
+            masterts, masterks,
+            unipayts, unipayks,
+            visats, visaks;
 //    //วันปัจจุบัน
 //    String st =" ";
 
@@ -53,11 +60,13 @@ public class CreditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credit);
         barChart = findViewById(R.id.barchart);
+
+        DecimalFormat formatter = new DecimalFormat("#,###,###.00");
         String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
 
         toolbar = findViewById(R.id.tbCredit);
         toolbar.setTitle("รายรับบัตรเครดิต");
-       toolbar.setSubtitle(date);
+        toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -97,12 +106,17 @@ public class CreditActivity extends AppCompatActivity {
         visat = B1.getVisa();
         visak = B2.getVisa();
 
-//        Log.i("AMMM", creditall.toString()+"\n K -- T");
-//        Log.i("AMMM", amaxk.toString()+" --  " + amaxt.toString());
-//        Log.i("AMMM", jcbk.toString()+" --  " + jcbt.toString());
-//        Log.i("AMMM", masterk.toString()+"  --  " + mastert.toString());
-//        Log.i("AMMM", unipayk.toString()+"  -- " + unipayt.toString());
-//        Log.i("AMMM", visak.toString()+" --  " +visat.toString());
+        creditalls = formatter.format(creditall);
+        amaxts = formatter.format(amaxt);
+        amaxks = formatter.format(amaxk);
+        jcbts = formatter.format(jcbt);
+        jcbks = formatter.format(jcbk);
+        masterts = formatter.format(mastert);
+        masterks = formatter.format(masterk);
+        unipayts = formatter.format(unipayt);
+        unipayks = formatter.format(unipayk);
+        visats = formatter.format(visat);
+        visaks = formatter.format(visak);
 
 
         setTextAndColor();
@@ -153,47 +167,47 @@ public class CreditActivity extends AppCompatActivity {
 
 
     private void setTextAndColor() {
-        tvcreditall.setText(creditall.toString());
+        tvcreditall.setText(creditalls);
 
-        tvamaxt.setText(amaxt.toString());
-        if(amaxt>0){
+        tvamaxt.setText(amaxts);
+        if (amaxt > 0) {
             tvamaxt.setTextColor(Color.parseColor("#4CAF50"));
         }
-        tvjcbt.setText(jcbt.toString());
-        if(jcbt>0){
+        tvjcbt.setText(jcbts);
+        if (jcbt > 0) {
             tvjcbt.setTextColor(Color.parseColor("#4CAF50"));
         }
-        tvmastert.setText(mastert.toString());
-        if(mastert>0){
+        tvmastert.setText(masterts);
+        if (mastert > 0) {
             tvmastert.setTextColor(Color.parseColor("#4CAF50"));
         }
-        tvvisat.setText(visat.toString());
-        if(visat>0){
+        tvvisat.setText(visats);
+        if (visat > 0) {
             tvvisat.setTextColor(Color.parseColor("#4CAF50"));
         }
-        tvunipayt.setText(unipayt.toString());
-        if(unipayt>0){
+        tvunipayt.setText(unipayts);
+        if (unipayt > 0) {
             tvunipayt.setTextColor(Color.parseColor("#4CAF50"));
         }
 
-        tvamaxk.setText(amaxk.toString());
-        if(amaxk>0){
+        tvamaxk.setText(amaxks);
+        if (amaxk > 0) {
             tvamaxk.setTextColor(Color.parseColor("#4CAF50"));
         }
-        tvjcbk.setText(jcbk.toString());
-        if(jcbk>0){
+        tvjcbk.setText(jcbks);
+        if (jcbk > 0) {
             tvjcbk.setTextColor(Color.parseColor("#4CAF50"));
         }
-        tvmasterk.setText(masterk.toString());
-        if(masterk>0){
+        tvmasterk.setText(masterks);
+        if (masterk > 0) {
             tvmasterk.setTextColor(Color.parseColor("#4CAF50"));
         }
-        tvvisak.setText(visak.toString());
-        if(visak>0){
+        tvvisak.setText(visaks);
+        if (visak > 0) {
             tvvisak.setTextColor(Color.parseColor("#4CAF50"));
         }
-        tvunipayk.setText(unipayk.toString());
-        if(unipayk>0){
+        tvunipayk.setText(unipayks);
+        if (unipayk > 0) {
             tvunipayk.setTextColor(Color.parseColor("#4CAF50"));
         }
     }

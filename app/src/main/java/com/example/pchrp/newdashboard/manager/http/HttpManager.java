@@ -2,23 +2,19 @@ package com.example.pchrp.newdashboard.manager.http;
 
 import android.content.Context;
 
-import com.example.pchrp.newdashboard.util.UnsafeOkHttpClient;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
-import com.inthecheesefactory.thecheeselibrary.manager.Contextor;
 
 import java.lang.reflect.Type;
 import java.util.Date;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.example.pchrp.newdashboard.util.UnsafeOkHttpClient.getUnsafeOkHttpClient;
 
 /**
  * Created by nuuneoi on 11/16/2014.

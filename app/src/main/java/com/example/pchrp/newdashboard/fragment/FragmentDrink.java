@@ -19,6 +19,7 @@ import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -148,7 +149,6 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         Set2.setDrawValues(true);
         Set3.setDrawValues(true);
 
-
         BarData data = new BarData(Set1, Set2, Set3);
         barChart.setData(data);
         data.setValueTextSize(15f);
@@ -158,17 +158,18 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         XAxis xAxis = barChart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(nameProduct));
         xAxis.setCenterAxisLabels(true);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+       xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setGranularity(1);
         xAxis.setGranularityEnabled(true);
         xAxis.setTextSize(10f);
+        xAxis.setLabelRotationAngle(90);
 
         barChart.setDragEnabled(true);
         barChart.setVisibleXRangeMaximum(2);
 
         //set Label Center
-        float groupSpace = 0.3f;
-        float barSpace = 0.02f;
+        float groupSpace = 0.5f;
+        float barSpace = 0f;
         float barWidth = 0.20f;
         data.setBarWidth(barWidth);
         //(barwidth + barspace) * no of bars + groupspace = 1
@@ -176,7 +177,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
 //        barChart.getXAxis().setAxisMaximum(0 + barChart.getBarData().getGroupWidth(groupSpace, barSpace) );
         barChart.getAxisLeft().setAxisMinimum(0);
         barChart.groupBars(0f, groupSpace, barSpace);
-
+        barChart.setDrawValueAboveBar(true);
         // Hide grid lines
         barChart.getAxisLeft().setEnabled(false);
         barChart.getAxisRight().setEnabled(false);
@@ -186,6 +187,15 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         barChart.getLegend().setEnabled(false);
         barChart.invalidate();
 
+        Legend l = barChart.getLegend();
+        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
+        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        l.setDrawInside(true);
+        l.setYOffset(20f);
+        l.setXOffset(0f);
+        l.setYEntrySpace(0f);
+        l.setTextSize(8f);
 
 //
     }
@@ -313,6 +323,12 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
+        if(v == btndrink){
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frame_drink,FragmentDrinkReport.newInstance())
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 }

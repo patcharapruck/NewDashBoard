@@ -1,6 +1,7 @@
 package com.example.pchrp.newdashboard.activity;
 
 import android.annotation.TargetApi;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +28,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -95,7 +98,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             tvmaindate.setText(DateMain);
 
-            reqAPI();
+            reqAPI(DateMain);
+
+            mainImgDate.setOnClickListener(this);
 
             cv_bill.setOnClickListener(this);
             Cv_pay.setOnClickListener(this);
@@ -129,17 +134,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private String getDateTime() {
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.ENGLISH);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
         Date date = new Date();
-        String formatDateTime = dateFormat.format(date);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, -1);
+        String formatDateTime = dateFormat.format(calendar.getTime());
 
         return formatDateTime;
     }
 
-    private void reqAPI() {
+    private void reqAPI(String date) {
 
         final Context mcontext = Contextor.getInstance().getContext();
-        String nn = "{\"property\":[],\"criteria\":{\"sql-obj-command\":\"( tb_sales_shift.open_date >= '2019-01-28 00:00:00' AND tb_sales_shift.open_date <= '2019-01-28 23:59:59')\",\"summary-date\":\"*\"},\"orderBy\":{\"InvoiceDocument-id\":\"desc\"},\"pagination\":{}}";
+        String nn = "{\"property\":[],\"criteria\":{\"sql-obj-command\":\"( tb_sales_shift.open_date >= '"+date+" 00:00:00' AND tb_sales_shift.open_date <= '"+date+" 23:59:59')\",\"summary-date\":\"*\"},\"orderBy\":{\"InvoiceDocument-id\":\"desc\"},\"pagination\":{}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
         Log.v("https",nn);
         Call<DashBoardDao> call = HttpManager.getInstance().getService().loadAPI(requestBody);
@@ -200,6 +208,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(MainActivity.this,CompareReceipts.class);
                 this.startActivity(intent);
 
+            }
+            if(v == mainImgDate){
+                Calendar c = Calendar.getInstance();
+
+                final int day = c.get(Calendar.DAY_OF_MONTH);
+                int month = c.get(Calendar.MONTH);
+                int year = c.get(Calendar.YEAR);
+
+                final DatePickerDialog dialog = new DatePickerDialog(MainActivity.this,new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month = month+1;
+                        String mm = ""+month;
+                        String dd = ""+dayOfMonth;
+
+                        if (month<10){
+                            mm = "0"+month;
+                        }
+                        if (dayOfMonth < 10){
+                            dd = "0"+dayOfMonth;
+                        }
+                        String A;
+                        tvmaindate.setText(year+ "/" + mm + "/" +dd);
+                        A = year+ "/" + mm + "/" +dd;
+                        reqAPI(A);
+                    }
+                },day,month,year);
+                dialog.show();
             }
         }
     }

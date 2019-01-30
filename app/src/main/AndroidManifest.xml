@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.CompareReceipts"></activity>
-        <activity android:name=".activity.DrinkReportActivity" />
         <activity android:name=".activity.RealIncomeActivity" />
         <activity android:name=".activity.CreditActivity" />
         <activity android:name=".activity.MainActivity">

@@ -4,10 +4,13 @@ package com.example.pchrp.newdashboard.fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
@@ -29,9 +32,10 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentDrink extends Fragment {
+public class FragmentDrink extends Fragment implements View.OnClickListener {
 
-    TextView tvtotalpd, tventertainpd, tvpurchasepd, tvwithdrawpd;
+    TextView tvtotalpd,tventertainpd,tvpurchasepd,tvwithdrawpd;
+    Button btndrink;
 
     ArrayList<String> nameProduct;
     ArrayList<Long> totalAllProduct;
@@ -63,7 +67,7 @@ public class FragmentDrink extends Fragment {
     }
 
     private void initInstances(View rootView) {
-        Odao = DashBoradManager.getInstance().getDao().getObject();
+        Odao =  DashBoradManager.getInstance().getDao().getObject();
         this.size = Odao.getSummaryUseProductList().size();
 
         nameProduct = new ArrayList<>(size);
@@ -72,14 +76,16 @@ public class FragmentDrink extends Fragment {
         purchaseProduct = new ArrayList<>(size);
         withdrawProduct = new ArrayList<>(size);
 
-        tvtotalpd = (TextView) rootView.findViewById(R.id.tvtotalpd);
-        tventertainpd = (TextView) rootView.findViewById(R.id.tventertainpd);
-        tvpurchasepd = (TextView) rootView.findViewById(R.id.tvpurchasepd);
-        tvwithdrawpd = (TextView) rootView.findViewById(R.id.tvwithdrawpd);
+        tvtotalpd = (TextView)rootView.findViewById(R.id.tvtotalpd);
+        tventertainpd = (TextView)rootView.findViewById(R.id.tventertainpd);
+        tvpurchasepd = (TextView)rootView.findViewById(R.id.tvpurchasepd);
+        tvwithdrawpd = (TextView)rootView.findViewById(R.id.tvwithdrawpd);
+        btndrink = (Button)rootView.findViewById(R.id.btndrink);
 
+        btndrink.setOnClickListener(this);
 
-        for (int i = 0; i < size; i++) {
-            String name = getnameProduct(i);
+        for(int i=0;i<size;i++){
+            String name =  getnameProduct(i);
             Long total = gettotalProduct(i);
             Long entertain = getEntertain(i);
             Long purchase = getPurchase(i);
@@ -92,26 +98,30 @@ public class FragmentDrink extends Fragment {
             withdrawProduct.add(withdraw);
         }
 
-        Long sumtotal = 0L, sumentertain = 0L, sumpurchase = 0L, sumwithdraw = 0L;
-        for (int i = 0; i < size; i++) {
+        Long sumtotal=0L,sumentertain=0L,sumpurchase=0L,sumwithdraw=0L;
+        for (int i=0;i<size;i++){
             sumtotal = sumtotal + totalAllProduct.get(i);
             sumentertain = sumentertain + entertainProduct.get(i);
             sumpurchase = sumpurchase + purchaseProduct.get(i);
             sumwithdraw = sumwithdraw + withdrawProduct.get(i);
         }
 
-        System.out.println(sumtotal);
-        System.out.println(sumentertain);
-        System.out.println(sumpurchase);
-        System.out.println(sumwithdraw);
-
-        System.out.println(size);
-
-        System.out.println(nameProduct);
-        System.out.println(totalAllProduct);
-        System.out.println(entertainProduct);
-        System.out.println(purchaseProduct);
-        System.out.println(withdrawProduct);
+        tvtotalpd.setText(sumtotal.toString());
+        if (sumtotal > 0){
+            tvtotalpd.setTextColor(Color.parseColor("#62BB47"));
+        }
+        tventertainpd.setText(sumentertain.toString());
+        if (sumentertain > 0){
+            tventertainpd.setTextColor(Color.parseColor("#62BB47"));
+        }
+        tvpurchasepd.setText(sumpurchase.toString());
+        if (sumpurchase > 0){
+            tvpurchasepd.setTextColor(Color.parseColor("#62BB47"));
+        }
+        tvwithdrawpd.setText(sumwithdraw.toString());
+        if (sumwithdraw > 0){
+            tvwithdrawpd.setTextColor(Color.parseColor("#62BB47"));
+        }
 
 
         barChart = rootView.findViewById(R.id.Hbarchart);
@@ -172,8 +182,8 @@ public class FragmentDrink extends Fragment {
     private Long getWithdraw(int i) {
         Long withdraw;
         try {
-            withdraw = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getWithdrawUse();
-        } catch (NullPointerException e) {
+            withdraw  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getWithdrawUse();
+        }catch (NullPointerException e){
             return 0L;
         }
         return withdraw;
@@ -182,8 +192,8 @@ public class FragmentDrink extends Fragment {
     private Long getPurchase(int i) {
         Long purchase;
         try {
-            purchase = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getPurchaseAmount();
-        } catch (NullPointerException e) {
+            purchase  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getPurchaseAmount();
+        }catch (NullPointerException e){
             return 0L;
         }
         return purchase;
@@ -192,8 +202,8 @@ public class FragmentDrink extends Fragment {
     private Long getEntertain(int i) {
         Long enter;
         try {
-            enter = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getEntertainAmount();
-        } catch (NullPointerException e) {
+            enter  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getEntertainAmount();
+        }catch (NullPointerException e){
             return 0L;
         }
         return enter;
@@ -202,8 +212,8 @@ public class FragmentDrink extends Fragment {
     private Long gettotalProduct(int i) {
         Long total;
         try {
-            total = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getTotalAll();
-        } catch (NullPointerException e) {
+            total  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getTotalAll();
+        }catch (NullPointerException e){
             return 0L;
         }
         return total;
@@ -212,8 +222,8 @@ public class FragmentDrink extends Fragment {
     private String getnameProduct(int i) {
         String name;
         try {
-            name = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getProduct().getProductNameEn();
-        } catch (NullPointerException e) {
+           name  = DashBoradManager.getInstance().getDao().getObject().getSummaryUseProductList().get(i).getProduct().getProductNameEn();
+        }catch (NullPointerException e){
             return "";
         }
         return name;
@@ -253,7 +263,7 @@ public class FragmentDrink extends Fragment {
     private ArrayList<BarEntry> withdrawUse() {
         ArrayList<BarEntry> barBnk1 = new ArrayList<>();
 
-        for (int i = 0; i < size; i++) {
+        for(int i=0;i<size;i++){
             barBnk1.add(new BarEntry(i, withdrawProduct.get(i)));
         }
         return barBnk1;
@@ -263,7 +273,7 @@ public class FragmentDrink extends Fragment {
     private ArrayList<BarEntry> purchaseAmount() {
         ArrayList<BarEntry> barBnk2 = new ArrayList<>();
 
-        for (int i = 0; i < size; i++) {
+        for(int i=0;i<size;i++){
             barBnk2.add(new BarEntry(i, purchaseProduct.get(i)));
         }
 //        barBnk2.add(new BarEntry(1, 20f));
@@ -278,7 +288,7 @@ public class FragmentDrink extends Fragment {
     private ArrayList<BarEntry> entertainAmount() {
         ArrayList<BarEntry> barBnk2 = new ArrayList<>();
 
-        for (int i = 0; i < size; i++) {
+        for(int i=0;i<size;i++){
             barBnk2.add(new BarEntry(i, entertainProduct.get(i)));
         }
 
@@ -289,6 +299,4 @@ public class FragmentDrink extends Fragment {
 //        barBnk2.add(new BarEntry(5, 0f));
         return barBnk2;
     }
-
-
 }

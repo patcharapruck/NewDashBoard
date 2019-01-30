@@ -16,6 +16,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -23,10 +24,18 @@ public class Test {
 
     public static void main(String args[]){
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.ENGLISH);
-        Date date = new Date();
-        System.out.println(dateFormat.format(date));
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
+//        Date date = new Date();
+//        System.out.println(dateFormat.format(date));
 
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, -1);
+        String yesterdayAsString = dateFormat.format(calendar.getTime());
+
+        System.out.println(dateFormat.format(calendar.getTime()));
 //        LocalDateTime now = LocalDateTime.now();
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").withLocale(Locale.US);
 //        String formatDateTime = now.format(formatter);

@@ -177,6 +177,7 @@
                                                 />
 
                                             <TextView
+                                                android:layout_width="fill_parent"
                                                 android:id="@+id/tvamaxt"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"
@@ -187,6 +188,7 @@
 
                                             <!--JCB-->
                                             <TextView
+
                                                 android:textColor="@color/black"
                                                 android:text="JCB"
                                                 android:layout_marginBottom="10dp"
@@ -194,6 +196,7 @@
                                                 />
 
                                             <TextView
+                                                android:layout_width="match_parent"
                                                 android:id="@+id/tvjcbt"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"
@@ -210,10 +213,12 @@
                                                 />
 
                                             <TextView
+                                                android:layout_width="match_parent"
                                                 android:id="@+id/tvmastert"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"
                                                 android:layout_marginLeft="10dp"
+
                                                 android:layout_marginBottom="5dp"
                                                 />
 
@@ -226,6 +231,7 @@
                                                 />
 
                                             <TextView
+                                                android:layout_width="match_parent"
                                                 android:id="@+id/tvunipayt"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"
@@ -242,6 +248,7 @@
                                                 />
 
                                             <TextView
+                                                android:layout_width="match_parent"
                                                 android:id="@+id/tvvisat"
                                                 android:textColor="#FF0000"
                                                 android:text="0.0"

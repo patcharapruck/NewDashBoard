@@ -39,7 +39,7 @@ public class FragmentDrinkReport extends Fragment {
     ArrayList<Long> totalAllProduct;
     ArrayList<String> nameProduct;
 
-    String[] drinkHeader={"ลำดับ","ชื่อสินค้า","จำนวนที่ขาย"};
+    String[] drinkHeader={"ชื่อสินค้า","จำนวนที่ขาย"};
     String[][] drinkData;
 //            ={
 //            {"1","J.W. BLACK","106"},
@@ -125,7 +125,7 @@ public class FragmentDrinkReport extends Fragment {
 
 
         final TableView<String[]> tableView =(TableView)rootView.findViewById(R.id.tableView);
-        tableView.setColumnCount(3);
+        tableView.setColumnCount(2);
         tableView.setHeaderBackgroundColor(Color.parseColor("#F6FDF7"));
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(getContext(),drinkHeader));
         tableView.setDataAdapter(new SimpleTableDataAdapter(getContext(),drinkData));

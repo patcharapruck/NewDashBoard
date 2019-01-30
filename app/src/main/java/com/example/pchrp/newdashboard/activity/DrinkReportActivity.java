@@ -33,7 +33,7 @@ public class DrinkReportActivity extends AppCompatActivity {
 
 
         final TableView<String[]> tableView =(TableView) findViewById(R.id.tableView);
-        tableView.setColumnCount(3);
+        tableView.setColumnCount(2);
         tableView.setHeaderBackgroundColor(Color.parseColor("#F6FDF7"));
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this,drinkHeader));
         tableView.setDataAdapter(new SimpleTableDataAdapter(this,drinkData));
@@ -49,7 +49,7 @@ public class DrinkReportActivity extends AppCompatActivity {
 
 
 
-    String[] drinkHeader={"ลำดับ","ชื่อสินค้า","จำนวนที่ขาย"};
+    String[] drinkHeader={"ชื่อสินค้า","จำนวนที่ขาย"};
     String[][] drinkData={
             {"1","J.W. BLACK","106"},
             {"2","J.W. BLUE","68"},

@@ -4,89 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CompareReceipts"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activity.CompareReceipts">
+
     <android.support.v7.widget.Toolbar
+        android:id="@+id/tbCompare"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/bg1"
-        android:id="@+id/tbCompare">
+        android:background="@color/bg1">
 
     </android.support.v7.widget.Toolbar>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="10">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:weightSum="15">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="รายวัน"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:layout_weight="3"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="ตั้งแต่"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:layout_weight="3"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2019/02/31"
-                android:layout_gravity="center"
-                android:layout_weight="2"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="ถึง"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:layout_weight="3"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2019/02/31"
-                android:layout_gravity="center"
-                android:layout_weight="2"/>
-        </LinearLayout>
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:background="@color/bg1">
+            android:orientation="vertical"
+            android:weightSum="10">
 
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/lineChart"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:weightSum="15">
 
-            </com.github.mikephil.charting.charts.LineChart>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="รายวัน"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="ตั้งแต่"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/datestart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:text="2019/02/31" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="ถึง"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/datestop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:text="2019/02/31" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/bg1"
+                android:orientation="horizontal">
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </com.github.mikephil.charting.charts.LineChart>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
-
-
-
-    </LinearLayout>
-
-</RelativeLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>

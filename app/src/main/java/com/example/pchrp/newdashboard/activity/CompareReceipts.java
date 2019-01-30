@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -44,7 +45,7 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
 
     LineChart lineChart;
     LineData lineData;
-    Spinner sp1, sp2, sp3;
+    Button sp2, sp3;
     Toolbar toolbar;
     ArrayList<Double> income;
     ArrayList<Double> revenue;
@@ -113,9 +114,9 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
     }
 
     private void ChartCompare(){
-        sp1 = findViewById(R.id.item);
-        sp2 = findViewById(R.id.dateStart);
-        sp3 = findViewById(R.id.dateStop);
+
+        sp2 = findViewById(R.id.datestart);
+        sp3 = findViewById(R.id.datestop);
 
         lineChart = (LineChart) findViewById(R.id.lineChart);
 
@@ -174,31 +175,19 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
 //        }
 
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.menu,R.layout.support_simple_spinner_dropdown_item);
-
-        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-
-        sp1.setAdapter(adapter);
-        sp1.setOnItemSelectedListener(this);
 
 
 
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
-                R.array.datestart,
-                R.layout.support_simple_spinner_dropdown_item);
-        adapter1.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
-        sp2.setAdapter(adapter1);
-        sp2.setOnItemSelectedListener(this);
 
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-                R.array.datestop,
-                R.layout.support_simple_spinner_dropdown_item);
-        adapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
-        sp3.setAdapter(adapter2);
-        sp3.setOnItemSelectedListener(this);
+
+
+
+
+
+
+
 
     }
 

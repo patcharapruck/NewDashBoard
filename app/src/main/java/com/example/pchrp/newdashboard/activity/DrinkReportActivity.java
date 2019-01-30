@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.pchrp.newdashboard.R;
+import com.example.pchrp.newdashboard.manager.Contextor;
+import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 
 import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.listeners.TableDataClickListener;
@@ -21,10 +23,11 @@ public class DrinkReportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drink_report);
+        String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
 
         toolbar = findViewById(R.id.tbDrinkReport);
         toolbar.setTitle("รายงานการใช้เครื่องดื่ม");
-        toolbar.setSubtitle("Day month Year");
+        toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

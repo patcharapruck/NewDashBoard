@@ -13,7 +13,9 @@ import com.example.pchrp.newdashboard.Dao.bankdao.BankItemDao;
 import com.example.pchrp.newdashboard.Dao.bankdao.BankItemKrungthaiDao;
 import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
+import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
+import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -51,10 +53,11 @@ public class CreditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credit);
         barChart = findViewById(R.id.barchart);
+        String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
 
         toolbar = findViewById(R.id.tbCredit);
         toolbar.setTitle("รายรับบัตรเครดิต");
-//        toolbar.setSubtitle(currentDateTimeString);
+       toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -147,6 +150,7 @@ public class CreditActivity extends AppCompatActivity {
 
 
     }
+
 
     private void setTextAndColor() {
         tvcreditall.setText(creditall.toString());

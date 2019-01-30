@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.activity.DrinkActivity;
 import com.example.pchrp.newdashboard.activity.MainActivity;
+import com.example.pchrp.newdashboard.manager.Contextor;
+import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 
 import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.listeners.TableDataClickListener;
@@ -65,12 +67,14 @@ public class FragmentDrinkReport extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_fragment_drink_report, container, false);
         initInstances(rootView);
+        String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+
         toolbar = rootView.findViewById(R.id.tbDrinkReport);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.getSupportActionBar().setTitle("รายงานปริมาณเครื่องดื่ม");
-        activity.getSupportActionBar().setSubtitle(" ว ัน เดือน ปี ");
+        activity.getSupportActionBar().setSubtitle(date);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

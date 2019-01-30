@@ -18,7 +18,9 @@ import android.widget.TextView;
 import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.activity.MainActivity;
+import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
+import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -68,13 +70,14 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_drink, container, false);
         initInstances(rootView);
+        String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
 
         toolbar = (Toolbar) rootView.findViewById(R.id.tbDrink);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.getSupportActionBar().setTitle("ปริมาณเครื่องดื่ม");
-        activity.getSupportActionBar().setSubtitle(" ว ัน เดือน ปี ");
+        activity.getSupportActionBar().setSubtitle(date);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,7 +185,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         //(barwidth + barspace) * no of bars + groupspace = 1
 
         barChart.getAxisLeft().setAxisMinimum(0);
-        barChart.groupBars(0f, groupSpace, barSpace);
+        barChart.groupBars(0, groupSpace, barSpace);
         barChart.setDrawValueAboveBar(true);
         // Hide grid lines
         barChart.getAxisLeft().setEnabled(false);

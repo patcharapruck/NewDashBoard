@@ -1,11 +1,13 @@
 package com.example.pchrp.newdashboard.activity;
 
+import android.content.Context;
 import android.content.Entity;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,15 +15,28 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.pchrp.newdashboard.Dao.CompareDao;
+import com.example.pchrp.newdashboard.Dao.DashBoardDao;
 import com.example.pchrp.newdashboard.R;
+import com.example.pchrp.newdashboard.manager.CompareManager;
+import com.example.pchrp.newdashboard.manager.Contextor;
+import com.example.pchrp.newdashboard.manager.DashBoradManager;
+import com.example.pchrp.newdashboard.manager.http.HttpManager;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CompareReceipts extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -37,6 +52,7 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare_receipts);
 
+        teqAPICompare();
         toolbar = findViewById(R.id.tbCompare);
         toolbar.setTitle("เปรียบเทียบรายรับ");
         toolbar.setSubtitle(" day / month / year ");
@@ -48,6 +64,35 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
 
         ChartCompare();
         InitInstant();
+    }
+
+    private void teqAPICompare() {
+        final Context mcontext = Contextor.getInstance().getContext();
+        String nn = "{\"property\":[],\"criteria\":{\"opening\":false,\"sql-obj-command\":\"( tb_sales_shift.open_date >= '2019-01-23 00:00:00' AND tb_sales_shift.open_date <= '2019-01-28 23:59:59')\"},\"orderBy\":{},\"pagination\":{}}";
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
+        Log.v("https",nn);
+        Call<CompareDao> call = HttpManager.getInstance().getService().loadAPIcompare(requestBody);
+        call.enqueue(new Callback<CompareDao>() {
+
+            @Override
+            public void onResponse(Call<CompareDao> call, Response<CompareDao> response) {
+                if(response.isSuccessful()){
+                    CompareDao dao = response.body();
+                    CompareManager.getInstance().setCompareDao(dao);
+                    Toast.makeText(mcontext,dao.getObject().get(2).getCashPayments().toString(),Toast.LENGTH_SHORT).show();
+                }else {
+                    try {
+                        Toast.makeText(mcontext,response.errorBody().string(),Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<CompareDao> call, Throwable t) {
+                Toast.makeText(mcontext,t.toString(),Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -136,7 +181,7 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
     }
 
     @Override

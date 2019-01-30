@@ -153,9 +153,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
 
         //set Label Center
         float groupSpace = 0.3f;
-        float barSpace = 0.02f; // x2 dataset
-        float barWidth = 0.20f; // x2 dataset
-// (0.02 + 0.45) * 2 + 0.06 = 1.00 -> interval per "group"
+        float barSpace = 0.02f;
+        float barWidth = 0.20f;
         data.setBarWidth(barWidth);
         //(barwidth + barspace) * no of bars + groupspace = 1
 
@@ -171,7 +170,6 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         barChart.getDescription().setEnabled(false);
         // Hide graph legend
         barChart.getLegend().setEnabled(false);
-
         barChart.invalidate();
 
 
@@ -298,5 +296,10 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
 //        barBnk2.add(new BarEntry(4, 0f));
 //        barBnk2.add(new BarEntry(5, 0f));
         return barBnk2;
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

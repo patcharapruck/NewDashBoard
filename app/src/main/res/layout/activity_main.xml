@@ -61,10 +61,10 @@
                        android:id="@+id/mainImgDate"
                        android:layout_width="match_parent"
                        android:layout_height="match_parent"
-                       android:text="year/month/day"
                        android:background="@color/bg1"
+                       android:fontFamily="@font/ekkamaistandardlight"
 
-                       />
+                       android:text="year/month/day" />
 
                </RelativeLayout>
 

@@ -1,5 +1,6 @@
 package com.example.pchrp.newdashboard.activity;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Entity;
 import android.content.pm.ActivityInfo;
@@ -9,10 +10,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -33,8 +36,13 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -42,14 +50,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CompareReceipts extends AppCompatActivity{
+public class CompareReceipts extends AppCompatActivity implements View.OnClickListener{
 
     LineChart lineChart;
     LineData lineData;
-    Button sp2, sp3;
+    Button sp2, sp3,btncalCP;
     Toolbar toolbar;
     ArrayList<Float> income;
     ArrayList<Float> revenue;
+
+    Date testdate1=null;
+    Date testdate2=null;
+
+    String datestart="",datestop="";
 
     int size;
     CompareDao Dao;
@@ -65,7 +78,7 @@ public class CompareReceipts extends AppCompatActivity{
 
     private void teqAPICompare() {
         final Context mcontext = Contextor.getInstance().getContext();
-        String nn = "{\"property\":[],\"criteria\":{\"opening\":false,\"sql-obj-command\":\"( tb_sales_shift.open_date >= '2019-01-23 00:00:00' AND tb_sales_shift.open_date <= '2019-01-28 23:59:59')\"},\"orderBy\":{},\"pagination\":{}}";
+        String nn = "{\"property\":[],\"criteria\":{\"opening\":false,\"sql-obj-command\":\"( tb_sales_shift.open_date >= '"+datestart+" 00:00:00' AND tb_sales_shift.open_date <= '"+datestop+" 23:59:59')\"},\"orderBy\":{},\"pagination\":{}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
         Call<CompareDao> call = HttpManager.getInstance().getService().loadAPIcompare(requestBody);
         call.enqueue(new Callback<CompareDao>() {
@@ -76,7 +89,7 @@ public class CompareReceipts extends AppCompatActivity{
                     CompareDao dao = response.body();
                     CompareManager.getInstance().setCompareDao(dao);
                     setListData();
-                    Toast.makeText(mcontext,dao.getObject().get(2).getCashPayments().toString(),Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(mcontext,dao.getObject().get(2).getCashPayments().toString(),Toast.LENGTH_SHORT).show();
                 }else {
                     try {
                         Toast.makeText(mcontext,response.errorBody().string(),Toast.LENGTH_LONG).show();
@@ -102,10 +115,10 @@ public class CompareReceipts extends AppCompatActivity{
 
         for(int i=0;i<size;i++){
 
-            float a = valueCashPayments(i);
-            float b = valueCreditCardPayments(i);
-            float c = valueCreditPayments(i);
-            float Sum = a + b + c;
+            float Cash = valueCashPayments(i);
+            float Credit = valueCreditCardPayments(i);
+            float CardCreddit = valueCreditPayments(i);
+            float Sum = Cash + Credit + CardCreddit;
 
             income.add(valueTotal(i));
             revenue.add(Sum);
@@ -166,9 +179,6 @@ public class CompareReceipts extends AppCompatActivity{
 
     private void ChartCompare(){
 
-        sp2 = findViewById(R.id.datestart);
-        sp3 = findViewById(R.id.datestop);
-
         lineChart = (LineChart) findViewById(R.id.lineChart);
 
 
@@ -189,7 +199,7 @@ public class CompareReceipts extends AppCompatActivity{
     }
     private ArrayList<Entry> dataValues1(){
         ArrayList<Entry> dataVals = new ArrayList<Entry>();
-        for(int i=0;i<6;i++){
+        for(int i=0;i<size;i++){
             dataVals.add(new Entry(i,revenue.get(i)));
         }
         return dataVals;
@@ -203,8 +213,6 @@ public class CompareReceipts extends AppCompatActivity{
     }
     private void InitInstant() {
         String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
-
-        teqAPICompare();
         toolbar = findViewById(R.id.tbCompare);
         toolbar.setTitle("เปรียบเทียบรายรับ");
         toolbar.setSubtitle(date);
@@ -212,5 +220,132 @@ public class CompareReceipts extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        btncalCP = (Button)findViewById(R.id.btncalCP);
+        sp2 = findViewById(R.id.datestart);
+        sp3 = findViewById(R.id.datestop);
+
+        btncalCP.setOnClickListener(this);
+        sp2.setOnClickListener(this);
+        sp3.setOnClickListener(this);
+
     }
+
+    @Override
+    public void onClick(View v) {
+        if(v == btncalCP){
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+            try {
+                testdate1 = sdf.parse(datestart);
+                testdate2 = sdf.parse(datestop);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            if(datestart.length()<=0||datestop.length()<=0){
+                Toast.makeText(Contextor.getInstance().getContext(),"กำหนดช่วงวันแสดงผล",Toast.LENGTH_LONG).show();
+            }
+            else if (datestart.equals(datestop)){
+                Toast.makeText(Contextor.getInstance().getContext(),"วันที่กำหนดตรงกัน",Toast.LENGTH_LONG).show();
+            }
+            else if (testdate1.after(testdate2)){
+                Toast.makeText(Contextor.getInstance().getContext(),"เกิดข้อผิดพลาดของรูปแบบวันที่",Toast.LENGTH_LONG).show();
+            }
+            else{
+                    teqAPICompare();
+            }
+
+        }
+        if(v==sp2){
+            calendarsetA();
+        }
+        if(v == sp3){
+            calendarsetB();
+        }
+    }
+
+    private void calendarsetA() {
+        Calendar c = Calendar.getInstance(Locale.ENGLISH);
+        c.add(Calendar.DATE,-1);
+        final int dayofmonth = c.get(Calendar.DAY_OF_MONTH);
+        int month = c.get(Calendar.MONTH)+1;
+        int year = c.get(Calendar.YEAR);
+        Date date = c.getTime();
+        Date d = null;
+        String oldDateString = "2019-01-06";
+
+        final DatePickerDialog dialog = new DatePickerDialog(CompareReceipts.this,new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month++;
+                String mm = ""+month;
+                String dd = ""+dayOfMonth;
+
+                if (month<10){
+                    mm = "0"+month;
+                }
+                if (dayOfMonth < 10){
+                    dd = "0"+dayOfMonth;
+                }
+
+                datestart = year+ "-" + mm + "-" +dd;
+                sp2.setText(datestart);
+
+            }
+        },year,month,dayofmonth);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        try {
+            d = sdf.parse(oldDateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        dialog.getDatePicker().setMinDate(d.getTime());
+        dialog.getDatePicker().setMaxDate(date.getTime());
+        dialog.show();
+
+    }
+
+    private void calendarsetB() {
+        Calendar c = Calendar.getInstance(Locale.ENGLISH);
+        c.add(Calendar.DATE,-1);
+        final int dayofmonth = c.get(Calendar.DAY_OF_MONTH);
+        int month = c.get(Calendar.MONTH)+1;
+        int year = c.get(Calendar.YEAR);
+        Date date = c.getTime();
+        Date d = null;
+        String oldDateString = "2019-01-06";
+
+        final DatePickerDialog dialog = new DatePickerDialog(CompareReceipts.this,new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month++;
+                String mm = ""+month;
+                String dd = ""+dayOfMonth;
+
+                if (month<10){
+                    mm = "0"+month;
+                }
+                if (dayOfMonth < 10){
+                    dd = "0"+dayOfMonth;
+                }
+
+                datestop = year+ "-" + mm + "-" +dd;
+                sp3.setText(datestop);
+
+            }
+        },year,month,dayofmonth);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        try {
+            d = sdf.parse(oldDateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        dialog.getDatePicker().setMinDate(d.getTime());
+        dialog.getDatePicker().setMaxDate(date.getTime());
+        dialog.show();
+
+    }
+
 }

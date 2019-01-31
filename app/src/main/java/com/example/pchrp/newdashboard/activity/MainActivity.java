@@ -24,6 +24,7 @@ import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -243,6 +244,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Calendar c = Calendar.getInstance(Locale.ENGLISH);
                 c.add(Calendar.DATE,-1);
                 Date date = c.getTime();
+                Date d = null;
+                String oldDateString = "2019/01/06";
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
+                try {
+                    d = sdf.parse(oldDateString);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                dialog.getDatePicker().setMinDate(d.getTime());
                 dialog.getDatePicker().setMaxDate(date.getTime());
                 dialog.show();
             }

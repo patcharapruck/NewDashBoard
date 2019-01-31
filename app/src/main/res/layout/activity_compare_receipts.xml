@@ -58,7 +58,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="2"
                     android:fontFamily="@font/ekkamaistandardlight"
-                    android:text="2019/02/31" />
+                    android:text="เลือกวันที่ต้องการ" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -77,7 +77,16 @@
                     android:layout_gravity="center"
                     android:layout_weight="2"
                     android:fontFamily="@font/ekkamaistandardlight"
-                    android:text="2019/02/31" />
+                    android:text="เลือกวันที่ต้องการ" />
+
+                <Button
+                    android:id="@+id/btncalCP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/ekkamaistandardlight"
+                    android:text=""/>
             </LinearLayout>
 
             <LinearLayout

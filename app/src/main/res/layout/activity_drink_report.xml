@@ -18,11 +18,10 @@
         android:layout_height="match_parent">
 
         <de.codecrafters.tableview.TableView
-
             android:id="@+id/tableView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:tableView_columnCount="2">
+            app:tableView_columnCount="3">
 
         </de.codecrafters.tableview.TableView>
     </RelativeLayout>

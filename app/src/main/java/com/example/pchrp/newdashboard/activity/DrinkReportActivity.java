@@ -35,36 +35,17 @@ public class DrinkReportActivity extends AppCompatActivity {
 
 
         final TableView<String[]> tableView =(TableView) findViewById(R.id.tableView);
-        tableView.setColumnCount(2);
+        tableView.setColumnCount(3);
         tableView.setHeaderBackgroundColor(Color.parseColor("#F6FDF7"));
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this,drinkHeader));
         tableView.setDataAdapter(new SimpleTableDataAdapter(this,drinkData));
-
-        tableView.addDataClickListener(new TableDataClickListener<String[]>() {
-            @Override
-            public void onDataClicked(int rowIndex, String[] clickedData) {
-//                Collections.sort();
-            }
-        });
 
     }
 
 
 
-    String[] drinkHeader={"ชื่อสินค้า","จำนวนที่ขาย"};
+    String[] drinkHeader={"ลำดับ","ชื่อสินค้า","จำนวนที่ขาย"};
     String[][] drinkData={
-            {"1","J.W. BLACK","106"},
-            {"2","J.W. BLUE","68"},
-            {"3","J.W. GOLD","10"},
-            {"4","J.W. SWING","5"},
-            {"1","J.W. BLACK","106"},
-            {"2","J.W. BLUE","68"},
-            {"3","J.W. GOLD","10"},
-            {"4","J.W. SWING","5"},
-            {"1","J.W. BLACK","106"},
-            {"2","J.W. BLUE","68"},
-            {"3","J.W. GOLD","10"},
-            {"4","J.W. SWING","5"},
             {"1","J.W. BLACK","106"},
             {"2","J.W. BLUE","68"},
             {"3","J.W. GOLD","10"},

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,8 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView menutextbill,menupay,menudrink,menureal,menucredit,menugraph;
         ImageView imgbill,imgpay,imgdrink,imgreal,imgcredit,imggraph;
 
-        TextView tvmaindate;
-        ImageView mainImgDate;
+//        TextView tvmaindate;
+        Button mainImgDate;
 
 
 
@@ -88,10 +89,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             imgcredit = (ImageView)findViewById(R.id.imgcredit);
             imggraph = (ImageView)findViewById(R.id.imggraph);
 
-            tvmaindate = (TextView)findViewById(R.id.tvmaindate);
-            mainImgDate = (ImageView)findViewById(R.id.mainImgDate);
+//            tvmaindate = (TextView)findViewById(R.id.tvmaindate);
+            mainImgDate = (Button) findViewById(R.id.mainImgDate);
 
-            tvmaindate.setText(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+            mainImgDate.setText(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
 
             reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
 
@@ -220,7 +221,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             dd = "0"+dayOfMonth;
                         }
                         String datecalendat;
-                        tvmaindate.setText(year+ "/" + mm + "/" +dd);
+                        mainImgDate.setText(year+ "/" + mm + "/" +dd);
                         datecalendat = year+ "/" + mm + "/" +dd;
 
                         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())

@@ -35,8 +35,8 @@ public class FragmentDrinkReport extends Fragment {
 
     ArrayList<Long> totalAllProduct;
     ArrayList<String> nameProduct;
-
-    String[] drinkHeader={"ชื่อสินค้า","จำนวนที่ขาย"};
+    ArrayList<Long> indexProduct;
+    String[] drinkHeader={"ลำดับ","ชื่อสินค้า","จำนวนที่ขาย"};
     String[][] drinkData;
 
     public static FragmentDrinkReport newInstance() {
@@ -83,36 +83,35 @@ public class FragmentDrinkReport extends Fragment {
 
         Odao = DashBoradManager.getInstance().getDao().getObject();
         this.size = Odao.getSummaryUseProductList().size();
-        drinkData = new String[size][2];
+        drinkData = new String[size][3];
 
+         indexProduct = new ArrayList<>(size);
         nameProduct = new ArrayList<>(size);
         totalAllProduct = new ArrayList<>(size);
 
         for(int i=0;i<size;i++){
             String name = getnameProduct(i);
             Long total = gettotalProduct(i);
+            int j= 1+i;
+
+            indexProduct.add((long) j);
 
             nameProduct.add(name);
             totalAllProduct.add(total);
         }
 
         for (int i=0;i<size;i++){
-            drinkData[i][0] = nameProduct.get(i);
-            drinkData[i][1] = totalAllProduct.get(i).toString();
+            drinkData[i][0]=indexProduct.get(i).toString();
+            drinkData[i][1] = nameProduct.get(i);
+            drinkData[i][2] = totalAllProduct.get(i).toString();
         }
 
 
         final TableView<String[]> tableView =(TableView)rootView.findViewById(R.id.tableView);
-        tableView.setColumnCount(2);
+        tableView.setColumnCount(3);
         tableView.setHeaderBackgroundColor(Color.parseColor("#F6FDF7"));
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(getContext(),drinkHeader));
         tableView.setDataAdapter(new SimpleTableDataAdapter(getContext(),drinkData));
-        tableView.addDataClickListener(new TableDataClickListener<String[]>() {
-            @Override
-            public void onDataClicked(int rowIndex, String[] clickedData) {
-//                Collections.sort();
-            }
-        });
 
     }
 

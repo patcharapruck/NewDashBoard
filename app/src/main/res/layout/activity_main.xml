@@ -57,14 +57,6 @@
                    android:layout_width="match_parent"
                    android:layout_height="30dp">
 
-                   <!--<TextView-->
-                       <!--android:id="@+id/tvmaindate"-->
-                       <!--android:layout_width="wrap_content"                     -->
-                       <!--android:layout_height="wrap_content"-->
-                       <!--android:layout_weight="1"-->
-                       <!--android:gravity="center"-->
-                       <!--android:layout_centerInParent="true"-->
-                       <!--android:text="..................." />-->
                    <Button
                        android:id="@+id/mainImgDate"
                        android:layout_width="match_parent"
@@ -73,9 +65,6 @@
                        android:background="@color/bg1"
 
                        />
-
-
-
 
                </RelativeLayout>
 

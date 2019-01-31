@@ -78,6 +78,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginBottom="70dp"
                             android:gravity="center"
+                            android:fontFamily="@font/EkkamaiStandard-Light"
                             android:text="รายรับจริง"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -87,6 +88,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
+                            android:fontFamily="@font/EkkamaiStandard-Light"
                             android:layout_marginTop="20dp"
                             android:text="0.0"
                             android:textColor="#4CAF50"
@@ -128,6 +130,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="50dp"
                                 android:gravity="center"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:textColor="@color/black"
                                 android:text="รายรับตามบิล"
                                 android:textSize="20sp"
@@ -138,6 +141,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:layout_marginTop="20dp"
                                 android:text="0.0"
                                 android:textColor="#4CAF50"
@@ -166,6 +170,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="50dp"
                                 android:gravity="center"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:textColor="@color/black"
                                 android:text="ยอดบัตรเครดิต"
                                 android:textSize="20sp"/>
@@ -175,6 +180,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:layout_marginTop="20dp"
                                 android:text="0.0"
                                 android:textColor="#4CAF50"
@@ -214,6 +220,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="center"
                                 android:text="รายการ"
                                 android:textColor="@color/black"
@@ -223,9 +230,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="center"
-                                android:textColor="@color/black"
                                 android:text="ยอดรวม"
+                                android:textColor="@color/black"
                                 android:textSize="25sp" />
                         </TableRow>
 
@@ -236,6 +244,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:text="รายการตามใบบิล"
                                 android:textSize="18sp" />
 
@@ -244,6 +253,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textSize="18sp" />
@@ -256,6 +266,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:text="เงินสด"
                                 android:textSize="18sp" />
 
@@ -264,6 +275,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textSize="18sp" />
@@ -279,6 +291,7 @@
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
 
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:text="ค้างชำระ"
                                 android:textSize="18sp" />
 
@@ -287,6 +300,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textSize="18sp" />
@@ -301,6 +315,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:text="ชำระผ่านบัตรเครดิต"
                                 android:textSize="18sp" />
 
@@ -309,6 +324,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textSize="18sp" />
@@ -323,6 +339,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:text="Credit"
                                 android:textSize="18sp" />
 
@@ -331,6 +348,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textSize="18sp" />
@@ -344,6 +362,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:text="Entertain"
                                 android:textSize="18sp" />
 
@@ -352,6 +371,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textSize="18sp" />
@@ -366,6 +386,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:text="ตัดยอด Member"
                                 android:textSize="18sp" />
 
@@ -374,6 +395,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textSize="18sp" />
@@ -388,6 +410,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:text="ค่าธรรมเนียม"
                                 android:textSize="18sp" />
 
@@ -396,6 +419,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textSize="18sp" />
@@ -410,6 +434,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:text="สรุปรายได้จริง"
                                 android:textSize="18sp" />
 
@@ -418,6 +443,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textSize="18sp" />

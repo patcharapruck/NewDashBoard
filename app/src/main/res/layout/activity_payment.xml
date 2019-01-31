@@ -205,6 +205,7 @@
                                 style="@style/font_card_main"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="center"
                                 android:text="ชำระแล้ว" />
 
@@ -212,6 +213,7 @@
                                 style="@style/font_pay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="center"
                                 android:text="60" />
                         </LinearLayout>
@@ -246,6 +248,7 @@
                                 style="@style/font_card_main"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="center"
                                 android:text="โต๊ะทั้งหมด" />
 
@@ -253,6 +256,7 @@
                                 style="@style/font_card_bill"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="center"
                                 android:text="100" />
                         </LinearLayout>
@@ -287,6 +291,7 @@
                                 style="@style/font_card_main"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="center"
                                 android:text="รอชำระ" />
 
@@ -294,6 +299,7 @@
                                 style="@style/font_notpay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/EkkamaiStandard-Light"
                                 android:gravity="center"
                                 android:text="40" />
                         </LinearLayout>

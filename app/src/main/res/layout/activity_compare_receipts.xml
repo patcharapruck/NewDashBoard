@@ -35,6 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
+                    android:fontFamily="@font/EkkamaiStandard-Light"
                     android:gravity="center"
                     android:text="รายวัน"
                     android:textColor="@color/black"
@@ -44,6 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
+                    android:fontFamily="@font/EkkamaiStandard-Light"
                     android:gravity="center"
                     android:text="ตั้งแต่"
                     android:textColor="@color/black"
@@ -55,12 +57,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="2"
+                    android:fontFamily="@font/EkkamaiStandard-Light"
                     android:text="2019/02/31" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
+                    android:fontFamily="@font/EkkamaiStandard-Light"
                     android:gravity="center"
                     android:text="ถึง"
                     android:textColor="@color/black"
@@ -72,6 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="2"
+                    android:fontFamily="@font/EkkamaiStandard-Light"
                     android:text="2019/02/31" />
             </LinearLayout>
 

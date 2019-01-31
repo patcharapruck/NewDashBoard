@@ -298,7 +298,7 @@
                                 android:text="รอชำระ" />
 
                             <TextView
-                                android:id="@+id/tvNptPay"
+                                android:id="@+id/tvNotPay"
                                 style="@style/font_notpay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

@@ -28,6 +28,7 @@ import com.example.pchrp.newdashboard.manager.PayManager;
 import com.example.pchrp.newdashboard.manager.http.HttpManager;
 import com.example.pchrp.newdashboard.manager.http.NotPayManager;
 import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
+import com.example.pchrp.newdashboard.util.SharedPrefDatePayManager;
 import com.razerdp.widget.animatedpieview.AnimatedPieView;
 import com.razerdp.widget.animatedpieview.AnimatedPieViewConfig;
 import com.razerdp.widget.animatedpieview.data.SimplePieInfo;
@@ -47,6 +48,7 @@ public class PaymentActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     TextView tvPay,tvNotPay,tvAll;
+    Long num = 0L,num2=0L,num3=0L;
 
 
 
@@ -59,7 +61,6 @@ public class PaymentActivity extends AppCompatActivity {
         initInstances();
         reqAPIpay();
         reqAPInotpay();
-
     }
 
     private void initInstances() {
@@ -73,6 +74,17 @@ public class PaymentActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         tvPay = (TextView)findViewById(R.id.tvPay);
+        tvNotPay = (TextView)findViewById(R.id.tvNotPay);
+        tvAll = (TextView)findViewById(R.id.tvAll);
+
+        num2 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getPay();
+        num3 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getNotPay();
+        num = num2+num3;
+
+        tvPay.setText(num2.toString());
+        tvNotPay.setText(num3.toString());
+        tvAll.setText(num.toString());
+
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -97,6 +109,9 @@ public class PaymentActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     NotPayItemColleationDao dao = response.body();
                     NotPayManager.getInstance().setPayItemColleationDao(dao);
+
+                    SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
+                            .saveNotPay(dao.getPagination().getTotalItem());
                 }else {
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }
@@ -120,7 +135,9 @@ public class PaymentActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     PayItemColleationDao dao = response.body();
                     PayManager.getInstance().setPayItemColleationDao(dao);
-                    tvPay.setText(PayManager.getInstance().getPayItemColleationDao().getPagination().getTotalItem().toString());
+
+                    SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
+                            .savePay(dao.getPagination().getTotalItem());
                 }else {
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }

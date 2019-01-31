@@ -1,5 +1,6 @@
 package com.example.pchrp.newdashboard.activity;
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -60,7 +61,7 @@ public class CreditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credit);
         barChart = findViewById(R.id.barchart);
-
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         DecimalFormat formatter = new DecimalFormat("#,###,###.00");
         String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
 

@@ -1,6 +1,7 @@
 package com.example.pchrp.newdashboard.activity;
 
 import android.app.DatePickerDialog;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -29,6 +30,7 @@ public class BillActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_bill);
         toolbar = findViewById(R.id.tbBill);
         toolbar.setTitle("รายรับตามบิล");
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);

@@ -1,5 +1,6 @@
 package com.example.pchrp.newdashboard.activity;
 
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +16,7 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         username = (EditText)findViewById(R.id.userId);
         password = (EditText)findViewById(R.id.passId);
         btnlogin = (Button)findViewById(R.id.btnLogin);

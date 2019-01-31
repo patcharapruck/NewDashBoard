@@ -25,6 +25,7 @@ import com.example.pchrp.newdashboard.manager.CompareManager;
 import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.example.pchrp.newdashboard.manager.http.HttpManager;
+import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -201,11 +202,12 @@ public class CompareReceipts extends AppCompatActivity{
         return dataVals;
     }
     private void InitInstant() {
+        String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
 
         teqAPICompare();
         toolbar = findViewById(R.id.tbCompare);
         toolbar.setTitle("เปรียบเทียบรายรับ");
-        toolbar.setSubtitle(" day / month / year ");
+        toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);

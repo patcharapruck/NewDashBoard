@@ -1,17 +1,16 @@
 package com.example.pchrp.newdashboard.Dao;
 
+import com.example.pchrp.newdashboard.Dao.pagination.PaginationNotPayDao;
 import com.example.pchrp.newdashboard.Dao.pagination.PaginationPayDao;
 import com.example.pchrp.newdashboard.Dao.payment.PayItemDao;
-import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class PayItemColleationDao {
+public class NotPayItemColleationDao {
 
     private Long statusCode;
     private String message;
-    private PaginationPayDao pagination;
+    private PaginationNotPayDao pagination;
     private List<PayItemDao> object;
 
     public Long getStatusCode() {
@@ -30,11 +29,11 @@ public class PayItemColleationDao {
         this.message = message;
     }
 
-    public PaginationPayDao getPagination() {
+    public PaginationNotPayDao getPagination() {
         return pagination;
     }
 
-    public void setPagination(PaginationPayDao pagination) {
+    public void setPagination(PaginationNotPayDao pagination) {
         this.pagination = pagination;
     }
 

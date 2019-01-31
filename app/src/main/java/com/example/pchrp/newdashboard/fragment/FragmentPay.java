@@ -64,37 +64,8 @@ public class FragmentPay extends Fragment {
         payMentAdapter = new PayMentAdapter();
         listViewPay.setAdapter(payMentAdapter);
 
-        reqAPIPay();
-
     }
 
-    private void reqAPIPay() {
-
-        final Context mcontext = Contextor.getInstance().getContext();
-        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 21 and f:salesShift.isOpening = 1\"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
-        Call<PayItemColleationDao> call = HttpManager.getInstance().getService().loadAPIPay(requestBody);
-        call.enqueue(new Callback<PayItemColleationDao>() {
-            @Override
-            public void onResponse(Call<PayItemColleationDao> call, Response<PayItemColleationDao> response) {
-                Log.v("http", String.valueOf(response.raw().code()));
-                if(response.isSuccessful()){
-                    PayItemColleationDao dao = response.body();
-                    PayManager.getInstance().setPayItemColleationDao(dao);
-                    listViewPay.deferNotifyDataSetChanged();
-                    Toast.makeText(mcontext,dao.getObject().get(0).getCustomerNam(),Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<PayItemColleationDao> call, Throwable t) {
-                Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อได้",Toast.LENGTH_LONG).show();
-            }
-        });
-
-    }
 
     @Override
     public void onStart() {

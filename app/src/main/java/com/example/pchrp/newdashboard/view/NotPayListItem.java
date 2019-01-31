@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.widget.TextView;
 
 import com.example.pchrp.newdashboard.R;
 import com.inthecheesefactory.thecheeselibrary.view.BaseCustomViewGroup;
@@ -14,6 +15,8 @@ import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
  * Created by nuuneoi on 11/16/2014.
  */
 public class NotPayListItem extends BaseCustomViewGroup {
+
+    TextView tvNpyId,tvNpyBill,tvNpyRoom,tvNpySale,tvNpyMonny;
 
     public NotPayListItem(Context context) {
         super(context);
@@ -48,7 +51,11 @@ public class NotPayListItem extends BaseCustomViewGroup {
     }
 
     private void initInstances() {
-        // findViewById here
+        tvNpyId = (TextView)findViewById(R.id.tvPpyId);
+        tvNpyBill = (TextView)findViewById(R.id.tvPpyBill);
+        tvNpyRoom = (TextView)findViewById(R.id.tvPpyRoom);
+        tvNpySale = (TextView)findViewById(R.id.tvPpySale);
+        tvNpyMonny = (TextView)findViewById(R.id.tvPpyMonny);
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -91,6 +98,26 @@ public class NotPayListItem extends BaseCustomViewGroup {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    public void setNotPayId(String NotpayId){
+        tvNpyId.setText(NotpayId);
+    }
+
+    public void setNotPayBill(String NotpayBill){
+        tvNpyBill.setText(NotpayBill);
+    }
+
+    public void setNotPayRoom(String NotpayRoom){
+        tvNpyRoom.setText(NotpayRoom);
+    }
+
+    public void setNotPaySale(String NotpaySaleId , String NotpaySaleName){
+        tvNpySale.setText(NotpaySaleId+":"+NotpaySaleName);
+    }
+
+    public void setNotPayMoney(Double NotpayMoney){
+        tvNpyMonny.setText(NotpayMoney.toString());
     }
 
 }

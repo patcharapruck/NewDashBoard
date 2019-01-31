@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -116,7 +117,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     android:text="ยอดเงินรวม(บาท)"
                     style="@style/font_head_pay" />
 
@@ -124,7 +125,7 @@
                     android:id="@+id/tvPpyMonny"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:text="0.0"
                     style="@style/textPay"
                     android:textColor="@color/color_pay"

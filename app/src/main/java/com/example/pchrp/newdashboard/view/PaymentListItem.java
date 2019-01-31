@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.widget.TextView;
 
 import com.example.pchrp.newdashboard.R;
 import com.inthecheesefactory.thecheeselibrary.view.BaseCustomViewGroup;
@@ -14,6 +15,8 @@ import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
  * Created by nuuneoi on 11/16/2014.
  */
 public class PaymentListItem extends BaseCustomViewGroup {
+
+    TextView tvPpyId,tvPpyBill,tvPpyRoom,tvPpySale,tvPpyMonny;
 
     public PaymentListItem(Context context) {
         super(context);
@@ -46,10 +49,15 @@ public class PaymentListItem extends BaseCustomViewGroup {
     private void initInflate() {
 
         inflate(getContext(), R.layout.customview_payment, this);
+
     }
 
     private void initInstances() {
-        // findViewById here
+        tvPpyId = (TextView)findViewById(R.id.tvPpyId);
+        tvPpyBill = (TextView)findViewById(R.id.tvPpyBill);
+        tvPpyRoom = (TextView)findViewById(R.id.tvPpyRoom);
+        tvPpySale = (TextView)findViewById(R.id.tvPpySale);
+        tvPpyMonny = (TextView)findViewById(R.id.tvPpyMonny);
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -92,5 +100,25 @@ public class PaymentListItem extends BaseCustomViewGroup {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    public void setPayId(String payId){
+        tvPpyId.setText(payId);
+    }
+
+    public void setPayBill(String payBill){
+        tvPpyBill.setText(payBill);
+    }
+
+    public void setPayRoom(String payRoom){
+        tvPpyRoom.setText(payRoom);
+    }
+
+    public void setPaySale(String paySaleId , String paySaleName){
+        tvPpySale.setText(paySaleId+":"+paySaleName);
+    }
+
+    public void setPayMoney(Double payMoney){
+        tvPpyMonny.setText(payMoney.toString());
     }
 }

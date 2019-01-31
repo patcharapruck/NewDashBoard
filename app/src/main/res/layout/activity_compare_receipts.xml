@@ -86,7 +86,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:fontFamily="@font/ekkamaistandardlight"
-                    android:text=""/>
+                    android:text="ตกลง" />
             </LinearLayout>
 
             <LinearLayout

@@ -76,6 +76,7 @@ public class RealIncomeActivity extends AppCompatActivity {
     private void setTextViewIncome() {
 
         DecimalFormat formatter = new DecimalFormat("#,###,###.00");
+
         ODao = DashBoradManager.getInstance().getDao().getObject();
 
         income = ODao.getIncome();

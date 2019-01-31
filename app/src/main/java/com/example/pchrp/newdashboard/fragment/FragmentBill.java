@@ -17,17 +17,20 @@ import com.razerdp.widget.animatedpieview.AnimatedPieView;
 import com.razerdp.widget.animatedpieview.AnimatedPieViewConfig;
 import com.razerdp.widget.animatedpieview.data.SimplePieInfo;
 
+import java.text.DecimalFormat;
+
 public class FragmentBill extends Fragment {
 
     AnimatedPieView mAnimatedPieView;
     AnimatedPieViewConfig config;
 
 
-    TextView tvincomebill,tvserivceDrinkCharge,tvmemberCharge,tvserviceCharge,tvproductPrice
-            ,tvfoodPrice,tvopenMemberAccount,tvserviceDringQty,tvpax;
+    String tincomebill, tserivceDrinkCharge, tmemberCharge, tserviceCharge, tproductPrice, tfoodPrice, topenMemberAccount, tserviceDringQty, tpax;
 
-    Double serivceDrinkCharge,memberCharge,foodPrice,productPrice,serviceCharge,incomebill;
-    Long pax,serviceDringQty,memberaccount;
+    TextView tvincomebill, tvserivceDrinkCharge, tvmemberCharge, tvserviceCharge, tvproductPrice, tvfoodPrice, tvopenMemberAccount, tvserviceDringQty, tvpax;
+
+    Double serivceDrinkCharge, memberCharge, foodPrice, productPrice, serviceCharge, incomebill;
+    Long pax, serviceDringQty, memberaccount;
 
     ObjectItemDao ODao;
 
@@ -59,30 +62,42 @@ public class FragmentBill extends Fragment {
 
         DrawPie();
 
-        tvincomebill = (TextView)rootView.findViewById(R.id.tvincomebill);
-        tvmemberCharge  = (TextView)rootView.findViewById(R.id.tvmemberCharge);
-        tvfoodPrice = (TextView)rootView.findViewById(R.id.tvfoodPrice);
-        tvserivceDrinkCharge = (TextView)rootView.findViewById(R.id.tvserivceDrinkCharge);
-        tvserviceCharge = (TextView)rootView.findViewById(R.id.tvserviceCharge);
-        tvserviceDringQty = (TextView)rootView.findViewById(R.id.tvserviceDringQty);
-        tvproductPrice = (TextView)rootView.findViewById(R.id.tvproductPrice);
-        tvpax = (TextView)rootView.findViewById(R.id.tvpax);
-        tvopenMemberAccount = (TextView)rootView.findViewById(R.id.tvopenMemberAccount);
+        tvincomebill = (TextView) rootView.findViewById(R.id.tvincomebill);
+        tvmemberCharge = (TextView) rootView.findViewById(R.id.tvmemberCharge);
+        tvfoodPrice = (TextView) rootView.findViewById(R.id.tvfoodPrice);
+        tvserivceDrinkCharge = (TextView) rootView.findViewById(R.id.tvserivceDrinkCharge);
+        tvserviceCharge = (TextView) rootView.findViewById(R.id.tvserviceCharge);
+        tvserviceDringQty = (TextView) rootView.findViewById(R.id.tvserviceDringQty);
+        tvproductPrice = (TextView) rootView.findViewById(R.id.tvproductPrice);
+        tvpax = (TextView) rootView.findViewById(R.id.tvpax);
+        tvopenMemberAccount = (TextView) rootView.findViewById(R.id.tvopenMemberAccount);
 
         setTextView(ODao);
     }
 
     private void setTextView(ObjectItemDao ODao) {
 
-        tvincomebill.setText(ODao.getIncome().toString());
-        tvmemberCharge.setText(ODao.getMemberCharge().toString());
-        tvfoodPrice.setText(ODao.getFoodPrice().toString());
-        tvserviceDringQty.setText(ODao.getServiceDringQty().toString());
-        tvserviceCharge.setText(ODao.getServiceCharge().toString());
-        tvserivceDrinkCharge.setText(ODao.getSerivceDrinkCharge().toString());
-        tvproductPrice.setText(ODao.getProductPrice().toString());
-        tvpax.setText(ODao.getPax().toString());
-        tvopenMemberAccount.setText(ODao.getOpenMemberAccount().toString());
+        DecimalFormat formatter = new DecimalFormat("#,###,###.00");
+        DecimalFormat formatt = new DecimalFormat("#,###,###");
+        tincomebill = formatter.format(ODao.getIncome());
+        tserivceDrinkCharge = formatter.format(ODao.getSerivceDrinkCharge());
+        tmemberCharge = formatter.format(ODao.getMemberCharge());
+        tserviceCharge = formatter.format(ODao.getServiceCharge());
+        tproductPrice = formatter.format(ODao.getProductPrice());
+        tfoodPrice = formatter.format(ODao.getFoodPrice());
+        topenMemberAccount = formatt.format(ODao.getOpenMemberAccount());
+        tserviceDringQty = formatt.format(ODao.getServiceDringQty());
+        tpax = formatt.format(ODao.getPax());
+
+        tvincomebill.setText(tincomebill);
+        tvmemberCharge.setText(tmemberCharge);
+        tvfoodPrice.setText(tfoodPrice);
+        tvserviceDringQty.setText(tserviceDringQty);
+        tvserviceCharge.setText(tmemberCharge);
+        tvserivceDrinkCharge.setText(tserivceDrinkCharge);
+        tvproductPrice.setText(tproductPrice);
+        tvpax.setText(tpax);
+        tvopenMemberAccount.setText(topenMemberAccount);
     }
 
     private void DrawPie() {
@@ -97,7 +112,7 @@ public class FragmentBill extends Fragment {
         config.startAngle(-90)// Starting angle offset
                 .addData(new SimplePieInfo(serivceDrinkCharge, Color.parseColor("#C0FF8C"), "ค่าดื่ม"))//Data (bean that implements the IPieInfo interface)
                 .addData(new SimplePieInfo(memberCharge, Color.parseColor("#FF8C9D"), "ค่า Member"))
-                .addData(new SimplePieInfo(foodPrice+productPrice+serviceCharge, Color.parseColor("#FFF78C"), "ค่าบริการต่างๆ")).drawText(true).duration(2000).textSize(20);
+                .addData(new SimplePieInfo(foodPrice + productPrice + serviceCharge, Color.parseColor("#FFF78C"), "ค่าบริการต่างๆ")).drawText(true).duration(2000).textSize(20);
         mAnimatedPieView.applyConfig(config);
         mAnimatedPieView.start();
     }

@@ -1,5 +1,6 @@
 package com.example.pchrp.newdashboard.Dao;
 
+import com.example.pchrp.newdashboard.Dao.payment.PayItemDao;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -7,23 +8,41 @@ import java.util.List;
 
 public class PayItemColleationDao {
 
-    @SerializedName("success") private boolean success;
-    @SerializedName("data") private List<PayItemDao> data;
+    private Long statusCode;
+    private String message;
+    private Object pagination;
+    private List<PayItemDao> object;
 
-    public boolean isSuccess() {
-        return success;
+    public Long getStatusCode() {
+        return statusCode;
     }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
+    public void setStatusCode(Long statusCode) {
+        this.statusCode = statusCode;
     }
 
-    public List<PayItemDao> getData() {
-        return data;
+    public String getMessage() {
+        return message;
     }
 
-    public void setData(List<PayItemDao> data) {
-        this.data = data;
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Object getPagination() {
+        return pagination;
+    }
+
+    public void setPagination(Object pagination) {
+        this.pagination = pagination;
+    }
+
+    public List<PayItemDao> getObject() {
+        return object;
+    }
+
+    public void setObject(List<PayItemDao> object) {
+        this.object = object;
     }
 }
 

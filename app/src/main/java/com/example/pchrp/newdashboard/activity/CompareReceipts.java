@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -40,14 +41,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CompareReceipts extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class CompareReceipts extends AppCompatActivity{
 
     LineChart lineChart;
     LineData lineData;
     Button sp2, sp3;
     Toolbar toolbar;
-    ArrayList<Double> income;
-    ArrayList<Double> revenue;
+    ArrayList<Float> income;
+    ArrayList<Float> revenue;
 
     int size;
     CompareDao Dao;
@@ -65,7 +66,6 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
         final Context mcontext = Contextor.getInstance().getContext();
         String nn = "{\"property\":[],\"criteria\":{\"opening\":false,\"sql-obj-command\":\"( tb_sales_shift.open_date >= '2019-01-23 00:00:00' AND tb_sales_shift.open_date <= '2019-01-28 23:59:59')\"},\"orderBy\":{},\"pagination\":{}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
-        Log.v("https",nn);
         Call<CompareDao> call = HttpManager.getInstance().getService().loadAPIcompare(requestBody);
         call.enqueue(new Callback<CompareDao>() {
 
@@ -74,6 +74,7 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
                 if(response.isSuccessful()){
                     CompareDao dao = response.body();
                     CompareManager.getInstance().setCompareDao(dao);
+                    setListData();
                     Toast.makeText(mcontext,dao.getObject().get(2).getCashPayments().toString(),Toast.LENGTH_SHORT).show();
                 }else {
                     try {
@@ -94,19 +95,62 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
 
     private void setListData() {
         Dao = CompareManager.getInstance().getCompareDao();
-
-        System.out.println("Dao");
         this.size = Dao.getObject().size();
-        income = new ArrayList<Double>(size);
-        revenue = new ArrayList<Double>(size);
+        income = new ArrayList<Float>(size);
+        revenue = new ArrayList<Float>(size);
+
         for(int i=0;i<size;i++){
 
-            Double Sum = Dao.getObject().get(i).getCashPayments()
-                    +Dao.getObject().get(i).getCreditCardPayments()
-                    +Dao.getObject().get(i).getCreditPayments();
-            income.add(Dao.getObject().get(i).getTotalIncome());
+            float a = valueCashPayments(i);
+            float b = valueCreditCardPayments(i);
+            float c = valueCreditPayments(i);
+            float Sum = a + b + c;
+
+            income.add(valueTotal(i));
             revenue.add(Sum);
         }
+
+        ChartCompare();
+    }
+
+    private float valueTotal(int i) {
+        float Total;
+        try {
+            Total = Dao.getObject().get(i).getTotalIncome();
+        } catch (NullPointerException e) {
+            return 0f;
+        }
+        return Total;
+    }
+
+    private float valueCreditPayments(int i) {
+        float CreditPayments;
+        try {
+            CreditPayments = Dao.getObject().get(i).getCreditPayments();
+        } catch (NullPointerException e) {
+            return 0f;
+        }
+        return CreditPayments;
+    }
+
+    private float valueCreditCardPayments(int i) {
+        float CreditCardPayments;
+        try {
+            CreditCardPayments = Dao.getObject().get(i).getCreditCardPayments();
+        } catch (NullPointerException e) {
+            return 0f;
+        }
+        return CreditCardPayments;
+    }
+
+    private float valueCashPayments(int i) {
+        float CashPayments;
+        try {
+            CashPayments = Dao.getObject().get(i).getCashPayments();
+        } catch (NullPointerException e) {
+            return 0f;
+        }
+        return CashPayments;
     }
 
     @Override
@@ -144,29 +188,15 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
     }
     private ArrayList<Entry> dataValues1(){
         ArrayList<Entry> dataVals = new ArrayList<Entry>();
-        ArrayList<Double> t1 = new ArrayList<Double>(5);
-        t1.add(1200D);
-        t1.add(1300D);
-        t1.add(1400D);
-        t1.add(1500D);
-        t1.add(1600D);
-       // t1.add(1700);
-        for(int i=0;i<size;i++){
-            dataVals.add(new Entry(i,t1.get(i).floatValue()));
+        for(int i=0;i<6;i++){
+            dataVals.add(new Entry(i,revenue.get(i)));
         }
         return dataVals;
     }
     private ArrayList<Entry> dataValues2(){
         ArrayList<Entry> dataVals = new ArrayList<Entry>();
-        ArrayList<Float> t1 = new ArrayList<Float>(5);
-        t1.add(1000f);
-        t1.add(1100f);
-        t1.add(1200f);
-        t1.add(1300f);
-        t1.add(1400f);
-       // t1.add(1500f);
-        for(int i=0;i<5;i++){
-            dataVals.add(new Entry(i,t1.get(i)));
+        for(int i=0;i<size;i++){
+            dataVals.add(new Entry(i,income.get(i)));
         }
         return dataVals;
     }
@@ -180,6 +210,5 @@ public class CompareReceipts extends AppCompatActivity implements AdapterView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        ChartCompare();
     }
 }

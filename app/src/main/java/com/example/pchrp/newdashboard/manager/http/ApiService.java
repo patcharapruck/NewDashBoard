@@ -26,7 +26,11 @@ public interface ApiService {
     @POST("restaurant/v1/salesshift/search")
     Call<CompareDao> loadAPIcompare(@Body RequestBody json);
 
-//    @POST("summary")
-//    Call<DashBoardDao> loadAPI();
+    @Headers({"Authorization:eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0MTg3X0hEV18xIiwiYXVkIjoiNzdBMEY3ODU0RDc4QzZFNjExRjE3RjY2OEVCNEM2NUEiLCJleHAiOjE1NDkxMTc5ODMsImlhdCI6MTU0ODUxMzE4M30.CU4OB8KSM1k9FSWMxy3HjUGc9auNWqLgSDhV7I3-HmpJ5Ziu1UJuK_ZfzKhSeyjoQPr-GWrJBW9gSiFdW7mm_Q",
+            "Content-Type:application/json"})
+    @POST("restaurant/v1/invoicedocument/search")
+    Call<PayItemColleationDao> loadAPIPay(@Body RequestBody json);
+
+
 
 }

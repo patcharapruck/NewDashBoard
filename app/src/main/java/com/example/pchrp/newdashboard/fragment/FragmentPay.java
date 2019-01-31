@@ -1,6 +1,7 @@
 package com.example.pchrp.newdashboard.fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,6 +15,9 @@ import com.example.pchrp.newdashboard.Dao.DashBoardDao;
 import com.example.pchrp.newdashboard.Dao.PayItemColleationDao;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.adapter.PayMentAdapter;
+import com.example.pchrp.newdashboard.manager.Contextor;
+import com.example.pchrp.newdashboard.manager.DashBoradManager;
+import com.example.pchrp.newdashboard.manager.PayManager;
 import com.example.pchrp.newdashboard.manager.http.HttpManager;
 
 import org.json.JSONStringer;
@@ -56,9 +60,38 @@ public class FragmentPay extends Fragment {
 
     private void initInstances(View rootView) {
 
+        reqAPIPay();
+
         listViewPay = (ListView) rootView.findViewById(R.id.list_pay);
         payMentAdapter = new PayMentAdapter();
         listViewPay.setAdapter(payMentAdapter);
+
+    }
+
+    private void reqAPIPay() {
+
+        final Context mcontext = Contextor.getInstance().getContext();
+        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 21 and f:salesShift.isOpening = 1\"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
+        Call<PayItemColleationDao> call = HttpManager.getInstance().getService().loadAPIPay(requestBody);
+        call.enqueue(new Callback<PayItemColleationDao>() {
+            @Override
+            public void onResponse(Call<PayItemColleationDao> call, Response<PayItemColleationDao> response) {
+                Log.v("http", String.valueOf(response.raw().code()));
+                if(response.isSuccessful()){
+                    PayItemColleationDao dao = response.body();
+                    PayManager.getInstance().setPayItemColleationDao(dao);
+                    Toast.makeText(mcontext,dao.getObject().get(0).getTotalPrice().toString(),Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PayItemColleationDao> call, Throwable t) {
+                Toast.makeText(mcontext,t.toString(),Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 

@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.example.pchrp.newdashboard.Dao.DashBoardDao;
 import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
-import com.inthecheesefactory.thecheeselibrary.manager.Contextor;
 
 public class DashBoradManager {
 

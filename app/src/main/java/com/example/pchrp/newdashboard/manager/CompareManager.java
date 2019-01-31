@@ -3,7 +3,7 @@ package com.example.pchrp.newdashboard.manager;
 import android.content.Context;
 
 import com.example.pchrp.newdashboard.Dao.CompareDao;
-import com.inthecheesefactory.thecheeselibrary.manager.Contextor;
+
 
 public class CompareManager {
 

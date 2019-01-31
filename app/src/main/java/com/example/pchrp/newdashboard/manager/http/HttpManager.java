@@ -45,7 +45,6 @@ public class HttpManager {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://103.13.31.63:8555/restaurant/api/")
-                //.baseUrl("http://192.168.1.66:8555/restaurant/api/restaurant/v1/bpm/dashboard/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 

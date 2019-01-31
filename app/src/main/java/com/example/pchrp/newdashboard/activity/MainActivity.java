@@ -148,7 +148,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final Context mcontext = Contextor.getInstance().getContext();
         String nn = "{\"property\":[],\"criteria\":{\"sql-obj-command\":\"( tb_sales_shift.open_date >= '"+date+" 00:00:00' AND tb_sales_shift.open_date <= '"+date+" 23:59:59')\",\"summary-date\":\"*\"},\"orderBy\":{\"InvoiceDocument-id\":\"desc\"},\"pagination\":{}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
-        Log.v("https",nn);
         Call<DashBoardDao> call = HttpManager.getInstance().getService().loadAPI(requestBody);
         call.enqueue(new Callback<DashBoardDao>() {
 
@@ -157,18 +156,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(response.isSuccessful()){
                     DashBoardDao dao = response.body();
                     DashBoradManager.getInstance().setDao(dao);
-                    Toast.makeText(mcontext,dao.getObject().getIncome().toString(),Toast.LENGTH_SHORT).show();
                 }else {
-                    try {
-                        Toast.makeText(mcontext,response.errorBody().string(),Toast.LENGTH_LONG).show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }
             }
             @Override
             public void onFailure(Call<DashBoardDao> call, Throwable t) {
-                Toast.makeText(mcontext,t.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อกับข้อมูลได้",Toast.LENGTH_LONG).show();
             }
         });
     }

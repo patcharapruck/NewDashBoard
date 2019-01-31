@@ -210,12 +210,13 @@
                                 android:text="ชำระแล้ว" />
 
                             <TextView
+                                android:id="@+id/tvPay"
                                 style="@style/font_pay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/ekkamaistandardlight"
                                 android:gravity="center"
-                                android:text="60" />
+                                android:text="0" />
                         </LinearLayout>
 
                     </RelativeLayout>
@@ -253,12 +254,13 @@
                                 android:text="โต๊ะทั้งหมด" />
 
                             <TextView
+                                android:id="@+id/tvAll"
                                 style="@style/font_card_bill"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/ekkamaistandardlight"
                                 android:gravity="center"
-                                android:text="100" />
+                                android:text="0" />
                         </LinearLayout>
 
                     </RelativeLayout>
@@ -296,12 +298,13 @@
                                 android:text="รอชำระ" />
 
                             <TextView
+                                android:id="@+id/tvNptPay"
                                 style="@style/font_notpay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/ekkamaistandardlight"
                                 android:gravity="center"
-                                android:text="40" />
+                                android:text="0" />
                         </LinearLayout>
 
                     </RelativeLayout>

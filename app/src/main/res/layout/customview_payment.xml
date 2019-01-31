@@ -29,11 +29,11 @@
                     style="@style/font_head_pay"/>
 
                 <TextView
-                    android:id="@+id/TV_ppy_id"
+                    android:id="@+id/tvPpyId"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="2019011503"
+                    android:text=""
                     style="@style/textPay" />
 
             </LinearLayout>
@@ -52,11 +52,11 @@
                     style="@style/font_head_pay" />
 
                 <TextView
-                    android:id="@+id/TV_ppy_bill"
+                    android:id="@+id/tvPpyBill"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="M1929 เคน / KENT"
+                    android:text=""
                     style="@style/textPay"/>
 
             </LinearLayout>
@@ -75,12 +75,12 @@
                     style="@style/font_head_pay" />
 
                 <TextView
-                    android:id="@+id/TV_ppy_room"
+                    android:id="@+id/tvPpyRoom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     style="@style/textPay"
-                    android:text="T-08" />
+                    android:text="" />
 
             </LinearLayout>
 
@@ -98,11 +98,11 @@
                     style="@style/font_head_pay" />
 
                 <TextView
-                    android:id="@+id/TV_ppy_sale"
+                    android:id="@+id/tvPpySale"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="1036:เกล"
+                    android:text=""
                     style="@style/textPay"/>
 
             </LinearLayout>
@@ -117,24 +117,19 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="ยอดเงินรวม"
+                    android:text="ยอดเงินรวม(บาท)"
                     style="@style/font_head_pay" />
 
                 <TextView
-                    android:id="@+id/TV_ppy_monny"
+                    android:id="@+id/tvPpyMonny"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="9,500.00"
+                    android:text="0.0"
                     style="@style/textPay"
                     android:textColor="@color/color_pay"
+                    android:gravity="right"
                     android:textSize="20sp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="บาท"
-                    style="@style/font_head_pay" />
 
             </LinearLayout>
 

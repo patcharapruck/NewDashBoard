@@ -4,17 +4,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.example.pchrp.newdashboard.Dao.payment.PayItemDao;
+import com.example.pchrp.newdashboard.manager.PayManager;
 import com.example.pchrp.newdashboard.view.PaymentListItem;
 
 public class PayMentAdapter extends BaseAdapter {
     @Override
     public int getCount() {
-        return 10000;
+        if(PayManager.getInstance().getPayItemColleationDao() == null)
+            return 0;
+        if (PayManager.getInstance().getPayItemColleationDao().getObject() == null)
+            return 0;
+        return PayManager.getInstance().getPayItemColleationDao().getObject().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return PayManager.getInstance().getPayItemColleationDao().getObject().get(position);
     }
 
     @Override
@@ -30,6 +36,13 @@ public class PayMentAdapter extends BaseAdapter {
         }else{
             item = new PaymentListItem(parent.getContext());
         }
+
+        PayItemDao dao = (PayItemDao) getItem(position);
+        item.setPayId(dao.getInvoiceCode());
+        item.setPayBill(dao.getCustomerNam());
+        item.setPayRoom(dao.getPlace().getPlaceType());
+        item.setPaySale(dao.getSales().getEmployeeCode(),dao.getSales().getNickName());
+        item.setPayMoney(dao.getTotalPrice());
         return item;
     }
 }

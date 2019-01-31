@@ -60,11 +60,11 @@ public class FragmentPay extends Fragment {
 
     private void initInstances(View rootView) {
 
-        reqAPIPay();
-
         listViewPay = (ListView) rootView.findViewById(R.id.list_pay);
         payMentAdapter = new PayMentAdapter();
         listViewPay.setAdapter(payMentAdapter);
+
+        reqAPIPay();
 
     }
 
@@ -81,7 +81,8 @@ public class FragmentPay extends Fragment {
                 if(response.isSuccessful()){
                     PayItemColleationDao dao = response.body();
                     PayManager.getInstance().setPayItemColleationDao(dao);
-                    Toast.makeText(mcontext,dao.getObject().get(0).getTotalPrice().toString(),Toast.LENGTH_SHORT).show();
+                    listViewPay.deferNotifyDataSetChanged();
+                    Toast.makeText(mcontext,dao.getObject().get(0).getCustomerNam(),Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }
@@ -89,7 +90,7 @@ public class FragmentPay extends Fragment {
 
             @Override
             public void onFailure(Call<PayItemColleationDao> call, Throwable t) {
-                Toast.makeText(mcontext,t.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อได้",Toast.LENGTH_LONG).show();
             }
         });
 

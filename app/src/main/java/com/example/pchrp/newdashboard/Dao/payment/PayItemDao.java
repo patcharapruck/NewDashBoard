@@ -3,7 +3,7 @@ package com.example.pchrp.newdashboard.Dao.payment;
 public class PayItemDao {
 
     private String invoiceCode;
-    private String customerNam;
+    private String customerName;
     private PayplaceItemDao place;
     private Double totalPrice;
     private PaysalesItemDao sales;
@@ -17,11 +17,11 @@ public class PayItemDao {
     }
 
     public String getCustomerNam() {
-        return customerNam;
+        return customerName;
     }
 
     public void setCustomerNam(String customerNam) {
-        this.customerNam = customerNam;
+        this.customerName = customerNam;
     }
 
     public PayplaceItemDao getPlace() {

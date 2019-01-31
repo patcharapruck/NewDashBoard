@@ -106,7 +106,7 @@ public class RealIncomeActivity extends AppCompatActivity {
         tvincome.setText(vincome);
         tvcashPayments.setText(vcashPayments);
         tvcredit.setText(vcreditPayments);
-        tvcreditPayments.setText(vcreditPayments);
+        tvcreditPayments.setText(vcreditCardPayments);
         tvrevenue.setText(vrevenue);
         tvcreditCardPayments.setText(vcreditCardPayments);
         tvmemberDebitPayments.setText(vmemberDebitPayments);

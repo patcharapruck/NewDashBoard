@@ -11,12 +11,15 @@ import com.example.pchrp.newdashboard.R;
 import com.inthecheesefactory.thecheeselibrary.view.BaseCustomViewGroup;
 import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by nuuneoi on 11/16/2014.
  */
 public class PaymentListItem extends BaseCustomViewGroup {
 
     TextView tvPpyId,tvPpyBill,tvPpyRoom,tvPpySale,tvPpyMonny;
+    String tPpyMonny;
 
     public PaymentListItem(Context context) {
         super(context);
@@ -58,6 +61,10 @@ public class PaymentListItem extends BaseCustomViewGroup {
         tvPpyRoom = (TextView)findViewById(R.id.tvPpyRoom);
         tvPpySale = (TextView)findViewById(R.id.tvPpySale);
         tvPpyMonny = (TextView)findViewById(R.id.tvPpyMonny);
+
+
+
+
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -119,6 +126,8 @@ public class PaymentListItem extends BaseCustomViewGroup {
     }
 
     public void setPayMoney(Double payMoney){
-        tvPpyMonny.setText(payMoney.toString());
+        DecimalFormat formatter = new DecimalFormat("#,###,###.00");
+        tPpyMonny = formatter.format(payMoney);
+        tvPpyMonny.setText(tPpyMonny);
     }
 }

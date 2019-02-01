@@ -23,21 +23,12 @@ public class BillActivity extends AppCompatActivity implements View.OnClickListe
     Toolbar toolbar;
     Button btncalendarbill;
     MainActivity activity = new MainActivity();
+    String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill);
-        toolbar = findViewById(R.id.tbBill);
-        toolbar.setTitle("รายรับตามบิล");
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
-        toolbar.setSubtitle(date);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        btncalendarbill = (Button)findViewById(R.id.btncalendarbill);
-        btncalendarbill.setOnClickListener(this);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -45,6 +36,14 @@ public class BillActivity extends AppCompatActivity implements View.OnClickListe
                     .commit();
         }
 
+        initInstances();
+
+    }
+
+    private void initInstances() {
+        toolbar = findViewById(R.id.tbBill);
+        btncalendarbill = (Button)findViewById(R.id.btncalendarbill);
+        btncalendarbill.setOnClickListener(this);
     }
 
     @Override
@@ -97,5 +96,33 @@ public class BillActivity extends AppCompatActivity implements View.OnClickListe
             dialog.show();
 
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+        toolbar.setTitle("รายรับตามบิล");
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        toolbar.setSubtitle(date);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

@@ -24,13 +24,13 @@ public class FragmentBill extends Fragment {
     AnimatedPieView mAnimatedPieView;
     AnimatedPieViewConfig config;
 
+    String tincomebill, tserivceDrinkCharge, tmemberCharge, tserviceCharge,
+            tproductPrice, tfoodPrice, topenMemberAccount, tserviceDringQty, tpax;
 
-    String tincomebill, tserivceDrinkCharge, tmemberCharge, tserviceCharge, tproductPrice, tfoodPrice, topenMemberAccount, tserviceDringQty, tpax;
-
-    TextView tvincomebill, tvserivceDrinkCharge, tvmemberCharge, tvserviceCharge, tvproductPrice, tvfoodPrice, tvopenMemberAccount, tvserviceDringQty, tvpax;
+    TextView tvincomebill, tvserivceDrinkCharge, tvmemberCharge, tvserviceCharge,
+            tvproductPrice, tvfoodPrice, tvopenMemberAccount, tvserviceDringQty, tvpax;
 
     Double serivceDrinkCharge, memberCharge, foodPrice, productPrice, serviceCharge, incomebill;
-    Long pax, serviceDringQty, memberaccount;
 
     ObjectItemDao ODao;
 
@@ -58,10 +58,6 @@ public class FragmentBill extends Fragment {
 
 
         mAnimatedPieView = rootView.findViewById(R.id.drew2);
-        this.ODao = DashBoradManager.getInstance().getDao().getObject();
-
-        DrawPie();
-
         tvincomebill = (TextView) rootView.findViewById(R.id.tvincomebill);
         tvmemberCharge = (TextView) rootView.findViewById(R.id.tvmemberCharge);
         tvfoodPrice = (TextView) rootView.findViewById(R.id.tvfoodPrice);
@@ -72,7 +68,6 @@ public class FragmentBill extends Fragment {
         tvpax = (TextView) rootView.findViewById(R.id.tvpax);
         tvopenMemberAccount = (TextView) rootView.findViewById(R.id.tvopenMemberAccount);
 
-        setTextView(ODao);
     }
 
     private void setTextView(ObjectItemDao ODao) {
@@ -120,6 +115,8 @@ public class FragmentBill extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        ODao = DashBoradManager.getInstance().getDao().getObject();
+
     }
 
     @Override
@@ -145,5 +142,12 @@ public class FragmentBill extends Fragment {
         if (savedInstanceState != null) {
             // Restore Instance State here
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        DrawPie();
+        setTextView(ODao);
     }
 }

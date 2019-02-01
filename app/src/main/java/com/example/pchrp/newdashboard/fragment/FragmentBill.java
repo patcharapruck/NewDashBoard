@@ -205,6 +205,8 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDateCalendar(dayOfMonth,month,year);
 
+                    getActivity().recreate();
+
                 }
             },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
                     ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()

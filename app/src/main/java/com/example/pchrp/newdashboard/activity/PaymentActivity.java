@@ -42,16 +42,12 @@ import retrofit2.Response;
 public class PaymentActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
     private ViewPager mViewPager;
-
     Toolbar toolbar;
-
     TextView tvPay,tvNotPay,tvAll;
     Long num = 0L,num2=0L,num3=0L;
-
-
-
+    String date;
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,42 +55,17 @@ public class PaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
 
         initInstances();
-        reqAPIpay();
-        reqAPInotpay();
     }
 
     private void initInstances() {
 
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
         toolbar = findViewById(R.id.tbPayment);
-        toolbar.setTitle("สถานะชำระเงินปัจจุบัน");
-        toolbar.setSubtitle(date);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         tvPay = (TextView)findViewById(R.id.tvPay);
         tvNotPay = (TextView)findViewById(R.id.tvNotPay);
         tvAll = (TextView)findViewById(R.id.tvAll);
 
-        num2 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getPay();
-        num3 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getNotPay();
-        num = num2+num3;
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-        tvPay.setText(num2.toString());
-        tvNotPay.setText(num3.toString());
-        tvAll.setText(num.toString());
-
-
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
     }
 
     private void reqAPInotpay() {
@@ -180,7 +151,52 @@ public class PaymentActivity extends AppCompatActivity {
         public int getCount() {
             return 2;
         }
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+
+        toolbar.setTitle("สถานะชำระเงินปัจจุบัน");
+        toolbar.setSubtitle(date);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        reqAPIpay();
+        reqAPInotpay();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        num2 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getPay();
+        num3 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getNotPay();
+        num = num2+num3;
+
+        tvPay.setText(num2.toString());
+        tvNotPay.setText(num3.toString());
+        tvAll.setText(num.toString());
+
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 }

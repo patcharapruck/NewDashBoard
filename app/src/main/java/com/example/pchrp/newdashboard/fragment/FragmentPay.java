@@ -19,6 +19,7 @@ import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.example.pchrp.newdashboard.manager.PayManager;
 import com.example.pchrp.newdashboard.manager.http.HttpManager;
+import com.example.pchrp.newdashboard.util.SharedPrefDatePayManager;
 
 import org.json.JSONStringer;
 
@@ -61,8 +62,7 @@ public class FragmentPay extends Fragment {
     private void initInstances(View rootView) {
 
         listViewPay = (ListView) rootView.findViewById(R.id.list_pay);
-        payMentAdapter = new PayMentAdapter();
-        listViewPay.setAdapter(payMentAdapter);
+        reqAPIpay();
 
     }
 
@@ -70,6 +70,8 @@ public class FragmentPay extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        payMentAdapter = new PayMentAdapter();
+        listViewPay.setAdapter(payMentAdapter);
     }
 
     @Override
@@ -95,5 +97,31 @@ public class FragmentPay extends Fragment {
         if (savedInstanceState != null) {
             // Restore Instance State here
         }
+    }
+
+    private void reqAPIpay() {
+        final Context mcontext = Contextor.getInstance().getContext();
+        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 21 and f:salesShift.isOpening = 1\"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
+        Call<PayItemColleationDao> call = HttpManager.getInstance().getService().loadAPIPay(requestBody);
+        call.enqueue(new Callback<PayItemColleationDao>() {
+            @Override
+            public void onResponse(Call<PayItemColleationDao> call, Response<PayItemColleationDao> response) {
+                if(response.isSuccessful()){
+                    PayItemColleationDao dao = response.body();
+                    PayManager.getInstance().setPayItemColleationDao(dao);
+                    listViewPay.deferNotifyDataSetChanged();
+                    SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
+                            .savePay(dao.getPagination().getTotalItem());
+                }else {
+                    Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PayItemColleationDao> call, Throwable t) {
+                Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อได้",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

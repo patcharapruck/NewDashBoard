@@ -206,6 +206,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
             if(v == mainImgDate){
+                int day = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth();
+                int month = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth();
+                int year = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear();
 
                 final DatePickerDialog dialog = new DatePickerDialog(MainActivity.this,new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -232,13 +235,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                                 .saveDateCalendar(dayOfMonth,month,year);
 
-                        System.out.println(dayOfMonth+"/"+month+"/"+year);
-
-
                     }
-                },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
-                        ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()
-                        ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
+                },year,month,day);
 
                 Calendar c = Calendar.getInstance(Locale.ENGLISH);
                 c.add(Calendar.DATE,-1);

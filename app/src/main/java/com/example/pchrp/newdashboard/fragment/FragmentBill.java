@@ -30,6 +30,7 @@ public class FragmentBill extends Fragment {
     TextView tvincomebill, tvserivceDrinkCharge, tvmemberCharge, tvserviceCharge, tvproductPrice, tvfoodPrice, tvopenMemberAccount, tvserviceDringQty, tvpax;
 
     Double serivceDrinkCharge, memberCharge, foodPrice, productPrice, serviceCharge, incomebill;
+
     Long pax, serviceDringQty, memberaccount;
 
     ObjectItemDao ODao;
@@ -93,7 +94,7 @@ public class FragmentBill extends Fragment {
         tvmemberCharge.setText(tmemberCharge);
         tvfoodPrice.setText(tfoodPrice);
         tvserviceDringQty.setText(tserviceDringQty);
-        tvserviceCharge.setText(tmemberCharge);
+        tvserviceCharge.setText(tserviceCharge);
         tvserivceDrinkCharge.setText(tserivceDrinkCharge);
         tvproductPrice.setText(tproductPrice);
         tvpax.setText(tpax);
@@ -110,9 +111,9 @@ public class FragmentBill extends Fragment {
 
         config = new AnimatedPieViewConfig();
         config.startAngle(-90)// Starting angle offset
-                .addData(new SimplePieInfo(serivceDrinkCharge, Color.parseColor("#C0FF8C"), "ค่าดื่ม"))//Data (bean that implements the IPieInfo interface)
-                .addData(new SimplePieInfo(memberCharge, Color.parseColor("#FF8C9D"), "ค่า Member"))
-                .addData(new SimplePieInfo(foodPrice + productPrice + serviceCharge, Color.parseColor("#FFF78C"), "ค่าบริการต่างๆ")).drawText(true).duration(2000).textSize(20);
+                .addData(new SimplePieInfo(serivceDrinkCharge, Color.parseColor("#057BFF"), "ค่าดื่ม"))//Data (bean that implements the IPieInfo interface)
+                .addData(new SimplePieInfo(memberCharge, Color.parseColor("#BC79DC"), "ค่า Member"))
+                .addData(new SimplePieInfo(foodPrice + productPrice + serviceCharge, Color.parseColor("#04A2FF"), "ค่าบริการต่างๆ")).drawText(true).duration(2000).textSize(20);
         mAnimatedPieView.applyConfig(config);
         mAnimatedPieView.start();
     }

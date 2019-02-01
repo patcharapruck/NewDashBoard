@@ -68,9 +68,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/ekkamaistandardlight"
                         android:gravity="center"
                         android:text="ยอดรวมทั้งหมด"
+                        android:fontFamily="@font/supermarket"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -90,9 +90,9 @@
                             android:id="@+id/tvcreditall"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/ekkamaistandardlight"
                             android:gravity="center"
                             android:text="0.0"
+                            android:fontFamily="@font/supermarket"
                             android:textColor="@color/text_money_pay"
                             android:textSize="24dp"
                             android:textStyle="bold" />
@@ -146,14 +146,13 @@
                                         >
                                         <ImageView
                                             android:layout_width="50dp"
-                                            android:layout_height="50dp"
+                                            android:layout_height="match_parent"
                                             android:src="@drawable/imb1"/>
 
                                         <TextView
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_marginLeft="40dp"
-                                            android:fontFamily="@font/ekkamaistandardlight"
                                             android:gravity="center"
                                             android:text="ธนาคารธนชาต"
                                             android:textColor="@color/white" />
@@ -177,7 +176,7 @@
                                                 android:layout_marginLeft="5dp"
                                                 android:layout_marginTop="10dp"
                                                 android:layout_marginBottom="10dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="A-MAX"
                                                 android:textColor="@color/black" />
 
@@ -186,7 +185,7 @@
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginTop="10dp"
                                                 android:layout_marginBottom="5dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="0.0"
                                                 android:textColor="#FF0000"
                                                 app:layout_gravity="right" />
@@ -196,7 +195,7 @@
 
                                                 android:layout_marginLeft="5dp"
                                                 android:layout_marginBottom="10dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="JCB"
                                                 android:textColor="@color/black" />
 
@@ -205,7 +204,7 @@
 
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginBottom="5dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="0.0"
                                                 android:textColor="#FF0000"
                                                 app:layout_gravity="right" />
@@ -214,7 +213,7 @@
                                             <TextView
                                                 android:layout_marginLeft="5dp"
                                                 android:layout_marginBottom="10dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="MASTER"
                                                 android:textColor="@color/black" />
 
@@ -222,7 +221,7 @@
                                                 android:id="@+id/tvmastert"
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginBottom="5dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="0.0"
 
                                                 android:textColor="#FF0000"
@@ -232,7 +231,7 @@
                                             <TextView
                                                 android:layout_marginLeft="5dp"
                                                 android:layout_marginBottom="10dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="UNIPAY"
                                                 android:textColor="@color/black" />
 
@@ -240,7 +239,7 @@
                                                 android:id="@+id/tvunipayt"
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginBottom="5dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="0.0"
                                                 android:textColor="#FF0000"
                                                 app:layout_gravity="right" />
@@ -249,7 +248,7 @@
                                             <TextView
                                                 android:layout_marginLeft="5dp"
                                                 android:layout_marginBottom="10dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="VISA"
                                                 android:textColor="@color/black" />
 
@@ -257,7 +256,7 @@
                                                 android:id="@+id/tvvisat"
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginBottom="5dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="0.0"
                                                 android:textColor="#FF0000"
                                                 app:layout_gravity="right" />
@@ -294,14 +293,13 @@
                                         >
                                         <ImageView
                                             android:layout_width="50dp"
-                                            android:layout_height="50dp"
+                                            android:layout_height="match_parent"
                                             android:src="@drawable/imb2"/>
 
                                         <TextView
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
-                                            android:layout_marginLeft="30dp"
-                                            android:fontFamily="@font/ekkamaistandardlight"
+                                            android:layout_marginLeft="40dp"
                                             android:gravity="center"
                                             android:text="ธนาคารกรุงเทพ"
                                             android:textColor="@color/white" />
@@ -324,7 +322,7 @@
                                                 android:layout_marginLeft="5dp"
                                                 android:layout_marginTop="10dp"
                                                 android:layout_marginBottom="10dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="A-MAX"
 
                                                 android:textColor="@color/black" />
@@ -334,7 +332,7 @@
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginTop="10dp"
                                                 android:layout_marginBottom="5dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="0.0"
                                                 android:textColor="#FF0000"
                                                 app:layout_gravity="right" />
@@ -343,7 +341,7 @@
                                             <TextView
                                                 android:layout_marginLeft="5dp"
                                                 android:layout_marginBottom="10dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="JCB"
                                                 android:textColor="@color/black" />
 
@@ -351,7 +349,7 @@
                                                 android:id="@+id/tvjcbk"
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginBottom="5dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="0.0"
                                                 android:textColor="#FF0000"
                                                 app:layout_gravity="right" />
@@ -360,7 +358,7 @@
                                             <TextView
                                                 android:layout_marginLeft="5dp"
                                                 android:layout_marginBottom="10dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="MASTER"
                                                 android:textColor="@color/black" />
 
@@ -368,7 +366,7 @@
                                                 android:id="@+id/tvmasterk"
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginBottom="5dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="0.0"
                                                 android:textColor="#FF0000"
                                                 app:layout_gravity="right" />
@@ -378,7 +376,7 @@
 
                                                 android:layout_marginLeft="5dp"
                                                 android:layout_marginBottom="10dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="UNIPAY"
                                                 android:textColor="@color/black" />
 
@@ -386,7 +384,7 @@
                                                 android:id="@+id/tvunipayk"
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginBottom="5dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="0.0"
                                                 android:textColor="#FF0000"
                                                 app:layout_gravity="right" />
@@ -395,7 +393,7 @@
                                             <TextView
                                                 android:layout_marginLeft="5dp"
                                                 android:layout_marginBottom="10dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="VISA"
                                                 android:textColor="@color/black" />
 
@@ -403,7 +401,7 @@
                                                 android:id="@+id/tvvisak"
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginBottom="5dp"
-                                                android:fontFamily="@font/ekkamaistandardlight"
+                                                android:fontFamily="@font/supermarket"
                                                 android:text="0.0"
                                                 android:textColor="#FF0000"
                                                 app:layout_gravity="right" />

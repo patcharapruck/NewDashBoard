@@ -30,9 +30,12 @@ import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.example.pchrp.newdashboard.manager.http.HttpManager;
 import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.io.IOException;
@@ -58,6 +61,7 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
     Toolbar toolbar;
     ArrayList<Float> income;
     ArrayList<Float> revenue;
+    ArrayList<String> dateOnLine;
 
     Date testdate1=null;
     Date testdate2=null;
@@ -176,16 +180,16 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
 
         return super.onOptionsItemSelected(item);
     }
-
+//line chart
     private void ChartCompare(){
 
         lineChart = (LineChart) findViewById(R.id.lineChart);
 
 
         LineDataSet lineDataSet = new LineDataSet(dataValues1(),"รายรับจริง");
-        lineDataSet.setColor(Color.parseColor("#2567EB"));
+        lineDataSet.setColor(Color.parseColor("#4B2685"));
         LineDataSet lineDataSet1 = new LineDataSet(dataValues2(),"รายรับตามบิล");
-        lineDataSet.setColor(Color.parseColor("#008712"));
+        lineDataSet.setColor(Color.parseColor("#006138"));
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet);
@@ -193,8 +197,48 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         dataSets1.add(lineDataSet1);
         LineData data = new LineData(lineDataSet,lineDataSet1);
 
+        data.setValueTextSize(10f);
+        lineDataSet.setLineWidth(5f);
+        lineDataSet1.setLineWidth(5f);
+        XAxis xAxis = new XAxis();
+       lineChart.getXAxis().setValueFormatter(new IAxisValueFormatter() {
+           @Override
+           public String getFormattedValue(float value, AxisBase axis) {
+
+
+               return null;
+           }
+       });
+
+
+
         lineChart.setData(data);
+
+
         lineChart.invalidate();
+
+    }
+
+
+    private ArrayList<String> dateOnLine(){
+        Calendar c = Calendar.getInstance(Locale.ENGLISH);
+        c.add(Calendar.DATE,-1);
+        final int dayofmonth = c.get(Calendar.DAY_OF_MONTH);
+        int month = c.get(Calendar.MONTH);
+        int year = c.get(Calendar.YEAR);
+        Date date = c.getTime();
+        Date d = null;
+        String oldDateString = "2019-01-06";
+
+
+
+        ArrayList<String> dateOnLine = new ArrayList<>();
+
+        for(int i=0;i<size;i++){
+            dateOnLine.add(oldDateString);
+        }
+
+        return dateOnLine;
 
     }
     private ArrayList<Entry> dataValues1(){
@@ -268,7 +312,7 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         Calendar c = Calendar.getInstance(Locale.ENGLISH);
         c.add(Calendar.DATE,-1);
         final int dayofmonth = c.get(Calendar.DAY_OF_MONTH);
-        int month = c.get(Calendar.MONTH)+1;
+        int month = c.get(Calendar.MONTH);
         int year = c.get(Calendar.YEAR);
         Date date = c.getTime();
         Date d = null;

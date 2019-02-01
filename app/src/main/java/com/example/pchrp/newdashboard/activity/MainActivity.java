@@ -21,6 +21,7 @@ import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
 import com.example.pchrp.newdashboard.manager.http.HttpManager;
 import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
+import com.example.pchrp.newdashboard.util.SharedPrefManager;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -29,7 +30,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 
+import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -43,8 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         CardView cv_bill,Cv_pay,Cv_drink,Cv_real,Cv_credit,Cv_graph;
         TextView menutextbill,menupay,menudrink,menureal,menucredit,menugraph;
         ImageView imgbill,imgpay,imgdrink,imgreal,imgcredit,imggraph;
-
-//        TextView tvmaindate;
         Button mainImgDate;
 
 
@@ -83,39 +84,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             imgreal = (ImageView)findViewById(R.id.imgreal);
             imgcredit = (ImageView)findViewById(R.id.imgcredit);
             imggraph = (ImageView)findViewById(R.id.imggraph);
-
-//            tvmaindate = (TextView)findViewById(R.id.tvmaindate);
             mainImgDate = (Button) findViewById(R.id.mainImgDate);
 
-            mainImgDate.setText(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+            setClickfuntion();
 
-            reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
-
-            mainImgDate.setOnClickListener(this);
-
-            cv_bill.setOnClickListener(this);
-            Cv_pay.setOnClickListener(this);
-            Cv_drink.setOnClickListener(this);
-            Cv_real.setOnClickListener(this);
-            Cv_credit.setOnClickListener(this);
-            Cv_graph.setOnClickListener(this);
-
-
-
-            menutextbill.setOnClickListener(this);
-            menupay.setOnClickListener(this);
-            menudrink.setOnClickListener(this);
-            menureal.setOnClickListener(this);
-            menucredit.setOnClickListener(this);
-            menugraph.setOnClickListener(this);
-
-            imgbill.setOnClickListener(this);
-            imgpay.setOnClickListener(this);
-            imgdrink.setOnClickListener(this);
-            imgreal.setOnClickListener(this);
-            imgcredit.setOnClickListener(this);
-            imggraph.setOnClickListener(this);
         }
+
+    private void setClickfuntion() {
+
+        mainImgDate.setOnClickListener(this);
+        cv_bill.setOnClickListener(this);
+        Cv_pay.setOnClickListener(this);
+        Cv_drink.setOnClickListener(this);
+        Cv_real.setOnClickListener(this);
+        Cv_credit.setOnClickListener(this);
+        Cv_graph.setOnClickListener(this);
+
+
+
+        menutextbill.setOnClickListener(this);
+        menupay.setOnClickListener(this);
+        menudrink.setOnClickListener(this);
+        menureal.setOnClickListener(this);
+        menucredit.setOnClickListener(this);
+        menugraph.setOnClickListener(this);
+
+        imgbill.setOnClickListener(this);
+        imgpay.setOnClickListener(this);
+        imgdrink.setOnClickListener(this);
+        imgreal.setOnClickListener(this);
+        imgcredit.setOnClickListener(this);
+        imggraph.setOnClickListener(this);
+    }
 
 
     private void getDateTime() {
@@ -133,7 +133,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .saveDatereq(formatDateTime);
         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                 .saveDateCalendar(day,month,year);
-
     }
 
     public void reqAPI(String date) {
@@ -196,6 +195,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
             if(v == mainImgDate){
+                int day = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth();
+                int month = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth();
+                int year = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear();
 
                 final DatePickerDialog dialog = new DatePickerDialog(MainActivity.this,new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -222,13 +224,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                                 .saveDateCalendar(dayOfMonth,month,year);
 
-                        System.out.println(dayOfMonth+"/"+month+"/"+year);
-
-
                     }
-                },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
-                        ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()
-                        ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
+                },year,month,day);
 
                 Calendar c = Calendar.getInstance(Locale.ENGLISH);
                 c.add(Calendar.DATE,-1);
@@ -247,4 +244,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 dialog.show();
             }
         }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        mainImgDate.setText(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+        reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+}

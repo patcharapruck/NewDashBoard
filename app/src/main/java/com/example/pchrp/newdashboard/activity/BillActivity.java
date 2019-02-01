@@ -21,23 +21,14 @@ import java.util.Locale;
 
 public class BillActivity extends AppCompatActivity implements View.OnClickListener {
     Toolbar toolbar;
-    Button btncalendarbill;
+   // Button btncalendarbill;
     MainActivity activity = new MainActivity();
+    String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill);
-        toolbar = findViewById(R.id.tbBill);
-        toolbar.setTitle("รายรับตามบิล");
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
-        toolbar.setSubtitle(date);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        btncalendarbill = (Button)findViewById(R.id.btncalendarbill);
-        btncalendarbill.setOnClickListener(this);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -45,6 +36,14 @@ public class BillActivity extends AppCompatActivity implements View.OnClickListe
                     .commit();
         }
 
+        initInstances();
+
+    }
+
+    private void initInstances() {
+        toolbar = findViewById(R.id.tbBill);
+//        btncalendarbill = (Button)findViewById(R.id.btncalendarbill);
+//        btncalendarbill.setOnClickListener(this);
     }
 
     @Override
@@ -58,44 +57,72 @@ public class BillActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if(v == btncalendarbill){
+//        if(v == btncalendarbill){
+//
+//            DatePickerDialog dialog = new DatePickerDialog(BillActivity.this,new DatePickerDialog.OnDateSetListener() {
+//                @Override
+//                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//                    month++;
+//                    String mm = ""+month;
+//                    String dd = ""+dayOfMonth;
+//
+//                    if (month<10){
+//                        mm = "0"+month;
+//                    }
+//                    if (dayOfMonth < 10){
+//                        dd = "0"+dayOfMonth;
+//                    }
+//                    String datecalendat;
+//                    toolbar.setSubtitle(year+ "/" + mm + "/" +dd);
+//                    datecalendat = year+ "/" + mm + "/" +dd;
+//
+//                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+//                            .saveDatereq(datecalendat);
+//
+//                    activity.reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+//
+//                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+//                            .saveDateCalendar(dayOfMonth,month,year);
+//
+//                }
+//            },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
+//                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()
+//                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
+//
+//            Calendar c = Calendar.getInstance(Locale.ENGLISH);
+//            c.add(Calendar.DATE,-1);
+//            Date date = c.getTime();
+//            dialog.getDatePicker().setMaxDate(date.getTime());
+//            dialog.show();
+//
+//        }
+    }
 
-            DatePickerDialog dialog = new DatePickerDialog(BillActivity.this,new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    month++;
-                    String mm = ""+month;
-                    String dd = ""+dayOfMonth;
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-                    if (month<10){
-                        mm = "0"+month;
-                    }
-                    if (dayOfMonth < 10){
-                        dd = "0"+dayOfMonth;
-                    }
-                    String datecalendat;
-                    toolbar.setSubtitle(year+ "/" + mm + "/" +dd);
-                    datecalendat = year+ "/" + mm + "/" +dd;
+        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+        toolbar.setTitle("รายรับตามบิล");
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        toolbar.setSubtitle(date);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
-                            .saveDatereq(datecalendat);
+    }
 
-                    activity.reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 
-                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
-                            .saveDateCalendar(dayOfMonth,month,year);
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 
-                }
-            },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
-                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()
-                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
-
-            Calendar c = Calendar.getInstance(Locale.ENGLISH);
-            c.add(Calendar.DATE,-1);
-            Date date = c.getTime();
-            dialog.getDatePicker().setMaxDate(date.getTime());
-            dialog.show();
-
-        }
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

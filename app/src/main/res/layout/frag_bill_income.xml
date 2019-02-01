@@ -6,6 +6,15 @@
     android:orientation="vertical">
 
 
+    <Button
+        android:id="@+id/btncalendarbill"
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="right"
+        android:fontFamily="@font/ekkamaistandardlight"
+        android:text="เลือกวันที่" />
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

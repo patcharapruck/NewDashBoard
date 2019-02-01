@@ -2,8 +2,6 @@ package com.example.pchrp.newdashboard.manager.http;
 
 import android.content.Context;
 
-import com.example.pchrp.newdashboard.manager.Contextor;
-import com.example.pchrp.newdashboard.util.SharedPrefManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -11,14 +9,9 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Date;
 
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -26,19 +19,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by nuuneoi on 11/16/2014.
  */
-public class HttpManager {
+public class HttpLoginManager {
 
-    private static HttpManager instance;
+    private static HttpLoginManager instance;
 
-    public static HttpManager getInstance() {
+    public static HttpLoginManager getInstance() {
         if (instance == null)
-            instance = new HttpManager();
+            instance = new HttpLoginManager();
         return instance;
     }
 
     private Context mContext;
     private ApiService service;
-    private HttpManager() {
+    private HttpLoginManager() {
 
         mContext = com.example.pchrp.newdashboard.manager.Contextor .getInstance().getContext();
 
@@ -50,28 +43,9 @@ public class HttpManager {
         });
         Gson gson = builder.create();
 
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-                Request original = chain.request();
-
-                Request request = original.newBuilder()
-                        .header("Authorization",SharedPrefManager.getInstance(Contextor.getInstance().getContext()).getToken())
-                        .header("Content-Type","application/json")
-                        .method(original.method(),original.body())
-                        .build();
-
-
-                return chain.proceed(request);
-            }
-        });
-
-        OkHttpClient client = httpClient.build();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://103.13.31.63:8555/restaurant/api/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(client)
                 .build();
 
         service = retrofit.create(ApiService.class);

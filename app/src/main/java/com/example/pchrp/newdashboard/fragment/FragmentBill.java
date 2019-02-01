@@ -1,5 +1,7 @@
 package com.example.pchrp.newdashboard.fragment;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,19 +9,35 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pchrp.newdashboard.Dao.DashBoardDao;
 import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
+import com.example.pchrp.newdashboard.activity.MainActivity;
+import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
+import com.example.pchrp.newdashboard.manager.http.HttpManager;
+import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 import com.razerdp.widget.animatedpieview.AnimatedPieView;
 import com.razerdp.widget.animatedpieview.AnimatedPieViewConfig;
 import com.razerdp.widget.animatedpieview.data.SimplePieInfo;
 
 import java.text.DecimalFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
-public class FragmentBill extends Fragment {
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class FragmentBill extends Fragment implements View.OnClickListener {
 
     AnimatedPieView mAnimatedPieView;
     AnimatedPieViewConfig config;
@@ -33,6 +51,8 @@ public class FragmentBill extends Fragment {
     Double serivceDrinkCharge, memberCharge, foodPrice, productPrice, serviceCharge, incomebill;
 
     ObjectItemDao ODao;
+
+     Button btncalendarbill;
 
     public FragmentBill() {
         super();
@@ -56,7 +76,7 @@ public class FragmentBill extends Fragment {
 
     private void initInstances(View rootView) {
 
-
+        btncalendarbill = (Button)rootView.findViewById(R.id.btncalendarbill);
         mAnimatedPieView = rootView.findViewById(R.id.drew2);
         tvincomebill = (TextView) rootView.findViewById(R.id.tvincomebill);
         tvmemberCharge = (TextView) rootView.findViewById(R.id.tvmemberCharge);
@@ -67,6 +87,8 @@ public class FragmentBill extends Fragment {
         tvproductPrice = (TextView) rootView.findViewById(R.id.tvproductPrice);
         tvpax = (TextView) rootView.findViewById(R.id.tvpax);
         tvopenMemberAccount = (TextView) rootView.findViewById(R.id.tvopenMemberAccount);
+
+        btncalendarbill.setOnClickListener(this);
 
     }
 
@@ -88,7 +110,7 @@ public class FragmentBill extends Fragment {
         tvmemberCharge.setText(tmemberCharge);
         tvfoodPrice.setText(tfoodPrice);
         tvserviceDringQty.setText(tserviceDringQty);
-        tvserviceCharge.setText(tmemberCharge);
+        tvserviceCharge.setText(tserviceCharge);
         tvserivceDrinkCharge.setText(tserivceDrinkCharge);
         tvproductPrice.setText(tproductPrice);
         tvpax.setText(tpax);
@@ -115,7 +137,6 @@ public class FragmentBill extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        ODao = DashBoradManager.getInstance().getDao().getObject();
 
     }
 
@@ -147,7 +168,80 @@ public class FragmentBill extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+        ODao = reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
         DrawPie();
         setTextView(ODao);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onClick(View v) {
+                if(v == btncalendarbill){
+
+            DatePickerDialog dialog = new DatePickerDialog(getContext(),new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    month++;
+                    String mm = ""+month;
+                    String dd = ""+dayOfMonth;
+
+                    if (month<10){
+                        mm = "0"+month;
+                    }
+                    if (dayOfMonth < 10){
+                        dd = "0"+dayOfMonth;
+                    }
+                    String datecalendat;
+                    datecalendat = year+ "/" + mm + "/" +dd;
+
+                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                            .saveDatereq(datecalendat);
+
+                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                            .saveDateCalendar(dayOfMonth,month,year);
+
+                }
+            },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
+                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()
+                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
+
+            Calendar c = Calendar.getInstance(Locale.ENGLISH);
+            c.add(Calendar.DATE,-1);
+            Date date = c.getTime();
+            dialog.getDatePicker().setMaxDate(date.getTime());
+            dialog.show();
+
+        }
+    }
+
+    public ObjectItemDao reqAPI(String date) {
+
+        final Context mcontext = Contextor.getInstance().getContext();
+        String nn = "{\"property\":[],\"criteria\":{\"sql-obj-command\":\"( tb_sales_shift.open_date >= '"+date+" 00:00:00' AND tb_sales_shift.open_date <= '"+date+" 23:59:59')\",\"summary-date\":\"*\"},\"orderBy\":{\"InvoiceDocument-id\":\"desc\"},\"pagination\":{}}";
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
+        Call<DashBoardDao> call = HttpManager.getInstance().getService().loadAPI(requestBody);
+        call.enqueue(new Callback<DashBoardDao>() {
+
+            @Override
+            public void onResponse(Call<DashBoardDao> call, Response<DashBoardDao> response) {
+                if(response.isSuccessful()){
+                    DashBoardDao dao = response.body();
+                    DashBoradManager.getInstance().setDao(dao);
+                }else {
+                    Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<DashBoardDao> call, Throwable t) {
+                Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อกับข้อมูลได้",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        return DashBoradManager.getInstance().getDao().getObject();
     }
 }

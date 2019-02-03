@@ -65,17 +65,17 @@
                        android:id="@+id/mainImgDate"
                        android:layout_width="130dp"
                        android:layout_height="match_parent"
-                       android:textSize="12.5sp"
+                       android:layout_alignParentRight="true"
+                       android:layout_marginRight="20dp"
+                       android:background="@drawable/ic09"
+                       android:fontFamily="@font/prompt_bold"
+                       android:gravity="right"
                        android:paddingTop="11dp"
                        android:paddingRight="15dp"
                        android:paddingBottom="10dp"
-                       android:background="@drawable/ic09"
-                       android:fontFamily="@font/prompt_bold"
                        android:text="y/m/d"
                        android:textColor="#19237E"
-                       android:layout_marginRight="20dp"
-                       android:gravity="right"
-                       android:layout_alignParentRight="true"/>
+                       android:textSize="12.5sp" />
 
                </RelativeLayout>
 
@@ -137,7 +137,7 @@
                         android:fontFamily="@font/prompt_regular"
                         android:text="รายรับตามบิล"
                         android:textAlignment="center"
-                        android:textSize="18sp" />
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 
@@ -180,7 +180,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="รายรับจริง"
-                        android:textSize="18sp" />
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 
@@ -223,7 +223,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="บัตรเครดิต"
-                        android:textSize="18sp" />
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 
@@ -264,7 +264,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="ปริมาณเครื่องดื่ม"
-                        android:textSize="18sp" />
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 
@@ -298,7 +298,6 @@
                             android:background="@drawable/ic05" />
 
 
-
                     <TextView
                         android:id="@+id/menupay"
                         style="@style/font_card_main"
@@ -306,7 +305,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="ยอดชำระปัจจุบัน"
-                        android:textSize="18sp" />
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 
@@ -346,7 +345,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="เปรียบเทียบรายรับ"
-                        android:textSize="18sp" />
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 

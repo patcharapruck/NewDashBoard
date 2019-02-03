@@ -127,9 +127,11 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
 
         config = new AnimatedPieViewConfig();
         config.startAngle(-90)// Starting angle offset
-                .addData(new SimplePieInfo(serivceDrinkCharge, Color.parseColor("#C0FF8C"), "ค่าดื่ม"))//Data (bean that implements the IPieInfo interface)
-                .addData(new SimplePieInfo(memberCharge, Color.parseColor("#FF8C9D"), "ค่า Member"))
-                .addData(new SimplePieInfo(foodPrice + productPrice + serviceCharge, Color.parseColor("#FFF78C"), "ค่าบริการต่างๆ")).drawText(true).duration(2000).textSize(20);
+                .addData(new SimplePieInfo(productPrice, Color.parseColor("#FF7902"), "ค่าสินค้า"))
+                .addData(new SimplePieInfo(serivceDrinkCharge, Color.parseColor("#8F47EA"), "ค่าดื่ม"))//Data (bean that implements the IPieInfo interface)
+                .addData(new SimplePieInfo(foodPrice, Color.parseColor("#FB285E"), "ค่าอาหาร"))
+                .addData(new SimplePieInfo(memberCharge, Color.parseColor("#0780AF"), "ค่า Member"))
+                .addData(new SimplePieInfo(serviceCharge, Color.parseColor("#057BFF"), "ค่าบริการ")).drawText(true).duration(2000).textSize(30);
         mAnimatedPieView.applyConfig(config);
         mAnimatedPieView.start();
     }

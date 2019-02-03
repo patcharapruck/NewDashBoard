@@ -169,7 +169,7 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
-        ODao = reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+        ODao = DashBoradManager.getInstance().getDao().getObject();
         DrawPie();
         setTextView(ODao);
     }
@@ -183,7 +183,7 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
                 if(v == btncalendarbill){
 
-            DatePickerDialog dialog = new DatePickerDialog(getContext(),new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog dialog = new DatePickerDialog(getContext(),new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                     month++;
@@ -221,7 +221,7 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
         }
     }
 
-    public ObjectItemDao reqAPI(String date) {
+    public void reqAPI(String date) {
 
         final Context mcontext = Contextor.getInstance().getContext();
         String nn = "{\"property\":[],\"criteria\":{\"sql-obj-command\":\"( tb_sales_shift.open_date >= '"+date+" 00:00:00' AND tb_sales_shift.open_date <= '"+date+" 23:59:59')\",\"summary-date\":\"*\"},\"orderBy\":{\"InvoiceDocument-id\":\"desc\"},\"pagination\":{}}";
@@ -244,6 +244,5 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
             }
         });
 
-        return DashBoradManager.getInstance().getDao().getObject();
     }
 }

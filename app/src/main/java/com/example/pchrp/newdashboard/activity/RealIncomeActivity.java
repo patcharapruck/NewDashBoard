@@ -1,21 +1,38 @@
 package com.example.pchrp.newdashboard.activity;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.pchrp.newdashboard.Dao.DashBoardDao;
 import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
 import com.example.pchrp.newdashboard.R;
 import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.DashBoradManager;
+import com.example.pchrp.newdashboard.manager.http.HttpManager;
 import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 
 import java.text.DecimalFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
-public class RealIncomeActivity extends AppCompatActivity {
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class RealIncomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     ObjectItemDao ODao;
 
@@ -29,18 +46,14 @@ public class RealIncomeActivity extends AppCompatActivity {
 
     Toolbar toolbar;
 
+    Button btncalendarrevenue;
+
+    String date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_real_income);
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
-
-        toolbar = findViewById(R.id.tbIncome);
-        toolbar.setTitle("รายรับจริง");
-        toolbar.setSubtitle(date);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initInstances();
     }
@@ -57,6 +70,8 @@ public class RealIncomeActivity extends AppCompatActivity {
 
     private void initInstances() {
 
+        toolbar = findViewById(R.id.tbIncome);
+        btncalendarrevenue = (Button) findViewById(R.id.btncalendarrevenue);
         tvincome = (TextView) findViewById(R.id.tvincome);
         tvcashPayments = (TextView) findViewById(R.id.tvcashPayments);
         tvcredit = (TextView) findViewById(R.id.tvcredit);
@@ -70,7 +85,6 @@ public class RealIncomeActivity extends AppCompatActivity {
         tvtotal = (TextView) findViewById(R.id.tvtotal);
         tvbill = (TextView) findViewById(R.id.tvbill);
 
-        setTextViewIncome();
 
     }
 
@@ -89,6 +103,7 @@ public class RealIncomeActivity extends AppCompatActivity {
         entertainPayments = ODao.getEntertainPayments();
         unpaid = ODao.getUnpaid();
         totalServiceCharge = ODao.getTotalServiceCharge();
+
 
 
         vincome = formatter.format(income);
@@ -115,5 +130,104 @@ public class RealIncomeActivity extends AppCompatActivity {
         tvtotalServiceCharge.setText(vtotalServiceCharge);
         tvtotal.setText(vrevenue);
         tvbill.setText(vincome);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+        toolbar.setTitle("รายรับจริง");
+        toolbar.setSubtitle(date);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        btncalendarrevenue.setOnClickListener(this);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+        setTextViewIncome();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == btncalendarrevenue){
+            DatePickerDialog dialog = new DatePickerDialog(RealIncomeActivity.this,new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    month++;
+                    String mm = ""+month;
+                    String dd = ""+dayOfMonth;
+
+                    if (month<10){
+                        mm = "0"+month;
+                    }
+                    if (dayOfMonth < 10){
+                        dd = "0"+dayOfMonth;
+                    }
+                    String datecalendat;
+                    datecalendat = year+ "/" + mm + "/" +dd;
+
+                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                            .saveDatereq(datecalendat);
+
+                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                            .saveDateCalendar(dayOfMonth,month,year);
+
+
+
+                    RealIncomeActivity.this.recreate();
+
+                }
+            },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
+                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()
+                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
+
+            Calendar c = Calendar.getInstance(Locale.ENGLISH);
+            c.add(Calendar.DATE,-1);
+            Date date = c.getTime();
+            dialog.getDatePicker().setMaxDate(date.getTime());
+            dialog.show();
+        }
+    }
+
+    public void reqAPI(String date) {
+
+        final Context mcontext = Contextor.getInstance().getContext();
+        String nn = "{\"property\":[],\"criteria\":{\"sql-obj-command\":\"( tb_sales_shift.open_date >= '"+date+" 00:00:00' AND tb_sales_shift.open_date <= '"+date+" 23:59:59')\",\"summary-date\":\"*\"},\"orderBy\":{\"InvoiceDocument-id\":\"desc\"},\"pagination\":{}}";
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
+        Call<DashBoardDao> call = HttpManager.getInstance().getService().loadAPI(requestBody);
+        call.enqueue(new Callback<DashBoardDao>() {
+
+            @Override
+            public void onResponse(Call<DashBoardDao> call, Response<DashBoardDao> response) {
+                if(response.isSuccessful()){
+                    DashBoardDao dao = response.body();
+                    DashBoradManager.getInstance().setDao(dao);
+                }else {
+                    Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<DashBoardDao> call, Throwable t) {
+                Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อกับข้อมูลได้",Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 }

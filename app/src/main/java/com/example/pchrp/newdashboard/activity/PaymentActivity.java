@@ -1,9 +1,7 @@
 package com.example.pchrp.newdashboard.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,9 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,12 +22,9 @@ import com.example.pchrp.newdashboard.fragment.FragmentPay;
 import com.example.pchrp.newdashboard.manager.Contextor;
 import com.example.pchrp.newdashboard.manager.PayManager;
 import com.example.pchrp.newdashboard.manager.http.HttpManager;
-import com.example.pchrp.newdashboard.manager.http.NotPayManager;
+import com.example.pchrp.newdashboard.manager.NotPayManager;
 import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
 import com.example.pchrp.newdashboard.util.SharedPrefDatePayManager;
-import com.razerdp.widget.animatedpieview.AnimatedPieView;
-import com.razerdp.widget.animatedpieview.AnimatedPieViewConfig;
-import com.razerdp.widget.animatedpieview.data.SimplePieInfo;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -79,7 +72,7 @@ public class PaymentActivity extends AppCompatActivity {
             public void onResponse(Call<NotPayItemColleationDao> call, Response<NotPayItemColleationDao> response) {
                 if(response.isSuccessful()){
                     NotPayItemColleationDao dao = response.body();
-                    NotPayManager.getInstance().setPayItemColleationDao(dao);
+                    NotPayManager.getInstance().setNotpayItemColleationDao(dao);
 
                     SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
                             .saveNotPay(dao.getPagination().getTotalItem());

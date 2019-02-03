@@ -1,5 +1,6 @@
 package com.example.pchrp.newdashboard.Dao;
 
+import com.example.pchrp.newdashboard.Dao.notpayment.NotPayItemDao;
 import com.example.pchrp.newdashboard.Dao.pagination.PaginationNotPayDao;
 import com.example.pchrp.newdashboard.Dao.pagination.PaginationPayDao;
 import com.example.pchrp.newdashboard.Dao.payment.PayItemDao;
@@ -11,7 +12,7 @@ public class NotPayItemColleationDao {
     private Long statusCode;
     private String message;
     private PaginationNotPayDao pagination;
-    private List<PayItemDao> object;
+    private List<NotPayItemDao> object;
 
     public Long getStatusCode() {
         return statusCode;
@@ -37,11 +38,11 @@ public class NotPayItemColleationDao {
         this.pagination = pagination;
     }
 
-    public List<PayItemDao> getObject() {
+    public List<NotPayItemDao> getObject() {
         return object;
     }
 
-    public void setObject(List<PayItemDao> object) {
+    public void setObject(List<NotPayItemDao> object) {
         this.object = object;
     }
 }

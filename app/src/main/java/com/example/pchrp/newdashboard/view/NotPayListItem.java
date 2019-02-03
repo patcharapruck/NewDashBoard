@@ -51,11 +51,11 @@ public class NotPayListItem extends BaseCustomViewGroup {
     }
 
     private void initInstances() {
-        tvNpyId = (TextView)findViewById(R.id.tvPpyId);
-        tvNpyBill = (TextView)findViewById(R.id.tvPpyBill);
-        tvNpyRoom = (TextView)findViewById(R.id.tvPpyRoom);
-        tvNpySale = (TextView)findViewById(R.id.tvPpySale);
-        tvNpyMonny = (TextView)findViewById(R.id.tvPpyMonny);
+        tvNpyId = (TextView)findViewById(R.id.tvNpyId);
+        tvNpyBill = (TextView)findViewById(R.id.tvNpyBill);
+        tvNpyRoom = (TextView)findViewById(R.id.tvNpyRoom);
+        tvNpySale = (TextView)findViewById(R.id.tvNpySale);
+        tvNpyMonny = (TextView)findViewById(R.id.tvNpyMonny);
 
 
     }

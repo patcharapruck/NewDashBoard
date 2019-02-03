@@ -5,23 +5,24 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.example.pchrp.newdashboard.Dao.notpayment.NotPayItemDao;
-import com.example.pchrp.newdashboard.manager.http.NotPayManager;
+import com.example.pchrp.newdashboard.manager.NotPayManager;
 import com.example.pchrp.newdashboard.view.NotPayListItem;
 
 public class NotPayAdapter extends BaseAdapter {
     @Override
     public int getCount() {
 
-        if(NotPayManager.getInstance().getNotPayItemColleationDao() == null)
+        if(NotPayManager.getInstance().getNotpayItemColleationDao() == null)
             return 0;
-        if (NotPayManager.getInstance().getNotPayItemColleationDao().getObject() == null)
+        if (NotPayManager.getInstance().getNotpayItemColleationDao().getObject() == null)
             return 0;
-        return NotPayManager.getInstance().getNotPayItemColleationDao().getObject().size();
+        return NotPayManager.getInstance().getNotpayItemColleationDao().getObject().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+
+        return NotPayManager.getInstance().getNotpayItemColleationDao().getObject().get(position);
     }
 
     @Override
@@ -38,12 +39,12 @@ public class NotPayAdapter extends BaseAdapter {
             item = new NotPayListItem(parent.getContext());
         }
 
-        NotPayItemDao dao = (NotPayItemDao) getItem(position);
-        item.setNotPayId(dao.getInvoiceCode());
-        item.setNotPayBill(dao.getCustomerNam());
-        item.setNotPayRoom(dao.getPlace().getPlaceType());
-        item.setNotPaySale(dao.getSales().getEmployeeCode(),dao.getSales().getNickName());
-        item.setNotPayMoney(dao.getTotalPrice());
+        NotPayItemDao dao1 = (NotPayItemDao) getItem(position);
+        item.setNotPayId(dao1.getInvoiceCode());
+        item.setNotPayBill(dao1.getCustomerName());
+        item.setNotPayRoom(dao1.getPlace().getPlaceType());
+        item.setNotPaySale(dao1.getSales().getEmployeeCode(),dao1.getSales().getNickName());
+        item.setNotPayMoney(dao1.getTotalPrice());
         return item;
     }
 }

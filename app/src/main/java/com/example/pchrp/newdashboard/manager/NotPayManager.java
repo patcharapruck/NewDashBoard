@@ -1,10 +1,8 @@
-package com.example.pchrp.newdashboard.manager.http;
+package com.example.pchrp.newdashboard.manager;
 
 import android.content.Context;
 
 import com.example.pchrp.newdashboard.Dao.NotPayItemColleationDao;
-import com.example.pchrp.newdashboard.Dao.PayItemColleationDao;
-import com.example.pchrp.newdashboard.manager.Contextor;
 
 
 public class NotPayManager {
@@ -17,11 +15,11 @@ public class NotPayManager {
         return instance;
     }
 
-    public NotPayItemColleationDao getNotPayItemColleationDao() {
+    public NotPayItemColleationDao getNotpayItemColleationDao() {
         return notpayItemColleationDao;
     }
 
-    public void setPayItemColleationDao(NotPayItemColleationDao notpayItemColleationDao) {
+    public void setNotpayItemColleationDao(NotPayItemColleationDao notpayItemColleationDao) {
         this.notpayItemColleationDao = notpayItemColleationDao;
     }
 

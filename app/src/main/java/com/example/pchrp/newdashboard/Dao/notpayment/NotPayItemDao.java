@@ -19,14 +19,6 @@ public class NotPayItemDao {
         this.invoiceCode = invoiceCode;
     }
 
-    public String getCustomerNam() {
-        return customerName;
-    }
-
-    public void setCustomerNam(String customerNam) {
-        this.customerName = customerNam;
-    }
-
     public String getCustomerName() {
         return customerName;
     }

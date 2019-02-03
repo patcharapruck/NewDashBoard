@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:fontFamily="@font/ekkamaistandardlight"
+                    android:fontFamily="@font/supermarket"
                     android:gravity="center"
                     android:text="รายวัน"
                     android:textColor="@color/black"
@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:fontFamily="@font/ekkamaistandardlight"
+                    android:fontFamily="@font/supermarket"
                     android:gravity="center"
                     android:text="ตั้งแต่"
                     android:textColor="@color/black"
@@ -57,14 +57,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="2"
-                    android:fontFamily="@font/ekkamaistandardlight"
+                    android:fontFamily="@font/supermarket"
                     android:text="เลือกวันที่ต้องการ" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:fontFamily="@font/ekkamaistandardlight"
+                    android:fontFamily="@font/supermarket"
                     android:gravity="center"
                     android:text="ถึง"
                     android:textColor="@color/black"
@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="2"
-                    android:fontFamily="@font/ekkamaistandardlight"
+                    android:fontFamily="@font/supermarket"
                     android:text="เลือกวันที่ต้องการ" />
 
                 <Button
@@ -85,8 +85,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:fontFamily="@font/ekkamaistandardlight"
-                    android:text=""/>
+                    android:fontFamily="@font/supermarket"
+                    android:text="ตกลง" />
             </LinearLayout>
 
             <LinearLayout

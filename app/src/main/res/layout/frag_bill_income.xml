@@ -11,7 +11,6 @@
         android:layout_width="wrap_content"
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="right"
-        android:fontFamily="@font/ekkamaistandardlight"
         android:text="เลือกวันที่" />
 
 
@@ -108,7 +107,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#C0FF8C">
+                                android:background="#8F47EA">
 
                             </View>
 
@@ -157,7 +156,9 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#FF8C9D">
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="0dp"
+                                android:background="#0780AF">
 
                             </View>
 
@@ -206,7 +207,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#FFF78C">
+                                android:background="#057BFF">
 
                             </View>
 
@@ -255,7 +256,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#8BEAFE">
+                                android:background="#FF7902">
 
                             </View>
 
@@ -304,7 +305,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#FFD08C">
+                                android:background="#FB285E">
 
                             </View>
 
@@ -354,7 +355,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#BAFFC9">
+                                android:background="#67C4EF">
 
                             </View>
 
@@ -405,7 +406,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#BAE1FF">
+                                android:background="#3D4DB7">
 
                             </View>
 
@@ -456,7 +457,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#EBDFC7">
+                                android:background="#AF1A96">
 
                             </View>
 

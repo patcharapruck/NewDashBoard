@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/ekkamaistandardlight"
+        android:fontFamily="@font/supermarket"
         android:gravity="center"
         android:text="Create by HandyWings.co.ltd" />
 
@@ -25,8 +25,8 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/ekkamaistandardlight"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/supermarket"
         android:hint="Username" />
 
     <EditText
@@ -35,7 +35,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/ekkamaistandardlight"
+        android:fontFamily="@font/supermarket"
         android:hint="Password" />
 
     <Button
@@ -44,7 +44,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/ekkamaistandardlight"
+        android:fontFamily="@font/supermarket"
         android:text=" เข้าสู่ระบบ "
         android:textAlignment="center"
         android:textSize="20sp" />

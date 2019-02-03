@@ -56,6 +56,8 @@ public class NotPayListItem extends BaseCustomViewGroup {
         tvNpyRoom = (TextView)findViewById(R.id.tvPpyRoom);
         tvNpySale = (TextView)findViewById(R.id.tvPpySale);
         tvNpyMonny = (TextView)findViewById(R.id.tvPpyMonny);
+
+
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {

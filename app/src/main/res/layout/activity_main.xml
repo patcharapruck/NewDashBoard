@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.5"
-            android:background="@color/bg2">
+            android:background="#19237E">
 
         </View>
 
@@ -32,53 +32,57 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+
         android:weightSum="10">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+
             android:layout_weight="3.5">
 
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="230dp"
-                android:layout_height="100dp"
+                android:layout_width="211dp"
+                android:layout_height="111dp"
                 android:layout_centerInParent="true"
-                android:background="@drawable/krystal" />
+                android:background="@drawable/krystal_1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+
                 android:layout_below="@id/logo"
                 android:layout_marginTop="5dp">
 
                <RelativeLayout
                    android:layout_width="match_parent"
-                   android:layout_height="30dp">
+                   android:layout_height="35dp"
+                   >
 
                    <Button
                        android:id="@+id/mainImgDate"
-                       android:layout_width="match_parent"
+                       android:layout_width="130dp"
                        android:layout_height="match_parent"
-                       android:background="@color/bg1"
-                       android:fontFamily="@font/ekkamaistandardlight"
-
-                       android:text="year/month/day" />
+                       android:layout_alignParentRight="true"
+                       android:layout_marginRight="20dp"
+                       android:background="@drawable/ic09"
+                       android:fontFamily="@font/prompt_bold"
+                       android:gravity="right"
+                       android:paddingTop="11dp"
+                       android:paddingRight="15dp"
+                       android:paddingBottom="10dp"
+                       android:text="y/m/d"
+                       android:textColor="#19237E"
+                       android:textSize="12.5sp" />
 
                </RelativeLayout>
 
             </LinearLayout>
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:textSize="10sp"
-                android:layout_marginTop="5dp"
-                android:text="Create by HandyWings.co.,ltd " />
+
 
 
         </RelativeLayout>
@@ -113,32 +117,27 @@
                     android:layout_margin="3dp"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.CardView
-                        android:id="@+id/cv_in_bill"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="5dp"
-                        app:cardBackgroundColor="#FFB4BB"
-                        app:cardCornerRadius="20dp">
+
 
                         <ImageView
                             android:id="@+id/imgbill"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/im1"
+                            android:background="@drawable/ic02"
 
                             />
-                    </android.support.v7.widget.CardView>
+
 
                     <TextView
                         android:id="@+id/menutextbill"
                         style="@style/font_card_main"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/prompt_regular"
                         android:text="รายรับตามบิล"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 
@@ -162,31 +161,26 @@
                     android:layout_margin="3dp"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.CardView
-                        android:id="@+id/cv_in_real"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="5dp"
-                        app:cardBackgroundColor="#FFDFB9"
-                        app:cardCornerRadius="20dp">
+
 
                         <ImageView
                             android:id="@+id/imgreal"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/im2"
+                            android:background="@drawable/ic03"
 
                             />
-                    </android.support.v7.widget.CardView>
+
 
                     <TextView
                         android:id="@+id/menureal"
                         style="@style/font_card_main"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="รายรับจริง" />
+                        android:fontFamily="@font/prompt_regular"
+                        android:text="รายรับจริง"
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 
@@ -210,31 +204,26 @@
                     android:layout_margin="3dp"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.CardView
-                        android:id="@+id/cv_in_credit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="5dp"
-                        app:cardBackgroundColor="#BAFFC9"
-                        app:cardCornerRadius="20dp">
+
 
                         <ImageView
                             android:id="@+id/imgcredit"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/im3"
+                            android:background="@drawable/ic06"
 
                             />
-                    </android.support.v7.widget.CardView>
+
 
                     <TextView
                         android:id="@+id/menucredit"
                         style="@style/font_card_main"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="บัตรเครดิต" />
+                        android:fontFamily="@font/prompt_regular"
+                        android:text="บัตรเครดิต"
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 
@@ -258,29 +247,24 @@
                     android:layout_margin="3dp"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.CardView
-                        android:id="@+id/cv_in_drink"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="5dp"
-                        app:cardBackgroundColor="#BAE1FF"
-                        app:cardCornerRadius="20dp">
+
 
                         <ImageView
                             android:id="@+id/imgdrink"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/im4" />
-                    </android.support.v7.widget.CardView>
+                            android:background="@drawable/ic04" />
+
 
                     <TextView
                         android:id="@+id/menudrink"
                         style="@style/font_card_main"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ปริมาณเครื่องดื่ม" />
+                        android:fontFamily="@font/prompt_regular"
+                        android:text="ปริมาณเครื่องดื่ม"
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 
@@ -304,30 +288,24 @@
                     android:layout_margin="3dp"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.CardView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:id="@+id/cv_in_pay"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="5dp"
-                        app:cardBackgroundColor="#F4D4BB"
-                        app:cardCornerRadius="20dp">
+
 
                         <ImageView
                             android:id="@+id/imgpay"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/im5" />
+                            android:background="@drawable/ic05" />
 
-                    </android.support.v7.widget.CardView>
 
                     <TextView
                         android:id="@+id/menupay"
                         style="@style/font_card_main"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ยอดชำระปัจจุบัน" />
+                        android:fontFamily="@font/prompt_regular"
+                        android:text="ยอดชำระปัจจุบัน"
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 
@@ -351,36 +329,37 @@
                     android:layout_margin="3dp"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.CardView
-                        android:id="@+id/cv_in_graph"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="5dp"
-                        app:cardBackgroundColor="#EBDFC7"
-                        app:cardCornerRadius="20dp">
 
                         <ImageView
                             android:id="@+id/imggraph"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/im6" />
-                    </android.support.v7.widget.CardView>
+                            android:background="@drawable/ic07" />
+
 
                     <TextView
                         android:id="@+id/menugraph"
                         style="@style/font_card_main"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="เปรียบเทียบรายรับ" />
+                        android:fontFamily="@font/prompt_regular"
+                        android:text="เปรียบเทียบรายรับ"
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
         </android.support.v7.widget.GridLayout>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:textSize="10sp"
+           android:layout_marginBottom="15dp"
+            android:text="Create by HandyWings.co.,ltd " />
 
     </LinearLayout>
 

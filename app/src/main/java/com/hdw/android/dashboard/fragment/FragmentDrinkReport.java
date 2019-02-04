@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.hdw.android.dashboard.Dao.objectdao.ObjectItemDao;
 import com.hdw.android.dashboard.R;
@@ -54,7 +55,13 @@ public class FragmentDrinkReport extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_fragment_drink_report, container, false);
-        initInstances(rootView);
+
+        try {
+            initInstances(rootView);
+        }catch (Exception e){
+            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+        }
+
         String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
 
         toolbar = rootView.findViewById(R.id.tbDrinkReport);

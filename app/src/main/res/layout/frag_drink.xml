@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -38,6 +39,13 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/bg1">
+
+            <Button
+                android:id="@+id/btncalendardrink"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="right"
+                android:text="เลือกวันที่" />
 
         </android.support.v7.widget.Toolbar>
 

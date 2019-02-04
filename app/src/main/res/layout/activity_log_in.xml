@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/supermarket"
+        android:fontFamily="@font/prompt_regular"
         android:gravity="center"
         android:text="Create by HandyWings.co.ltd" />
 
@@ -27,7 +27,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
-        android:fontFamily="@font/supermarket"
+        android:fontFamily="@font/prompt_regular"
         android:singleLine="true"
         android:hint="Username" />
 
@@ -37,9 +37,11 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:singleLine="true"
-        android:fontFamily="@font/supermarket"
-        android:hint="Password" />
+        android:fontFamily="@font/prompt_regular"
+        android:hint="Password"
+        android:singleLine="true"/>
+
+
 
     <Button
         android:id="@+id/btnLogin"
@@ -47,7 +49,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/supermarket"
+        android:fontFamily="@font/prompt_regular"
         android:text=" เข้าสู่ระบบ "
         android:textAlignment="center"
         android:textSize="20sp" />

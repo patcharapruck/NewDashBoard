@@ -22,6 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:minWidth="10dp"
+            android:minHeight="10dp"
             app:tableView_columnCount="3">
 
         </de.codecrafters.tableview.TableView>

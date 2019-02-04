@@ -45,6 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="right"
+                android:fontFamily="@font/prompt_regular"
                 android:text="เลือกวันที่" />
 
         </android.support.v7.widget.Toolbar>
@@ -86,6 +87,7 @@
                                 style="@style/font_card_main"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="center"
                                 android:text="TOTAL" />
 
@@ -94,6 +96,7 @@
                                 style="@style/font_notpay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="center"
                                 android:text="0" />
                         </LinearLayout>
@@ -107,8 +110,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="รายงานการใช้เครื่องดื่ม"
-                    android:layout_weight="0.5"/>
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/prompt_regular"
+                    android:text="รายงานการใช้เครื่องดื่ม" />
             </LinearLayout>
 
             <LinearLayout
@@ -144,6 +148,7 @@
                                 style="@style/font_card_main"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="center"
                                 android:text="เบิกใช้สิทธิ์" />
 
@@ -152,6 +157,7 @@
                                 style="@style/font_notpay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="center"
                                 android:text="0" />
                         </LinearLayout>
@@ -186,6 +192,7 @@
                                 style="@style/font_card_main"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="center"
                                 android:text="ซื้อ" />
 
@@ -194,6 +201,7 @@
                                 style="@style/font_notpay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="center"
                                 android:text="0" />
                         </LinearLayout>
@@ -228,6 +236,7 @@
                                 style="@style/font_card_main"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="center"
                                 android:text="Entertain" />
 
@@ -236,6 +245,7 @@
                                 style="@style/font_notpay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="center"
                                 android:text="0" />
                         </LinearLayout>

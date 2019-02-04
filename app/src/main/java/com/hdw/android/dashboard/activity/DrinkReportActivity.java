@@ -24,7 +24,7 @@ public class DrinkReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_drink_report);
         String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
 
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         toolbar = findViewById(R.id.tbDrinkReport);
         toolbar.setTitle("รายงานการใช้เครื่องดื่ม");
         toolbar.setSubtitle(date);

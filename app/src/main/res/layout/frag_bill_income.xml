@@ -107,7 +107,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#8F47EA">
+                                android:background="@color/billDrink">
 
                             </View>
 
@@ -158,7 +158,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_alignParentBottom="true"
                                 android:layout_marginBottom="0dp"
-                                android:background="#0780AF">
+                                android:background="@color/billMember">
 
                             </View>
 
@@ -207,7 +207,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#057BFF">
+                                android:background="@color/billservice">
 
                             </View>
 
@@ -256,7 +256,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#FF7902">
+                                android:background="@color/billProduct">
 
                             </View>
 
@@ -305,7 +305,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#FB285E">
+                                android:background="@color/billFood">
 
                             </View>
 
@@ -355,7 +355,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#67C4EF">
+                                android:background="@color/billPeopleMember">
 
                             </View>
 
@@ -406,7 +406,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#3D4DB7">
+                                android:background="@color/billAllDrink">
 
                             </View>
 
@@ -457,7 +457,7 @@
                             <View
                                 android:layout_width="10dp"
                                 android:layout_height="match_parent"
-                                android:background="#AF1A96">
+                                android:background="@color/billCustomer">
 
                             </View>
 

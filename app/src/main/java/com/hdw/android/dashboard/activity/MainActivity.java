@@ -65,8 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             getDateTime();
 
-
-
             cv_bill = (CardView)findViewById(R.id.Cv_bill);
             Cv_pay = (CardView)findViewById(R.id.Cv_pay);
             Cv_drink = (CardView)findViewById(R.id.Cv_drink);
@@ -131,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         calendar.setTime(date);
         calendar.add(Calendar.DATE, -1);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int month = calendar.get(Calendar.MONTH);
+        int month = calendar.get(Calendar.MONTH)+1;
         int year = calendar.get(Calendar.YEAR);
         String formatDateTime = dateFormat.format(calendar.getTime());
         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
@@ -216,6 +214,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
             if(v == mainImgDate){
+
                 int day = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth();
                 int month = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth();
                 int year = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear();
@@ -246,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 .saveDateCalendar(dayOfMonth,month,year);
 
                     }
-                },year,month,day);
+                },year,month-1,day);
 
                 Calendar c = Calendar.getInstance(Locale.ENGLISH);
                 c.add(Calendar.DATE,-1);
@@ -260,9 +259,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+                dialog.show();
                 dialog.getDatePicker().setMinDate(d.getTime());
                 dialog.getDatePicker().setMaxDate(date.getTime());
-                dialog.show();
+
+
             }
 
             if (v == logout){

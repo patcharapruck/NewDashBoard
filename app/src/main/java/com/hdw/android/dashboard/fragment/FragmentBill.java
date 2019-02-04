@@ -171,7 +171,13 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
-        ODao = DashBoradManager.getInstance().getDao().getObject();
+        if(DashBoradManager.getInstance().getDao() == null || DashBoradManager.getInstance().getDao().getObject() == null){
+            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_LONG).show();
+        }
+        else{
+            ODao =  DashBoradManager.getInstance().getDao().getObject();
+        }
+
         DrawPie();
         setTextView(ODao);
     }

@@ -41,6 +41,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -69,6 +70,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     int size;
     String date;
 
+    AppCompatActivity activity;
+
     Button btncalendardrink;
 
     HorizontalBarChart barChart;
@@ -96,19 +99,6 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     private void initInstances(View rootView) {
 
         toolbar = (Toolbar) rootView.findViewById(R.id.tbDrink);
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.setSupportActionBar(toolbar);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        activity.getSupportActionBar().setTitle("ปริมาณเครื่องดื่ม");
-        activity.getSupportActionBar().setSubtitle(date);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), MainActivity.class));
-                getActivity().finish();
-            }
-        });
-
         btncalendardrink = (Button)rootView.findViewById(R.id.btncalendardrink);
         btncalendardrink.setOnClickListener(this);
 
@@ -182,10 +172,6 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
-        Odao = DashBoradManager.getInstance().getDao().getObject();
-        this.size = Odao.getSummaryUseProductList().size();
-        setViewDrink();
     }
 
     private void setViewDrink() {
@@ -301,7 +287,22 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
+        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+        Odao = DashBoradManager.getInstance().getDao().getObject();
+        this.size = Odao.getSummaryUseProductList().size();
+        setViewDrink();
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+        activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setTitle("ปริมาณเครื่องดื่ม");
+        activity.getSupportActionBar().setSubtitle(date);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.finish();
+            }
+        });
     }
 
     private void reqAPI(String date) {

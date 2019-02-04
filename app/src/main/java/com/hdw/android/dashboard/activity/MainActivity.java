@@ -166,6 +166,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         finish();
 
                     }else{
+                        SharedPrefManager.getInstance(Contextor.getInstance().getContext()).logout();
+                        SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).logoutDate();
+                        SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).logoutPay();
+
+                        Toast.makeText(Contextor.getInstance().getContext(),aa,Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(MainActivity.this,LogInActivity.class);
+                        mcontext.startActivity(intent);
+                        finish();
+
                         Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                     }
 
@@ -173,6 +182,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             @Override
             public void onFailure(Call<DashBoardDao> call, Throwable t) {
+
+                SharedPrefManager.getInstance(Contextor.getInstance().getContext()).logout();
+                SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).logoutDate();
+                SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).logoutPay();
+
+                Toast.makeText(Contextor.getInstance().getContext(),aa,Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this,LogInActivity.class);
+                mcontext.startActivity(intent);
+                finish();
+
                 Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อกับข้อมูลได้",Toast.LENGTH_LONG).show();
             }
         });
@@ -262,7 +281,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 dialog.show();
                 dialog.getDatePicker().setMinDate(d.getTime());
                 dialog.getDatePicker().setMaxDate(date.getTime());
-
 
             }
 

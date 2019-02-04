@@ -22,6 +22,8 @@ import com.hdw.android.dashboard.manager.http.HttpManager;
 import com.hdw.android.dashboard.util.SharedPrefDateManager;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -195,14 +197,25 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
 
                 }
             },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
-                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()
+                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()-1
                     ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
 
             Calendar c = Calendar.getInstance(Locale.ENGLISH);
             c.add(Calendar.DATE,-1);
             Date date = c.getTime();
             dialog.getDatePicker().setMaxDate(date.getTime());
+            Date d = null;
+            String oldDateString = "2019/01/06";
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
+            try {
+                d = sdf.parse(oldDateString);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             dialog.show();
+            dialog.getDatePicker().setMinDate(d.getTime());
+            dialog.getDatePicker().setMaxDate(date.getTime());
         }
     }
 

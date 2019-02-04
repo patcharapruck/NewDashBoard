@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context=".activity.LogInActivity"
     android:orientation="vertical">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:src="@drawable/krystal"/>
+        android:src="@drawable/krystal"
+        android:background="#19237E"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -28,6 +28,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
         android:fontFamily="@font/prompt_regular"
+        android:singleLine="true"
         android:hint="Username" />
 
     <EditText
@@ -37,6 +38,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/prompt_regular"        android:hint="Password" />
+        android:singleLine="true"
+        android:hint="Password" />
 
     <Button
         android:id="@+id/btnLogin"

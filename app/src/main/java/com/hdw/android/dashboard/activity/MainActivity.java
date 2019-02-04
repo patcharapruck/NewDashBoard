@@ -1,4 +1,4 @@
-package com.hdw.android.dashboard.activity;
+package com.example.pchrp.newdashboard.activity;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -14,20 +15,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hdw.android.dashboard.Dao.DashBoardDao;
-import com.hdw.android.dashboard.R;
-import com.hdw.android.dashboard.manager.Contextor;
-import com.hdw.android.dashboard.manager.DashBoradManager;
-import com.hdw.android.dashboard.manager.http.HttpManager;
-import com.hdw.android.dashboard.util.SharedPrefDateManager;
+import com.example.pchrp.newdashboard.Dao.DashBoardDao;
+import com.example.pchrp.newdashboard.R;
+import com.example.pchrp.newdashboard.manager.Contextor;
+import com.example.pchrp.newdashboard.manager.DashBoradManager;
+import com.example.pchrp.newdashboard.manager.http.HttpManager;
+import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
+import com.example.pchrp.newdashboard.util.SharedPrefDatePayManager;
+import com.example.pchrp.newdashboard.util.SharedPrefManager;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 
+import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -43,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ImageView imgbill,imgpay,imgdrink,imgreal,imgcredit,imggraph;
         Button mainImgDate;
 
+        TextView logout;
+
 
 
         @Override
@@ -57,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             getDateTime();
 
+
+
             cv_bill = (CardView)findViewById(R.id.Cv_bill);
             Cv_pay = (CardView)findViewById(R.id.Cv_pay);
             Cv_drink = (CardView)findViewById(R.id.Cv_drink);
@@ -65,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Cv_graph = (CardView)findViewById(R.id.Cv_graph);
 
 
-
+            logout = (TextView)findViewById(R.id.logout);
             menutextbill = (TextView)findViewById(R.id.menutextbill);
             menupay = (TextView)findViewById(R.id.menupay);
             menudrink = (TextView)findViewById(R.id.menudrink);
@@ -96,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Cv_graph.setOnClickListener(this);
 
 
-
+        logout.setOnClickListener(this);
         menutextbill.setOnClickListener(this);
         menupay.setOnClickListener(this);
         menudrink.setOnClickListener(this);
@@ -140,6 +150,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onResponse(Call<DashBoardDao> call, Response<DashBoardDao> response) {
+                if(response.code() == 403){
+                    Intent intent = new Intent(MainActivity.this,LogInActivity.class);
+                    mcontext.startActivity(intent);
+                    finish();
+                }
                 if(response.isSuccessful()){
                     DashBoardDao dao = response.body();
                     DashBoradManager.getInstance().setDao(dao);
@@ -237,6 +252,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 dialog.getDatePicker().setMinDate(d.getTime());
                 dialog.getDatePicker().setMaxDate(date.getTime());
                 dialog.show();
+            }
+
+            if (v == logout){
+                SharedPrefManager.getInstance(Contextor.getInstance().getContext()).logout();
+                SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).logoutDate();
+                SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).logoutPay();
+
+                Intent intent = new Intent(MainActivity.this,LogInActivity.class);
+                this.startActivity(intent);
+                finish();
             }
         }
 

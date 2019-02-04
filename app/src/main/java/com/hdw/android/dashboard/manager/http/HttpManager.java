@@ -1,6 +1,7 @@
 package com.hdw.android.dashboard.manager.http;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,7 +56,7 @@ public class HttpManager {
                 Request original = chain.request();
 
                 Request request = original.newBuilder()
-                        .header("Authorization","eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0MTkyX0hEV18xIiwiYXVkIjoiMEMzQjY3QUREMjA0MDc1RjA1Qjc0OTlBQUEyNENCOTAiLCJleHAiOjE1NDk2MjgzMDYsImlhdCI6MTU0OTAyMzUwNn0.GRpuGrxWJLlNNeziIuiHQqAEHsO_YIueTVCQG5e_1GFre-N10x-KgF8e9xysCLncLSezm__wF4MJ0v_k9Pwh7A")
+                        .header("Authorization",SharedPrefManager.getInstance(Contextor.getInstance().getContext()).getToken())
                         .header("Content-Type","application/json")
                         .method(original.method(),original.body())
                         .build();

@@ -109,13 +109,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         btndrink = (Button) rootView.findViewById(R.id.btndrink);
 
         btndrink.setOnClickListener(this);
-
-
         barChart = rootView.findViewById(R.id.Hbarchart);
-        // Init 'View' instance(s) with rootView.findViewById here
-//        hbarChart = (BarChart) rootView.findViewById(R.id.Hbarchart);
-
-
     }
 
 

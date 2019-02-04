@@ -40,6 +40,14 @@ public class SharedPrefManager {
         return true;
     }
 
+    public boolean logout(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_LOGIN, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+        return true;
+    }
+
     public String getUsername(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_LOGIN, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_USER,"");

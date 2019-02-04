@@ -37,9 +37,11 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/prompt_regular"        android:hint="Password" />
-        android:singleLine="true"
-        android:hint="Password" />
+        android:fontFamily="@font/prompt_regular"
+        android:hint="Password"
+        android:singleLine="true"/>
+
+
 
     <Button
         android:id="@+id/btnLogin"

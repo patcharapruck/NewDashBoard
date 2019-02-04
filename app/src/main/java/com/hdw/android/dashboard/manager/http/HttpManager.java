@@ -9,6 +9,8 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
+import com.hdw.android.dashboard.manager.Contextor;
+import com.hdw.android.dashboard.util.SharedPrefManager;
 
 import java.io.IOException;
 import java.lang.reflect.Type;

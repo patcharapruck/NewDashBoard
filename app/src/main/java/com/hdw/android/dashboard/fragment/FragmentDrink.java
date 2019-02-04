@@ -1,4 +1,4 @@
-package com.example.pchrp.newdashboard.fragment;
+package com.hdw.android.dashboard.fragment;
 
 
 import android.app.DatePickerDialog;
@@ -19,16 +19,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pchrp.newdashboard.Dao.DashBoardDao;
-import com.example.pchrp.newdashboard.Dao.objectdao.ObjectItemDao;
-import com.example.pchrp.newdashboard.R;
-import com.example.pchrp.newdashboard.activity.DrinkActivity;
-import com.example.pchrp.newdashboard.activity.MainActivity;
-import com.example.pchrp.newdashboard.activity.RealIncomeActivity;
-import com.example.pchrp.newdashboard.manager.Contextor;
-import com.example.pchrp.newdashboard.manager.DashBoradManager;
-import com.example.pchrp.newdashboard.manager.http.HttpManager;
-import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
+
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -40,6 +31,13 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.hdw.android.dashboard.Dao.DashBoardDao;
+import com.hdw.android.dashboard.Dao.objectdao.ObjectItemDao;
+import com.hdw.android.dashboard.manager.Contextor;
+import com.hdw.android.dashboard.manager.DashBoradManager;
+import com.hdw.android.dashboard.manager.http.HttpManager;
+import com.hdw.android.dashboard.util.SharedPrefDateManager;
+import com.hdw.android.dashboard.R;
 
 import java.time.Instant;
 import java.util.ArrayList;

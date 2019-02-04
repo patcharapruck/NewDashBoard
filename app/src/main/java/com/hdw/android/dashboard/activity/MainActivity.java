@@ -1,4 +1,4 @@
-package com.example.pchrp.newdashboard.activity;
+package com.hdw.android.dashboard.activity;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -15,14 +15,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pchrp.newdashboard.Dao.DashBoardDao;
-import com.example.pchrp.newdashboard.R;
-import com.example.pchrp.newdashboard.manager.Contextor;
-import com.example.pchrp.newdashboard.manager.DashBoradManager;
-import com.example.pchrp.newdashboard.manager.http.HttpManager;
-import com.example.pchrp.newdashboard.util.SharedPrefDateManager;
-import com.example.pchrp.newdashboard.util.SharedPrefDatePayManager;
-import com.example.pchrp.newdashboard.util.SharedPrefManager;
+import com.hdw.android.dashboard.Dao.DashBoardDao;
+import com.hdw.android.dashboard.R;
+import com.hdw.android.dashboard.manager.Contextor;
+import com.hdw.android.dashboard.manager.DashBoradManager;
+import com.hdw.android.dashboard.manager.http.HttpManager;
+import com.hdw.android.dashboard.util.SharedPrefDateManager;
+import com.hdw.android.dashboard.util.SharedPrefDatePayManager;
+import com.hdw.android.dashboard.util.SharedPrefManager;
 
 import java.io.IOException;
 import java.text.DateFormat;

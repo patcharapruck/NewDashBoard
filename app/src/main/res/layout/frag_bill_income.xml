@@ -44,6 +44,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/prompt_regular"
                     android:gravity="center"
                     android:text="ยอดรวมทั้งหมด"
                     android:textColor="@color/black"
@@ -65,6 +66,7 @@
                         android:id="@+id/tvincomebill"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/prompt_regular"
                         android:gravity="center"
                         android:text="0.00"
                         android:textColor="@color/text_money_pay"
@@ -122,6 +124,7 @@
                                     style="@style/font_card_main"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="ค่าดื่ม" />
 
@@ -130,6 +133,7 @@
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="0.00" />
 
@@ -173,6 +177,7 @@
                                     style="@style/font_card_main"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="ค่าMember" />
 
@@ -181,6 +186,7 @@
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="0.00" />
 
@@ -222,6 +228,7 @@
                                     style="@style/font_card_main"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="ค่าบริการ" />
 
@@ -230,6 +237,7 @@
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="0.00" />
 
@@ -271,6 +279,7 @@
                                     style="@style/font_card_main"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="ค่าสินค้า/เครื่องดื่ม" />
 
@@ -279,6 +288,7 @@
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="0.00" />
 
@@ -321,6 +331,7 @@
                                     style="@style/font_card_main"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="ค่าอาหาร" />
 
@@ -329,6 +340,7 @@
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="0.00" />
 
@@ -371,6 +383,7 @@
                                     style="@style/font_card_main"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="จำนวนMember(คน)" />
 
@@ -379,6 +392,7 @@
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="0" />
 
@@ -422,6 +436,7 @@
                                     style="@style/font_card_main"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="ดื่มทั้งหมด(ดื่ม)" />
 
@@ -431,6 +446,7 @@
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="0" />
 
@@ -473,6 +489,7 @@
                                     style="@style/font_card_main"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="จำนวนลูกค้า(คน)" />
 
@@ -481,6 +498,7 @@
                                     style="@style/font_card_bill"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="0" />
 

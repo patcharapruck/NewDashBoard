@@ -12,11 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.hdw.android.dashboard.activity.MainActivity"></activity>
+        <activity android:name="com.hdw.android.dashboard.activity.LogInActivity"></activity>
         <activity android:name="com.hdw.android.dashboard.activity.CompareReceipts" />
         <activity android:name="com.hdw.android.dashboard.activity.RealIncomeActivity" />
         <activity android:name="com.hdw.android.dashboard.activity.CreditActivity" />
-        <activity android:name="com.hdw.android.dashboard.activity.LogInActivity">
+        <activity android:name="com.hdw.android.dashboard.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

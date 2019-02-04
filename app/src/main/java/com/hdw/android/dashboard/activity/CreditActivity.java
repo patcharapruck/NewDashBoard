@@ -1,17 +1,25 @@
 package com.hdw.android.dashboard.activity;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.hdw.android.dashboard.Dao.DashBoardDao;
 import com.hdw.android.dashboard.Dao.bankdao.BankItemColleationDao;
 import com.hdw.android.dashboard.R;
 import com.hdw.android.dashboard.manager.Contextor;
 import com.hdw.android.dashboard.manager.DashBoradManager;
+import com.hdw.android.dashboard.manager.http.HttpManager;
 import com.hdw.android.dashboard.util.SharedPrefDateManager;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -21,9 +29,20 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
-public class CreditActivity extends AppCompatActivity {
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class CreditActivity extends AppCompatActivity implements View.OnClickListener {
     BarChart barChart;
     Toolbar toolbar;
     TextView tvcreditall,
@@ -48,22 +67,24 @@ public class CreditActivity extends AppCompatActivity {
             visats, visaks;
 //    //วันปัจจุบัน
 //    String st =" ";
+    Button btncalendarCredit;
+
+    DecimalFormat formatter;
+    String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credit);
+
+        initInstances();
+
+        // ตัวแปร เก็บค่า ธนาคาร 1
+    }
+
+    private void initInstances() {
         barChart = findViewById(R.id.barchart);
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        DecimalFormat formatter = new DecimalFormat("#,###,###.00");
-        String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
-
         toolbar = findViewById(R.id.tbCredit);
-        toolbar.setTitle("รายรับบัตรเครดิต");
-        toolbar.setSubtitle(date);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         tvcreditall = (TextView) findViewById(R.id.tvcreditall);
         tvamaxt = (TextView) findViewById(R.id.tvamaxt);
@@ -77,7 +98,60 @@ public class CreditActivity extends AppCompatActivity {
         tvunipayk = (TextView) findViewById(R.id.tvunipayk);
         tvvisak = (TextView) findViewById(R.id.tvvisak);
 
-        // ตัวแปร เก็บค่า ธนาคาร 1
+        btncalendarCredit = (Button) findViewById(R.id.btncalendarCredit);
+        btncalendarCredit.setOnClickListener(this);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        formatter = new DecimalFormat("#,###,###.00");
+        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+
+        toolbar.setTitle("รายรับบัตรเครดิต");
+        toolbar.setSubtitle(date);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+        setTextViewCredit();
+
+    }
+
+    private void reqAPI(String date) {
+
+        final Context mcontext = Contextor.getInstance().getContext();
+        String nn = "{\"property\":[],\"criteria\":{\"sql-obj-command\":\"( tb_sales_shift.open_date >= '"+date+" 00:00:00' AND tb_sales_shift.open_date <= '"+date+" 23:59:59')\",\"summary-date\":\"*\"},\"orderBy\":{\"InvoiceDocument-id\":\"desc\"},\"pagination\":{}}";
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
+        Call<DashBoardDao> call = HttpManager.getInstance().getService().loadAPI(requestBody);
+        call.enqueue(new Callback<DashBoardDao>() {
+
+            @Override
+            public void onResponse(Call<DashBoardDao> call, Response<DashBoardDao> response) {
+                if(response.isSuccessful()){
+                    DashBoardDao dao = response.body();
+                    DashBoradManager.getInstance().setDao(dao);
+                }else {
+                    Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<DashBoardDao> call, Throwable t) {
+                Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อกับข้อมูลได้",Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+    }
+
+    private void setTextViewCredit() {
+
         BankItemColleationDao B1 = DashBoradManager.getInstance().getDao().getObject().getIncomeByCreditCardList().get(0);
         BankItemColleationDao B2 = DashBoradManager.getInstance().getDao().getObject().getIncomeByCreditCardList().get(1);
 
@@ -157,8 +231,18 @@ public class CreditActivity extends AppCompatActivity {
         barChart.invalidate();
 
 
+
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 
     private void setTextAndColor() {
         tvcreditall.setText(creditalls);
@@ -238,4 +322,58 @@ public class CreditActivity extends AppCompatActivity {
         return barBnk2;
     }
 
+    @Override
+    public void onClick(View v) {
+
+        if (v ==  btncalendarCredit){
+
+            DatePickerDialog dialog = new DatePickerDialog(CreditActivity.this,new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    month++;
+                    String mm = ""+month;
+                    String dd = ""+dayOfMonth;
+
+                    if (month<10){
+                        mm = "0"+month;
+                    }
+                    if (dayOfMonth < 10){
+                        dd = "0"+dayOfMonth;
+                    }
+                    String datecalendat;
+                    datecalendat = year+ "/" + mm + "/" +dd;
+
+                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                            .saveDatereq(datecalendat);
+
+                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                            .saveDateCalendar(dayOfMonth,month,year);
+
+
+                    CreditActivity.this.recreate();
+
+                }
+            },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
+                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()-1
+                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
+
+            Calendar c = Calendar.getInstance(Locale.ENGLISH);
+            c.add(Calendar.DATE,-1);
+            Date date = c.getTime();
+            dialog.getDatePicker().setMaxDate(date.getTime());
+            Date d = null;
+            String oldDateString = "2019/01/06";
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
+            try {
+                d = sdf.parse(oldDateString);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            dialog.show();
+            dialog.getDatePicker().setMinDate(d.getTime());
+            dialog.getDatePicker().setMaxDate(date.getTime());
+
+        }
+    }
 }

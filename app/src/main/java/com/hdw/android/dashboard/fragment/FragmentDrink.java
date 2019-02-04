@@ -39,6 +39,8 @@ import com.hdw.android.dashboard.manager.http.HttpManager;
 import com.hdw.android.dashboard.util.SharedPrefDateManager;
 import com.hdw.android.dashboard.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -51,9 +53,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class FragmentDrink extends Fragment implements View.OnClickListener {
 
     TextView tvtotalpd, tventertainpd, tvpurchasepd, tvwithdrawpd;
@@ -402,14 +401,25 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
 
                 }
             },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
-                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()
+                    ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()-1
                     ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
 
             Calendar c = Calendar.getInstance(Locale.ENGLISH);
             c.add(Calendar.DATE,-1);
             Date date = c.getTime();
             dialog.getDatePicker().setMaxDate(date.getTime());
+            Date d = null;
+            String oldDateString = "2019/01/06";
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
+            try {
+                d = sdf.parse(oldDateString);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             dialog.show();
+            dialog.getDatePicker().setMinDate(d.getTime());
+            dialog.getDatePicker().setMaxDate(date.getTime());
         }
 
     }

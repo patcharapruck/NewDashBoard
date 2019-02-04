@@ -12,6 +12,14 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/bg1"
         android:id="@+id/tbCredit">
+
+        <Button
+            android:id="@+id/btncalendarCredit"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="right"
+            android:text="เลือกวันที่" />
+
     </android.support.v7.widget.Toolbar>
 
         <RelativeLayout

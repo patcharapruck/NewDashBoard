@@ -174,7 +174,6 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
 
         lineChart = (LineChart) findViewById(R.id.lineChart);
 
-
         LineDataSet lineDataSet = new LineDataSet(dataValues1(),"รายรับจริง");
         lineDataSet.setColor(Color.parseColor("#4B2685"));
         LineDataSet lineDataSet1 = new LineDataSet(dataValues2(),"รายรับตามบิล");
@@ -301,7 +300,7 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         Calendar c = Calendar.getInstance(Locale.ENGLISH);
         c.add(Calendar.DATE,-1);
         final int dayofmonth = c.get(Calendar.DAY_OF_MONTH);
-        int month = c.get(Calendar.MONTH);
+        int month = c.get(Calendar.MONTH)+1;
         int year = c.get(Calendar.YEAR);
         Date date = c.getTime();
         Date d = null;
@@ -325,7 +324,7 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
                 sp2.setText(datestart);
 
             }
-        },year,month,dayofmonth);
+        },year,month-1,dayofmonth);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         try {
@@ -367,7 +366,7 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
                 sp3.setText(datestop);
 
             }
-        },year,month,dayofmonth);
+        },year,month-1,dayofmonth);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         try {

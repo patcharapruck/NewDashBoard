@@ -95,7 +95,6 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
         DecimalFormat formatter = new DecimalFormat("#,###,###.00");
 
         ODao = DashBoradManager.getInstance().getDao().getObject();
-
         income = ODao.getIncome();
         cashPayments = ODao.getCashPayments();
         creditPayments = ODao.getCreditPayments();
@@ -153,7 +152,13 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
     protected void onResume() {
         super.onResume();
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
-        setTextViewIncome();
+
+        try {
+            setTextViewIncome();
+        }catch (Exception e){
+            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override

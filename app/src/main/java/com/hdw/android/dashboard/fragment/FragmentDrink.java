@@ -279,9 +279,25 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
-        Odao = DashBoradManager.getInstance().getDao().getObject();
-        this.size = Odao.getSummaryUseProductList().size();
-        setViewDrink();
+
+        try {
+            Odao = DashBoradManager.getInstance().getDao().getObject();
+        }catch (Exception e){
+            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+        }
+
+        try {
+            this.size = Odao.getSummaryUseProductList().size();
+        }catch (Exception e){
+            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+        }
+
+        try {
+            setViewDrink();
+        }catch (Exception e){
+            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+        }
+
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
         activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);

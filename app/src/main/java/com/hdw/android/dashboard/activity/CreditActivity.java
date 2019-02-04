@@ -120,7 +120,12 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
     protected void onResume() {
         super.onResume();
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
-        setTextViewCredit();
+
+        try {
+            setTextViewCredit();
+        }catch (Exception e){
+            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+        }
 
     }
 

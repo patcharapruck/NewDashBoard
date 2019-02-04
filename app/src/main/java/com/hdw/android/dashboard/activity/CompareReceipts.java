@@ -201,8 +201,6 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
 
 
         lineChart.setData(data);
-
-
         lineChart.invalidate();
 
     }
@@ -284,7 +282,12 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
                 Toast.makeText(Contextor.getInstance().getContext(),"เกิดข้อผิดพลาดของรูปแบบวันที่",Toast.LENGTH_LONG).show();
             }
             else{
+                try {
                     teqAPICompare();
+                }catch (Exception e){
+                    Toast.makeText(Contextor.getInstance().getContext(),"เกิดข้อผิดพลาด",Toast.LENGTH_SHORT).show();
+                }
+
             }
 
         }

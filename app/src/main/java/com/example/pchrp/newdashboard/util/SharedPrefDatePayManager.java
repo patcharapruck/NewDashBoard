@@ -37,6 +37,14 @@ public class SharedPrefDatePayManager {
         return true;
     }
 
+    public boolean logoutPay(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PAY, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+        return true;
+    }
+
     public boolean saveNotPay(Long notpay){
 
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PAY, Context.MODE_PRIVATE);

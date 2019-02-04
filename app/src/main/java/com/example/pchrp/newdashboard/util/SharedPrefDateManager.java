@@ -54,6 +54,14 @@ public class SharedPrefDateManager {
         return true;
     }
 
+    public boolean logoutDate(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+        return true;
+    }
+
     public int getDateofMonth(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getInt(KEY_DATE_OF_MONTH,0);

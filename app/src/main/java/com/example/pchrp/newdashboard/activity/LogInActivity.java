@@ -37,11 +37,11 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_log_in);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-//        if(SharedPrefManager.getInstance(Contextor.getInstance().getContext()).getToken().length()>0){
-//            Intent intent = new Intent(LogInActivity.this,MainActivity.class);
-//            finish();
-//            this.startActivity(intent);
-//        }
+        if(SharedPrefManager.getInstance(Contextor.getInstance().getContext()).getToken().length()>0){
+            Intent intent = new Intent(LogInActivity.this,MainActivity.class);
+            finish();
+            this.startActivity(intent);
+        }
 
         InitInstances();
 

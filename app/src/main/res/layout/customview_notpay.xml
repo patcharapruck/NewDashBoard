@@ -23,19 +23,21 @@
                 android:weightSum="3">
 
                 <TextView
+                    style="@style/font_head_pay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="เลขที่เอกสาร"
-                    style="@style/font_head_pay"/>
+                    android:fontFamily="@font/prompt_regular"
+                    android:text="เลขที่เอกสาร" />
 
                 <TextView
                     android:id="@+id/tvNpyId"
+                    style="@style/textPay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text=""
-                    style="@style/textPay" />
+                    android:fontFamily="@font/prompt_regular"
+                    android:text="" />
 
             </LinearLayout>
 
@@ -46,19 +48,21 @@
                 android:weightSum="3">
 
                 <TextView
+                    style="@style/font_head_pay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="ชื่อหัวบิล"
-                    style="@style/font_head_pay" />
+                    android:fontFamily="@font/prompt_regular"
+                    android:text="ชื่อหัวบิล" />
 
                 <TextView
                     android:id="@+id/tvNpyBill"
+                    style="@style/textPay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text=""
-                    style="@style/textPay"/>
+                    android:fontFamily="@font/prompt_regular"
+                    android:text="" />
 
             </LinearLayout>
 
@@ -69,18 +73,20 @@
                 android:weightSum="3">
 
                 <TextView
+                    style="@style/font_head_pay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
-                    android:text="Table/Room"
-                    style="@style/font_head_pay" />
+                    android:fontFamily="@font/prompt_regular"
+                    android:text="Table/Room" />
 
                 <TextView
                     android:id="@+id/tvNpyRoom"
+                    style="@style/textPay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/textPay"
+                    android:fontFamily="@font/prompt_regular"
                     android:text="" />
 
             </LinearLayout>
@@ -96,15 +102,17 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Sale"
-                    style="@style/font_head_pay" />
+                    style="@style/font_head_pay"
+                    android:fontFamily="@font/prompt_regular" />
 
                 <TextView
                     android:id="@+id/tvNpySale"
+                    style="@style/textPay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text=""
-                    style="@style/textPay"/>
+                    android:fontFamily="@font/prompt_regular"
+                    android:text="" />
 
             </LinearLayout>
 
@@ -115,20 +123,22 @@
                 android:weightSum="3">
 
                 <TextView
+                    style="@style/font_head_pay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
-                    android:text="ยอดเงินรวม(บาท)"
-                    style="@style/font_head_pay" />
+                    android:fontFamily="@font/prompt_regular"
+                    android:text="ยอดเงินรวม(บาท)" />
 
                 <TextView
                     android:id="@+id/tvNpyMonny"
+                    style="@style/textPay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
-                    android:text="0.0"
+                    android:fontFamily="@font/prompt_regular"
                     android:gravity="right"
-                    style="@style/textPay"
+                    android:text="0.0"
                     android:textColor="@color/color_not_pay"
                     android:textSize="20sp" />
 

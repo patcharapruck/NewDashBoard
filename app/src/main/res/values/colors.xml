@@ -11,4 +11,13 @@
     <color name="bg1">#EFEFEF</color>
     <color name="bg2">#FAFAFA</color>
     <color name="colorfontpay">#949494</color>
+    <color name="billDrink">#8F47EA</color>
+    <color name="billMember">#0780AF</color>
+    <color name="billservice">#057BFF</color>
+    <color name="billProduct">#FF7902</color>
+    <color name="billFood">#FB285E</color>
+    <color name="billPeopleMember">#67C4EF</color>
+    <color name="billAllDrink">#3D4DB7</color>
+    <color name="billCustomer">#AF1A96</color>
+
 </resources>

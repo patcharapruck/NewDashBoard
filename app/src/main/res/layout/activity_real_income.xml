@@ -8,16 +8,18 @@
     tools:context=".activity.RealIncomeActivity">
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/tbIncome"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/bg1"
-        android:id="@+id/tbIncome">
+        android:background="@color/bg1">
 
         <Button
             android:id="@+id/btncalendarrevenue"
             android:layout_width="wrap_content"
+
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="right"
+            android:fontFamily="@font/prompt_regular"
             android:text="เลือกวันที่" />
 
     </android.support.v7.widget.Toolbar>
@@ -84,10 +86,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginBottom="70dp"
+                            android:fontFamily="@font/prompt_regular"
                             android:gravity="center"
-                            android:text="รายรับจริง"
 
-                            android:fontFamily="@font/supermarket"
+
+                            android:text="รายรับจริง"
                             android:textColor="@color/black"
                             android:textSize="25sp" />
 
@@ -95,10 +98,11 @@
                             android:id="@+id/tvrevenue"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
-
-                            android:fontFamily="@font/supermarket"
                             android:layout_marginTop="20dp"
+
+
+                            android:fontFamily="@font/prompt_regular"
+                            android:gravity="center"
                             android:text="0.0"
                             android:textColor="#4CAF50"
                             android:textSize="30sp" />
@@ -138,22 +142,21 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginBottom="50dp"
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="center"
-
-                                android:fontFamily="@font/supermarket"
-                                android:textColor="@color/black"
                                 android:text="รายรับตามบิล"
-                                android:textSize="25sp"
-                                />
+                                android:textColor="@color/black"
+                                android:textSize="25sp" />
 
                             <TextView
                                 android:id="@+id/tvincome"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:gravity="center"
-
-                                android:fontFamily="@font/supermarket"
                                 android:layout_marginTop="20dp"
+
+
+                                android:fontFamily="@font/prompt_regular"
+                                android:gravity="center"
                                 android:text="0.0"
                                 android:textColor="#4CAF50"
                                 android:textSize="25sp"
@@ -179,23 +182,21 @@
 
                             <TextView
                                 android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="50dp"
-                            android:gravity="center"
-
-                            android:fontFamily="@font/supermarket"
-                            android:textColor="@color/black"
-                            android:text="ยอดบัตรเครดิต"
-                            android:textSize="25sp"/>
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="50dp"
+                                android:fontFamily="@font/prompt_regular"
+                                android:gravity="center"
+                                android:text="ยอดบัตรเครดิต"
+                                android:textColor="@color/black"
+                                android:textSize="25sp" />
 
                             <TextView
                                 android:id="@+id/tvcreditCardPayments"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:gravity="center"
-
-                                android:fontFamily="@font/supermarket"
                                 android:layout_marginTop="20dp"
+                                android:fontFamily="@font/prompt_regular"
+                                android:gravity="center"
                                 android:text="0.0"
                                 android:textColor="#4CAF50"
                                 android:textSize="25sp"
@@ -220,8 +221,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"
-                    >
+                    android:layout_height="350dp">
 
                     <TableLayout
                         android:layout_width="match_parent"
@@ -234,7 +234,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="center"
                                 android:text="รายการ"
                                 android:textColor="@color/black"
@@ -244,7 +245,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="center"
                                 android:text="ยอดรวม"
                                 android:textColor="@color/black"
@@ -259,7 +260,8 @@
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
 
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:text="รายการตามใบบิล"
                                 android:textColor="@color/black"
                                 android:textSize="24sp" />
@@ -270,7 +272,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginRight="20dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
@@ -285,7 +288,7 @@
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
 
-                                android:fontFamily="@font/supermarket"
+                                android:fontFamily="@font/prompt_regular"
                                 android:text="เงินสด"
                                 android:textColor="@color/black"
                                 android:textSize="24sp" />
@@ -297,7 +300,8 @@
                                 android:layout_marginRight="20dp"
 
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
@@ -314,7 +318,8 @@
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
 
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:text="ค้างชำระ"
                                 android:textColor="@color/black"
                                 android:textSize="24sp" />
@@ -325,7 +330,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginRight="20dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
@@ -341,7 +347,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:text="ชำระผ่านบัตรเครดิต"
                                 android:textColor="@color/black"
                                 android:textSize="24sp" />
@@ -352,7 +359,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginRight="20dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
@@ -368,7 +376,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:text="Credit"
                                 android:textColor="@color/black"
                                 android:textSize="24sp" />
@@ -379,7 +388,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginRight="20dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
@@ -394,7 +404,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:text="Entertain"
                                 android:textColor="@color/black"
                                 android:textSize="24sp" />
@@ -405,7 +416,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginRight="20dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
@@ -421,7 +433,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:text="ตัดยอด Member"
                                 android:textColor="@color/black"
                                 android:textSize="24sp" />
@@ -432,7 +445,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginRight="20dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
@@ -448,7 +462,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:text="ค่าธรรมเนียม"
                                 android:textColor="@color/black"
                                 android:textSize="24sp" />
@@ -459,7 +474,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginRight="20dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
@@ -475,7 +491,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="15dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+
+                                android:fontFamily="@font/prompt_regular"
                                 android:text="สรุปรายได้จริง"
                                 android:textColor="@color/black"
                                 android:textSize="24sp" />
@@ -486,7 +503,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginRight="20dp"
                                 android:layout_weight="5"
-                                android:fontFamily="@font/supermarket"
+                                android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"

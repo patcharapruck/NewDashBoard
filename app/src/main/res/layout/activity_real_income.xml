@@ -171,6 +171,7 @@
                             android:layout_width="@dimen/real_incard_width"
                             android:layout_height="@dimen/real_incard_height"
                             android:layout_gravity="center">
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -206,20 +207,23 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="300dp">
+                    android:layout_height="@dimen/real_income_linear"
+
+                    >
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="350dp">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TableLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:weightSum="10">
 
-                        <TableRow android:background="#BAFFC9">
+                        <TableRow android:background="@color/table_real_income">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -230,7 +234,7 @@
                                 android:gravity="center"
                                 android:text="รายการ"
                                 android:textColor="@color/black"
-                                android:textSize="30sp" />
+                                android:textSize="@dimen/table_real_incom_text_head" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -240,7 +244,7 @@
                                 android:gravity="center"
                                 android:text="ยอดรวม"
                                 android:textColor="@color/black"
-                                android:textSize="30sp" />
+                                android:textSize="@dimen/table_real_incom_text_head" />
                         </TableRow>
 
                         <TableRow>
@@ -248,47 +252,45 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="15dp"
+                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
                                 android:layout_weight="5"
-
-
                                 android:fontFamily="@font/prompt_regular"
                                 android:text="รายการตามใบบิล"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
                             <TextView
                                 android:id="@+id/tvbill"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
                                 android:layout_weight="5"
 
                                 android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
                         </TableRow>
 
-                        <TableRow android:background="#BAFFC9">
+                        <TableRow android:background="@color/table_real_income">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="15dp"
+                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
                                 android:layout_weight="5"
 
                                 android:fontFamily="@font/prompt_regular"
                                 android:text="เงินสด"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
                             <TextView
                                 android:id="@+id/tvcashPayments"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
 
                                 android:layout_weight="5"
 
@@ -296,7 +298,7 @@
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
 
                         </TableRow>
@@ -306,56 +308,54 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="15dp"
+                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
                                 android:layout_weight="5"
-
-
                                 android:fontFamily="@font/prompt_regular"
                                 android:text="ค้างชำระ"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
                             <TextView
                                 android:id="@+id/tvunpaid"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
                                 android:layout_weight="5"
 
                                 android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
 
                         </TableRow>
 
-                        <TableRow android:background="#BAFFC9">
+                        <TableRow android:background="@color/table_real_income">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="15dp"
+                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
                                 android:layout_weight="5"
 
                                 android:fontFamily="@font/prompt_regular"
                                 android:text="ชำระผ่านบัตรเครดิต"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
                             <TextView
                                 android:id="@+id/tvcredit"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
                                 android:layout_weight="5"
 
                                 android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
 
                         </TableRow>
@@ -365,54 +365,54 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="15dp"
+                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
                                 android:layout_weight="5"
 
                                 android:fontFamily="@font/prompt_regular"
                                 android:text="Credit"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
                             <TextView
                                 android:id="@+id/tvcreditPayments"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
                                 android:layout_weight="5"
 
                                 android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
                         </TableRow>
 
-                        <TableRow android:background="#BAFFC9">
+                        <TableRow android:background="@color/table_real_income">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="15dp"
+                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
                                 android:layout_weight="5"
 
                                 android:fontFamily="@font/prompt_regular"
                                 android:text="Entertain"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
                             <TextView
                                 android:id="@+id/tventertainPayments"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
                                 android:layout_weight="5"
 
                                 android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
 
                         </TableRow>
@@ -422,55 +422,55 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="15dp"
+                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
                                 android:layout_weight="5"
 
                                 android:fontFamily="@font/prompt_regular"
                                 android:text="ตัดยอด Member"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
                             <TextView
                                 android:id="@+id/tvmemberDebitPayments"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
                                 android:layout_weight="5"
 
                                 android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
 
                         </TableRow>
 
-                        <TableRow android:background="#BAFFC9">
+                        <TableRow android:background="@color/table_real_income">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="15dp"
+                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
                                 android:layout_weight="5"
 
                                 android:fontFamily="@font/prompt_regular"
                                 android:text="ค่าธรรมเนียม"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
                             <TextView
                                 android:id="@+id/tvtotalServiceCharge"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
                                 android:layout_weight="5"
 
                                 android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
 
                         </TableRow>
@@ -480,32 +480,30 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="15dp"
+                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
                                 android:layout_weight="5"
-
                                 android:fontFamily="@font/prompt_regular"
                                 android:text="สรุปรายได้จริง"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
                             <TextView
                                 android:id="@+id/tvtotal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
                                 android:layout_weight="5"
                                 android:fontFamily="@font/prompt_regular"
                                 android:gravity="right"
                                 android:text="0.0"
                                 android:textColor="@color/black"
-                                android:textSize="24sp" />
+                                android:textSize="@dimen/table_real_incom_text_row" />
 
 
                         </TableRow>
 
                     </TableLayout>
                 </LinearLayout>
-
 
             </LinearLayout>
         </RelativeLayout>

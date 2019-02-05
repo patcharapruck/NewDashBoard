@@ -56,5 +56,25 @@
     <dimen name="real_credit_card_mar_top">200dp</dimen>
     <dimen name="real_money_text_size">25sp</dimen>
     <dimen name="date_text_size_main_menu">12.5sp</dimen>
+    <dimen name="real_income_linear">300dp</dimen>
+    <dimen name="real_income_linear_list">350dp</dimen>
+    <dimen name="table_real_incom_text_head">30sp</dimen>
+    <dimen name="table_real_incom_margin_left">15dp</dimen>
+    <dimen name="table_real_incom_text_row">24sp</dimen>
+    <dimen name="table_real_incom_margin_right">20dp</dimen>
+    <dimen name="bill_pie_chart_rela_height">300dp</dimen>
+    <dimen name="bill_text_size_sum">18sp</dimen>
+    <dimen name="bill_incom_width_tab_color">10dp</dimen>
+    <dimen name="bill_margin_card_group">3dp</dimen>
+    <dimen name="bill_margin_card_group_radius">8dp</dimen>
+    <dimen name="bill_margin_card_group_Elevation_shadow">5dp</dimen>
+    <dimen name="bill_text_sum_money">24dp</dimen>
+    <dimen name="bill_margin_card_left">40dp</dimen>
+    <dimen name="bill_margin_card_top">10dp</dimen>
+    <dimen name="bill_margin_card_right">40dp</dimen>
+    <dimen name="bill_margin_card_bottom">20dp</dimen>
+    <dimen name="bill_padding_card">20dp</dimen>
+    <dimen name="bill_card_radius">15dp</dimen>
+    <dimen name="bill_card_Elevation">5dp</dimen>
 
 </resources>

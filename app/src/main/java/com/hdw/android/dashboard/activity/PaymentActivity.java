@@ -56,13 +56,13 @@ public class PaymentActivity extends AppCompatActivity {
         tvPay = (TextView)findViewById(R.id.tvPay);
         tvNotPay = (TextView)findViewById(R.id.tvNotPay);
         tvAll = (TextView)findViewById(R.id.tvAll);
-
         tabLayout = (TabLayout) findViewById(R.id.tabs);
+        reqAPIpay();
+        reqAPInotpay();
 
     }
 
     private void reqAPInotpay() {
-
         final Context mcontext = Contextor.getInstance().getContext();
         String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 22 and f:salesShift.isOpening = 1 \"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
@@ -149,7 +149,6 @@ public class PaymentActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
 
@@ -157,9 +156,6 @@ public class PaymentActivity extends AppCompatActivity {
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        reqAPIpay();
-        reqAPInotpay();
     }
 
     @Override
@@ -182,7 +178,6 @@ public class PaymentActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 

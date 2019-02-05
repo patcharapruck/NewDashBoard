@@ -39,7 +39,8 @@
         android:layout_marginTop="@dimen/login_pass_mar_top"
         android:fontFamily="@font/prompt_regular"
         android:hint="Password"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:text="" />
 
 
 

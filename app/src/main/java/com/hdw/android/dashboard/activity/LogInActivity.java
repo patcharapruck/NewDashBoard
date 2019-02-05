@@ -26,7 +26,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     EditText username,password;
     Button btnlogin;
 
-    String user,pass;
+    String user="",
+            pass="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +51,6 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         password = (EditText)findViewById(R.id.passId);
         btnlogin = (Button)findViewById(R.id.btnLogin);
 
-        btnlogin.setOnClickListener(this);
 
     }
 
@@ -64,10 +64,25 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onResponse(Call<LoginItemDao> call, Response<LoginItemDao> response) {
+
                 if(response.isSuccessful()){
-                    LoginItemDao dao = response.body();
-                    SharedPrefManager.getInstance(Contextor.getInstance().getContext())
-                            .saveLogin(user,pass,dao.getObject().getAuthentication().getAccessToken());
+
+                    if(response.body().getStatusCode() == 200){
+                        LoginItemDao dao = response.body();
+                        SharedPrefManager.getInstance(Contextor.getInstance().getContext())
+                                .saveLogin(user,pass,dao.getObject().getAuthentication().getAccessToken());
+
+                        if(SharedPrefManager.getInstance(Contextor.getInstance().getContext()).getToken().length()>0){
+                            Intent intent = new Intent(LogInActivity.this,MainActivity.class);
+                            finish();
+                            startActivity(intent);
+                        }
+                    }
+
+                    else if (response.body().getStatusCode() == 404){
+                        Toast.makeText(mcontext,"รหัสผ่านไม่ถูกต้อง",Toast.LENGTH_LONG).show();
+                    }
+
 
                 }else {
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
@@ -97,22 +112,18 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onResume() {
+
         super.onResume();
+        btnlogin.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         if(v == btnlogin){
-
          user =  username.getText().toString();
          pass =  password.getText().toString();
-         reqLogin(user,pass);
 
-         if(SharedPrefManager.getInstance(Contextor.getInstance().getContext()).getToken().length()>0){
-             Intent intent = new Intent(LogInActivity.this,MainActivity.class);
-             finish();
-             this.startActivity(intent);
-         }
+         reqLogin(user,pass);
         }
     }
 }

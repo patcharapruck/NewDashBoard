@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -101,6 +102,7 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
     }
 
     private void setListData() {
+
         Dao = CompareManager.getInstance().getCompareDao();
         this.size = Dao.getObject().size();
         income = new ArrayList<Float>(size);
@@ -190,13 +192,11 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         lineDataSet1.setLineWidth(5f);
         XAxis xAxis = new XAxis();
 
-
-
-
         lineChart.setData(data);
         lineChart.invalidate();
 
     }
+
 
     private ArrayList<Entry> dataValues1(){
         ArrayList<Entry> dataVals = new ArrayList<Entry>();

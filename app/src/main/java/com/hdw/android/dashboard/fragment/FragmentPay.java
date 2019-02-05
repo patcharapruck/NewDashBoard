@@ -54,7 +54,7 @@ public class FragmentPay extends Fragment {
     private void initInstances(View rootView) {
 
         listViewPay = (ListView) rootView.findViewById(R.id.list_pay);
-        reqAPIpay();
+
 
     }
 
@@ -62,13 +62,20 @@ public class FragmentPay extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        payMentAdapter = new PayMentAdapter();
-        listViewPay.setAdapter(payMentAdapter);
+        reqAPIpay();
+
     }
 
     @Override
     public void onStop() {
         super.onStop();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        payMentAdapter = new PayMentAdapter();
+        listViewPay.setAdapter(payMentAdapter);
     }
 
     /*
@@ -102,7 +109,7 @@ public class FragmentPay extends Fragment {
                 if(response.isSuccessful()){
                     PayItemColleationDao dao = response.body();
                     PayManager.getInstance().setPayItemColleationDao(dao);
-                    listViewPay.deferNotifyDataSetChanged();
+                    payMentAdapter.notifyDataSetChanged();
                     SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
                             .savePay(dao.getPagination().getTotalItem());
                 }else {

@@ -59,6 +59,9 @@ public class PaymentActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
 
+        reqAPIpay();
+        reqAPInotpay();
+
     }
 
     private void reqAPInotpay() {
@@ -157,9 +160,6 @@ public class PaymentActivity extends AppCompatActivity {
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        reqAPIpay();
-        reqAPInotpay();
     }
 
     @Override
@@ -182,7 +182,6 @@ public class PaymentActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 

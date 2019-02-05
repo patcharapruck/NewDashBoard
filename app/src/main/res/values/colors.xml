@@ -19,5 +19,18 @@
     <color name="billPeopleMember">#67C4EF</color>
     <color name="billAllDrink">#3D4DB7</color>
     <color name="billCustomer">#AF1A96</color>
+    <color name="date_text_main">#19237E</color>
+    <color name="total_drink">#F0FB8C</color>
+    <color name="use_drink">#BAFFC9</color>
+    <color name="sell_drink">#BAE1FF</color>
+    <color name="entertrain_drink">#B2B2F9</color>
+    <color name="bg_login">#19237E</color>
+    <color name="pay_card_pay_table">#cdcbec</color>
+    <color name="pay_card_all_table">#e6c6a0</color>
+    <color name="pay_card_notpay_table">#daf18e</color>
+    <color name="circle_real_income">#BAFFC9</color>
+    <color name="real_money_text">#4CAF50</color>
+    <color name="real_bill_card">#FFDFB9</color>
+    <color name="real_credit_card">#88C9EF</color>
 
 </resources>

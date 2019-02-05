@@ -27,7 +27,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/linear_height_compare"
                 android:orientation="horizontal"
                 android:weightSum="15">
 
@@ -39,7 +39,7 @@
                     android:gravity="center"
                     android:text="รายวัน"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/text_size_compare" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
                     android:gravity="center"
                     android:text="ตั้งแต่"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/text_size_compare" />
 
                 <Button
                     android:id="@+id/datestart"
@@ -68,7 +68,7 @@
                     android:gravity="center"
                     android:text="ถึง"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/text_size_compare" />
 
                 <Button
                     android:id="@+id/datestop"

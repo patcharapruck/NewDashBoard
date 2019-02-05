@@ -38,7 +38,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-
             android:layout_weight="3.5">
 
             <TextView
@@ -49,12 +48,12 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"
-                android:layout_margin="10dp"/>
+                android:layout_margin="@dimen/loguot_margin" />
 
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="211dp"
-                android:layout_height="111dp"
+                android:layout_width="@dimen/width_img_main_logo"
+                android:layout_height="@dimen/height_img_main_logo"
                 android:layout_centerInParent="true"
                 android:background="@drawable/krystal_1" />
 
@@ -62,37 +61,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-
                 android:layout_below="@id/logo"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="@dimen/linear_date_margin_top_main_menu">
 
-               <RelativeLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="35dp"
-                   >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/relative_date_height_main_menu">
 
-                   <Button
-                       android:id="@+id/mainImgDate"
-                       android:layout_width="130dp"
-                       android:layout_height="match_parent"
-                       android:layout_alignParentRight="true"
-                       android:layout_marginRight="20dp"
-                       android:background="@drawable/ic09"
-                       android:fontFamily="@font/prompt_bold"
-                       android:gravity="right"
-                       android:paddingTop="11dp"
-                       android:paddingRight="15dp"
-                       android:paddingBottom="10dp"
-                       android:text="y/m/d"
-                       android:textColor="#19237E"
-                       android:textSize="12.5sp" />
+                    <Button
+                        android:id="@+id/mainImgDate"
+                        android:layout_width="@dimen/date_lay_width_main_menu"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/date_margin_r_main_menu"
+                        android:background="@drawable/ic09"
+                        android:fontFamily="@font/prompt_bold"
+                        android:gravity="right"
+                        android:paddingTop="@dimen/date_pad_top_main_menu"
+                        android:paddingRight="@dimen/date_pad_r_main_menu"
+                        android:paddingBottom="@dimen/date_pad_bot_main_menu"
+                        android:text="y/m/d"
+                        android:textColor="@color/date_text_main"
+                        android:textSize="@dimen/date_text_size_main_menu" />
 
-               </RelativeLayout>
+                </RelativeLayout>
 
             </LinearLayout>
-
-
-
 
 
         </RelativeLayout>
@@ -128,15 +122,14 @@
                     android:orientation="vertical">
 
 
+                    <ImageView
+                        android:id="@+id/imgbill"
+                        android:layout_width="@dimen/width_img_main_menu"
+                        android:layout_height="@dimen/height_img_main_menu"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic02"
 
-                        <ImageView
-                            android:id="@+id/imgbill"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic02"
-
-                            />
+                        />
 
 
                     <TextView
@@ -147,7 +140,7 @@
                         android:fontFamily="@font/prompt_regular"
                         android:text="รายรับตามบิล"
                         android:textAlignment="center"
-                        android:textSize="12dp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -172,15 +165,14 @@
                     android:orientation="vertical">
 
 
+                    <ImageView
+                        android:id="@+id/imgreal"
+                        android:layout_width="@dimen/width_img_main_menu"
+                        android:layout_height="@dimen/height_img_main_menu"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic03"
 
-                        <ImageView
-                            android:id="@+id/imgreal"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic03"
-
-                            />
+                        />
 
 
                     <TextView
@@ -190,7 +182,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="รายรับจริง"
-                        android:textSize="12dp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -215,15 +207,14 @@
                     android:orientation="vertical">
 
 
+                    <ImageView
+                        android:id="@+id/imgcredit"
+                        android:layout_width="@dimen/width_img_main_menu"
+                        android:layout_height="@dimen/height_img_main_menu"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic06"
 
-                        <ImageView
-                            android:id="@+id/imgcredit"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic06"
-
-                            />
+                        />
 
 
                     <TextView
@@ -233,7 +224,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="บัตรเครดิต"
-                        android:textSize="12dp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -258,13 +249,12 @@
                     android:orientation="vertical">
 
 
-
-                        <ImageView
-                            android:id="@+id/imgdrink"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic04" />
+                    <ImageView
+                        android:id="@+id/imgdrink"
+                        android:layout_width="@dimen/width_img_main_menu"
+                        android:layout_height="@dimen/height_img_main_menu"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic04" />
 
 
                     <TextView
@@ -274,7 +264,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="ปริมาณเครื่องดื่ม"
-                        android:textSize="12dp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -299,13 +289,12 @@
                     android:orientation="vertical">
 
 
-
-                        <ImageView
-                            android:id="@+id/imgpay"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic05" />
+                    <ImageView
+                        android:id="@+id/imgpay"
+                        android:layout_width="@dimen/width_img_main_menu"
+                        android:layout_height="@dimen/height_img_main_menu"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic05" />
 
 
                     <TextView
@@ -315,7 +304,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="ยอดชำระปัจจุบัน"
-                        android:textSize="12dp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -340,12 +329,12 @@
                     android:orientation="vertical">
 
 
-                        <ImageView
-                            android:id="@+id/imggraph"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic07" />
+                    <ImageView
+                        android:id="@+id/imggraph"
+                        android:layout_width="@dimen/width_img_main_menu"
+                        android:layout_height="@dimen/height_img_main_menu"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic07" />
 
 
                     <TextView
@@ -355,21 +344,22 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="เปรียบเทียบรายรับ"
-                        android:textSize="12dp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
         </android.support.v7.widget.GridLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:gravity="center"
-            android:textSize="10sp"
-           android:layout_marginBottom="15dp"
-            android:text="Create by HandyWings.co.,ltd " />
+            android:textSize="@dimen/text_hdw_size_main"
+            android:layout_marginBottom="@dimen/text_hdw_margin_bot_main"
+            android:text="@string/text_create_by_hdw" />
 
     </LinearLayout>
 

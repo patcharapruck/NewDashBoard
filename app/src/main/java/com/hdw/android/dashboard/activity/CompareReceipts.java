@@ -189,14 +189,7 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         lineDataSet.setLineWidth(5f);
         lineDataSet1.setLineWidth(5f);
         XAxis xAxis = new XAxis();
-       lineChart.getXAxis().setValueFormatter(new IAxisValueFormatter() {
-           @Override
-           public String getFormattedValue(float value, AxisBase axis) {
 
-
-               return null;
-           }
-       });
 
 
 
@@ -205,28 +198,6 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
 
     }
 
-
-//    private ArrayList<String> dateOnLine(){
-//        Calendar c = Calendar.getInstance(Locale.ENGLISH);
-//        c.add(Calendar.DATE,-1);
-//        final int dayofmonth = c.get(Calendar.DAY_OF_MONTH);
-//        int month = c.get(Calendar.MONTH);
-//        int year = c.get(Calendar.YEAR);
-//        Date date = c.getTime();
-//        Date d = null;
-//        String oldDateString = "2019-01-06";
-//
-//
-//
-//        ArrayList<String> dateOnLine = new ArrayList<>();
-//
-//        for(int i=0;i<size;i++){
-//            dateOnLine.add(oldDateString);
-//        }
-//
-//        return dateOnLine;
-//
-//    }
     private ArrayList<Entry> dataValues1(){
         ArrayList<Entry> dataVals = new ArrayList<Entry>();
         for(int i=0;i<size;i++){

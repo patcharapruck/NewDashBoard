@@ -175,7 +175,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="@dimen/pay_linear_height"
                 android:orientation="horizontal"
                 android:weightSum="3">
 
@@ -184,7 +184,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="#cdcbec"
+                    app:cardBackgroundColor="@color/pay_card_pay_table"
                     app:cardElevation="5dp">
 
                     <RelativeLayout
@@ -192,7 +192,7 @@
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
                         android:layout_gravity="center"
-                        android:layout_margin="5dp"
+                        android:layout_margin="@dimen/pay_margin_relative_incard"
                         android:background="@color/white">
 
                         <LinearLayout
@@ -228,7 +228,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="#e6c6a0"
+                    app:cardBackgroundColor="@color/pay_card_all_table"
                     app:cardElevation="5dp">
 
                     <RelativeLayout
@@ -236,7 +236,7 @@
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
                         android:layout_gravity="center"
-                        android:layout_margin="5dp"
+                        android:layout_margin="@dimen/pay_margin_relative_incard"
                         android:background="@color/white">
 
                         <LinearLayout
@@ -272,7 +272,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="#daf18e"
+                    app:cardBackgroundColor="@color/pay_card_notpay_table"
                     app:cardElevation="5dp">
 
                     <RelativeLayout
@@ -280,7 +280,7 @@
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
                         android:layout_gravity="center"
-                        android:layout_margin="5dp"
+                        android:layout_margin="@dimen/pay_margin_relative_incard"
                         android:background="@color/white">
 
                         <LinearLayout

@@ -46,18 +46,18 @@
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="right"
                 android:fontFamily="@font/prompt_regular"
-                android:text="เลือกวันที่" />
+                android:text="@string/selectDate" />
 
         </android.support.v7.widget.Toolbar>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:padding="10dp">
+            android:layout_height="@dimen/relative_allsum_drink_height"
+            android:padding="@dimen/relative_allsum_drink_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="@dimen/linear_allsum_drink_height"
                 android:orientation="horizontal"
                 android:weightSum="2">
 
@@ -66,7 +66,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1.5"
-                    app:cardBackgroundColor="#F0FB8C"
+                    app:cardBackgroundColor="@color/total_drink"
                     app:cardElevation="5dp">
 
                     <RelativeLayout
@@ -109,7 +109,7 @@
                     android:id="@+id/btndrink"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
+                    android:layout_margin="@dimen/margin_button_report_drink"
                     android:layout_weight="0.5"
                     android:fontFamily="@font/prompt_regular"
                     android:text="รายงานการใช้เครื่องดื่ม" />
@@ -117,7 +117,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="@dimen/linear_allsum_drink_height"
                 android:layout_alignParentBottom="true"
                 android:orientation="horizontal"
                 android:weightSum="3">
@@ -127,7 +127,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="#BAFFC9"
+                    app:cardBackgroundColor="@color/use_drink"
                     app:cardElevation="5dp">
 
                     <RelativeLayout
@@ -171,7 +171,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="#BAE1FF"
+                    app:cardBackgroundColor="@color/sell_drink"
                     app:cardElevation="5dp">
 
                     <RelativeLayout
@@ -215,7 +215,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="#B2B2F9"
+                    app:cardBackgroundColor="@color/entertrain_drink"
                     app:cardElevation="5dp">
 
                     <RelativeLayout

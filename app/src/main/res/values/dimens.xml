@@ -76,5 +76,18 @@
     <dimen name="bill_padding_card">20dp</dimen>
     <dimen name="bill_card_radius">15dp</dimen>
     <dimen name="bill_card_Elevation">5dp</dimen>
+    <dimen name="bank_pad_card_money">5dp</dimen>
+    <dimen name="cradit_card_radius">15dp</dimen>
+    <dimen name="cradit_card_Elevation">5dp</dimen>
+    <dimen name="cradit_img_width">50dp</dimen>
+    <dimen name="cradit_text_head_bank_mar_left">40dp</dimen>
+    <dimen name="cradit_grid_mar">5dp</dimen>
+    <dimen name="text_mar_left">5dp</dimen>
+    <dimen name="text_mar_top">10dp</dimen>
+    <dimen name="text_mar_bot">10dp</dimen>
+    <dimen name="text_mar_left_money">10dp</dimen>
+    <dimen name="text_mar_top_money">10dp</dimen>
+    <dimen name="text_mar_bot_money">5dp</dimen>
+    <dimen name="text_sum_mar_top">10dp</dimen>
 
 </resources>

@@ -89,5 +89,10 @@
     <dimen name="text_mar_top_money">10dp</dimen>
     <dimen name="text_mar_bot_money">5dp</dimen>
     <dimen name="text_sum_mar_top">10dp</dimen>
+    <dimen name="main_padding_menu">5dp</dimen>
+    <dimen name="radius_card_main">15dp</dimen>
+    <dimen name="elevation_card_main">5dp</dimen>
+    <dimen name="main_menu_text_size">14sp</dimen>
+    <dimen name="elevation_card">5dp</dimen>
 
 </resources>

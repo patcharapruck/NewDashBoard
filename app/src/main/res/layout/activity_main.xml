@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.5"
-            android:background="#19237E">
+            android:background="@color/bg_login">
 
         </View>
 
@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6.5"
-            android:padding="5dp"
+            android:padding="@dimen/main_padding_menu"
             app:alignmentMode="alignMargins"
             app:columnCount="2"
             app:columnOrderPreserved="false"
@@ -109,8 +109,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="5dp"
+                app:cardCornerRadius="@dimen/radius_card_main"
+                app:cardElevation="@dimen/elevation_card_main"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1">
 
@@ -140,7 +140,7 @@
                         android:fontFamily="@font/prompt_regular"
                         android:text="รายรับตามบิล"
                         android:textAlignment="center"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/main_menu_text_size" />
 
                 </LinearLayout>
 
@@ -152,8 +152,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="5dp"
+                app:cardCornerRadius="@dimen/radius_card_main"
+                app:cardElevation="@dimen/elevation_card_main"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1">
 
@@ -182,7 +182,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="รายรับจริง"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/main_menu_text_size" />
 
                 </LinearLayout>
 
@@ -194,8 +194,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="5dp"
+                app:cardCornerRadius="@dimen/radius_card_main"
+                app:cardElevation="@dimen/elevation_card_main"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1">
 
@@ -224,7 +224,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="บัตรเครดิต"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/main_menu_text_size" />
 
                 </LinearLayout>
 
@@ -236,8 +236,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="5dp"
+                app:cardCornerRadius="@dimen/radius_card_main"
+                app:cardElevation="@dimen/elevation_card_main"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1">
 
@@ -264,7 +264,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="ปริมาณเครื่องดื่ม"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/main_menu_text_size" />
 
                 </LinearLayout>
 
@@ -276,8 +276,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="5dp"
+                app:cardCornerRadius="@dimen/radius_card_main"
+                app:cardElevation="@dimen/elevation_card_main"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1">
 
@@ -304,7 +304,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="ยอดชำระปัจจุบัน"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/main_menu_text_size" />
 
                 </LinearLayout>
 
@@ -316,8 +316,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="5dp"
+                app:cardCornerRadius="@dimen/radius_card_main"
+                app:cardElevation="@dimen/elevation_card_main"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1">
 
@@ -344,7 +344,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="เปรียบเทียบรายรับ"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/main_menu_text_size" />
 
                 </LinearLayout>
 

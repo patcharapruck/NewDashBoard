@@ -55,5 +55,6 @@
     <dimen name="real_credit_card_mar_left">200dp</dimen>
     <dimen name="real_credit_card_mar_top">200dp</dimen>
     <dimen name="real_money_text_size">25sp</dimen>
-    <item name="date_text_size_main_menu" type="dimen" format="float">12.5sp</item>
+    <dimen name="date_text_size_main_menu">12.5sp</dimen>
+
 </resources>

@@ -38,6 +38,7 @@
             android:id="@+id/tbDrink"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ToolbarTheme"
             android:background="@color/bg_login">
             <Button
                 android:id="@+id/btncalendardrink"
@@ -46,7 +47,7 @@
                 android:layout_marginRight="15dp"
                 android:fontFamily="@font/prompt_bold"
                 android:layout_gravity="right"
-                android:background="@color/white"
+                android:background="@drawable/rounded_botton"
                 android:textColor="@color/bg_login"
                 android:theme="@style/ToolbarTheme"
                 android:text="@string/selectDate" />

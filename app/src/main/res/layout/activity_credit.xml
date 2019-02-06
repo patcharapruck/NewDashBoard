@@ -34,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1.5"
-                    android:background="#FAFAFA">
+                    android:background="@color/view_bg1">
 
                 </View>
 
@@ -42,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:background="#DADADA">
+                    android:background="@color/view_bg2">
 
                 </View>
 
@@ -75,24 +75,24 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="@dimen/text_sum_mar_top"
                         android:gravity="center"
-                        android:text="ยอดรวมทั้งหมด"
+                        android:text="@string/all_sum"
                         android:fontFamily="@font/prompt_regular"
                         android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/bill_text_size_sum" />
 
                     <android.support.v7.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
+                        android:layout_marginLeft="@dimen/bill_margin_card_left"
                         android:layout_marginTop="0dp"
-                        android:layout_marginRight="40dp"
+                        android:layout_marginRight="@dimen/bill_margin_card_right"
                         android:layout_marginBottom="0dp"
-                        android:padding="5dp"
+                        android:padding="@dimen/bank_pad_card_money"
                         app:cardBackgroundColor="@color/white"
-                        app:cardCornerRadius="15dp"
-                        app:cardElevation="5dp">
+                        app:cardCornerRadius="@dimen/bill_card_radius"
+                        app:cardElevation="@dimen/bill_card_Elevation">
 
                         <TextView
                             android:id="@+id/tvcreditall"
@@ -102,7 +102,7 @@
                             android:text="0.0"
                             android:fontFamily="@font/prompt_regular"
                             android:textColor="@color/text_money_pay"
-                            android:textSize="24dp"
+                            android:textSize="@dimen/bill_text_sum_money"
                             android:textStyle="bold" />
 
                     </android.support.v7.widget.CardView>
@@ -123,7 +123,7 @@
                         <android.support.v7.widget.GridLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:padding="5dp"
+                            android:padding="@dimen/cradit_grid_mar"
                             app:alignmentMode="alignMargins"
                             app:columnCount="2"
                             app:columnOrderPreserved="false"
@@ -135,8 +135,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 app:cardBackgroundColor="@color/white"
-                                app:cardCornerRadius="15dp"
-                                app:cardElevation="5dp"
+                                app:cardCornerRadius="@dimen/cradit_card_radius"
+                                app:cardElevation="@dimen/cradit_card_Elevation"
                                 app:layout_columnWeight="1"
                                 app:layout_rowWeight="1">
 
@@ -149,18 +149,18 @@
                                     <android.support.v7.widget.CardView
                                         android:layout_width="match_parent"
                                         android:layout_height="0dp"
-                                        app:cardBackgroundColor="#f37023"
+                                        app:cardBackgroundColor="@color/bank_t"
                                         android:layout_weight="3"
                                         >
                                         <ImageView
-                                            android:layout_width="50dp"
+                                            android:layout_width="@dimen/cradit_img_width"
                                             android:layout_height="match_parent"
                                             android:src="@drawable/imb1"/>
 
                                         <TextView
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
-                                            android:layout_marginLeft="40dp"
+                                            android:layout_marginLeft="@dimen/cradit_text_head_bank_mar_left"
                                             android:gravity="center"
                                             android:fontFamily="@font/prompt_regular"
                                             android:text="ธนาคารธนชาต"
@@ -182,92 +182,91 @@
 
                                             <!--A-MAX-->
                                             <TextView
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginTop="10dp"
-                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginTop="@dimen/text_mar_top"
+                                                android:layout_marginLeft="@dimen/text_mar_left"
+                                                android:layout_marginBottom="@dimen/text_mar_bot"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="A-MAX"
                                                 android:textColor="@color/black" />
 
                                             <TextView
                                                 android:id="@+id/tvamaxt"
-                                                android:layout_marginLeft="10dp"
-                                                android:layout_marginTop="10dp"
-                                                android:layout_marginBottom="5dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left_money"
+                                                android:layout_marginTop="@dimen/text_mar_top_money"
+                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="0.0"
-                                                android:textColor="#FF0000"
+                                                android:textColor="@color/red_text_money"
                                                 app:layout_gravity="right" />
 
                                             <!--JCB-->
                                             <TextView
 
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left"
+                                                android:layout_marginBottom="@dimen/text_mar_bot"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="JCB"
                                                 android:textColor="@color/black" />
 
                                             <TextView
                                                 android:id="@+id/tvjcbt"
-
-                                                android:layout_marginLeft="10dp"
-                                                android:layout_marginBottom="5dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left_money"
+                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="0.0"
-                                                android:textColor="#FF0000"
+                                                android:textColor="@color/red_text_money"
                                                 app:layout_gravity="right" />
 
                                             <!--MASTER-->
                                             <TextView
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left"
+                                                android:layout_marginBottom="@dimen/text_mar_bot"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="MASTER"
                                                 android:textColor="@color/black" />
 
                                             <TextView
                                                 android:id="@+id/tvmastert"
-                                                android:layout_marginLeft="10dp"
-                                                android:layout_marginBottom="5dp"
+
+                                                android:layout_marginLeft="@dimen/text_mar_left_money"
+                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="0.0"
-
-                                                android:textColor="#FF0000"
+                                                android:textColor="@color/red_text_money"
                                                 app:layout_gravity="right" />
 
                                             <!--Unipay-->
                                             <TextView
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left"
+                                                android:layout_marginBottom="@dimen/text_mar_bot"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="UNIPAY"
                                                 android:textColor="@color/black" />
 
                                             <TextView
                                                 android:id="@+id/tvunipayt"
-                                                android:layout_marginLeft="10dp"
-                                                android:layout_marginBottom="5dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left_money"
+                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="0.0"
-                                                android:textColor="#FF0000"
+                                                android:textColor="@color/red_text_money"
                                                 app:layout_gravity="right" />
 
                                             <!--VISA-->
                                             <TextView
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left"
+                                                android:layout_marginBottom="@dimen/text_mar_bot"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="VISA"
                                                 android:textColor="@color/black" />
 
                                             <TextView
                                                 android:id="@+id/tvvisat"
-                                                android:layout_marginLeft="10dp"
-                                                android:layout_marginBottom="5dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left_money"
+                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="0.0"
-                                                android:textColor="#FF0000"
+                                                android:textColor="@color/red_text_money"
                                                 app:layout_gravity="right" />
 
                                         </android.support.v7.widget.GridLayout>
@@ -284,8 +283,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 app:cardBackgroundColor="@color/white"
-                                app:cardCornerRadius="15dp"
-                                app:cardElevation="5dp"
+                                app:cardCornerRadius="@dimen/cradit_card_radius"
+                                app:cardElevation="@dimen/cradit_card_Elevation"
                                 app:layout_columnWeight="1"
                                 app:layout_rowWeight="1">
 
@@ -297,18 +296,18 @@
                                     <android.support.v7.widget.CardView
                                         android:layout_width="match_parent"
                                         android:layout_height="0dp"
-                                        app:cardBackgroundColor="#001B7A"
+                                        app:cardBackgroundColor="@color/bank_k"
                                         android:layout_weight="3"
                                         >
                                         <ImageView
-                                            android:layout_width="50dp"
+                                            android:layout_width="@dimen/cradit_img_width"
                                             android:layout_height="match_parent"
                                             android:src="@drawable/imb2"/>
 
                                         <TextView
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
-                                            android:layout_marginLeft="40dp"
+                                            android:layout_marginLeft="@dimen/cradit_text_head_bank_mar_left"
                                             android:gravity="center"
                                             android:fontFamily="@font/prompt_regular"
                                             android:text="ธนาคารกรุงเทพ"
@@ -329,91 +328,90 @@
 
                                             <!--A-MAX-->
                                             <TextView
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginTop="10dp"
-                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginTop="@dimen/text_mar_top"
+                                                android:layout_marginLeft="@dimen/text_mar_left"
+                                                android:layout_marginBottom="@dimen/text_mar_bot"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="A-MAX"
-
                                                 android:textColor="@color/black" />
 
                                             <TextView
                                                 android:id="@+id/tvamaxk"
-                                                android:layout_marginLeft="10dp"
-                                                android:layout_marginTop="10dp"
-                                                android:layout_marginBottom="5dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left_money"
+                                                android:layout_marginTop="@dimen/text_mar_top_money"
+                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="0.0"
-                                                android:textColor="#FF0000"
+                                                android:textColor="@color/red_text_money"
                                                 app:layout_gravity="right" />
 
                                             <!--JCB-->
                                             <TextView
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left"
+                                                android:layout_marginBottom="@dimen/text_mar_bot"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="JCB"
                                                 android:textColor="@color/black" />
 
                                             <TextView
                                                 android:id="@+id/tvjcbk"
-                                                android:layout_marginLeft="10dp"
-                                                android:layout_marginBottom="5dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left_money"
+                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="0.0"
-                                                android:textColor="#FF0000"
+                                                android:textColor="@color/red_text_money"
                                                 app:layout_gravity="right" />
 
                                             <!--MASTER-->
                                             <TextView
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left"
+                                                android:layout_marginBottom="@dimen/text_mar_bot"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="MASTER"
                                                 android:textColor="@color/black" />
 
                                             <TextView
                                                 android:id="@+id/tvmasterk"
-                                                android:layout_marginLeft="10dp"
-                                                android:layout_marginBottom="5dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left_money"
+                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="0.0"
-                                                android:textColor="#FF0000"
+                                                android:textColor="@color/red_text_money"
                                                 app:layout_gravity="right" />
 
                                             <!--Unipay-->
                                             <TextView
 
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left"
+                                                android:layout_marginBottom="@dimen/text_mar_bot"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="UNIPAY"
                                                 android:textColor="@color/black" />
 
                                             <TextView
                                                 android:id="@+id/tvunipayk"
-                                                android:layout_marginLeft="10dp"
-                                                android:layout_marginBottom="5dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left_money"
+                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="0.0"
-                                                android:textColor="#FF0000"
+                                                android:textColor="@color/red_text_money"
                                                 app:layout_gravity="right" />
 
                                             <!--VISA-->
                                             <TextView
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left"
+                                                android:layout_marginBottom="@dimen/text_mar_bot"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="VISA"
                                                 android:textColor="@color/black" />
 
                                             <TextView
                                                 android:id="@+id/tvvisak"
-                                                android:layout_marginLeft="10dp"
-                                                android:layout_marginBottom="5dp"
+                                                android:layout_marginLeft="@dimen/text_mar_left_money"
+                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
                                                 android:fontFamily="@font/prompt_regular"
                                                 android:text="0.0"
-                                                android:textColor="#FF0000"
+                                                android:textColor="@color/red_text_money"
                                                 app:layout_gravity="right" />
                                         </android.support.v7.widget.GridLayout>
                                     </LinearLayout>

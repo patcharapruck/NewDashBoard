@@ -32,5 +32,11 @@
     <color name="real_money_text">#4CAF50</color>
     <color name="real_bill_card">#FFDFB9</color>
     <color name="real_credit_card">#88C9EF</color>
+    <color name="table_real_income">#BAFFC9</color>
+    <color name="view_bg1">#FAFAFA</color>
+    <color name="view_bg2">#DADADA</color>
+    <color name="red_text_money">#FF0000</color>
+    <color name="bank_k">#001B7A</color>
+    <color name="bank_t">#f37023</color>
 
 </resources>

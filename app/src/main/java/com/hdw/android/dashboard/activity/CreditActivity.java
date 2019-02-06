@@ -109,7 +109,6 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         formatter = new DecimalFormat("#,###,###.00");
         date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
-
         toolbar.setTitle("รายรับบัตรเครดิต");
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
@@ -120,12 +119,6 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
     protected void onResume() {
         super.onResume();
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
-
-        try {
-            setTextViewCredit();
-        }catch (Exception e){
-            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
-        }
 
     }
 
@@ -142,6 +135,12 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
                 if(response.isSuccessful()){
                     DashBoardDao dao = response.body();
                     DashBoradManager.getInstance().setDao(dao);
+
+                    try {
+                        setTextViewCredit();
+                    }catch (Exception e){
+                        Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+                    }
                 }else {
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }
@@ -355,7 +354,11 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
                             .saveDateCalendar(dayOfMonth,month,year);
 
 
-                    CreditActivity.this.recreate();
+                    date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+                    toolbar.setSubtitle(date);
+
+                    reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+                    //CreditActivity.this.recreate();
 
                 }
             },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()

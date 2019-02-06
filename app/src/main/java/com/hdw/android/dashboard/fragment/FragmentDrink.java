@@ -280,24 +280,6 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         super.onResume();
         date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
 
-        try {
-            Odao = DashBoradManager.getInstance().getDao().getObject();
-        }catch (Exception e){
-            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
-        }
-
-        try {
-            this.size = Odao.getSummaryUseProductList().size();
-        }catch (Exception e){
-            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
-        }
-
-        try {
-            setViewDrink();
-        }catch (Exception e){
-            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
-        }
-
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
         activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
@@ -324,6 +306,24 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
                 if(response.isSuccessful()){
                     DashBoardDao dao = response.body();
                     DashBoradManager.getInstance().setDao(dao);
+
+                    try {
+                        Odao = DashBoradManager.getInstance().getDao().getObject();
+                    }catch (Exception e){
+                        Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+                    }
+
+                    try {
+                        size = Odao.getSummaryUseProductList().size();
+                    }catch (Exception e){
+                        Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+                    }
+
+                    try {
+                        setViewDrink();
+                    }catch (Exception e){
+                        Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+                    }
                 }else {
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }
@@ -411,9 +411,11 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDateCalendar(dayOfMonth,month,year);
 
+                    date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+                    reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+                    activity.getSupportActionBar().setSubtitle(date);
 
-
-                    getActivity().recreate();
+                   // getActivity().recreate();
 
                 }
             },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()

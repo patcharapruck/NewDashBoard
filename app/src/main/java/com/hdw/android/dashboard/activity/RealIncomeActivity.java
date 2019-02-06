@@ -136,9 +136,8 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onStart() {
         super.onStart();
-
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         toolbar.setTitle("รายรับจริง");
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
@@ -152,13 +151,6 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
     protected void onResume() {
         super.onResume();
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
-
-        try {
-            setTextViewIncome();
-        }catch (Exception e){
-            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
-        }
-
     }
 
     @Override
@@ -197,8 +189,10 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
                             .saveDateCalendar(dayOfMonth,month,year);
 
 
-
-                    RealIncomeActivity.this.recreate();
+                    date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+                    toolbar.setSubtitle(date);
+                    reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+                    //RealIncomeActivity.this.recreate();
 
                 }
             },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
@@ -237,6 +231,13 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
                 if(response.isSuccessful()){
                     DashBoardDao dao = response.body();
                     DashBoradManager.getInstance().setDao(dao);
+
+                    try {
+                        setTextViewIncome();
+                    }catch (Exception e){
+                        Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+                    }
+
                 }else {
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }

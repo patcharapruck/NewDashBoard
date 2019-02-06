@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.hdw.android.dashboard.Dao.DashBoardDao;
 import com.hdw.android.dashboard.Dao.objectdao.ObjectItemDao;
 import com.hdw.android.dashboard.R;
+import com.hdw.android.dashboard.activity.BillActivity;
 import com.hdw.android.dashboard.manager.Contextor;
 import com.hdw.android.dashboard.manager.DashBoradManager;
 import com.hdw.android.dashboard.manager.http.HttpManager;
@@ -41,6 +42,7 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
 
     AnimatedPieView mAnimatedPieView;
     AnimatedPieViewConfig config;
+    BillActivity billActivity = new BillActivity();
 
     String tincomebill, tserivceDrinkCharge, tmemberCharge, tserviceCharge,
             tproductPrice, tfoodPrice, topenMemberAccount, tserviceDringQty, tpax;
@@ -171,25 +173,6 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
-        if(DashBoradManager.getInstance().getDao() == null || DashBoradManager.getInstance().getDao().getObject() == null){
-            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
-        }
-        else{
-            ODao =  DashBoradManager.getInstance().getDao().getObject();
-        }
-
-        try {
-            DrawPie();
-        }catch (Exception e){
-            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
-        }
-
-        try {
-            setTextView(ODao);
-        }catch (Exception e){
-            Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
-        }
-
     }
 
     @Override
@@ -223,7 +206,9 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDateCalendar(dayOfMonth,month,year);
 
-                    getActivity().recreate();
+                    //getActivity().recreate();
+                   // billActivity.toolbar.setSubtitle(datecalendat);
+                    reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
 
                 }
             },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
@@ -263,6 +248,27 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
                 if(response.isSuccessful()){
                     DashBoardDao dao = response.body();
                     DashBoradManager.getInstance().setDao(dao);
+
+                    if(DashBoradManager.getInstance().getDao() == null || DashBoradManager.getInstance().getDao().getObject() == null){
+                        Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        ODao =  DashBoradManager.getInstance().getDao().getObject();
+                    }
+
+                    try {
+                        DrawPie();
+                    }catch (Exception e){
+                        Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+                    }
+
+                    try {
+                        setTextView(ODao);
+                    }catch (Exception e){
+                        Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
+                    }
+
+
                 }else {
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }

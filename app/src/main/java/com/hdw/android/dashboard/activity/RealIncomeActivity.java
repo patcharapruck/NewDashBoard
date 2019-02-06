@@ -145,7 +145,6 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         btncalendarrevenue.setOnClickListener(this);
 
     }

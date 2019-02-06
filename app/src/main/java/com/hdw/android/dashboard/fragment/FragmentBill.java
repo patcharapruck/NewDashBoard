@@ -215,6 +215,7 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
                 if(v == btncalendarbill){
 
                 DatePickerDialog dialog = new DatePickerDialog(getContext(),new DatePickerDialog.OnDateSetListener() {
+
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                     month++;

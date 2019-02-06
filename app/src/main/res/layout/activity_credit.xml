@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CreditActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activity.CreditActivity">
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/tbCredit"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/bg_login"
         android:theme="@style/ToolbarTheme"
-        android:id="@+id/tbCredit">
+       >
 
         <Button
             android:id="@+id/btncalendarCredit"
@@ -27,411 +28,433 @@
 
     </android.support.v7.widget.Toolbar>
 
-        <RelativeLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5"
+                android:background="@color/view_bg1">
+
+            </View>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@color/view_bg2">
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="12">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4">
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barchart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </com.github.mikephil.charting.charts.BarChart>
+
+            </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
                 android:orientation="vertical">
 
-                <View
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.5"
-                    android:background="@color/view_bg1">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_sum_mar_top"
+                    android:fontFamily="@font/prompt_regular"
+                    android:gravity="center"
+                    android:text="@string/all_sum"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/bill_text_size_sum" />
 
-                </View>
-
-                <View
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:background="@color/view_bg2">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/bill_margin_card_left"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="@dimen/bill_margin_card_right"
+                    android:layout_marginBottom="0dp"
+                    android:padding="@dimen/bank_pad_card_money"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/bill_card_radius"
+                    app:cardElevation="@dimen/bill_card_Elevation">
 
-                </View>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="12">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="4">
-                    <com.github.mikephil.charting.charts.BarChart
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/barchart">
-
-                    </com.github.mikephil.charting.charts.BarChart>
-
-                </RelativeLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:orientation="vertical">
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/text_sum_mar_top"
-                        android:gravity="center"
-                        android:text="@string/all_sum"
-                        android:fontFamily="@font/prompt_regular"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/bill_text_size_sum" />
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/bill_margin_card_left"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginRight="@dimen/bill_margin_card_right"
-                        android:layout_marginBottom="0dp"
-                        android:padding="@dimen/bank_pad_card_money"
-                        app:cardBackgroundColor="@color/white"
-                        app:cardCornerRadius="@dimen/bill_card_radius"
-                        app:cardElevation="@dimen/bill_card_Elevation">
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
                         <TextView
                             android:id="@+id/tvcreditall"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:fontFamily="@font/prompt_regular"
                             android:gravity="center"
                             android:text="0.0"
+                            android:textColor="@color/text_money_pay"
+                            android:textSize="@dimen/bill_text_sum_money"
+                            android:textStyle="bold"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
                             android:fontFamily="@font/prompt_regular"
+                            android:gravity="right"
+                            android:layout_marginRight="5dp"
+                            android:text="บาท"
                             android:textColor="@color/text_money_pay"
                             android:textSize="@dimen/bill_text_sum_money"
                             android:textStyle="bold" />
 
-                    </android.support.v7.widget.CardView>
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
 
 
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="6">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <android.support.v7.widget.GridLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="@dimen/cradit_grid_mar"
-                            app:alignmentMode="alignMargins"
-                            app:columnCount="2"
-                            app:columnOrderPreserved="false"
-                            app:rowCount="1">
-
-                            <!--ธนาคารธนชาต-->
-                            <android.support.v7.widget.CardView
-                                style="@style/marginCardBank"
-                                android:layout_width="0dp"
-                                android:layout_height="0dp"
-                                app:cardBackgroundColor="@color/white"
-                                app:cardCornerRadius="@dimen/cradit_card_radius"
-                                app:cardElevation="@dimen/cradit_card_Elevation"
-                                app:layout_columnWeight="1"
-                                app:layout_rowWeight="1">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical"
-                                    android:weightSum="10"
-                                    >
-                                    <android.support.v7.widget.CardView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        app:cardBackgroundColor="@color/bank_t"
-                                        android:layout_weight="3"
-                                        >
-                                        <ImageView
-                                            android:layout_width="@dimen/cradit_img_width"
-                                            android:layout_height="match_parent"
-                                            android:src="@drawable/imb1"/>
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginLeft="@dimen/cradit_text_head_bank_mar_left"
-                                            android:gravity="center"
-                                            android:fontFamily="@font/prompt_regular"
-                                            android:text="ธนาคารธนชาต"
-                                            android:textColor="@color/white" />
-
-                                    </android.support.v7.widget.CardView>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="7">
-                                        <android.support.v7.widget.GridLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            app:columnCount="2"
-                                            app:rowCount="5"
-                                            app:columnOrderPreserved="false"
-                                            >
-
-                                            <!--A-MAX-->
-                                            <TextView
-                                                android:layout_marginTop="@dimen/text_mar_top"
-                                                android:layout_marginLeft="@dimen/text_mar_left"
-                                                android:layout_marginBottom="@dimen/text_mar_bot"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="A-MAX"
-                                                android:textColor="@color/black" />
-
-                                            <TextView
-                                                android:id="@+id/tvamaxt"
-                                                android:layout_marginLeft="@dimen/text_mar_left_money"
-                                                android:layout_marginTop="@dimen/text_mar_top_money"
-                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="0.0"
-                                                android:textColor="@color/red_text_money"
-                                                app:layout_gravity="right" />
-
-                                            <!--JCB-->
-                                            <TextView
-
-                                                android:layout_marginLeft="@dimen/text_mar_left"
-                                                android:layout_marginBottom="@dimen/text_mar_bot"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="JCB"
-                                                android:textColor="@color/black" />
-
-                                            <TextView
-                                                android:id="@+id/tvjcbt"
-                                                android:layout_marginLeft="@dimen/text_mar_left_money"
-                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="0.0"
-                                                android:textColor="@color/red_text_money"
-                                                app:layout_gravity="right" />
-
-                                            <!--MASTER-->
-                                            <TextView
-                                                android:layout_marginLeft="@dimen/text_mar_left"
-                                                android:layout_marginBottom="@dimen/text_mar_bot"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="MASTER"
-                                                android:textColor="@color/black" />
-
-                                            <TextView
-                                                android:id="@+id/tvmastert"
-
-                                                android:layout_marginLeft="@dimen/text_mar_left_money"
-                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="0.0"
-                                                android:textColor="@color/red_text_money"
-                                                app:layout_gravity="right" />
-
-                                            <!--Unipay-->
-                                            <TextView
-                                                android:layout_marginLeft="@dimen/text_mar_left"
-                                                android:layout_marginBottom="@dimen/text_mar_bot"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="UNIPAY"
-                                                android:textColor="@color/black" />
-
-                                            <TextView
-                                                android:id="@+id/tvunipayt"
-                                                android:layout_marginLeft="@dimen/text_mar_left_money"
-                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="0.0"
-                                                android:textColor="@color/red_text_money"
-                                                app:layout_gravity="right" />
-
-                                            <!--VISA-->
-                                            <TextView
-                                                android:layout_marginLeft="@dimen/text_mar_left"
-                                                android:layout_marginBottom="@dimen/text_mar_bot"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="VISA"
-                                                android:textColor="@color/black" />
-
-                                            <TextView
-                                                android:id="@+id/tvvisat"
-                                                android:layout_marginLeft="@dimen/text_mar_left_money"
-                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="0.0"
-                                                android:textColor="@color/red_text_money"
-                                                app:layout_gravity="right" />
-
-                                        </android.support.v7.widget.GridLayout>
-                                    </LinearLayout>
-                                </LinearLayout>
-
-
-                            </android.support.v7.widget.CardView>
-
-
-                            <!--ธนาคารกรุงเทพ-->
-                            <android.support.v7.widget.CardView
-                                style="@style/marginCardBank"
-                                android:layout_width="0dp"
-                                android:layout_height="0dp"
-                                app:cardBackgroundColor="@color/white"
-                                app:cardCornerRadius="@dimen/cradit_card_radius"
-                                app:cardElevation="@dimen/cradit_card_Elevation"
-                                app:layout_columnWeight="1"
-                                app:layout_rowWeight="1">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical"
-                                    android:weightSum="10">
-                                    <android.support.v7.widget.CardView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        app:cardBackgroundColor="@color/bank_k"
-                                        android:layout_weight="3"
-                                        >
-                                        <ImageView
-                                            android:layout_width="@dimen/cradit_img_width"
-                                            android:layout_height="match_parent"
-                                            android:src="@drawable/imb2"/>
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginLeft="@dimen/cradit_text_head_bank_mar_left"
-                                            android:gravity="center"
-                                            android:fontFamily="@font/prompt_regular"
-                                            android:text="ธนาคารกรุงเทพ"
-                                            android:textColor="@color/white" />
-
-                                    </android.support.v7.widget.CardView>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="7">
-                                        <android.support.v7.widget.GridLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            app:columnCount="2"
-                                            app:rowCount="5"
-                                            app:columnOrderPreserved="false">
-
-                                            <!--A-MAX-->
-                                            <TextView
-                                                android:layout_marginTop="@dimen/text_mar_top"
-                                                android:layout_marginLeft="@dimen/text_mar_left"
-                                                android:layout_marginBottom="@dimen/text_mar_bot"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="A-MAX"
-                                                android:textColor="@color/black" />
-
-                                            <TextView
-                                                android:id="@+id/tvamaxk"
-                                                android:layout_marginLeft="@dimen/text_mar_left_money"
-                                                android:layout_marginTop="@dimen/text_mar_top_money"
-                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="0.0"
-                                                android:textColor="@color/red_text_money"
-                                                app:layout_gravity="right" />
-
-                                            <!--JCB-->
-                                            <TextView
-                                                android:layout_marginLeft="@dimen/text_mar_left"
-                                                android:layout_marginBottom="@dimen/text_mar_bot"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="JCB"
-                                                android:textColor="@color/black" />
-
-                                            <TextView
-                                                android:id="@+id/tvjcbk"
-                                                android:layout_marginLeft="@dimen/text_mar_left_money"
-                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="0.0"
-                                                android:textColor="@color/red_text_money"
-                                                app:layout_gravity="right" />
-
-                                            <!--MASTER-->
-                                            <TextView
-                                                android:layout_marginLeft="@dimen/text_mar_left"
-                                                android:layout_marginBottom="@dimen/text_mar_bot"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="MASTER"
-                                                android:textColor="@color/black" />
-
-                                            <TextView
-                                                android:id="@+id/tvmasterk"
-                                                android:layout_marginLeft="@dimen/text_mar_left_money"
-                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="0.0"
-                                                android:textColor="@color/red_text_money"
-                                                app:layout_gravity="right" />
-
-                                            <!--Unipay-->
-                                            <TextView
-
-                                                android:layout_marginLeft="@dimen/text_mar_left"
-                                                android:layout_marginBottom="@dimen/text_mar_bot"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="UNIPAY"
-                                                android:textColor="@color/black" />
-
-                                            <TextView
-                                                android:id="@+id/tvunipayk"
-                                                android:layout_marginLeft="@dimen/text_mar_left_money"
-                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="0.0"
-                                                android:textColor="@color/red_text_money"
-                                                app:layout_gravity="right" />
-
-                                            <!--VISA-->
-                                            <TextView
-                                                android:layout_marginLeft="@dimen/text_mar_left"
-                                                android:layout_marginBottom="@dimen/text_mar_bot"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="VISA"
-                                                android:textColor="@color/black" />
-
-                                            <TextView
-                                                android:id="@+id/tvvisak"
-                                                android:layout_marginLeft="@dimen/text_mar_left_money"
-                                                android:layout_marginBottom="@dimen/text_mar_bot_money"
-                                                android:fontFamily="@font/prompt_regular"
-                                                android:text="0.0"
-                                                android:textColor="@color/red_text_money"
-                                                app:layout_gravity="right" />
-                                        </android.support.v7.widget.GridLayout>
-                                    </LinearLayout>
-                                </LinearLayout>
-                            </android.support.v7.widget.CardView>
-                        </android.support.v7.widget.GridLayout>
-                    </RelativeLayout>
-                </LinearLayout>
             </LinearLayout>
-        </RelativeLayout>
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/cradit_grid_mar"
+                        app:alignmentMode="alignMargins"
+                        app:columnCount="2"
+                        app:columnOrderPreserved="false"
+                        app:rowCount="1">
+
+                        <!--ธนาคารธนชาต-->
+                        <android.support.v7.widget.CardView
+                            style="@style/marginCardBank"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="@dimen/cradit_card_radius"
+                            app:cardElevation="@dimen/cradit_card_Elevation"
+                            app:layout_columnWeight="1"
+                            app:layout_rowWeight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:weightSum="10">
+
+                                <android.support.v7.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="3"
+                                    app:cardBackgroundColor="@color/bank_t">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/cradit_img_width"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/imb1" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="@dimen/cradit_text_head_bank_mar_left"
+                                        android:fontFamily="@font/prompt_regular"
+                                        android:gravity="center"
+                                        android:text="ธนาคารธนชาต"
+                                        android:textColor="@color/white" />
+
+                                </android.support.v7.widget.CardView>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="7"
+                                    android:paddingRight="5dp">
+
+                                    <android.support.v7.widget.GridLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        app:columnCount="2"
+                                        app:columnOrderPreserved="false"
+                                        app:rowCount="5">
+
+                                        <!--A-MAX-->
+                                        <TextView
+                                            android:layout_marginLeft="@dimen/text_mar_left"
+                                            android:layout_marginTop="@dimen/text_mar_top"
+                                            android:layout_marginBottom="@dimen/text_mar_bot"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="A-MAX"
+                                            android:textColor="@color/black" />
+
+                                        <TextView
+                                            android:id="@+id/tvamaxt"
+                                            android:layout_marginLeft="@dimen/text_mar_left_money"
+                                            android:layout_marginTop="@dimen/text_mar_top_money"
+                                            android:layout_marginBottom="@dimen/text_mar_bot_money"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="0.0"
+                                            android:textColor="@color/red_text_money"
+                                            app:layout_gravity="right" />
+
+                                        <!--JCB-->
+                                        <TextView
+
+                                            android:layout_marginLeft="@dimen/text_mar_left"
+                                            android:layout_marginBottom="@dimen/text_mar_bot"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="JCB"
+                                            android:textColor="@color/black" />
+
+                                        <TextView
+                                            android:id="@+id/tvjcbt"
+                                            android:layout_marginLeft="@dimen/text_mar_left_money"
+                                            android:layout_marginBottom="@dimen/text_mar_bot_money"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="0.0"
+                                            android:textColor="@color/red_text_money"
+                                            app:layout_gravity="right" />
+
+                                        <!--MASTER-->
+                                        <TextView
+                                            android:layout_marginLeft="@dimen/text_mar_left"
+                                            android:layout_marginBottom="@dimen/text_mar_bot"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="MASTER"
+                                            android:textColor="@color/black" />
+
+                                        <TextView
+                                            android:id="@+id/tvmastert"
+
+                                            android:layout_marginLeft="@dimen/text_mar_left_money"
+                                            android:layout_marginBottom="@dimen/text_mar_bot_money"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="0.0"
+                                            android:textColor="@color/red_text_money"
+                                            app:layout_gravity="right" />
+
+                                        <!--Unipay-->
+                                        <TextView
+                                            android:layout_marginLeft="@dimen/text_mar_left"
+                                            android:layout_marginBottom="@dimen/text_mar_bot"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="UNIPAY"
+                                            android:textColor="@color/black" />
+
+                                        <TextView
+                                            android:id="@+id/tvunipayt"
+                                            android:layout_marginLeft="@dimen/text_mar_left_money"
+                                            android:layout_marginBottom="@dimen/text_mar_bot_money"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="0.0"
+                                            android:textColor="@color/red_text_money"
+                                            app:layout_gravity="right" />
+
+                                        <!--VISA-->
+                                        <TextView
+                                            android:layout_marginLeft="@dimen/text_mar_left"
+                                            android:layout_marginBottom="@dimen/text_mar_bot"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="VISA"
+                                            android:textColor="@color/black" />
+
+                                        <TextView
+                                            android:id="@+id/tvvisat"
+                                            android:layout_marginLeft="@dimen/text_mar_left_money"
+                                            android:layout_marginBottom="@dimen/text_mar_bot_money"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="0.0"
+                                            android:textColor="@color/red_text_money"
+                                            app:layout_gravity="right" />
+
+                                    </android.support.v7.widget.GridLayout>
+                                </LinearLayout>
+                            </LinearLayout>
 
 
+                        </android.support.v7.widget.CardView>
 
+
+                        <!--ธนาคารกรุงเทพ-->
+                        <android.support.v7.widget.CardView
+                            style="@style/marginCardBank"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="@dimen/cradit_card_radius"
+                            app:cardElevation="@dimen/cradit_card_Elevation"
+                            app:layout_columnWeight="1"
+                            app:layout_rowWeight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:weightSum="10">
+
+                                <android.support.v7.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="3"
+                                    app:cardBackgroundColor="@color/bank_k">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/cradit_img_width"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/imb2" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="@dimen/cradit_text_head_bank_mar_left"
+                                        android:fontFamily="@font/prompt_regular"
+                                        android:gravity="center"
+                                        android:text="ธนาคารกรุงเทพ"
+                                        android:textColor="@color/white" />
+
+                                </android.support.v7.widget.CardView>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="7"
+                                    android:paddingRight="5dp">
+
+                                    <android.support.v7.widget.GridLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        app:columnCount="2"
+                                        app:columnOrderPreserved="false"
+                                        app:rowCount="5">
+
+                                        <!--A-MAX-->
+                                        <TextView
+                                            android:layout_marginLeft="@dimen/text_mar_left"
+                                            android:layout_marginTop="@dimen/text_mar_top"
+                                            android:layout_marginBottom="@dimen/text_mar_bot"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="A-MAX"
+                                            android:textColor="@color/black" />
+
+                                        <TextView
+                                            android:id="@+id/tvamaxk"
+                                            android:layout_marginLeft="@dimen/text_mar_left_money"
+                                            android:layout_marginTop="@dimen/text_mar_top_money"
+                                            android:layout_marginBottom="@dimen/text_mar_bot_money"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="0.0"
+                                            android:textColor="@color/red_text_money"
+                                            app:layout_gravity="right" />
+
+                                        <!--JCB-->
+                                        <TextView
+                                            android:layout_marginLeft="@dimen/text_mar_left"
+                                            android:layout_marginBottom="@dimen/text_mar_bot"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="JCB"
+                                            android:textColor="@color/black" />
+
+                                        <TextView
+                                            android:id="@+id/tvjcbk"
+                                            android:layout_marginLeft="@dimen/text_mar_left_money"
+                                            android:layout_marginBottom="@dimen/text_mar_bot_money"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="0.0"
+                                            android:textColor="@color/red_text_money"
+                                            app:layout_gravity="right" />
+
+                                        <!--MASTER-->
+                                        <TextView
+                                            android:layout_marginLeft="@dimen/text_mar_left"
+                                            android:layout_marginBottom="@dimen/text_mar_bot"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="MASTER"
+                                            android:textColor="@color/black" />
+
+                                        <TextView
+                                            android:id="@+id/tvmasterk"
+                                            android:layout_marginLeft="@dimen/text_mar_left_money"
+                                            android:layout_marginBottom="@dimen/text_mar_bot_money"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="0.0"
+                                            android:textColor="@color/red_text_money"
+                                            app:layout_gravity="right" />
+
+                                        <!--Unipay-->
+                                        <TextView
+
+                                            android:layout_marginLeft="@dimen/text_mar_left"
+                                            android:layout_marginBottom="@dimen/text_mar_bot"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="UNIPAY"
+                                            android:textColor="@color/black" />
+
+                                        <TextView
+                                            android:id="@+id/tvunipayk"
+                                            android:layout_marginLeft="@dimen/text_mar_left_money"
+                                            android:layout_marginBottom="@dimen/text_mar_bot_money"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="0.0"
+                                            android:textColor="@color/red_text_money"
+                                            app:layout_gravity="right" />
+
+                                        <!--VISA-->
+                                        <TextView
+                                            android:layout_marginLeft="@dimen/text_mar_left"
+                                            android:layout_marginBottom="@dimen/text_mar_bot"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="VISA"
+                                            android:textColor="@color/black" />
+
+                                        <TextView
+                                            android:id="@+id/tvvisak"
+                                            android:layout_marginLeft="@dimen/text_mar_left_money"
+                                            android:layout_marginBottom="@dimen/text_mar_bot_money"
+                                            android:fontFamily="@font/prompt_regular"
+                                            android:text="0.0"
+                                            android:textColor="@color/red_text_money"
+                                            app:layout_gravity="right" />
+                                    </android.support.v7.widget.GridLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </android.support.v7.widget.CardView>
+                    </android.support.v7.widget.GridLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>

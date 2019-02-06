@@ -11,18 +11,20 @@
         android:id="@+id/tbCredit"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#19237E"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:background="@color/bg_login"
+        android:theme="@style/ToolbarTheme"
+       >
 
         <Button
             android:id="@+id/btncalendarCredit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="33dp"
+            android:layout_marginRight="15dp"
+            android:fontFamily="@font/prompt_bold"
+            android:background="@drawable/rounded_botton"
             android:layout_gravity="right"
-            android:text="@string/selectDate"
-            android:textColor="#19237E"
-            android:background="@color/white"
-            android:layout_marginRight="3dp"/>
+            android:textColor="@color/bg_login"
+            android:text="@string/selectDate" />
 
     </android.support.v7.widget.Toolbar>
 

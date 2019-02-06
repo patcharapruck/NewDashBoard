@@ -29,6 +29,8 @@ public class DrinkReportActivity extends AppCompatActivity {
         toolbar.setTitle("รายงานการใช้เครื่องดื่ม");
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 

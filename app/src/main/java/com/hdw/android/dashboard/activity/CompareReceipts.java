@@ -218,7 +218,10 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         toolbar.setTitle("เปรียบเทียบรายรับ");
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         btncalCP = (Button)findViewById(R.id.btncalCP);

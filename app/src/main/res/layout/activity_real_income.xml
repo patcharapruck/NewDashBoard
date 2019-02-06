@@ -11,15 +11,18 @@
         android:id="@+id/tbIncome"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/bg1">
+        android:theme="@style/ToolbarTheme"
+        android:background="@color/bg_login">
 
         <Button
             android:id="@+id/btncalendarrevenue"
-            android:layout_width="wrap_content"
-
-            android:layout_height="?attr/actionBarSize"
+            android:layout_width="80dp"
+            android:layout_height="33dp"
+            android:layout_marginRight="15dp"
             android:layout_gravity="right"
-            android:fontFamily="@font/prompt_regular"
+            android:fontFamily="@font/prompt_bold"
+            android:background="@drawable/rounded_botton"
+            android:textColor="@color/bg_login"
             android:text="@string/selectDate" />
 
     </android.support.v7.widget.Toolbar>
@@ -280,7 +283,6 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="@dimen/table_real_incom_margin_left"
                                 android:layout_weight="5"
-
                                 android:fontFamily="@font/prompt_regular"
                                 android:text="เงินสด"
                                 android:textColor="@color/black"

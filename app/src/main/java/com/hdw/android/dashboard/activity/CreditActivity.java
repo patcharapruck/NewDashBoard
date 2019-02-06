@@ -112,6 +112,8 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
         percent = new DecimalFormat("##.##%");
         date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
         toolbar.setTitle("รายรับบัตรเครดิต");
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

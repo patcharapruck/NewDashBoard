@@ -3,6 +3,7 @@ package com.hdw.android.dashboard.activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -141,6 +142,8 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
         toolbar.setTitle("รายรับจริง");
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btncalendarrevenue.setOnClickListener(this);
 

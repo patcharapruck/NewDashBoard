@@ -13,12 +13,6 @@
         android:src="@drawable/krystal"
         android:background="@color/bg_login"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/prompt_regular"
-        android:gravity="center"
-        android:text="Create by HandyWings.co.ltd" />
 
     <EditText
 
@@ -54,5 +48,15 @@
         android:text=" เข้าสู่ระบบ "
         android:textAlignment="center"
         android:textSize="20sp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/prompt_regular"
+        android:gravity="center"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="50dp"
+        android:text="Create by HandyWings.co.ltd" />
 
 </LinearLayout>

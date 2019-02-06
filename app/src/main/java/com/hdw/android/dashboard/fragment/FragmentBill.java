@@ -2,10 +2,14 @@ package com.hdw.android.dashboard.fragment;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -44,6 +48,8 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
     AnimatedPieViewConfig config;
     BillActivity billActivity = new BillActivity();
 
+    Toolbar toolbar;
+
     String tincomebill, tserivceDrinkCharge, tmemberCharge, tserviceCharge,
             tproductPrice, tfoodPrice, topenMemberAccount, tserviceDringQty, tpax;
 
@@ -53,7 +59,7 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
     Double serivceDrinkCharge, memberCharge, foodPrice, productPrice, serviceCharge, incomebill;
 
     ObjectItemDao ODao;
-
+    String date;
      Button btncalendarbill;
 
     public FragmentBill() {
@@ -77,7 +83,7 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
     }
 
     private void initInstances(View rootView) {
-
+        toolbar = rootView.findViewById(R.id.tbBill);
         btncalendarbill = (Button)rootView.findViewById(R.id.btncalendarbill);
         mAnimatedPieView = rootView.findViewById(R.id.drew2);
         tvincomebill = (TextView) rootView.findViewById(R.id.tvincomebill);
@@ -142,6 +148,28 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
     public void onStart() {
         super.onStart();
 
+        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+        billActivity = (BillActivity) getActivity();
+        billActivity.setSupportActionBar(toolbar);
+        billActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        billActivity.getSupportActionBar().setTitle("รายรับตามบิล");
+        billActivity.getSupportActionBar().setSubtitle(date);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                billActivity.finish();
+            }
+        });
+
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+            billActivity.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -206,8 +234,10 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDateCalendar(dayOfMonth,month,year);
 
-                    //getActivity().recreate();
-                   // billActivity.toolbar.setSubtitle(datecalendat);
+
+                    date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+                    billActivity.getSupportActionBar().setSubtitle(date);
+
                     reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
 
                 }

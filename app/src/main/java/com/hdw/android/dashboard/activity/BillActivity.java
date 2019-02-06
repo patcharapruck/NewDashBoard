@@ -12,11 +12,8 @@ import com.hdw.android.dashboard.fragment.FragmentBill;
 import com.hdw.android.dashboard.manager.Contextor;
 import com.hdw.android.dashboard.util.SharedPrefDateManager;
 
-public class BillActivity extends AppCompatActivity implements View.OnClickListener {
+public class BillActivity extends AppCompatActivity{
 
-    public Toolbar toolbar;
-    MainActivity activity = new MainActivity();
-    String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,35 +31,13 @@ public class BillActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initInstances() {
-        toolbar = findViewById(R.id.tbBill);
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onClick(View v) {
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
-        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
-        toolbar.setTitle("รายรับตามบิล");
-
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        toolbar.setSubtitle(date);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 

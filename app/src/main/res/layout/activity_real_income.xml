@@ -345,7 +345,7 @@
                                 android:textSize="@dimen/table_real_incom_text_row" />
 
                             <TextView
-                                android:id="@+id/tvcredit"
+                                android:id="@+id/tvcreditPayments"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_marginRight="@dimen/table_real_incom_margin_right"
@@ -374,7 +374,7 @@
                                 android:textSize="@dimen/table_real_incom_text_row" />
 
                             <TextView
-                                android:id="@+id/tvcreditPayments"
+                                android:id="@+id/tvcredit"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_marginRight="@dimen/table_real_incom_margin_right"

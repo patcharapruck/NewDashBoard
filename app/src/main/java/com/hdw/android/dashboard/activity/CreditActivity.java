@@ -70,6 +70,7 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
     Button btncalendarCredit;
 
     DecimalFormat formatter;
+    DecimalFormat percent;
     String date;
 
     @Override
@@ -107,7 +108,8 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
     protected void onStart() {
         super.onStart();
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        formatter = new DecimalFormat("#,###,###.00");
+        formatter = new DecimalFormat("#,###,##0.00");
+        percent = new DecimalFormat("##.##%");
         date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
         toolbar.setTitle("รายรับบัตรเครดิต");
         toolbar.setSubtitle(date);
@@ -122,6 +124,7 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    // ReqAPI
     private void reqAPI(String date) {
 
         final Context mcontext = Contextor.getInstance().getContext();
@@ -151,11 +154,11 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
-
     }
 
     private void setTextViewCredit() {
 
+        // ข้อมูล 2 ธนาคาร
         BankItemColleationDao B1 = DashBoradManager.getInstance().getDao().getObject().getIncomeByCreditCardList().get(0);
         BankItemColleationDao B2 = DashBoradManager.getInstance().getDao().getObject().getIncomeByCreditCardList().get(1);
 
@@ -165,19 +168,16 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
 
         amaxt = B1.getAmax();
         amaxk = B2.getAmax();
-
         jcbt = B1.getJcb();
         jcbk = B2.getJcb();
-
         mastert = B1.getMaster();
         masterk = B2.getMaster();
-
         unipayt = B1.getUnipay();
         unipayk = B2.getUnipay();
-
         visat = B1.getVisa();
         visak = B2.getVisa();
 
+        // setformat #,###,##0.00
         creditalls = formatter.format(creditall);
         amaxts = formatter.format(amaxt);
         amaxks = formatter.format(amaxk);
@@ -190,18 +190,18 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
         visats = formatter.format(visat);
         visaks = formatter.format(visak);
 
-
         setTextAndColor();
 
         BarDataSet barDataSet1 = new BarDataSet(bar_B1(), "ธนาคารธนชาต");
         barDataSet1.setColors(Color.rgb(243, 112, 35));
+
         BarDataSet barDataSet2 = new BarDataSet(bar_B2(), "ธนาคารกรุงเทพ");
         barDataSet2.setColors(Color.rgb(0, 28, 122));
 
         BarData data = new BarData(barDataSet1, barDataSet2);
         barChart.setData(data);
 
-        String[] creditName = new String[]{"A-MAX ", " JCB ", "MASTER", "UNIPAY", "VISA"};
+        String[] creditName = new String[]{"A-MAX(%) ", " JCB(%) ", "MASTER(%)", "UNIPAY(%)", "VISA(%)"};
         XAxis xAxis = barChart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(creditName));
         xAxis.setCenterAxisLabels(true);
@@ -233,6 +233,7 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
         barChart.getLegend().setEnabled(false);
 
         barChart.invalidate();
+        barChart.animateY(1000);
 
 
 
@@ -307,22 +308,27 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
     //Bank-T(ธนาคารธนชาต)
     private ArrayList<BarEntry> bar_B1() {
         ArrayList<BarEntry> barBnk1 = new ArrayList<>();
-        barBnk1.add(new BarEntry(1, amaxt.longValue()));
-        barBnk1.add(new BarEntry(2, jcbt.longValue()));
-        barBnk1.add(new BarEntry(3, mastert.longValue()));
-        barBnk1.add(new BarEntry(4, unipayt.longValue()));
-        barBnk1.add(new BarEntry(5, visat.longValue()));
+        barBnk1.add(new BarEntry(1, (float) ((amaxt/creditall)*100)));
+        barBnk1.add(new BarEntry(2, (float) ((jcbt/creditall)*100)));
+        barBnk1.add(new BarEntry(3, (float) ((mastert/creditall)*100)));
+        barBnk1.add(new BarEntry(4, (float) ((unipayt/creditall)*100)));
+        barBnk1.add(new BarEntry(5, (float) ((visat/creditall)*100)));
         return barBnk1;
     }
 
     //BBL(ธนาคารกรุงเทพ)
     private ArrayList<BarEntry> bar_B2() {
         ArrayList<BarEntry> barBnk2 = new ArrayList<>();
-        barBnk2.add(new BarEntry(1, amaxk.longValue()));
-        barBnk2.add(new BarEntry(2, jcbk.longValue()));
-        barBnk2.add(new BarEntry(3, masterk.longValue()));
-        barBnk2.add(new BarEntry(4, unipayk.longValue()));
-        barBnk2.add(new BarEntry(5, visak.longValue()));
+        barBnk2.add(new BarEntry(1, (float) ((amaxk/creditall)*100)));
+        barBnk2.add(new BarEntry(2, (float) ((jcbk/creditall)*100)));
+        barBnk2.add(new BarEntry(3, (float) ((masterk/creditall)*100)));
+        barBnk2.add(new BarEntry(4, (float) ((unipayk/creditall)*100)));
+        barBnk2.add(new BarEntry(5, (float) ((visak/creditall)*100)));
+//        barBnk2.add(new BarEntry(1, amaxk.longValue()));
+//        barBnk2.add(new BarEntry(2, jcbk.longValue()));
+//        barBnk2.add(new BarEntry(3, masterk.longValue()));
+//        barBnk2.add(new BarEntry(4, unipayk.longValue()));
+//        barBnk2.add(new BarEntry(5, visak.longValue()));
         return barBnk2;
     }
 

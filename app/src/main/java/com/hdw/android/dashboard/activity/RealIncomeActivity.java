@@ -142,7 +142,6 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         btncalendarrevenue.setOnClickListener(this);
 
     }

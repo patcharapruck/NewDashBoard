@@ -2,6 +2,7 @@ package com.hdw.android.dashboard.activity;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -155,6 +156,8 @@ public class PaymentActivity extends AppCompatActivity {
         toolbar.setTitle("สถานะชำระเงินปัจจุบัน");
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

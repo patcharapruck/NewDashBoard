@@ -107,9 +107,11 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
     protected void onStart() {
         super.onStart();
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        formatter = new DecimalFormat("#,###,###.00");
+        formatter = new DecimalFormat("#,###,##0.00");
         date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
         toolbar.setTitle("รายรับบัตรเครดิต");
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

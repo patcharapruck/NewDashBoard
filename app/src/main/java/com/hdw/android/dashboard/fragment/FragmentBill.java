@@ -154,6 +154,8 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
         billActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         billActivity.getSupportActionBar().setTitle("รายรับตามบิล");
         billActivity.getSupportActionBar().setSubtitle(date);
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

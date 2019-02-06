@@ -70,6 +70,8 @@ public class FragmentDrinkReport extends Fragment {
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.getSupportActionBar().setTitle("รายงานปริมาณเครื่องดื่ม");
         activity.getSupportActionBar().setSubtitle(date);
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

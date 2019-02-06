@@ -11,7 +11,9 @@
         android:id="@+id/tbDrinkReport"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/bg1"></android.support.v7.widget.Toolbar>
+        android:background="@color/bg_login"
+        android:theme="@style/ToolbarTheme">
+    </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:layout_width="match_parent"

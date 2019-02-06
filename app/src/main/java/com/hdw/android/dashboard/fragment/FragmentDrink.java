@@ -286,6 +286,8 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.getSupportActionBar().setTitle("ปริมาณเครื่องดื่ม");
         activity.getSupportActionBar().setSubtitle(date);
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

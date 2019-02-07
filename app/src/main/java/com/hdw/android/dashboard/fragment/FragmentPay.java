@@ -84,9 +84,9 @@ public class FragmentPay extends Fragment implements View.OnClickListener {
                     typeSearch = "InvoiceDocument-invoiceCode";
                 }else if (mTypeSearch.get(position).equals("ชื่อหัวบิล")){
                     typeSearch = "InvoiceDocument-customerName";
-                }else if (mTypeSearch.get(position).equals("ชื่อโต๊ะ/ห้อง")){
+                }else if (mTypeSearch.get(position).equals("Table/Room")){
                     typeSearch = "Place-placeCode";
-                }else if (mTypeSearch.get(position).equals("รหัสพนักงาน")){
+                }else if (mTypeSearch.get(position).equals("รหัส Sale")){
                     typeSearch = "Employee-employeeCode";
                 }
             }
@@ -101,8 +101,8 @@ public class FragmentPay extends Fragment implements View.OnClickListener {
     private void createTypeSearchData() {
         mTypeSearch.add("เลชที่เอกสาร");
         mTypeSearch.add("ชื่อหัวบิล");
-        mTypeSearch.add("ชื่อโต๊ะ/ห้อง");
-        mTypeSearch.add("รหัสพนักงาน");
+        mTypeSearch.add("Table/Room");
+        mTypeSearch.add("รหัส Sale");
     }
 
 

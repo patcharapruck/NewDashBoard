@@ -38,12 +38,12 @@ public class PayMentAdapter extends BaseAdapter {
         }
 
         PayItemDao dao = (PayItemDao) getItem(position);
+
         try {
             item.setPayId(dao.getInvoiceCode());
         }catch (NullPointerException e){
             item.setPayId("null");
         }
-
         try {
             item.setPayBill(dao.getCustomerNam());
         }catch (NullPointerException e){
@@ -64,8 +64,6 @@ public class PayMentAdapter extends BaseAdapter {
         }catch (NullPointerException e){
             item.setPayMoney(0d);
         }
-
-
 
         return item;
     }

@@ -40,11 +40,33 @@ public class NotPayAdapter extends BaseAdapter {
         }
 
         NotPayItemDao dao1 = (NotPayItemDao) getItem(position);
-        item.setNotPayId(dao1.getInvoiceCode());
-        item.setNotPayBill(dao1.getCustomerName());
-        item.setNotPayRoom(dao1.getPlace().getPlaceType());
-        item.setNotPaySale(dao1.getSales().getEmployeeCode(),dao1.getSales().getNickName());
-        item.setNotPayMoney(dao1.getTotalPrice());
+
+        try {
+            item.setNotPayId(dao1.getInvoiceCode());
+        }catch (NullPointerException e){
+            item.setNotPayId("null");
+        }
+        try {
+            item.setNotPayBill(dao1.getCustomerName());
+        }catch (NullPointerException e){
+            item.setNotPayBill("null");
+        }
+        try {
+            item.setNotPayRoom(dao1.getPlace().getPlaceType());
+        }catch (NullPointerException e){
+            item.setNotPayRoom("null");
+        }
+        try {
+            item.setNotPaySale(dao1.getSales().getEmployeeCode(),dao1.getSales().getNickName());
+        }catch (NullPointerException e){
+            item.setNotPaySale("00","null");
+        }
+        try {
+            item.setNotPayMoney(dao1.getTotalPrice());
+        }catch (NullPointerException e){
+            item.setNotPayMoney(0d);
+        }
+
         return item;
     }
 }

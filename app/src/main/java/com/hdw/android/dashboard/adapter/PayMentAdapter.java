@@ -50,7 +50,7 @@ public class PayMentAdapter extends BaseAdapter {
             item.setPayBill("null");
         }
         try {
-            item.setPayRoom(dao.getPlace().getPlaceType());
+            item.setPayRoom(dao.getPlace().getPlaceCode());
         }catch (NullPointerException e){
             item.setPayRoom("null");
         }

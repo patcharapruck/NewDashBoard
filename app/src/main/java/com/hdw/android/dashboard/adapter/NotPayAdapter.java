@@ -52,7 +52,7 @@ public class NotPayAdapter extends BaseAdapter {
             item.setNotPayBill("null");
         }
         try {
-            item.setNotPayRoom(dao1.getPlace().getPlaceType());
+            item.setNotPayRoom(dao1.getPlace().getPlaceCode());
         }catch (NullPointerException e){
             item.setNotPayRoom("null");
         }

@@ -2,13 +2,13 @@ package com.hdw.android.dashboard.Dao.notpayment;
 
 public class NotPayplaceItemDao {
 
-    private String placeType;
+    private String placeNameTh;
 
     public String getPlaceType() {
-        return placeType;
+        return placeNameTh;
     }
 
     public void setPlaceType(String placeType) {
-        this.placeType = placeType;
+        this.placeNameTh = placeType;
     }
 }

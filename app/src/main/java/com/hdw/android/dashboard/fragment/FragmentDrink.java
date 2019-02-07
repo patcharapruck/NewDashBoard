@@ -219,6 +219,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         Set2.setColors(Color.parseColor("#0277BD"));
         BarDataSet Set3 = new BarDataSet(entertainAmount(), "Entertrain");
         Set3.setColors(Color.parseColor("#00695C"));
+
         Set1.setDrawValues(true);
         Set2.setDrawValues(true);
         Set3.setDrawValues(true);
@@ -238,10 +239,10 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         xAxis.setLabelRotationAngle(90);
 
         barChart.setDragEnabled(true);
-        barChart.setVisibleXRangeMaximum(2);
+        barChart.setVisibleXRangeMaximum(3);
 
         //set Label Center
-        float groupSpace = 0.5f;
+        float groupSpace = 0.3f;
         float barSpace = 0f;
         float barWidth = 0.20f;
         data.setBarWidth(barWidth);

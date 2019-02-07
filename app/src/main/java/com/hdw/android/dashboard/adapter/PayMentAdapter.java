@@ -38,11 +38,35 @@ public class PayMentAdapter extends BaseAdapter {
         }
 
         PayItemDao dao = (PayItemDao) getItem(position);
-        item.setPayId(dao.getInvoiceCode());
-        item.setPayBill(dao.getCustomerNam());
-        item.setPayRoom(dao.getPlace().getPlaceType());
-        item.setPaySale(dao.getSales().getEmployeeCode(),dao.getSales().getNickName());
-        item.setPayMoney(dao.getTotalPrice());
+        try {
+            item.setPayId(dao.getInvoiceCode());
+        }catch (NullPointerException e){
+            item.setPayId("null");
+        }
+
+        try {
+            item.setPayBill(dao.getCustomerNam());
+        }catch (NullPointerException e){
+            item.setPayBill("null");
+        }
+        try {
+            item.setPayRoom(dao.getPlace().getPlaceType());
+        }catch (NullPointerException e){
+            item.setPayRoom("null");
+        }
+        try {
+            item.setPaySale(dao.getSales().getEmployeeCode(),dao.getSales().getNickName());
+        }catch (NullPointerException e){
+            item.setPaySale("00","null");
+        }
+        try {
+            item.setPayMoney(dao.getTotalPrice());
+        }catch (NullPointerException e){
+            item.setPayMoney(0d);
+        }
+
+
+
         return item;
     }
 }

@@ -128,16 +128,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void getDateTime() {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
+        DateFormat dateFormatth = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
+
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
+        Calendar calendartoday = Calendar.getInstance();
+
         calendar.setTime(date);
-        calendar.add(Calendar.DATE, -1);
+        calendartoday.setTime(date);
+
+        calendar.add(Calendar.DATE,-1);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         int month = calendar.get(Calendar.MONTH)+1;
         int year = calendar.get(Calendar.YEAR);
+
         String formatDateTime = dateFormat.format(calendar.getTime());
+        String formatDateTimetoday = dateFormat.format(calendartoday.getTime());
+        String formatDategeneral = dateFormatth.format(calendar.getTime());
+
         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                 .saveDatereq(formatDateTime);
+
+        SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                .saveDateMax(formatDateTimetoday);
+
+        SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                .saveDateFull(formatDategeneral);
+
         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                 .saveDateCalendar(day,month,year);
     }
@@ -238,11 +255,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             dd = "0"+dayOfMonth;
                         }
                         String datecalendat;
-                        mainImgDate.setText(year+ "/" + mm + "/" +dd);
+                        String fulldate;
+                        mainImgDate.setText(dd+ "/" + mm + "/" +year);
                         datecalendat = year+ "/" + mm + "/" +dd;
+                        fulldate = dd+ "/" + mm + "/" +year;
 
                         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                                 .saveDatereq(datecalendat);
+
+                        SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).saveDateFull(fulldate);
 
                         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
 
@@ -252,15 +273,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 },year,month-1,day);
 
-                Calendar c = Calendar.getInstance(Locale.ENGLISH);
-                c.add(Calendar.DATE,-1);
-                Date date = c.getTime();
+                Date date = null;
                 Date d = null;
                 String oldDateString = "2019/01/06";
+                String NewDateString = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDate();
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
                 try {
                     d = sdf.parse(oldDateString);
+                    date = sdf.parse(NewDateString);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -286,7 +307,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onStart();
         reqAPIpay();
         reqAPInotpay();
-        mainImgDate.setText(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+        mainImgDate.setText(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull());
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
     }
 

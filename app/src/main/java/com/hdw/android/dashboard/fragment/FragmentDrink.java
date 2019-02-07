@@ -279,7 +279,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
 
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
         activity = (AppCompatActivity) getActivity();
@@ -406,15 +406,19 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
                         dd = "0"+dayOfMonth;
                     }
                     String datecalendat;
+                    String fulldate;
                     datecalendat = year+ "/" + mm + "/" +dd;
+                    fulldate = dd+ "/" + mm + "/" +year;
 
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDatereq(datecalendat);
 
+                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).saveDateFull(fulldate);
+
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDateCalendar(dayOfMonth,month,year);
 
-                    date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+                    date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
                     reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
                     activity.getSupportActionBar().setSubtitle(date);
 
@@ -425,16 +429,15 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
                     ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()-1
                     ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
 
-            Calendar c = Calendar.getInstance(Locale.ENGLISH);
-            c.add(Calendar.DATE,-1);
-            Date date = c.getTime();
-            dialog.getDatePicker().setMaxDate(date.getTime());
+            Date date = null;
             Date d = null;
             String oldDateString = "2019/01/06";
+            String NewDateString = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDate();
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
             try {
                 d = sdf.parse(oldDateString);
+                date = sdf.parse(NewDateString);
             } catch (ParseException e) {
                 e.printStackTrace();
             }

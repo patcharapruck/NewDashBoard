@@ -14,6 +14,7 @@ public class SharedPrefDateManager {
     private static final String KEY_MONTH= "month";
     private static final String KEY_YEAR = "year";
     private static final String KEY_REQ_DATE = "reqdate";
+    private static final String KEY_DATE_FULL = "datefull";
 
 
     SharedPrefDateManager(Context context) {
@@ -52,6 +53,26 @@ public class SharedPrefDateManager {
         return true;
     }
 
+    public boolean saveDateMax(String date){
+
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_DATE,date);
+        editor.apply();
+
+        return true;
+    }
+
+    public boolean saveDateFull(String date){
+
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_DATE_FULL,date);
+        editor.apply();
+
+        return true;
+    }
+
     public boolean logoutDate(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -75,9 +96,16 @@ public class SharedPrefDateManager {
 
     public String getreqDate(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-
         return sharedPreferences.getString(KEY_REQ_DATE,null);
     }
 
+    public static String getKeyDate() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_DATE,null);
+    }
 
+    public static String getKeyDateFull() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_DATE_FULL,null);
+    }
 }

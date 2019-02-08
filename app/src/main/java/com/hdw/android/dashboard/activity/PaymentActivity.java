@@ -151,7 +151,7 @@ public class PaymentActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
 
         toolbar.setTitle("สถานะชำระเงินปัจจุบัน");
         toolbar.setSubtitle(date);

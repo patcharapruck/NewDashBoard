@@ -11,19 +11,19 @@
         android:id="@+id/tbIncome"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:theme="@style/ToolbarTheme"
-        android:background="@color/bg_login">
+        android:background="@color/bg_login"
+        android:theme="@style/ToolbarTheme">
 
         <Button
             android:id="@+id/btncalendarrevenue"
             android:layout_width="80dp"
             android:layout_height="33dp"
-            android:layout_marginRight="15dp"
             android:layout_gravity="right"
-            android:fontFamily="@font/prompt_bold"
+            android:layout_marginRight="15dp"
             android:background="@drawable/rounded_botton"
-            android:textColor="@color/bg_login"
-            android:text="@string/selectDate" />
+            android:fontFamily="@font/prompt_bold"
+            android:text="@string/selectDate"
+            android:textColor="@color/bg_login" />
 
     </android.support.v7.widget.Toolbar>
 
@@ -31,484 +31,409 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.5"
-                    android:background="#FAFAFA">
-
-                </View>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:background="#DADADA">
-
-                </View>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <android.support.v7.widget.CardView
+                    android:layout_width="@dimen/circle_real_income_width"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:elevation="10dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="5dp">
 
-                    <android.support.v7.widget.CardView
-                        android:layout_width="@dimen/circle_real_income_width"
-                        android:layout_height="@dimen/circle_real_income_height"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/circle_real_income_margin"
-                        app:cardBackgroundColor="@color/circle_real_income"
-                        app:cardCornerRadius="@dimen/circle_real_income_radius">
-
-                    </android.support.v7.widget.CardView>
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="@dimen/circle_in_real_income_width"
-                        android:layout_height="@dimen/circle_in_real_income_height"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/circle_in_real_income_margin"
-                        app:cardBackgroundColor="@color/white"
-                        app:cardCornerRadius="@dimen/circle_in_real_income_radius">
-                        />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="@dimen/circle_text_margin_bot"
-                            android:fontFamily="@font/prompt_regular"
-                            android:gravity="center"
-                            android:text="รายรับจริง"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/circle_text_size" />
-
-                        <TextView
-                            android:id="@+id/tvrevenue"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/circle_text_margin_bot_money"
-                            android:fontFamily="@font/prompt_regular"
-                            android:gravity="center"
-                            android:text="0.0"
-                            android:textColor="@color/real_money_text"
-                            android:textSize="@dimen/circle_text_size_money" />
-
-                    </android.support.v7.widget.CardView>
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="10">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="@dimen/real_card_width"
-                        android:layout_height="@dimen/real_card_height"
-                        android:layout_marginLeft="@dimen/real_bill_card_mar_left"
-                        android:layout_marginTop="@dimen/real_bill_card_mar_top"
-                        android:layout_weight="4"
-                        app:cardBackgroundColor="@color/real_bill_card"
-                        app:cardCornerRadius="@dimen/real_card_radius">
-
-                        <android.support.v7.widget.CardView
-                            android:layout_width="@dimen/real_incard_width"
-                            android:layout_height="@dimen/real_incard_height"
-                            android:layout_gravity="center">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginBottom="@dimen/real_incard_text_mar_bot"
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="center"
-                                android:text="รายรับตามบิล"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/real_incard_text_size" />
-
-                            <TextView
-                                android:id="@+id/tvincome"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="@dimen/real_bill_incard_text_margin_top"
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="center"
-                                android:text="0.0"
-                                android:textColor="@color/real_money_text"
-                                android:textSize="@dimen/real_money_text_size"
-
-                                />
-                        </android.support.v7.widget.CardView>
-                    </android.support.v7.widget.CardView>
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="@dimen/real_card_width"
-                        android:layout_height="@dimen/real_card_height"
-                        android:layout_marginLeft="@dimen/real_credit_card_mar_left"
-                        android:layout_marginTop="@dimen/real_credit_card_mar_top"
-                        android:layout_weight="4"
-                        app:cardBackgroundColor="@color/real_credit_card"
-                        app:cardCornerRadius="@dimen/real_card_radius">>
-
-                        <android.support.v7.widget.CardView
-                            android:layout_width="@dimen/real_incard_width"
-                            android:layout_height="@dimen/real_incard_height"
-                            android:layout_gravity="center">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginBottom="@dimen/real_incard_text_mar_bot"
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="center"
-                                android:text="ยอดบัตรเครดิต"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/real_incard_text_size" />
-
-                            <TextView
-                                android:id="@+id/tvcreditCardPayments"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="@dimen/real_bill_incard_text_margin_top"
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="center"
-                                android:text="0.0"
-                                android:textColor="@color/real_money_text"
-                                android:textSize="@dimen/real_money_text_size"
-
-                                />
-                        </android.support.v7.widget.CardView>
-                    </android.support.v7.widget.CardView>
-                </RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="10">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/real_income_linear"
-
-                    >
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TableLayout
+                    <TextView
+                        android:id="@+id/tvrevenue"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="10">
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/prompt_bold"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="00,000,000,000.0"
+                        android:textColor="@color/black"
+                        android:textSize="30sp" />
 
-                        <TableRow android:background="@color/table_real_income">
+                </android.support.v7.widget.CardView>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="5"
+                <android.support.v7.widget.CardView
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    app:cardBackgroundColor="#005688"
+                    app:cardCornerRadius="5dp">
 
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="center"
-                                android:text="รายการ"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_head" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/prompt_bold"
+                        android:gravity="center"
+                        android:text="รายรับจริง"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="5"
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="center"
-                                android:text="ยอดรวม"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_head" />
-                        </TableRow>
-
-                        <TableRow>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
-                                android:layout_weight="5"
-                                android:fontFamily="@font/prompt_regular"
-                                android:text="รายการตามใบบิล"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
-
-                            <TextView
-                                android:id="@+id/tvbill"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
-                                android:layout_weight="5"
-
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="right"
-                                android:text="0.0"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
-                        </TableRow>
-
-                        <TableRow android:background="@color/table_real_income">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
-                                android:layout_weight="5"
-                                android:fontFamily="@font/prompt_regular"
-                                android:text="เงินสด"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
-
-                            <TextView
-                                android:id="@+id/tvcashPayments"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
-
-                                android:layout_weight="5"
-
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="right"
-                                android:text="0.0"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
+                </android.support.v7.widget.CardView>
 
 
-                        </TableRow>
-
-                        <TableRow>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
-                                android:layout_weight="5"
-                                android:fontFamily="@font/prompt_regular"
-                                android:text="ค้างชำระ"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
-
-                            <TextView
-                                android:id="@+id/tvunpaid"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
-                                android:layout_weight="5"
-
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="right"
-                                android:text="0.0"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
+            </RelativeLayout>
 
 
-                        </TableRow>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-                        <TableRow android:background="@color/table_real_income">
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:elevation="10dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="5dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
-                                android:layout_weight="5"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:weightSum="2">
 
-                                android:fontFamily="@font/prompt_regular"
-                                android:text="ชำระผ่านบัตรเครดิต"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/prompt_bold"
+                            android:text="รายรับตามบิล"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
 
-                            <TextView
-                                android:id="@+id/tvcreditPayments"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
-                                android:layout_weight="5"
+                        <TextView
+                            android:id="@+id/tvincome"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/prompt_regular"
+                            android:maxLines="1"
+                            android:text="000,000,000.00"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
 
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="right"
-                                android:text="0.0"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
-
-
-                        </TableRow>
-
-                        <TableRow>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
-                                android:layout_weight="5"
-
-                                android:fontFamily="@font/prompt_regular"
-                                android:text="Credit"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
-
-                            <TextView
-                                android:id="@+id/tvcredit"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
-                                android:layout_weight="5"
-
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="right"
-                                android:text="0.0"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
-
-                        </TableRow>
-
-                        <TableRow android:background="@color/table_real_income">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
-                                android:layout_weight="5"
-
-                                android:fontFamily="@font/prompt_regular"
-                                android:text="Entertain"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
-
-                            <TextView
-                                android:id="@+id/tventertainPayments"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
-                                android:layout_weight="5"
-
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="right"
-                                android:text="0.0"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
+                    </LinearLayout>
 
 
-                        </TableRow>
+                </android.support.v7.widget.CardView>
 
-                        <TableRow>
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:elevation="10dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="5dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
-                                android:layout_weight="5"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:weightSum="2">
 
-                                android:fontFamily="@font/prompt_regular"
-                                android:text="ตัดยอด Member"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/prompt_bold"
+                            android:text="ค้างชำระ"
+                            android:textColor="@color/not_pay"
+                            android:textSize="15sp" />
 
-                            <TextView
-                                android:id="@+id/tvmemberDebitPayments"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
-                                android:layout_weight="5"
+                        <TextView
+                            android:id="@+id/tvunpaid"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/prompt_regular"
+                            android:maxLines="1"
+                            android:text="000,000,000.00"
+                            android:textColor="@color/not_pay"
+                            android:textSize="18sp" />
 
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="right"
-                                android:text="0.0"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
-
-
-                        </TableRow>
-
-                        <TableRow android:background="@color/table_real_income">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
-                                android:layout_weight="5"
-
-                                android:fontFamily="@font/prompt_regular"
-                                android:text="ค่าธรรมเนียม"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
-
-                            <TextView
-                                android:id="@+id/tvtotalServiceCharge"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
-                                android:layout_weight="5"
-
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="right"
-                                android:text="0.0"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
+                    </LinearLayout>
 
 
-                        </TableRow>
-
-                        <TableRow>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/table_real_incom_margin_left"
-                                android:layout_weight="5"
-                                android:fontFamily="@font/prompt_regular"
-                                android:text="สรุปรายได้จริง"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
-
-                            <TextView
-                                android:id="@+id/tvtotal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="@dimen/table_real_incom_margin_right"
-                                android:layout_weight="5"
-                                android:fontFamily="@font/prompt_regular"
-                                android:gravity="right"
-                                android:text="0.0"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/table_real_incom_text_row" />
-
-
-                        </TableRow>
-
-                    </TableLayout>
-                </LinearLayout>
-
+                </android.support.v7.widget.CardView>
             </LinearLayout>
-        </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="การจ่าย"
+                android:textColor="#969696"
+                android:textSize="12sp" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="@dimen/circle_real_income_width"
+                android:layout_height="170dp"
+                android:layout_gravity="center"
+                android:elevation="10dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:layout_width="@dimen/circle_real_income_width"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:layout_width="@dimen/bill_incom_width_tab_color"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="0dp"
+                        android:background="#0C6AFF"></View>
+                </RelativeLayout>
+
+
+                <android.support.v7.widget.GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    app:columnOrderPreserved="true"
+                    app:columnCount="3"
+                    app:rowCount="5">
+
+
+                    <!--เงินสด-->
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/ic003"
+                         />
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/prompt_regular"
+                        android:text="เงินสด"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvcashPayments"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/prompt_regular"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:text="00,000,000,000.00"
+                        android:textColor="@color/text_real_incom" />
+
+                    <!--ชำระผ่านบัตรเครดิต-->
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/ic001" />
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/prompt_regular"
+                        android:text="ชำระผ่านบัตรเครดิต"
+                        android:textColor="@color/black" />
+
+                    <TextView
+
+                        android:id="@+id/tvcreditPayments"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/prompt_regular"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:text="00,000,000,000.00"
+                        android:textColor="@color/text_real_incom" />
+                    <!--ตัดยอด Member-->
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/ic007" />
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/prompt_regular"
+                        android:text="ตัดยอด Member"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvmemberDebitPayments"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/prompt_regular"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:text="00,000,000,000.00"
+                        android:textColor="@color/text_real_incom" />
+
+                    <!--Entertrain-->
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/ic006" />
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/prompt_regular"
+                        android:text="Entertrian"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tventertainPayments"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/prompt_regular"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:text="00,000,000,000.00"
+                        android:textColor="@color/text_real_incom" />
+
+                    <!--เครดิต-->
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/ic008"
+                         />
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/prompt_regular"
+                        android:text="Credit"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvcredit"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/prompt_regular"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:text="00,000,000,000.00"
+                        android:textColor="@color/text_real_incom"/>
+
+
+                </android.support.v7.widget.GridLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="เครดิต"
+                android:textColor="#969696"
+                android:textSize="12sp" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="@dimen/circle_real_income_width"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:elevation="10dp"
+                android:padding="10dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:layout_width="@dimen/circle_real_income_width"
+                    android:layout_height="100dp">
+
+                    <View
+                        android:layout_width="@dimen/bill_incom_width_tab_color"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="0dp"
+                        android:background="#046BB3"></View>
+                </RelativeLayout>
+
+                <android.support.v7.widget.GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    app:columnOrderPreserved="true"
+                    app:columnCount="3"
+                    app:rowCount="1">
+
+                    <!--ค่าธรรมเนียม-->
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="20dp"
+                        app:layout_gravity="right"
+                        android:src="@drawable/ic005"
+                         />
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/prompt_regular"
+                        android:text="ค่าธรรมเนียม"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvtotalServiceCharge"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/prompt_regular"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:text="00,000,000,000.00"
+                        android:textColor="@color/text_real_incom" />
+
+                </android.support.v7.widget.GridLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
 
     </ScrollView>
 

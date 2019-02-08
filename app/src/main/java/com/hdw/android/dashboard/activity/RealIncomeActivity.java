@@ -80,20 +80,20 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
         tvcredit = (TextView) findViewById(R.id.tvcredit);
         tvcreditPayments = (TextView) findViewById(R.id.tvcreditPayments);
         tvrevenue = (TextView) findViewById(R.id.tvrevenue);
-        tvcreditCardPayments = (TextView) findViewById(R.id.tvcreditCardPayments);
+//        tvcreditCardPayments = (TextView) findViewById(R.id.tvcreditCardPayments);
         tvmemberDebitPayments = (TextView) findViewById(R.id.tvmemberDebitPayments);
         tventertainPayments = (TextView) findViewById(R.id.tventertainPayments);
         tvunpaid = (TextView) findViewById(R.id.tvunpaid);
         tvtotalServiceCharge = (TextView) findViewById(R.id.tvtotalServiceCharge);
-        tvtotal = (TextView) findViewById(R.id.tvtotal);
-        tvbill = (TextView) findViewById(R.id.tvbill);
+//        tvtotal = (TextView) findViewById(R.id.tvtotal);
+//        tvbill = (TextView) findViewById(R.id.tvbill);
 
 
     }
 
     private void setTextViewIncome() {
 
-        DecimalFormat formatter = new DecimalFormat("#,###,###.00");
+        DecimalFormat formatter = new DecimalFormat("#,###,##0.00");
 
         ODao = DashBoradManager.getInstance().getDao().getObject();
         income = ODao.getIncome();
@@ -145,6 +145,7 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         btncalendarrevenue.setOnClickListener(this);
 
     }

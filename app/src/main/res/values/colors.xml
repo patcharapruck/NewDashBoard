@@ -38,5 +38,8 @@
     <color name="red_text_money">#FF0000</color>
     <color name="bank_k">#001B7A</color>
     <color name="bank_t">#f37023</color>
+    <color name="text_real_incom">#333333</color>
+    <color name="not_pay">#BF3927</color>
+
 
 </resources>

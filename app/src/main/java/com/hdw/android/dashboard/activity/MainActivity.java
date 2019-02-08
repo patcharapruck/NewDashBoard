@@ -16,9 +16,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hdw.android.dashboard.Dao.DashBoardDao;
+import com.hdw.android.dashboard.Dao.NotPayItemColleationDao;
+import com.hdw.android.dashboard.Dao.PayItemColleationDao;
 import com.hdw.android.dashboard.R;
 import com.hdw.android.dashboard.manager.Contextor;
 import com.hdw.android.dashboard.manager.DashBoradManager;
+import com.hdw.android.dashboard.manager.NotPayManager;
+import com.hdw.android.dashboard.manager.PayManager;
 import com.hdw.android.dashboard.manager.http.HttpManager;
 import com.hdw.android.dashboard.util.SharedPrefDateManager;
 import com.hdw.android.dashboard.util.SharedPrefDatePayManager;
@@ -124,16 +128,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void getDateTime() {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
+        DateFormat dateFormatth = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
+
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
+        Calendar calendartoday = Calendar.getInstance();
+
         calendar.setTime(date);
-        calendar.add(Calendar.DATE, -1);
+        calendartoday.setTime(date);
+
+        calendar.add(Calendar.DATE,-1);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         int month = calendar.get(Calendar.MONTH)+1;
         int year = calendar.get(Calendar.YEAR);
+
         String formatDateTime = dateFormat.format(calendar.getTime());
+        String formatDateTimetoday = dateFormat.format(calendartoday.getTime());
+        String formatDategeneral = dateFormatth.format(calendar.getTime());
+
         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                 .saveDatereq(formatDateTime);
+
+        SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                .saveDateMax(formatDateTimetoday);
+
+        SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
+                .saveDateFull(formatDategeneral);
+
         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                 .saveDateCalendar(day,month,year);
     }
@@ -234,11 +255,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             dd = "0"+dayOfMonth;
                         }
                         String datecalendat;
-                        mainImgDate.setText(year+ "/" + mm + "/" +dd);
+                        String fulldate;
+                        mainImgDate.setText(dd+ "/" + mm + "/" +year);
                         datecalendat = year+ "/" + mm + "/" +dd;
+                        fulldate = dd+ "/" + mm + "/" +year;
 
                         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                                 .saveDatereq(datecalendat);
+
+                        SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).saveDateFull(fulldate);
 
                         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
 
@@ -248,15 +273,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 },year,month-1,day);
 
-                Calendar c = Calendar.getInstance(Locale.ENGLISH);
-                c.add(Calendar.DATE,-1);
-                Date date = c.getTime();
+                Date date = null;
                 Date d = null;
                 String oldDateString = "2019/01/06";
+                String NewDateString = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDate();
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
                 try {
                     d = sdf.parse(oldDateString);
+                    date = sdf.parse(NewDateString);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -280,8 +305,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
-
-        mainImgDate.setText(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+        reqAPIpay();
+        reqAPInotpay();
+        mainImgDate.setText(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull());
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
     }
 
@@ -298,5 +324,58 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onPause() {
         super.onPause();
+    }
+
+    private void reqAPInotpay() {
+        final Context mcontext = Contextor.getInstance().getContext();
+        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 22 and f:salesShift.isOpening = 1 \"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
+        Call<NotPayItemColleationDao> call = HttpManager.getInstance().getService().loadAPINotPay(requestBody);
+        call.enqueue(new Callback<NotPayItemColleationDao>() {
+            @Override
+            public void onResponse(Call<NotPayItemColleationDao> call, Response<NotPayItemColleationDao> response) {
+                if(response.isSuccessful()){
+                    NotPayItemColleationDao dao = response.body();
+                    NotPayManager.getInstance().setNotpayItemColleationDao(dao);
+
+                    SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
+                            .saveNotPay(dao.getPagination().getTotalItem());
+                }else {
+                    Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NotPayItemColleationDao> call, Throwable t) {
+                Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อได้",Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+    private void reqAPIpay() {
+        final Context mcontext = Contextor.getInstance().getContext();
+        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 21 and f:salesShift.isOpening = 1\"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
+        Call<PayItemColleationDao> call = HttpManager.getInstance().getService().loadAPIPay(requestBody);
+        call.enqueue(new Callback<PayItemColleationDao>() {
+            @Override
+            public void onResponse(Call<PayItemColleationDao> call, Response<PayItemColleationDao> response) {
+                if(response.isSuccessful()){
+                    PayItemColleationDao dao = response.body();
+                    PayManager.getInstance().setPayItemColleationDao(dao);
+
+                    SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
+                            .savePay(dao.getPagination().getTotalItem());
+                }else {
+                    Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PayItemColleationDao> call, Throwable t) {
+                Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อได้",Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 }

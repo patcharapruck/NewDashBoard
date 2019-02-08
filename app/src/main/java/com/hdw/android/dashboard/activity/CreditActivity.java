@@ -110,7 +110,7 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         formatter = new DecimalFormat("#,###,##0.00");
         percent = new DecimalFormat("##.##%");
-        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
         toolbar.setTitle("รายรับบัตรเครดิต");
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
@@ -326,11 +326,7 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
         barBnk2.add(new BarEntry(3, (float) ((masterk/creditall)*100)));
         barBnk2.add(new BarEntry(4, (float) ((unipayk/creditall)*100)));
         barBnk2.add(new BarEntry(5, (float) ((visak/creditall)*100)));
-//        barBnk2.add(new BarEntry(1, amaxk.longValue()));
-//        barBnk2.add(new BarEntry(2, jcbk.longValue()));
-//        barBnk2.add(new BarEntry(3, masterk.longValue()));
-//        barBnk2.add(new BarEntry(4, unipayk.longValue()));
-//        barBnk2.add(new BarEntry(5, visak.longValue()));
+
         return barBnk2;
     }
 
@@ -353,16 +349,20 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
                         dd = "0"+dayOfMonth;
                     }
                     String datecalendat;
+                    String fulldate;
                     datecalendat = year+ "/" + mm + "/" +dd;
+                    fulldate = dd+ "/" + mm + "/" +year;
 
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDatereq(datecalendat);
+
+                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).saveDateFull(fulldate);
 
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDateCalendar(dayOfMonth,month,year);
 
 
-                    date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+                    date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
                     toolbar.setSubtitle(date);
 
                     reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
@@ -373,16 +373,15 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
                     ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()-1
                     ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
 
-            Calendar c = Calendar.getInstance(Locale.ENGLISH);
-            c.add(Calendar.DATE,-1);
-            Date date = c.getTime();
-            dialog.getDatePicker().setMaxDate(date.getTime());
+            Date date = null;
             Date d = null;
             String oldDateString = "2019/01/06";
+            String NewDateString = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDate();
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
             try {
                 d = sdf.parse(oldDateString);
+                date = sdf.parse(NewDateString);
             } catch (ParseException e) {
                 e.printStackTrace();
             }

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.hdw.android.dashboard.Dao.DashBoardDao;
 import com.hdw.android.dashboard.Dao.objectdao.ObjectItemDao;
+import com.hdw.android.dashboard.adapter.ProductListAdapter;
 import com.hdw.android.dashboard.manager.Contextor;
 import com.hdw.android.dashboard.manager.DashBoradManager;
 import com.hdw.android.dashboard.manager.http.HttpManager;
@@ -67,11 +69,12 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     int size;
     String date;
 
+    ListView listProduct;
+    ProductListAdapter productlistAdapter;
+
     AppCompatActivity activity;
 
     Button btncalendardrink;
-
-    HorizontalBarChart barChart;
 
     public FragmentDrink() {
         super();
@@ -105,8 +108,11 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         tvwithdrawpd = (TextView) rootView.findViewById(R.id.tvwithdrawpd);
         btndrink = (Button) rootView.findViewById(R.id.btndrink);
 
+        listProduct = (ListView) rootView.findViewById(R.id.listProduct);
+        productlistAdapter  = new ProductListAdapter();
+        listProduct.setAdapter(productlistAdapter);
+
         btndrink.setOnClickListener(this);
-        barChart = rootView.findViewById(R.id.Hbarchart);
     }
 
 
@@ -213,52 +219,6 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
             tvwithdrawpd.setTextColor(Color.parseColor("#62BB47"));
         }
 
-        BarDataSet Set1 = new BarDataSet(withdrawUse(), "เบิกใช้");
-        Set1.setColors(Color.parseColor("#0097A7"));
-        BarDataSet Set2 = new BarDataSet(purchaseAmount(), "ซื้อ");
-        Set2.setColors(Color.parseColor("#0277BD"));
-        BarDataSet Set3 = new BarDataSet(entertainAmount(), "Entertrain");
-        Set3.setColors(Color.parseColor("#00695C"));
-        Set1.setDrawValues(true);
-        Set2.setDrawValues(true);
-        Set3.setDrawValues(true);
-
-        BarData data = new BarData(Set1, Set2, Set3);
-        barChart.setData(data);
-        data.setValueTextSize(15f);
-
-
-        XAxis xAxis = barChart.getXAxis();
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(nameProduct));
-        xAxis.setCenterAxisLabels(true);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setGranularity(1);
-        xAxis.setGranularityEnabled(true);
-        xAxis.setTextSize(10f);
-        xAxis.setLabelRotationAngle(90);
-
-        barChart.setDragEnabled(true);
-        barChart.setVisibleXRangeMaximum(2);
-
-        //set Label Center
-        float groupSpace = 0.5f;
-        float barSpace = 0f;
-        float barWidth = 0.20f;
-        data.setBarWidth(barWidth);
-        //(barwidth + barspace) * no of bars + groupspace = 1
-
-        barChart.getAxisLeft().setAxisMinimum(0);
-        barChart.groupBars(0, groupSpace, barSpace);
-        barChart.setDrawValueAboveBar(true);
-        // Hide grid lines
-        barChart.getAxisLeft().setEnabled(false);
-        barChart.getAxisRight().setEnabled(false);
-        // Hide graph description
-        barChart.getDescription().setEnabled(false);
-        // Hide graph legend
-        barChart.getLegend().setEnabled(false);
-        barChart.invalidate();
-
     }
 
     @Override
@@ -278,7 +238,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
 
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
         activity = (AppCompatActivity) getActivity();
@@ -308,6 +268,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
                 if(response.isSuccessful()){
                     DashBoardDao dao = response.body();
                     DashBoradManager.getInstance().setDao(dao);
+                    productlistAdapter.notifyDataSetChanged();
 
                     try {
                         Odao = DashBoradManager.getInstance().getDao().getObject();
@@ -350,35 +311,6 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         }
     }
 
-    //เบิกใช้
-    private ArrayList<BarEntry> withdrawUse() {
-        ArrayList<BarEntry> barBnk1 = new ArrayList<>();
-
-        for (int i = 0; i < size; i++) {
-            barBnk1.add(new BarEntry(i, withdrawProduct.get(i)));
-        }
-        return barBnk1;
-    }
-
-    //ซื้อ
-    private ArrayList<BarEntry> purchaseAmount() {
-        ArrayList<BarEntry> barBnk2 = new ArrayList<>();
-
-        for (int i = 0; i < size; i++) {
-            barBnk2.add(new BarEntry(i, purchaseProduct.get(i)));
-        }
-        return barBnk2;
-    }
-
-    //Entertain
-    private ArrayList<BarEntry> entertainAmount() {
-        ArrayList<BarEntry> barBnk2 = new ArrayList<>();
-
-        for (int i = 0; i < size; i++) {
-            barBnk2.add(new BarEntry(i, entertainProduct.get(i)));
-        }
-        return barBnk2;
-    }
 
     @Override
     public void onClick(View v) {
@@ -405,15 +337,19 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
                         dd = "0"+dayOfMonth;
                     }
                     String datecalendat;
+                    String fulldate;
                     datecalendat = year+ "/" + mm + "/" +dd;
+                    fulldate = dd+ "/" + mm + "/" +year;
 
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDatereq(datecalendat);
 
+                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).saveDateFull(fulldate);
+
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDateCalendar(dayOfMonth,month,year);
 
-                    date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+                    date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
                     reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
                     activity.getSupportActionBar().setSubtitle(date);
 
@@ -424,16 +360,15 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
                     ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()-1
                     ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
 
-            Calendar c = Calendar.getInstance(Locale.ENGLISH);
-            c.add(Calendar.DATE,-1);
-            Date date = c.getTime();
-            dialog.getDatePicker().setMaxDate(date.getTime());
+            Date date = null;
             Date d = null;
             String oldDateString = "2019/01/06";
+            String NewDateString = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDate();
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
             try {
                 d = sdf.parse(oldDateString);
+                date = sdf.parse(NewDateString);
             } catch (ParseException e) {
                 e.printStackTrace();
             }

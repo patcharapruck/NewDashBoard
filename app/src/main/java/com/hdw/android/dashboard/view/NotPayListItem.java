@@ -11,12 +11,15 @@ import com.hdw.android.dashboard.R;
 import com.inthecheesefactory.thecheeselibrary.view.BaseCustomViewGroup;
 import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by nuuneoi on 11/16/2014.
  */
 public class NotPayListItem extends BaseCustomViewGroup {
 
     TextView tvNpyId,tvNpyBill,tvNpyRoom,tvNpySale,tvNpyMonny;
+    String tNpyMonny;
 
     public NotPayListItem(Context context) {
         super(context);
@@ -119,7 +122,9 @@ public class NotPayListItem extends BaseCustomViewGroup {
     }
 
     public void setNotPayMoney(Double NotpayMoney){
-        tvNpyMonny.setText(NotpayMoney.toString());
+        DecimalFormat formatter = new DecimalFormat("#,###,###.00");
+        tNpyMonny = formatter.format(NotpayMoney);
+        tvNpyMonny.setText(tNpyMonny);
     }
 
 }

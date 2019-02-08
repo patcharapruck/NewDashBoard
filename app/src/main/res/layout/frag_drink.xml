@@ -38,19 +38,20 @@
             android:id="@+id/tbDrink"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:theme="@style/ToolbarTheme"
-            android:background="@color/bg_login">
+            android:background="@color/bg_login"
+            android:theme="@style/ToolbarTheme">
+
             <Button
                 android:id="@+id/btncalendardrink"
                 android:layout_width="80dp"
                 android:layout_height="33dp"
-                android:layout_marginRight="15dp"
-                android:fontFamily="@font/prompt_bold"
                 android:layout_gravity="right"
+                android:layout_marginRight="15dp"
                 android:background="@drawable/rounded_botton"
+                android:fontFamily="@font/prompt_bold"
+                android:text="@string/selectDate"
                 android:textColor="@color/bg_login"
-                android:theme="@style/ToolbarTheme"
-                android:text="@string/selectDate" />
+                android:theme="@style/ToolbarTheme" />
 
         </android.support.v7.widget.Toolbar>
 
@@ -264,27 +265,20 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.github.mikephil.charting.charts.HorizontalBarChart
+            <ListView
+                android:id="@+id/listProduct"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/Hbarchart">
+                android:layout_height="match_parent"></ListView>
 
-            </com.github.mikephil.charting.charts.HorizontalBarChart>
-
-        </RelativeLayout>
+        </LinearLayout>
 
     </LinearLayout>
-
 
 
 </RelativeLayout>

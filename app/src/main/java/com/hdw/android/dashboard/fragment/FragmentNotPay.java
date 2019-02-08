@@ -4,10 +4,15 @@ package com.hdw.android.dashboard.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.hdw.android.dashboard.Dao.NotPayItemColleationDao;
@@ -18,16 +23,27 @@ import com.hdw.android.dashboard.manager.NotPayManager;
 import com.hdw.android.dashboard.manager.http.HttpManager;
 import com.hdw.android.dashboard.util.SharedPrefDatePayManager;
 
+import java.util.ArrayList;
+
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FragmentNotPay extends Fragment {
+public class FragmentNotPay extends Fragment implements View.OnClickListener {
 
     ListView listNotpay;
     NotPayAdapter notPayAdapter;
+
+    Spinner spintypeNot;
+    String typeSearch = "";
+    String DataSearch = "";
+
+    EditText edSearchNot;
+    CardView cardsearchNot;
+
+    private ArrayList<String> mTypeSearch = new ArrayList<String>();
 
     public FragmentNotPay() {
         super();
@@ -51,6 +67,44 @@ public class FragmentNotPay extends Fragment {
     private void initInstances(View rootView) {
         // Init 'View' instance(s) with rootView.findViewById here
         listNotpay = (ListView)rootView.findViewById(R.id.list_notpay);
+        spintypeNot = (Spinner) rootView.findViewById(R.id.spintypeNot);
+        edSearchNot = (EditText) rootView.findViewById(R.id.edSearchNot);
+        cardsearchNot = (CardView) rootView.findViewById(R.id.cardsearchNot);
+
+        createTypeSearchData();
+
+        final ArrayAdapter<String> adapterNotSearch = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, mTypeSearch);
+        spintypeNot.setAdapter(adapterNotSearch);
+
+        spintypeNot.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(mTypeSearch.get(position).equals("เลชที่เอกสาร")){
+                    typeSearch = "InvoiceDocument-invoiceCode";
+                }else if (mTypeSearch.get(position).equals("ชื่อหัวบิล")){
+                    typeSearch = "InvoiceDocument-customerName";
+                }else if (mTypeSearch.get(position).equals("Table/Room")){
+                    typeSearch = "Place-placeCode";
+                }else if (mTypeSearch.get(position).equals("รหัส Sale")){
+                    typeSearch = "Employee-employeeCode";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+    }
+
+    private void createTypeSearchData() {
+        mTypeSearch.add("เลชที่เอกสาร");
+        mTypeSearch.add("ชื่อหัวบิล");
+        mTypeSearch.add("Table/Room");
+        mTypeSearch.add("รหัส Sale");
     }
 
     @Override
@@ -64,6 +118,7 @@ public class FragmentNotPay extends Fragment {
     public void onStart() {
         super.onStart();
         reqAPInotpay();
+        cardsearchNot.setOnClickListener(this);
     }
 
     @Override
@@ -111,5 +166,40 @@ public class FragmentNotPay extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == cardsearchNot){
+            DataSearch = edSearchNot.getText().toString();
+
+            SearchNotreq(typeSearch,DataSearch);
+        }
+    }
+
+    private void SearchNotreq(String typeSearch, String dataSearch) {
+        final Context mcontext = Contextor.getInstance().getContext();
+        String nn = "{\"criteria\":{\""+typeSearch+"\":\""+dataSearch+"\",\"sql-obj-command\":\"f:documentStatus.id = 22 and f:salesShift.isOpening = 1\"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
+        Call<NotPayItemColleationDao> call = HttpManager.getInstance().getService().loadAPINotPay(requestBody);
+        call.enqueue(new Callback<NotPayItemColleationDao>() {
+            @Override
+            public void onResponse(Call<NotPayItemColleationDao> call, Response<NotPayItemColleationDao> response) {
+                if(response.isSuccessful()){
+                    NotPayItemColleationDao dao = response.body();
+                    NotPayManager.getInstance().setNotpayItemColleationDao(dao);
+                    notPayAdapter.notifyDataSetChanged();
+                    SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
+                            .saveNotPay(dao.getPagination().getTotalItem());
+                }else {
+                    Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NotPayItemColleationDao> call, Throwable t) {
+                Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อได้",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

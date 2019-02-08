@@ -16,7 +16,8 @@
         <activity android:name=".activity.CompareReceipts" />
         <activity android:name=".activity.RealIncomeActivity" />
         <activity android:name=".activity.CreditActivity" />
-        <activity android:name=".activity.LogInActivity">
+        <activity android:name=".activity.LogInActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

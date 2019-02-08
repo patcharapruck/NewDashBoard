@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hdw.android.dashboard.Dao.LoginItemDao;
@@ -24,7 +26,8 @@ import retrofit2.Response;
 
 public class LogInActivity extends AppCompatActivity implements View.OnClickListener {
     EditText username,password;
-    Button btnlogin;
+    CardView btnlogin;
+    TextView tvLogin;
 
     String user="",
             pass="";
@@ -49,7 +52,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
         username = (EditText)findViewById(R.id.userId);
         password = (EditText)findViewById(R.id.passId);
-        btnlogin = (Button)findViewById(R.id.btnLogin);
+        btnlogin = (CardView) findViewById(R.id.btnLogin);
+        tvLogin = (TextView) findViewById(R.id.tvLogin);
 
 
     }
@@ -119,7 +123,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if(v == btnlogin){
+        if(v == btnlogin||v == tvLogin){
          user =  username.getText().toString();
          pass =  password.getText().toString();
 

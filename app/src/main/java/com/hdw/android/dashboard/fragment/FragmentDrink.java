@@ -207,15 +207,15 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         }
         tventertainpd.setText(sumentertain.toString());
         if (sumentertain > 0) {
-            tventertainpd.setTextColor(Color.parseColor("#62BB47"));
+            tventertainpd.setTextColor(Color.parseColor("#19237E"));
         }
         tvpurchasepd.setText(sumpurchase.toString());
         if (sumpurchase > 0) {
-            tvpurchasepd.setTextColor(Color.parseColor("#62BB47"));
+            tvpurchasepd.setTextColor(Color.parseColor("#19237E"));
         }
         tvwithdrawpd.setText(sumwithdraw.toString());
         if (sumwithdraw > 0) {
-            tvwithdrawpd.setTextColor(Color.parseColor("#62BB47"));
+            tvwithdrawpd.setTextColor(Color.parseColor("#19237E"));
         }
 
     }

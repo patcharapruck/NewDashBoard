@@ -1,47 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
+    android:layout_height="100dp"
+    android:orientation="vertical"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/textproduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="รายการสินค้า"
-        android:layout_margin="5dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:orientation="horizontal"
-        android:layout_toRightOf="@id/textproduct">
 
         <TextView
             android:id="@+id/tvnameProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:gravity="center"
-            android:layout_weight="1"/>
-
-        <View
-            android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:background="#a138be"
-            android:layout_marginTop="5dp">
-        </View>
-
-    </LinearLayout>
-
-
+            android:gravity="left"
+            android:textStyle="bold"
+            android:textSize="15dp" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/textproduct"
         android:orientation="horizontal"
         android:weightSum="4"
         android:padding="5dp">
@@ -49,7 +27,7 @@
         <android.support.v7.widget.CardView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.3">
+            android:layout_weight="1.1">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -78,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="15sp"
+                    android:textSize="17sp"
                     android:layout_toLeftOf="@id/textc"
                     android:layout_alignParentBottom="true"
                     android:layout_marginRight="3dp"/>
@@ -90,13 +68,13 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2.7"
+            android:layout_weight="2.9"
             android:weightSum="3">
 
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.2">
+                android:layout_weight="1.1">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -109,18 +87,18 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:text="เบิกใช้สิทธิ์ :"
-                        android:textSize="10sp"/>
+                        android:textSize="12sp"/>
 
-                    <TextView
-                        android:id="@+id/tvwithdrawpercent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_toRightOf="@id/textB"
-                        android:text="0.0%"
-                        android:gravity="center"
-                        android:textColor="#2cb92f"
-                        android:textSize="10sp"/>
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvwithdrawpercent"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentTop="true"-->
+                        <!--android:layout_toRightOf="@id/textB"-->
+                        <!--android:text="0.0%"-->
+                        <!--android:gravity="center"-->
+                        <!--android:textColor="#2cb92f"-->
+                        <!--android:textSize="12sp"/>-->
 
                     <TextView
                         android:id="@+id/textd"
@@ -136,7 +114,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textSize="12sp"
+                        android:textSize="13sp"
                         android:layout_toLeftOf="@id/textd"
                         android:layout_alignParentBottom="true"
                         android:layout_marginRight="3dp"/>
@@ -161,18 +139,18 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:text="ซื้อ :"
-                        android:textSize="10sp"/>
+                        android:textSize="12sp"/>
 
-                    <TextView
-                        android:id="@+id/tvpurchasepercent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_toRightOf="@id/textpay"
-                        android:text="0.0%"
-                        android:gravity="center"
-                        android:textColor="#2cb92f"
-                        android:textSize="10sp"/>
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvpurchasepercent"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentTop="true"-->
+                        <!--android:layout_toRightOf="@id/textpay"-->
+                        <!--android:text="0.0%"-->
+                        <!--android:gravity="center"-->
+                        <!--android:textColor="#2cb92f"-->
+                        <!--android:textSize="12sp"/>-->
 
                     <TextView
                         android:id="@+id/textf"
@@ -188,7 +166,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textSize="12sp"
+                        android:textSize="13sp"
                         android:layout_toLeftOf="@id/textf"
                         android:layout_alignParentBottom="true"
                         android:layout_marginRight="3dp"/>
@@ -200,7 +178,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1.1">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -213,18 +191,18 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:text="Entertain:"
-                        android:textSize="10sp"/>
+                        android:textSize="12sp"/>
 
-                    <TextView
-                        android:id="@+id/tventertainpercent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_toRightOf="@id/textEntertain"
-                        android:text="0.0%"
-                        android:gravity="center"
-                        android:textColor="#2cb92f"
-                        android:textSize="10sp"/>
+                    <!--<TextView-->
+                        <!--android:id="@+id/tventertainpercent"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentTop="true"-->
+                        <!--android:layout_toRightOf="@id/textEntertain"-->
+                        <!--android:text="0.0%"-->
+                        <!--android:gravity="center"-->
+                        <!--android:textColor="#2cb92f"-->
+                        <!--android:textSize="12sp"/>-->
 
                     <TextView
                         android:id="@+id/textg"
@@ -240,7 +218,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textSize="12sp"
+                        android:textSize="13sp"
                         android:layout_toLeftOf="@id/textg"
                         android:layout_alignParentBottom="true"
                         android:layout_marginRight="3dp"/>
@@ -265,4 +243,4 @@
 
     </View>
 
-</RelativeLayout>
+</LinearLayout>

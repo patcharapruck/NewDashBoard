@@ -58,7 +58,7 @@ import retrofit2.Response;
 public class FragmentDrink extends Fragment implements View.OnClickListener {
 
     TextView tvtotalpd, tventertainpd, tvpurchasepd, tvwithdrawpd;
-    Button btndrink;
+   // Button btndrink;
     Toolbar toolbar;
     ArrayList<String> nameProduct;
     ArrayList<Long> totalAllProduct;
@@ -106,13 +106,12 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         tventertainpd = (TextView) rootView.findViewById(R.id.tventertainpd);
         tvpurchasepd = (TextView) rootView.findViewById(R.id.tvpurchasepd);
         tvwithdrawpd = (TextView) rootView.findViewById(R.id.tvwithdrawpd);
-        btndrink = (Button) rootView.findViewById(R.id.btndrink);
 
         listProduct = (ListView) rootView.findViewById(R.id.listProduct);
         productlistAdapter  = new ProductListAdapter();
         listProduct.setAdapter(productlistAdapter);
 
-        btndrink.setOnClickListener(this);
+        //btndrink.setOnClickListener(this);
     }
 
 
@@ -314,13 +313,13 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v == btndrink) {
-            getFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.frame_drink, FragmentDrinkReport.newInstance())
-                    .addToBackStack(null)
-                    .commit();
-        }
+//        if (v == btndrink) {
+//            getFragmentManager()
+//                    .beginTransaction()
+//                    .replace(R.id.frame_drink, FragmentDrinkReport.newInstance())
+//                    .addToBackStack(null)
+//                    .commit();
+//        }
 
         if(v == btncalendardrink){
             DatePickerDialog dialog = new DatePickerDialog(getContext(),new DatePickerDialog.OnDateSetListener() {

@@ -1,62 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.LogInActivity"
-    android:orientation="vertical">
+    android:fillViewport="true"
+    tools:context=".activity.LogInActivity">
 
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/img_login_heigth"
-        android:src="@drawable/krystal"
-        android:background="@color/bg_login"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_login">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
 
-    <EditText
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="30dp"
+                        android:text="เข้าสู่ระบบ"
+                        android:textColor="@color/bg_login"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
 
-        android:id="@+id/userId"
-        android:layout_width="@dimen/login_edit_text_width"
-        android:layout_height="@dimen/login_edit_text_height"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/login_user_mar_top"
-        android:fontFamily="@font/prompt_regular"
-        android:singleLine="true"
-        android:hint="Username" />
+                    <EditText
 
-    <EditText
-        android:id="@+id/passId"
-        android:layout_width="@dimen/login_edit_text_width"
-        android:layout_height="@dimen/login_edit_text_height"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/login_pass_mar_top"
-        android:fontFamily="@font/prompt_regular"
-        android:hint="Password"
-        android:singleLine="true"
-        android:text="" />
+                        android:id="@+id/userId"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/login_edit_text_height"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/login_user_mar_top"
+                        android:background="@color/bg1"
+                        android:drawableRight="@drawable/ic_login_user"
+                        android:fontFamily="@font/prompt_regular"
+                        android:hint="Username"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:singleLine="true" />
+
+                    <EditText
+                        android:id="@+id/passId"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/login_edit_text_height"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/login_pass_mar_top"
+                        android:background="@color/bg1"
+                        android:drawableRight="@drawable/ic_login_pass"
+                        android:fontFamily="@font/prompt_regular"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:singleLine="true" />
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/btnLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/login_edit_text_height"
+                        android:layout_marginTop="@dimen/login_pass_mar_top"
+                        android:layout_marginBottom="30dp"
+                        app:cardBackgroundColor="@color/bg_login"
+                        app:cardCornerRadius="10dp">
+
+                        <TextView
+                            android:id="@+id/tvLogin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="LOGIN"
+                            android:textColor="@color/white"
+                            android:textSize="20dp" />
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
 
 
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="@dimen/login_button_width"
-        android:layout_height="@dimen/login_button_height"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/login_button_margin_top"
-        android:fontFamily="@font/prompt_regular"
-        android:text=" เข้าสู่ระบบ "
-        android:textAlignment="center"
-        android:textSize="20sp" />
+            </android.support.v7.widget.CardView>
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/prompt_regular"
-        android:gravity="center"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="50dp"
-        android:text="Create by HandyWings.co.ltd" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/text_hdw_margin_bot_main"
+                android:gravity="center"
+                android:text="@string/text_create_by_hdw"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_hdw_size_main" />
 
-</LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

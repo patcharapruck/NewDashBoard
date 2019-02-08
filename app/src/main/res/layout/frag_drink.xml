@@ -57,7 +57,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/relative_allsum_drink_height"
+            android:layout_height="220dp"
             android:background="@color/bg_login"
             android:orientation="vertical"
             android:padding="@dimen/relative_allsum_drink_padding">
@@ -110,7 +110,8 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
-                                    android:text="0" />
+                                    android:text="0"
+                                    android:textSize="25dp"/>
                             </LinearLayout>
 
                         </RelativeLayout>
@@ -123,16 +124,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="3"
+                android:padding="5dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp">
 
                     <TextView
                         style="@style/font_card_main"
@@ -140,21 +144,22 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:gravity="center"
-                        android:text="เบิกใช้สิทธิ์" />
+                        android:text="เบิกใช้สิทธิ์"
+                        android:textColor="@color/white"/>
 
 
                     <android.support.v7.widget.CardView
                         style="@style/marginCVbill"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:cardElevation="@dimen/elevation_card">
+                        app:cardElevation="10dp">
 
 
                         <TextView
                             android:id="@+id/tvwithdrawpd"
                             style="@style/font_notpay"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:fontFamily="@font/prompt_regular"
                             android:gravity="center"
                             android:text="0" />
@@ -177,20 +182,21 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:gravity="center"
-                        android:text="ซื้อ" />
+                        android:text="ซื้อ"
+                        android:textColor="@color/white"/>
 
                     <android.support.v7.widget.CardView
                         style="@style/marginCVbill"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:cardElevation="@dimen/elevation_card">
+                        app:cardElevation="10dp">
 
 
                         <TextView
                             android:id="@+id/tvpurchasepd"
                             style="@style/font_notpay"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:fontFamily="@font/prompt_regular"
                             android:gravity="center"
                             android:text="0" />
@@ -203,7 +209,9 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp">
 
 
                     <TextView
@@ -212,19 +220,20 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:gravity="center"
-                        android:text="Entertain" />
+                        android:text="Entertain"
+                        android:textColor="@color/white"/>
 
                     <android.support.v7.widget.CardView
                         style="@style/marginCVbill"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:cardElevation="@dimen/elevation_card">
+                        app:cardElevation="10dp">
 
                                 <TextView
                                     android:id="@+id/tventertainpd"
                                     style="@style/font_notpay"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="match_parent"
                                     android:fontFamily="@font/prompt_regular"
                                     android:gravity="center"
                                     android:text="0" />

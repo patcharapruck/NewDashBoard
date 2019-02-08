@@ -55,9 +55,9 @@ public class ProductListltem extends BaseCustomViewGroup {
         tvpurchaseProduct  = (TextView)findViewById(R.id.tvpurchaseProduct);
         tventertainProduct = (TextView)findViewById(R.id.tventertainProduct);
 
-        tvwithdrawpercent = (TextView)findViewById(R.id.tvwithdrawpercent);
-        tvpurchasepercent = (TextView)findViewById(R.id.tvpurchasepercent);
-        tventertainpercent = (TextView)findViewById(R.id.tventertainpercent);
+//        tvwithdrawpercent = (TextView)findViewById(R.id.tvwithdrawpercent);
+//        tvpurchasepercent = (TextView)findViewById(R.id.tvpurchasepercent);
+//        tventertainpercent = (TextView)findViewById(R.id.tventertainpercent);
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -103,16 +103,16 @@ public class ProductListltem extends BaseCustomViewGroup {
         tventertainProduct.setText(entertainProduct.toString());
     }
 
-    public void setWithdrawPercent(Double withdrawPercent){
-        tvwithdrawpercent.setText(withdrawPercent+"%");
-    }
-
-    public void setPurchasePercent(Double purchasePercent){
-        tvpurchasepercent.setText(purchasePercent+"%");
-    }
-
-    public void setEntertainPercent(Double entertainPercent){
-        tventertainpercent.setText(entertainPercent+"%");
-    }
+//    public void setWithdrawPercent(Double withdrawPercent){
+//        tvwithdrawpercent.setText(withdrawPercent+"%");
+//    }
+//
+//    public void setPurchasePercent(Double purchasePercent){
+//        tvpurchasepercent.setText(purchasePercent+"%");
+//    }
+//
+//    public void setEntertainPercent(Double entertainPercent){
+//        tventertainpercent.setText(entertainPercent+"%");
+//    }
 
 }

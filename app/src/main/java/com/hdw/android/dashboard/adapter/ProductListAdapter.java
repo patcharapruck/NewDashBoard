@@ -67,25 +67,25 @@ public class ProductListAdapter extends BaseAdapter {
         }catch (NullPointerException e){
             item.setTotalProduct(0L);
         }
-
-        try {
-            Double WithdrawPercent = (dao.getTotalAll()/dao.getWithdrawUse())*100.00;
-            item.setWithdrawPercent(WithdrawPercent);
-        }catch (Exception e){
-            item.setWithdrawPercent(0D);
-        }
-        try {
-            Double PurchasePercent = (dao.getTotalAll()/dao.getPurchaseAmount())*100.00;
-            item.setPurchasePercent(PurchasePercent);
-        }catch (Exception e){
-            item.setPurchasePercent(0D);
-        }
-        try {
-            Double EntertainPercent = (dao.getTotalAll()/dao.getEntertainAmount())*100.00;
-            item.setEntertainPercent(EntertainPercent);
-        }catch (Exception e){
-            item.setEntertainPercent(0D);
-        }
+//
+//        try {
+//            Double WithdrawPercent = (dao.getTotalAll()/dao.getWithdrawUse())*100.00;
+//            item.setWithdrawPercent(WithdrawPercent);
+//        }catch (Exception e){
+//            item.setWithdrawPercent(0D);
+//        }
+//        try {
+//            Double PurchasePercent = (dao.getTotalAll()/dao.getPurchaseAmount())*100.00;
+//            item.setPurchasePercent(PurchasePercent);
+//        }catch (Exception e){
+//            item.setPurchasePercent(0D);
+//        }
+//        try {
+//            Double EntertainPercent = (dao.getTotalAll()/dao.getEntertainAmount())*100.00;
+//            item.setEntertainPercent(EntertainPercent);
+//        }catch (Exception e){
+//            item.setEntertainPercent(0D);
+//        }
 
         return item;
     }

@@ -44,12 +44,13 @@
                 android:gravity="center">
 
                 <android.support.v7.widget.CardView
-                    android:layout_width="@dimen/circle_real_income_width"
-                    android:layout_height="80dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="2dp"
                     android:elevation="10dp"
                     app:cardBackgroundColor="#FFFFFF"
                     app:cardCornerRadius="5dp">
@@ -75,7 +76,7 @@
                     android:layout_height="30dp"
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="10dp"
-                    app:cardBackgroundColor="#005688"
+                    app:cardBackgroundColor="@color/bg_real"
                     app:cardCornerRadius="5dp">
 
                     <TextView
@@ -97,15 +98,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:weightSum="2">
 
                 <android.support.v7.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
@@ -154,7 +155,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
@@ -203,14 +204,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="4dp"
                 android:text="การจ่าย"
                 android:textColor="#969696"
                 android:textSize="12sp" />
             <android.support.v7.widget.CardView
-                android:layout_width="@dimen/circle_real_income_width"
+                android:layout_width="match_parent"
                 android:layout_height="170dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_gravity="center"
                 android:elevation="10dp"
                 app:cardBackgroundColor="#FFFFFF"
@@ -225,7 +228,7 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_marginBottom="0dp"
-                        android:background="#0C6AFF"></View>
+                        android:background="@color/tab_view1"></View>
                 </RelativeLayout>
 
 
@@ -386,11 +389,13 @@
                 android:textSize="12sp" />
 
             <android.support.v7.widget.CardView
-                android:layout_width="@dimen/circle_real_income_width"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:elevation="10dp"
                 android:layout_marginBottom="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:padding="10dp"
                 app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="5dp">
@@ -404,7 +409,7 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_marginBottom="0dp"
-                        android:background="#046BB3"></View>
+                        android:background="@color/tab_view2"></View>
                 </RelativeLayout>
 
                 <android.support.v7.widget.GridLayout

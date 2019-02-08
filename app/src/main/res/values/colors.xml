@@ -40,6 +40,9 @@
     <color name="bank_t">#f37023</color>
     <color name="text_real_incom">#333333</color>
     <color name="not_pay">#BF3927</color>
+    <color name="bg_real">#005688</color>
+    <color name="tab_view1">#0C6AFF</color>
+    <color name="tab_view2">#046BB3</color>
 
 
 </resources>

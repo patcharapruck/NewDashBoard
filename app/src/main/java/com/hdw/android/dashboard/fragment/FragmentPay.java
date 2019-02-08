@@ -5,14 +5,19 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hdw.android.dashboard.Dao.PayItemColleationDao;
@@ -43,6 +48,8 @@ public class FragmentPay extends Fragment implements View.OnClickListener {
     EditText edSearchPay;
     CardView cardsearchpay;
 
+    ImageView icon_searchPay;
+
     private ArrayList<String> mTypeSearch = new ArrayList<String>();
 
     public FragmentPay() {
@@ -66,10 +73,13 @@ public class FragmentPay extends Fragment implements View.OnClickListener {
 
     private void initInstances(View rootView) {
 
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
         listViewPay = (ListView) rootView.findViewById(R.id.list_pay);
         spintypepay = (Spinner) rootView.findViewById(R.id.spintypepay);
         edSearchPay = (EditText) rootView.findViewById(R.id.edSearchPay);
         cardsearchpay = (CardView) rootView.findViewById(R.id.cardsearchpay);
+        icon_searchPay = (ImageView) rootView.findViewById(R.id.icon_searchPay);
 
         createTypeSearchData();
 
@@ -111,7 +121,6 @@ public class FragmentPay extends Fragment implements View.OnClickListener {
         super.onStart();
         reqAPIpay();
         cardsearchpay.setOnClickListener(this);
-
     }
 
     @Override
@@ -126,20 +135,17 @@ public class FragmentPay extends Fragment implements View.OnClickListener {
         listViewPay.setAdapter(payMentAdapter);
     }
 
-    /*
-     * Save Instance State Here
-     */
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        // Save Instance State here
+
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState != null) {
-            // Restore Instance State here
+
         }
     }
 
@@ -172,7 +178,7 @@ public class FragmentPay extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        if (v == cardsearchpay){
+        if (v == cardsearchpay || v == icon_searchPay){
             DataSearch = edSearchPay.getText().toString();
 
             Searchreq(typeSearch,DataSearch);

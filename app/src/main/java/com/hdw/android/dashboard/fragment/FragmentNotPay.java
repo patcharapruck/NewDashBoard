@@ -8,9 +8,11 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -42,6 +44,7 @@ public class FragmentNotPay extends Fragment implements View.OnClickListener {
 
     EditText edSearchNot;
     CardView cardsearchNot;
+    ImageView icon_searchNot;
 
     private ArrayList<String> mTypeSearch = new ArrayList<String>();
 
@@ -65,11 +68,15 @@ public class FragmentNotPay extends Fragment implements View.OnClickListener {
     }
 
     private void initInstances(View rootView) {
+
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
         // Init 'View' instance(s) with rootView.findViewById here
         listNotpay = (ListView)rootView.findViewById(R.id.list_notpay);
         spintypeNot = (Spinner) rootView.findViewById(R.id.spintypeNot);
         edSearchNot = (EditText) rootView.findViewById(R.id.edSearchNot);
         cardsearchNot = (CardView) rootView.findViewById(R.id.cardsearchNot);
+        icon_searchNot = (ImageView) rootView.findViewById(R.id.icon_searchNot);
 
         createTypeSearchData();
 
@@ -170,7 +177,7 @@ public class FragmentNotPay extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v == cardsearchNot){
+        if (v == cardsearchNot || v == icon_searchNot){
             DataSearch = edSearchNot.getText().toString();
 
             SearchNotreq(typeSearch,DataSearch);

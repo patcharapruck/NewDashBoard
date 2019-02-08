@@ -38,7 +38,7 @@
     </style>
 
     <style name="font_card_bill">
-        <item name="android:textColor">@color/text_money_pay</item>
+        <item name="android:textColor">#01A2FF</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">20sp</item>
     </style>

@@ -39,13 +39,11 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
 
     ObjectItemDao ODao;
 
-    TextView tvincome, tvcashPayments, tvcreditPayments, tvrevenue, tvcreditCardPayments, tvmemberDebitPayments, tventertainPayments, tvunpaid, tvtotalServiceCharge,
-            tvtotal, tvcredit, tvbill;
+    TextView tvincome, tvcashPayments, tvcreditPayments, tvrevenue, tvmemberDebitPayments, tventertainPayments, tvunpaid, tvtotalServiceCharge,tvcredit;
 
     Double income, cashPayments, creditPayments, revenue, creditCardPayments, memberDebitPayments, entertainPayments, unpaid, totalServiceCharge;
 
-    String vincome, vcashPayments, vcreditPayments, vrevenue, vcreditCardPayments, vmemberDebitPayments, ventertainPayments, vunpaid, vtotalServiceCharge,
-            vtotal, vcredit, vbill;
+    String vincome, vcashPayments, vcreditPayments, vrevenue, vcreditCardPayments, vmemberDebitPayments, ventertainPayments, vunpaid, vtotalServiceCharge;
 
     Toolbar toolbar;
 
@@ -80,14 +78,10 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
         tvcredit = (TextView) findViewById(R.id.tvcredit);
         tvcreditPayments = (TextView) findViewById(R.id.tvcreditPayments);
         tvrevenue = (TextView) findViewById(R.id.tvrevenue);
-//        tvcreditCardPayments = (TextView) findViewById(R.id.tvcreditCardPayments);
         tvmemberDebitPayments = (TextView) findViewById(R.id.tvmemberDebitPayments);
         tventertainPayments = (TextView) findViewById(R.id.tventertainPayments);
         tvunpaid = (TextView) findViewById(R.id.tvunpaid);
         tvtotalServiceCharge = (TextView) findViewById(R.id.tvtotalServiceCharge);
-//        tvtotal = (TextView) findViewById(R.id.tvtotal);
-//        tvbill = (TextView) findViewById(R.id.tvbill);
-
 
     }
 
@@ -125,13 +119,11 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
         tvcredit.setText(vcreditPayments);
         tvcreditPayments.setText(vcreditCardPayments);
         tvrevenue.setText(vrevenue);
-        tvcreditCardPayments.setText(vcreditCardPayments);
         tvmemberDebitPayments.setText(vmemberDebitPayments);
         tventertainPayments.setText(ventertainPayments);
         tvunpaid.setText(vunpaid);
         tvtotalServiceCharge.setText(vtotalServiceCharge);
-        tvtotal.setText(vrevenue);
-        tvbill.setText(vincome);
+
     }
 
     @Override
@@ -145,9 +137,8 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         btncalendarrevenue.setOnClickListener(this);
-
+        setTextViewIncome();
     }
 
     @Override

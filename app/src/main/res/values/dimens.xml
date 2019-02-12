@@ -4,13 +4,16 @@
     <dimen name="height_img_main_menu">40dp</dimen>
     <dimen name="width_img_main_logo">211dp</dimen>
     <dimen name="height_img_main_logo">111dp</dimen>
+    <!--ตำแหน่ง text ในปุ่ม-->
     <dimen name="date_pad_bot_main_menu">10dp</dimen>
     <dimen name="date_pad_r_main_menu">15dp</dimen>
-    <dimen name="date_pad_top_main_menu">11dp</dimen>
+    <dimen name="date_pad_top_main_menu">8dp</dimen>
+    <!--ขนาดปุ่ม-->
     <dimen name="date_margin_r_main_menu">20dp</dimen>
     <dimen name="date_lay_width_main_menu">130dp</dimen>
     <dimen name="linear_date_margin_top_main_menu">5dp</dimen>
     <dimen name="relative_date_height_main_menu">35dp</dimen>
+
     <dimen name="loguot_margin">10dp</dimen>
     <dimen name="text_hdw_size_main">10sp</dimen>
     <dimen name="text_hdw_margin_bot_main">15dp</dimen>

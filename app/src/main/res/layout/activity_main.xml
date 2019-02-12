@@ -80,7 +80,7 @@
                         android:paddingTop="@dimen/date_pad_top_main_menu"
                         android:paddingRight="@dimen/date_pad_r_main_menu"
                         android:paddingBottom="@dimen/date_pad_bot_main_menu"
-                        android:text="y/m/d"
+                        android:text="d/m/y"
                         android:textColor="@color/date_text_main"
                         android:textSize="@dimen/date_text_size_main_menu" />
 

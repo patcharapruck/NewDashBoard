@@ -177,9 +177,9 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         lineChart = (LineChart) findViewById(R.id.lineChart);
 
         LineDataSet lineDataSet = new LineDataSet(dataValues1(),"รายรับจริง");
-        lineDataSet.setColor(Color.parseColor("#4B2685"));
+        lineDataSet.setColor(Color.parseColor("#ff6d00"));
         LineDataSet lineDataSet1 = new LineDataSet(dataValues2(),"รายรับตามบิล");
-        lineDataSet.setColor(Color.parseColor("#006138"));
+        lineDataSet.setColor(Color.parseColor("#283593"));
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet);
@@ -188,10 +188,9 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         LineData data = new LineData(lineDataSet,lineDataSet1);
 
         data.setValueTextSize(10f);
-        lineDataSet.setLineWidth(5f);
-        lineDataSet1.setLineWidth(5f);
+        lineDataSet.setLineWidth(3f);
+        lineDataSet1.setLineWidth(3f);
         XAxis xAxis = new XAxis();
-
         lineChart.setData(data);
         lineChart.invalidate();
 

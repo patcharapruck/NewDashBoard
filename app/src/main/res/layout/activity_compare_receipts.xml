@@ -14,103 +14,43 @@
         android:background="@color/bg_login"
         android:theme="@style/ToolbarTheme"
         >
+        <Button
+            android:id="@+id/btncalCP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:fontFamily="@font/prompt_regular"
+            android:text="ตกลง" />
+        <Button
+            android:id="@+id/datestop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="2"
+            android:fontFamily="@font/prompt_regular"
+            android:text="สิ้นสุด" />
+
+        <Button
+            android:id="@+id/datestart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="2"
+            android:fontFamily="@font/prompt_regular"
+            android:text="เริ่ม" />
 
     </android.support.v7.widget.Toolbar>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <LinearLayout
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="10">
+            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/linear_height_compare"
-                android:orientation="horizontal"
-                android:weightSum="15">
+        </com.github.mikephil.charting.charts.LineChart>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:fontFamily="@font/prompt_regular"
-                    android:gravity="center"
-                    android:text="รายวัน"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_compare" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:fontFamily="@font/prompt_regular"
-                    android:gravity="center"
-                    android:text="ตั้งแต่"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_compare" />
-
-                <Button
-                    android:id="@+id/datestart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="2"
-                    android:fontFamily="@font/prompt_regular"
-                    android:text="เลือกวันที่ต้องการ" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:fontFamily="@font/prompt_regular"
-                    android:gravity="center"
-                    android:text="ถึง"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_compare" />
-
-                <Button
-                    android:id="@+id/datestop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="2"
-                    android:fontFamily="@font/prompt_regular"
-                    android:text="เลือกวันที่ต้องการ" />
-
-                <Button
-                    android:id="@+id/btncalCP"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/prompt_regular"
-                    android:text="ตกลง" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="@color/bg1"
-                android:orientation="horizontal">
-
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/lineChart"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                </com.github.mikephil.charting.charts.LineChart>
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-    </RelativeLayout>
 
 
 </LinearLayout>

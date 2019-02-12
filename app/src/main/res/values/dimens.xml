@@ -17,7 +17,7 @@
     <dimen name="loguot_margin">10dp</dimen>
     <dimen name="text_hdw_size_main">10sp</dimen>
     <dimen name="text_hdw_margin_bot_main">15dp</dimen>
-    <dimen name="text_size_compare">20sp</dimen>
+    <dimen name="text_size_compare">15sp</dimen>
     <dimen name="linear_height_compare">50dp</dimen>
     <dimen name="relative_allsum_drink_height">200dp</dimen>
     <dimen name="relative_allsum_drink_padding">10dp</dimen>
@@ -99,6 +99,7 @@
     <dimen name="main_menu_text_size">14sp</dimen>
     <dimen name="elevation_card">5dp</dimen>
     <dimen name="ct_sizefontdrink">15sp</dimen>
+
     <dimen name="card_mar_l">5dp</dimen>
     <dimen name="card_mar_r">5dp</dimen>
     <dimen name="card_mar_t">20dp</dimen>

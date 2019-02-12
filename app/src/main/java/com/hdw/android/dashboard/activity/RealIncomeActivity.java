@@ -129,7 +129,7 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onStart() {
         super.onStart();
-        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+        date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         toolbar.setTitle("รายรับจริง");
         toolbar.setSubtitle(date);
@@ -174,16 +174,20 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
                         dd = "0"+dayOfMonth;
                     }
                     String datecalendat;
+                    String fulldate;
                     datecalendat = year+ "/" + mm + "/" +dd;
+                    fulldate = dd+ "/" + mm + "/" +year;
 
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDatereq(datecalendat);
+
+                    SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).saveDateFull(fulldate);
 
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDateCalendar(dayOfMonth,month,year);
 
 
-                    date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+                    date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
                     toolbar.setSubtitle(date);
                     reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
                     //RealIncomeActivity.this.recreate();

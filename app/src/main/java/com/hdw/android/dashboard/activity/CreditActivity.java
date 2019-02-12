@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -51,21 +52,24 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
             tvjcbt, tvjcbk,
             tvmastert, tvmasterk,
             tvunipayt, tvunipayk,
-            tvvisat, tvvisak;
+            tvvisat, tvvisak,
+            tvtotalt, tvtotalk;
 
     Double creditall,
             amaxt = 0.0, amaxk = 0.0,
             jcbt = 0.0, jcbk = 0.0,
             mastert = 0.0, masterk = 0.0,
             unipayt = 0.0, unipayk = 0.0,
-            visat = 0.0, visak = 0.0;
+            visat = 0.0, visak = 0.0,
+            totalt = 0.0, totalk = 0.0;
 
     String creditalls,
             amaxts, amaxks,
             jcbts, jcbks,
             masterts, masterks,
             unipayts, unipayks,
-            visats, visaks;
+            visats, visaks,
+            totalts,totalks;
 //    //วันปัจจุบัน
 //    String st =" ";
     Button btncalendarCredit;
@@ -98,6 +102,9 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
         tvmasterk = (TextView) findViewById(R.id.tvmasterk);
         tvunipayk = (TextView) findViewById(R.id.tvunipayk);
         tvvisak = (TextView) findViewById(R.id.tvvisak);
+
+        tvtotalt = (TextView) findViewById(R.id.tvtotalt);
+        tvtotalk = (TextView) findViewById(R.id.tvtotalk);
 
         btncalendarCredit = (Button) findViewById(R.id.btncalendarCredit);
         btncalendarCredit.setOnClickListener(this);
@@ -178,6 +185,9 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
         visat = B1.getVisa();
         visak = B2.getVisa();
 
+        totalt = amaxt+jcbt+mastert+unipayt+visat;
+        totalk = amaxk+jcbk+masterk+unipayk+visak;
+
         // setformat #,###,##0.00
         creditalls = formatter.format(creditall);
         amaxts = formatter.format(amaxt);
@@ -191,55 +201,13 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
         visats = formatter.format(visat);
         visaks = formatter.format(visak);
 
+        totalts = formatter.format(totalt);
+        totalks = formatter.format(totalk);
+
         setTextAndColor();
 
         chart.setMaxVisibleValueCount(40);
         setData(5);
-
-//        BarDataSet barDataSet1 = new BarDataSet(bar_B1(), "ธนาคารธนชาต");
-//        barDataSet1.setColors(Color.rgb(243, 112, 35));
-//
-//        BarDataSet barDataSet2 = new BarDataSet(bar_B2(), "ธนาคารกรุงเทพ");
-//        barDataSet2.setColors(Color.rgb(0, 28, 122));
-//
-//        BarData data = new BarData(barDataSet1, barDataSet2);
-//        barChart.setData(data);
-//
-//        String[] creditName = new String[]{"A-MAX(%) ", " JCB(%) ", "MASTER(%)", "UNIPAY(%)", "VISA(%)"};
-//        XAxis xAxis = barChart.getXAxis();
-//        xAxis.setValueFormatter(new IndexAxisValueFormatter(creditName));
-//        xAxis.setCenterAxisLabels(true);
-//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-//        xAxis.setGranularity(1);
-//        xAxis.setGranularityEnabled(true);
-//
-//        barChart.setDragEnabled(true);
-//        barChart.setVisibleXRangeMaximum(3);
-//
-//        //set Label Center
-//        float barSpace = 0.05f;
-//        float groupSpace = 0.66f;
-//        data.setBarWidth(0.12f);
-//
-//        barChart.getXAxis().setAxisMinimum(0);
-//        barChart.getXAxis().setAxisMaximum(0 + barChart.getBarData().getGroupWidth(groupSpace, barSpace) * 5);
-//        barChart.getAxisLeft().setAxisMinimum(0);
-//        barChart.groupBars(0, groupSpace, barSpace);
-//
-//
-//        // Hide grid lines
-//        barChart.getAxisLeft().setEnabled(false);
-//        barChart.getAxisRight().setEnabled(false);
-//        // Hide graph description
-//        barChart.getDescription().setEnabled(false);
-//        // Hide graph legend
-//        barChart.getLegend().setEnabled(false);
-//
-//        barChart.invalidate();
-//        barChart.animateY(1000);
-
-
-
     }
 
     private void setData(int count) {
@@ -373,6 +341,24 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
         else{
             tvunipayk.setTextColor(Color.parseColor("#FF0000"));
         }
+
+        tvtotalt.setText(totalts);
+        tvtotalt.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+//        if (totalt > 0) {
+//            tvtotalt.setTextColor(Color.parseColor("#4CAF50"));
+//        }
+//        else{
+//            tvtotalt.setTextColor(Color.parseColor("#FF0000"));
+//        }
+
+        tvtotalk.setText(totalks);
+        tvtotalk.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+//        if (totalk > 0) {
+//            tvtotalk.setTextColor(Color.parseColor("#4CAF50"));
+//        }
+//        else{
+//            tvtotalk.setTextColor(Color.parseColor("#FF0000"));
+//        }
     }
 
     @Override

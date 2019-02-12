@@ -213,7 +213,7 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         return dataVals;
     }
     private void InitInstant() {
-        String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate();
+        String date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
         toolbar = findViewById(R.id.tbCompare);
         toolbar.setTitle("เปรียบเทียบรายรับ");
         toolbar.setSubtitle(date);

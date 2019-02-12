@@ -218,7 +218,6 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
         float barSpace = 0.05f;
         float groupSpace = 0.66f;
         data.setBarWidth(0.12f);
-        //(barwidth + barspace) * no of bars + groupspace = 1
 
         barChart.getXAxis().setAxisMinimum(0);
         barChart.getXAxis().setAxisMaximum(0 + barChart.getBarData().getGroupWidth(groupSpace, barSpace) * 5);

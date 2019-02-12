@@ -34,9 +34,11 @@ import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.hdw.android.dashboard.Dao.DashBoardDao;
 import com.hdw.android.dashboard.Dao.objectdao.ObjectItemDao;
+import com.hdw.android.dashboard.Dao.product.ProductSortDao;
 import com.hdw.android.dashboard.adapter.ProductListAdapter;
 import com.hdw.android.dashboard.manager.Contextor;
 import com.hdw.android.dashboard.manager.DashBoradManager;
+import com.hdw.android.dashboard.manager.ProductManager;
 import com.hdw.android.dashboard.manager.http.HttpManager;
 import com.hdw.android.dashboard.util.SharedPrefDateManager;
 import com.hdw.android.dashboard.R;
@@ -108,8 +110,6 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         tvwithdrawpd = (TextView) rootView.findViewById(R.id.tvwithdrawpd);
 
         listProduct = (ListView) rootView.findViewById(R.id.listProduct);
-        productlistAdapter  = new ProductListAdapter();
-        listProduct.setAdapter(productlistAdapter);
 
         //btndrink.setOnClickListener(this);
     }
@@ -179,6 +179,13 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
         purchaseProduct = new ArrayList<>(size);
         withdrawProduct = new ArrayList<>(size);
 
+        String[] Sortname = new String[size];
+        Long[] Sorttotal = new Long[size];
+        Long[] Sortentertain = new Long[size];
+        Long[] Sortpurchase = new Long[size];
+        Long[] Sortwithdraw = new Long[size];
+
+
         for (int i = 0; i < size; i++) {
             String name = getnameProduct(i);
             Long total = gettotalProduct(i);
@@ -192,6 +199,56 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
             purchaseProduct.add(purchase);
             withdrawProduct.add(withdraw);
         }
+
+        Sortname = nameProduct.toArray(new String[0]);
+        Sorttotal = totalAllProduct.toArray(new Long[0]);
+        Sortentertain = entertainProduct.toArray(new Long[0]);
+        Sortpurchase = purchaseProduct.toArray(new Long[0]);
+        Sortwithdraw = withdrawProduct.toArray(new Long[0]);
+
+        Long tt,ent,pur,with;
+        String np;
+        for(int i=0;i<size;i++){
+            for (int j=0;j<size-i-1;j++){
+                if(Sorttotal[j+1]>Sorttotal[j]){
+                    tt = Sorttotal[j];
+                    np = Sortname[j];
+                    ent = Sortentertain[j];
+                    pur = Sortpurchase[j];
+                    with = Sortwithdraw[j];
+
+                    Sorttotal[j] = Sorttotal[j+1];
+                    Sortname[j] = Sortname[j+1];
+                    Sortentertain[j] = Sortentertain[j+1];
+                    Sortpurchase[j] = Sortpurchase[j+1];
+                    Sortwithdraw[j] = Sortwithdraw[j+1];
+
+                    Sorttotal[j+1] = tt;
+                    Sortname[j+1] = np;
+                    Sortentertain[j+1] = ent;
+                    Sortpurchase[j+1] = pur;
+                    Sortwithdraw[j+1] = with;
+                }
+            }
+        }
+
+        ProductSortDao productSortDao = new ProductSortDao();
+        productSortDao.setNameProductSort(Sortname);
+        productSortDao.setTotalAllProductSort(Sorttotal);
+        productSortDao.setEntertainProductSort(Sortentertain);
+        productSortDao.setPurchaseProductSort(Sortpurchase);
+        productSortDao.setWithdrawProductSort(Sortwithdraw);
+
+        ProductManager.getInstance().setProductSortDao(productSortDao);
+
+        productlistAdapter  = new ProductListAdapter();
+        listProduct.setAdapter(productlistAdapter);
+
+//        for(int i=0;i<size;i++){
+//            System.out.println(Sortname[i]);
+//        }
+
+
 
         Long sumtotal = 0L, sumentertain = 0L, sumpurchase = 0L, sumwithdraw = 0L;
         for (int i = 0; i < size; i++) {
@@ -267,7 +324,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
                 if(response.isSuccessful()){
                     DashBoardDao dao = response.body();
                     DashBoradManager.getInstance().setDao(dao);
-                    productlistAdapter.notifyDataSetChanged();
+                   // productlistAdapter.notifyDataSetChanged();
 
                     try {
                         Odao = DashBoradManager.getInstance().getDao().getObject();
@@ -313,13 +370,6 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-//        if (v == btndrink) {
-//            getFragmentManager()
-//                    .beginTransaction()
-//                    .replace(R.id.frame_drink, FragmentDrinkReport.newInstance())
-//                    .addToBackStack(null)
-//                    .commit();
-//        }
 
         if(v == btncalendardrink){
             DatePickerDialog dialog = new DatePickerDialog(getContext(),new DatePickerDialog.OnDateSetListener() {

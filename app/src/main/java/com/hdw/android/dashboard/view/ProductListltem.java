@@ -13,8 +13,7 @@ import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
 
 public class ProductListltem extends BaseCustomViewGroup {
 
-    TextView tvnameProduct,tvtotalproduct,tvwithdrawProduct,tvpurchaseProduct,tventertainProduct;
-    TextView tvwithdrawpercent,tvpurchasepercent,tventertainpercent;
+    TextView tvnameProduct,tvtotalproduct,tvwithdrawProduct,tvpurchaseProduct,tventertainProduct,countDrink;
 
     public ProductListltem(Context context) {
         super(context);
@@ -55,9 +54,8 @@ public class ProductListltem extends BaseCustomViewGroup {
         tvpurchaseProduct  = (TextView)findViewById(R.id.tvpurchaseProduct);
         tventertainProduct = (TextView)findViewById(R.id.tventertainProduct);
 
-//        tvwithdrawpercent = (TextView)findViewById(R.id.tvwithdrawpercent);
-//        tvpurchasepercent = (TextView)findViewById(R.id.tvpurchasepercent);
-//        tventertainpercent = (TextView)findViewById(R.id.tventertainpercent);
+      //  countDrink = (TextView)findViewById(R.id.countDrink);
+
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -83,8 +81,8 @@ public class ProductListltem extends BaseCustomViewGroup {
 
     }
 
-    public void setNameProduct(String nameProduct){
-        tvnameProduct.setText(nameProduct);
+    public void setNameProduct(int count,String nameProduct){
+        tvnameProduct.setText(count+"."+nameProduct);
     }
 
     public void setTotalProduct(Long totalProduct){
@@ -103,16 +101,9 @@ public class ProductListltem extends BaseCustomViewGroup {
         tventertainProduct.setText(entertainProduct.toString());
     }
 
-//    public void setWithdrawPercent(Double withdrawPercent){
-//        tvwithdrawpercent.setText(withdrawPercent+"%");
+//    public void setCountDrink(int count) {
+//        countDrink.setText(count+".");
 //    }
-//
-//    public void setPurchasePercent(Double purchasePercent){
-//        tvpurchasepercent.setText(purchasePercent+"%");
-//    }
-//
-//    public void setEntertainPercent(Double entertainPercent){
-//        tventertainpercent.setText(entertainPercent+"%");
-//    }
+
 
 }

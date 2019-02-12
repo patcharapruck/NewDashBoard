@@ -190,13 +190,14 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         data.setValueTextSize(10f);
         lineDataSet.setLineWidth(3f);
         lineDataSet1.setLineWidth(3f);
-        XAxis xAxis = new XAxis();
         lineChart.setData(data);
         lineChart.invalidate();
-
+        lineChart.getAxisLeft().setEnabled(true);
+        lineChart.getAxisRight().setDrawAxisLine(false);
+        lineChart.getAxisRight().setDrawGridLines(false);
+        lineChart.getXAxis().setDrawAxisLine(false);
+        lineChart.getXAxis().setDrawGridLines(false);
     }
-
-
     private ArrayList<Entry> dataValues1(){
         ArrayList<Entry> dataVals = new ArrayList<Entry>();
         for(int i=0;i<size;i++){

@@ -75,7 +75,7 @@
     <dimen name="bill_margin_card_right">40dp</dimen>
     <dimen name="bill_margin_card_bottom">20dp</dimen>
     <dimen name="bill_padding_card">20dp</dimen>
-    <dimen name="bill_card_radius">15dp</dimen>
+    <dimen name="bill_card_radius">7dp</dimen>
     <dimen name="bill_card_Elevation">5dp</dimen>
     <dimen name="bank_pad_card_money">5dp</dimen>
     <dimen name="cradit_card_radius">15dp</dimen>

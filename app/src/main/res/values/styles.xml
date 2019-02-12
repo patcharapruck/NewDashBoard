@@ -78,4 +78,10 @@
         <item name="android:layout_marginRight">5dp</item>
     </style>
 
+    <style name="headerctDrink">
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textSize">@dimen/ct_sizefontdrink</item>
+    </style>
+
 </resources>

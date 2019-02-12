@@ -39,6 +39,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="30dp"
                         android:text="เข้าสู่ระบบ"
+                        android:fontFamily="@font/prompt_bold"
                         android:textColor="@color/bg_login"
                         android:textSize="25dp"
                         android:textStyle="bold" />
@@ -87,6 +88,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:fontFamily="@font/prompt_regular"
                             android:text="LOGIN"
                             android:textColor="@color/white"
                             android:textSize="20dp" />
@@ -105,6 +107,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="@dimen/text_hdw_margin_bot_main"
                 android:gravity="center"
+                android:fontFamily="@font/prompt_regular"
                 android:text="@string/text_create_by_hdw"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_hdw_size_main" />

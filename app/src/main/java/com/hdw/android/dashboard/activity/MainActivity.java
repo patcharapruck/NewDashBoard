@@ -269,6 +269,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).saveDateFull(fulldate);
 
                         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+                        reqAPIpay(datecalendat2);
+                        reqAPInotpay(datecalendat2);
 
                         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                                 .saveDateCalendar(dayOfMonth,month,year);
@@ -308,8 +310,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
-        reqAPIpay();
-        reqAPInotpay();
+        reqAPIpay(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
+        reqAPInotpay(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
         mainImgDate.setText(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull());
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
     }
@@ -329,9 +331,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onPause();
     }
 
-    private void reqAPInotpay() {
+    private void reqAPInotpay(String date) {
         final Context mcontext = Contextor.getInstance().getContext();
-        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 22 and f:salesShift.isOpening = 1 \"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
+        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 22 and " +
+                "(f:salesShift.openDate >= '"+date+" 00:00:00' AND f:salesShift.openDate <= '"+date+" 23:59:59')\"}," +
+                "\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"]," +
+                "\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
         Call<NotPayItemColleationDao> call = HttpManager.getInstance().getService().loadAPINotPay(requestBody);
         call.enqueue(new Callback<NotPayItemColleationDao>() {
@@ -355,9 +360,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
     }
-    private void reqAPIpay() {
+    private void reqAPIpay(String date) {
         final Context mcontext = Contextor.getInstance().getContext();
-        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 21 and f:salesShift.isOpening = 1\"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
+        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 21 and " +
+                "(f:salesShift.openDate >= '"+date+" 00:00:00' AND f:salesShift.openDate <= '"+date+" 23:59:59')\"}," +
+                "\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"]," +
+                "\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
         Call<PayItemColleationDao> call = HttpManager.getInstance().getService().loadAPIPay(requestBody);
         call.enqueue(new Callback<PayItemColleationDao>() {

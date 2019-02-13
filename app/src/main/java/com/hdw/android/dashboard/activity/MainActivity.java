@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void getDateTime() {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
+        DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         DateFormat dateFormatth = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
 
         Date date = new Date();
@@ -143,11 +144,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int year = calendar.get(Calendar.YEAR);
 
         String formatDateTime = dateFormat.format(calendar.getTime());
+        String formatDateTime2 = dateFormat2.format(calendar.getTime());
         String formatDateTimetoday = dateFormat.format(calendartoday.getTime());
         String formatDategeneral = dateFormatth.format(calendar.getTime());
 
         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
-                .saveDatereq(formatDateTime);
+                .saveDatereq(formatDateTime,formatDateTime2);
 
         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                 .saveDateMax(formatDateTimetoday);
@@ -254,14 +256,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (dayOfMonth < 10){
                             dd = "0"+dayOfMonth;
                         }
-                        String datecalendat;
+                        String datecalendat, datecalendat2;
                         String fulldate;
                         mainImgDate.setText(dd+ "/" + mm + "/" +year);
                         datecalendat = year+ "/" + mm + "/" +dd;
+                        datecalendat2 = year+ "-" + mm + "-" +dd;
                         fulldate = dd+ "/" + mm + "/" +year;
 
                         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
-                                .saveDatereq(datecalendat);
+                                .saveDatereq(datecalendat,datecalendat2);
 
                         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).saveDateFull(fulldate);
 

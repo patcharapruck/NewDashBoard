@@ -173,13 +173,14 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
                     if (dayOfMonth < 10){
                         dd = "0"+dayOfMonth;
                     }
-                    String datecalendat;
+                    String datecalendat, datecalendat2;
                     String fulldate;
                     datecalendat = year+ "/" + mm + "/" +dd;
+                    datecalendat2 = year+ "-" + mm + "-" +dd;
                     fulldate = dd+ "/" + mm + "/" +year;
 
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
-                            .saveDatereq(datecalendat);
+                            .saveDatereq(datecalendat,datecalendat2);
 
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).saveDateFull(fulldate);
 

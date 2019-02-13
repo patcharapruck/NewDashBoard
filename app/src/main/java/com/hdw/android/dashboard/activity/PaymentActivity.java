@@ -103,8 +103,8 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อได้",Toast.LENGTH_LONG).show();
             }
         });
-
     }
+
     private void reqAPIpay(String date) {
         final Context mcontext = Contextor.getInstance().getContext();
         String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 21 and " +
@@ -177,8 +177,14 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
                     date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
                     toolbar.setSubtitle(date);
-                    reqAPIpay(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
-                    reqAPInotpay(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
+                    reqAPIpay(datecalendat2);
+                    reqAPInotpay(datecalendat2);
+
+
+                   // PaymentActivity.this.recreate();
+//                    SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
+//                            .savePay(PayManager.getInstance().getPayItemColleationDao().getPagination().getTotalItem());
+//
 
                 }
             },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
@@ -202,6 +208,14 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
             dialog.getDatePicker().setMinDate(d.getTime());
             dialog.getDatePicker().setMaxDate(date.getTime());
         }
+
+//        num2 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getPay();
+//        num3 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getNotPay();
+//        num = num2+num3;
+//
+//        tvPay.setText(num2.toString());
+//        tvNotPay.setText(num3.toString());
+//        tvAll.setText(num.toString());
 
     }
 

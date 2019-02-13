@@ -23,6 +23,7 @@ import com.hdw.android.dashboard.adapter.NotPayAdapter;
 import com.hdw.android.dashboard.manager.Contextor;
 import com.hdw.android.dashboard.manager.NotPayManager;
 import com.hdw.android.dashboard.manager.http.HttpManager;
+import com.hdw.android.dashboard.util.SharedPrefDateManager;
 import com.hdw.android.dashboard.util.SharedPrefDatePayManager;
 
 import java.util.ArrayList;
@@ -124,7 +125,7 @@ public class FragmentNotPay extends Fragment implements View.OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-        reqAPInotpay();
+        reqAPInotpay(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
         cardsearchNot.setOnClickListener(this);
     }
 
@@ -147,10 +148,12 @@ public class FragmentNotPay extends Fragment implements View.OnClickListener {
     }
 
 
-    private void reqAPInotpay() {
-
+    private void reqAPInotpay(String date) {
         final Context mcontext = Contextor.getInstance().getContext();
-        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 22 and f:salesShift.isOpening = 1 \"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
+        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 22 and " +
+                "(f:salesShift.openDate >= '"+date+" 00:00:00' AND f:salesShift.openDate <= '"+date+" 23:59:59')\"}," +
+                "\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"]," +
+                "\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
         Call<NotPayItemColleationDao> call = HttpManager.getInstance().getService().loadAPINotPay(requestBody);
         call.enqueue(new Callback<NotPayItemColleationDao>() {
@@ -159,7 +162,7 @@ public class FragmentNotPay extends Fragment implements View.OnClickListener {
                 if(response.isSuccessful()){
                     NotPayItemColleationDao dao = response.body();
                     NotPayManager.getInstance().setNotpayItemColleationDao(dao);
-                    notPayAdapter.notifyDataSetChanged();
+
                     SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
                             .saveNotPay(dao.getPagination().getTotalItem());
                 }else {

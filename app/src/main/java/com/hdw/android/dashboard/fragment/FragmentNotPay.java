@@ -183,13 +183,16 @@ public class FragmentNotPay extends Fragment implements View.OnClickListener {
         if (v == cardsearchNot || v == icon_searchNot){
             DataSearch = edSearchNot.getText().toString();
 
-            SearchNotreq(typeSearch,DataSearch);
+            SearchNotreq(typeSearch,DataSearch,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
         }
     }
 
-    private void SearchNotreq(String typeSearch, String dataSearch) {
+    private void SearchNotreq(String typeSearch, String dataSearch, String date) {
         final Context mcontext = Contextor.getInstance().getContext();
-        String nn = "{\"criteria\":{\""+typeSearch+"\":\""+dataSearch+"\",\"sql-obj-command\":\"f:documentStatus.id = 22 and f:salesShift.isOpening = 1\"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
+        String nn = "{\"criteria\":{\""+typeSearch+"\":\""+dataSearch+"\"," +
+                "\"sql-obj-command\":\"f:documentStatus.id = 22 and (f:salesShift.openDate >= '"+date+" 00:00:00' AND f:salesShift.openDate <= '"+date+" 23:59:59')\"}," +
+                "\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\"," +
+                "\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
         Call<NotPayItemColleationDao> call = HttpManager.getInstance().getService().loadAPINotPay(requestBody);
         call.enqueue(new Callback<NotPayItemColleationDao>() {

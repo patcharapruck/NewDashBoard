@@ -1,6 +1,7 @@
 package com.hdw.android.dashboard.activity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -56,6 +57,8 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     private Boolean checkPay = false,checkNotPay=false;
     private Button btncalendarpayment;
 
+    ProgressDialog progress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +106,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     if(checkPay == true && checkNotPay == true){
                         num = num2+num3;
                         tvAll.setText(num.toString());
+                        progress.dismiss();
                     }
 
                     setPager();
@@ -145,6 +149,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     if(checkPay == true && checkNotPay == true){
                         num = num2+num3;
                         tvAll.setText(num.toString());
+                        progress.dismiss();
                     }
 
                     setPager();
@@ -156,6 +161,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onFailure(Call<PayItemColleationDao> call, Throwable t) {
+                progress.dismiss();
                 Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อได้",Toast.LENGTH_LONG).show();
             }
         });
@@ -204,6 +210,9 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
                     date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
                     toolbar.setSubtitle(date);
+
+                    progress.show();
+
                     reqAPIpay(datecalendat2);
                     reqAPInotpay(datecalendat2);
 
@@ -228,6 +237,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
             dialog.show();
             dialog.getDatePicker().setMinDate(d.getTime());
             dialog.getDatePicker().setMaxDate(date.getTime());
+
         }
 
 
@@ -279,6 +289,9 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onResume() {
         super.onResume();
+
+        showProgress();
+
         num2 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getPay();
         num3 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getNotPay();
         num = num2+num3;
@@ -289,6 +302,13 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
         setPager();
 
+    }
+
+    private void showProgress() {
+        progress = new ProgressDialog(PaymentActivity.this);
+        progress.setTitle("Loading");
+        progress.setMessage("Wait while loading...");
+        progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
     }
 
     private void setPager() {

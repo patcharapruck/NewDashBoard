@@ -193,7 +193,7 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         lineChart.setData(data);
         lineChart.invalidate();
         lineChart.getAxisLeft().setEnabled(true);
-        lineChart.getAxisRight().setDrawAxisLine(false);
+        lineChart.getAxisRight().setDrawAxisLine(true);
         lineChart.getAxisRight().setDrawGridLines(false);
         lineChart.getXAxis().setDrawAxisLine(false);
         lineChart.getXAxis().setDrawGridLines(false);

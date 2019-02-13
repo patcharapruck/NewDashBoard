@@ -20,7 +20,6 @@
             android:orientation="horizontal"
             android:layout_gravity="right">
 
-
             <Button
                 android:id="@+id/datestart"
                 android:layout_width="wrap_content"
@@ -33,7 +32,6 @@
                 android:fontFamily="@font/prompt_regular"
                 android:text="เริ่ม" />
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,7 +39,6 @@
                 android:layout_marginLeft="5dp"
                 android:textSize="35sp"
                 android:textColor="@color/white"/>
-
 
             <Button
                 android:id="@+id/datestop"
@@ -56,7 +53,6 @@
                 android:fontFamily="@font/prompt_regular"
                 android:text="สิ้นสุด" />
 
-
             <Button
                 android:id="@+id/btncalCP"
                 android:layout_width="wrap_content"
@@ -67,9 +63,8 @@
                 android:layout_gravity="right|center"
                 android:background="@color/white"
                 android:layout_weight="1"
-                android:fontFamily="@font/prompt_bold"
+                android:fontFamily="@font/prompt_regular"
                 android:text="ตกลง" />
-
 
         </LinearLayout>
 

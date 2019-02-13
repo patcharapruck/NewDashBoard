@@ -87,7 +87,7 @@ public class FragmentNotPay extends Fragment implements View.OnClickListener {
         spintypeNot.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(mTypeSearch.get(position).equals("เลชที่เอกสาร")){
+                if(mTypeSearch.get(position).equals("เลขที่เอกสาร")){
                     typeSearch = "InvoiceDocument-invoiceCode";
                 }else if (mTypeSearch.get(position).equals("ชื่อหัวบิล")){
                     typeSearch = "InvoiceDocument-customerName";
@@ -108,7 +108,7 @@ public class FragmentNotPay extends Fragment implements View.OnClickListener {
     }
 
     private void createTypeSearchData() {
-        mTypeSearch.add("เลชที่เอกสาร");
+        mTypeSearch.add("เลขที่เอกสาร");
         mTypeSearch.add("ชื่อหัวบิล");
         mTypeSearch.add("Table/Room");
         mTypeSearch.add("รหัส Sale");

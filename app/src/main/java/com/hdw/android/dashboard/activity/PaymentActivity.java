@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,13 +48,13 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
-    Toolbar toolbar;
-    TextView tvPay,tvNotPay,tvAll;
-    Long num = 0L,num2=0L,num3=0L;
-    String date;
-    TabLayout tabLayout;
-
-    Button btncalendarpayment;
+    private Toolbar toolbar;
+    private TextView tvPay,tvNotPay,tvAll;
+    private Long num = 0L,num2=0L,num3=0L;
+    private String date;
+    private TabLayout tabLayout;
+    private Boolean checkPay = false,checkNotPay=false;
+    private Button btncalendarpayment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void reqAPInotpay(String date) {
+        checkNotPay = false;
         final Context mcontext = Contextor.getInstance().getContext();
         String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 22 and " +
                 "(f:salesShift.openDate >= '"+date+" 00:00:00' AND f:salesShift.openDate <= '"+date+" 23:59:59')\"}," +
@@ -88,11 +90,23 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onResponse(Call<NotPayItemColleationDao> call, Response<NotPayItemColleationDao> response) {
                 if(response.isSuccessful()){
+                    checkNotPay = true;
                     NotPayItemColleationDao dao = response.body();
                     NotPayManager.getInstance().setNotpayItemColleationDao(dao);
 
                     SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
                             .saveNotPay(dao.getPagination().getTotalItem());
+
+                    num3 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getNotPay();
+                    tvNotPay.setText(num3.toString());
+
+                    if(checkPay == true && checkNotPay == true){
+                        num = num2+num3;
+                        tvAll.setText(num.toString());
+                    }
+
+                    setPager();
+
                 }else {
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }
@@ -106,6 +120,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void reqAPIpay(String date) {
+        checkPay = false;
         final Context mcontext = Contextor.getInstance().getContext();
         String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 21 and " +
                 "(f:salesShift.openDate >= '"+date+" 00:00:00' AND f:salesShift.openDate <= '"+date+" 23:59:59')\"}," +
@@ -117,11 +132,23 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onResponse(Call<PayItemColleationDao> call, Response<PayItemColleationDao> response) {
                 if(response.isSuccessful()){
+                    checkPay = true;
                     PayItemColleationDao dao = response.body();
                     PayManager.getInstance().setPayItemColleationDao(dao);
 
                     SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
                             .savePay(dao.getPagination().getTotalItem());
+
+                    num2 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getPay();
+                    tvPay.setText(num2.toString());
+
+                    if(checkPay == true && checkNotPay == true){
+                        num = num2+num3;
+                        tvAll.setText(num.toString());
+                    }
+
+                    setPager();
+
                 }else {
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }
@@ -180,12 +207,6 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     reqAPIpay(datecalendat2);
                     reqAPInotpay(datecalendat2);
 
-
-                   // PaymentActivity.this.recreate();
-//                    SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
-//                            .savePay(PayManager.getInstance().getPayItemColleationDao().getPagination().getTotalItem());
-//
-
                 }
             },SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getYear()
                     ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()-1
@@ -209,13 +230,6 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
             dialog.getDatePicker().setMaxDate(date.getTime());
         }
 
-//        num2 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getPay();
-//        num3 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getNotPay();
-//        num = num2+num3;
-//
-//        tvPay.setText(num2.toString());
-//        tvNotPay.setText(num3.toString());
-//        tvAll.setText(num.toString());
 
     }
 
@@ -246,7 +260,8 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         super.onStart();
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
-
+        reqAPIpay(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
+        reqAPInotpay(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
         toolbar.setTitle("สถานะชำระเงินปัจจุบัน");
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
@@ -272,13 +287,16 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         tvNotPay.setText(num3.toString());
         tvAll.setText(num.toString());
 
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        setPager();
 
+    }
+
+    private void setPager() {
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-
     }
 
     @Override

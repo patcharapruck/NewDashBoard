@@ -155,6 +155,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     setPager();
 
                 }else {
+                    progress.dismiss();
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }
             }
@@ -221,16 +222,15 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getMonth()-1
                     ,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getDateofMonth());
 
-            Calendar c = Calendar.getInstance(Locale.ENGLISH);
-            c.add(Calendar.DATE,-1);
-            Date date = c.getTime();
-            dialog.getDatePicker().setMaxDate(date.getTime());
+            Date date = null;
             Date d = null;
             String oldDateString = "2019/01/06";
+            String NewDateString = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDate();
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
             try {
                 d = sdf.parse(oldDateString);
+                date = sdf.parse(NewDateString);
             } catch (ParseException e) {
                 e.printStackTrace();
             }

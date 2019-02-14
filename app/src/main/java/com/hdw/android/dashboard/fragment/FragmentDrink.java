@@ -2,6 +2,7 @@ package com.hdw.android.dashboard.fragment;
 
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -35,6 +36,7 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.hdw.android.dashboard.Dao.DashBoardDao;
 import com.hdw.android.dashboard.Dao.objectdao.ObjectItemDao;
 import com.hdw.android.dashboard.Dao.product.ProductSortDao;
+import com.hdw.android.dashboard.activity.RealIncomeActivity;
 import com.hdw.android.dashboard.adapter.ProductListAdapter;
 import com.hdw.android.dashboard.manager.Contextor;
 import com.hdw.android.dashboard.manager.DashBoradManager;
@@ -77,6 +79,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     AppCompatActivity activity;
 
     Button btncalendardrink;
+    ProgressDialog progress;
 
     public FragmentDrink() {
         super();
@@ -295,7 +298,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
-
+        showProgress();
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
         activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
@@ -325,7 +328,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
                     DashBoardDao dao = response.body();
                     DashBoradManager.getInstance().setDao(dao);
                    // productlistAdapter.notifyDataSetChanged();
-
+                    progress.dismiss();
                     try {
                         Odao = DashBoradManager.getInstance().getDao().getObject();
                     }catch (Exception e){
@@ -344,11 +347,13 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
                         Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
                     }
                 }else {
+                    progress.dismiss();
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }
             }
             @Override
             public void onFailure(Call<DashBoardDao> call, Throwable t) {
+                progress.dismiss();
                 Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อกับข้อมูลได้",Toast.LENGTH_LONG).show();
             }
         });
@@ -399,6 +404,7 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDateCalendar(dayOfMonth,month,year);
 
+                    progress.show();
                     date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
                     reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
                     activity.getSupportActionBar().setSubtitle(date);
@@ -427,5 +433,13 @@ public class FragmentDrink extends Fragment implements View.OnClickListener {
             dialog.getDatePicker().setMaxDate(date.getTime());
         }
 
+    }
+
+    private void showProgress() {
+        progress = new ProgressDialog(getContext());
+        progress.setTitle("Loading");
+        progress.setMessage("Wait while loading...");
+        progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+        progress.show();
     }
 }

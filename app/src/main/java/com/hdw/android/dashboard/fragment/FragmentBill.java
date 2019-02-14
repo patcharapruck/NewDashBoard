@@ -1,6 +1,7 @@
 package com.hdw.android.dashboard.fragment;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,7 @@ import com.hdw.android.dashboard.Dao.DashBoardDao;
 import com.hdw.android.dashboard.Dao.objectdao.ObjectItemDao;
 import com.hdw.android.dashboard.R;
 import com.hdw.android.dashboard.activity.BillActivity;
+import com.hdw.android.dashboard.activity.RealIncomeActivity;
 import com.hdw.android.dashboard.manager.Contextor;
 import com.hdw.android.dashboard.manager.DashBoradManager;
 import com.hdw.android.dashboard.manager.http.HttpManager;
@@ -48,6 +51,8 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
     AnimatedPieViewConfig config;
     BillActivity billActivity = new BillActivity();
 
+
+    ProgressDialog progress;
     Toolbar toolbar;
 
     String tincomebill, tserivceDrinkCharge, tmemberCharge, tserviceCharge,
@@ -201,6 +206,7 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
+        showProgress();
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
     }
 
@@ -241,7 +247,7 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDateCalendar(dayOfMonth,month,year);
 
-
+                    progress.show();
                     date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
                     billActivity.getSupportActionBar().setSubtitle(date);
 
@@ -283,7 +289,7 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
                 if(response.isSuccessful()){
                     DashBoardDao dao = response.body();
                     DashBoradManager.getInstance().setDao(dao);
-
+                    progress.dismiss();
                     if(DashBoradManager.getInstance().getDao() == null || DashBoradManager.getInstance().getDao().getObject() == null){
                         Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
                     }
@@ -305,14 +311,24 @@ public class FragmentBill extends Fragment implements View.OnClickListener {
 
 
                 }else {
+                    progress.dismiss();
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }
             }
             @Override
             public void onFailure(Call<DashBoardDao> call, Throwable t) {
+                progress.dismiss();
                 Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อกับข้อมูลได้",Toast.LENGTH_LONG).show();
             }
         });
 
+    }
+
+    private void showProgress() {
+        progress = new ProgressDialog(getContext());
+        progress.setTitle("Loading");
+        progress.setMessage("Wait while loading...");
+        progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+        progress.show();
     }
 }

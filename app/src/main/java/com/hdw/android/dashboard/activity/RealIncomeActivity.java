@@ -1,6 +1,7 @@
 package com.hdw.android.dashboard.activity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -46,7 +47,7 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
     String vincome, vcashPayments, vcreditPayments, vrevenue, vcreditCardPayments, vmemberDebitPayments, ventertainPayments, vunpaid, vtotalServiceCharge;
 
     Toolbar toolbar;
-
+    ProgressDialog progress;
     Button btncalendarrevenue;
 
     String date;
@@ -144,6 +145,7 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onResume() {
         super.onResume();
+        showProgress();
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
     }
 
@@ -187,7 +189,7 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDateCalendar(dayOfMonth,month,year);
 
-
+                    progress.show();
                     date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
                     toolbar.setSubtitle(date);
                     reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
@@ -230,7 +232,7 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
                 if(response.isSuccessful()){
                     DashBoardDao dao = response.body();
                     DashBoradManager.getInstance().setDao(dao);
-
+                    progress.dismiss();
                     try {
                         setTextViewIncome();
                     }catch (Exception e){
@@ -238,14 +240,23 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
                     }
 
                 }else {
+                    progress.dismiss();
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }
             }
             @Override
             public void onFailure(Call<DashBoardDao> call, Throwable t) {
+                progress.dismiss();
                 Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อกับข้อมูลได้",Toast.LENGTH_LONG).show();
             }
         });
+    }
 
+    private void showProgress() {
+        progress = new ProgressDialog(RealIncomeActivity.this);
+        progress.setTitle("Loading");
+        progress.setMessage("Wait while loading...");
+        progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+        progress.show();
     }
 }

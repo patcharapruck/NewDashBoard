@@ -94,7 +94,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
             }
             @Override
             public void onFailure(Call<LoginItemDao> call, Throwable t) {
-                Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อกับข้อมูลได้",Toast.LENGTH_LONG).show();
+                Toast.makeText(mcontext,t.toString(),Toast.LENGTH_LONG).show();
             }
         });
     }

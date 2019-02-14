@@ -148,5 +148,6 @@
     <dimen name="img_mar_real_l">15dp</dimen>
     <dimen name="img_mar_real_b">5dp</dimen>
     <dimen name="card_all_1_pad">10dp</dimen>
+    <dimen name="main_min_textmenu">12sp</dimen>
 
 </resources>

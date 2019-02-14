@@ -1,6 +1,7 @@
 package com.hdw.android.dashboard.activity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -73,7 +74,7 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
 //    //วันปัจจุบัน
 //    String st =" ";
     Button btncalendarCredit;
-
+    ProgressDialog progress;
     DecimalFormat formatter;
     String date;
 
@@ -128,6 +129,7 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onResume() {
         super.onResume();
+        showProgress();
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
 
     }
@@ -146,18 +148,20 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
                 if(response.isSuccessful()){
                     DashBoardDao dao = response.body();
                     DashBoradManager.getInstance().setDao(dao);
-
+                    progress.dismiss();
                     try {
                         setTextViewCredit();
                     }catch (Exception e){
                         Toast.makeText(Contextor.getInstance().getContext(),"ไม่มีข้อมูลที่จะแสดงผล",Toast.LENGTH_SHORT).show();
                     }
                 }else {
+                    progress.dismiss();
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }
             }
             @Override
             public void onFailure(Call<DashBoardDao> call, Throwable t) {
+                progress.dismiss();
                 Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อกับข้อมูลได้",Toast.LENGTH_LONG).show();
             }
         });
@@ -344,21 +348,10 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
 
         tvtotalt.setText(totalts);
         tvtotalt.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-//        if (totalt > 0) {
-//            tvtotalt.setTextColor(Color.parseColor("#4CAF50"));
-//        }
-//        else{
-//            tvtotalt.setTextColor(Color.parseColor("#FF0000"));
-//        }
 
         tvtotalk.setText(totalks);
         tvtotalk.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-//        if (totalk > 0) {
-//            tvtotalk.setTextColor(Color.parseColor("#4CAF50"));
-//        }
-//        else{
-//            tvtotalk.setTextColor(Color.parseColor("#FF0000"));
-//        }
+
     }
 
     @Override
@@ -454,7 +447,7 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
                     SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                             .saveDateCalendar(dayOfMonth,month,year);
 
-
+                    progress.show();
                     date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
                     toolbar.setSubtitle(date);
 
@@ -483,5 +476,13 @@ public class CreditActivity extends AppCompatActivity implements View.OnClickLis
             dialog.getDatePicker().setMaxDate(date.getTime());
 
         }
+    }
+
+    private void showProgress() {
+        progress = new ProgressDialog(CreditActivity.this);
+        progress.setTitle("Loading");
+        progress.setMessage("Wait while loading...");
+        progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+        progress.show();
     }
 }

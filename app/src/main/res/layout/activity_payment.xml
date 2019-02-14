@@ -91,6 +91,7 @@
                             <TextView
                                 android:id="@+id/tvPay"
                                 style="@style/font_pay"
+                                android:freezesText="true"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/prompt_regular"
@@ -154,6 +155,7 @@
                             <TextView
                                 android:id="@+id/tvAll"
                                 style="@style/font_card_bill"
+                                android:freezesText="true"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/prompt_regular"
@@ -219,6 +221,7 @@
                             <TextView
                                 android:id="@+id/tvNotPay"
                                 style="@style/font_notpay"
+                                android:freezesText="true"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/prompt_regular"

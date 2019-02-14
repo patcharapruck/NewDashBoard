@@ -268,6 +268,9 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onStart() {
         super.onStart();
+
+        showProgress();
+
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
         reqAPIpay(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
@@ -290,8 +293,6 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     protected void onResume() {
         super.onResume();
 
-        showProgress();
-
         num2 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getPay();
         num3 = SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext()).getNotPay();
         num = num2+num3;
@@ -309,6 +310,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         progress.setTitle("Loading");
         progress.setMessage("Wait while loading...");
         progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+        progress.show();
     }
 
     private void setPager() {

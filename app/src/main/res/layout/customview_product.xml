@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:orientation="vertical"
@@ -13,24 +14,16 @@
         android:padding="5dp">
 
 
-        <!--<TextView-->
-            <!--android:id="@+id/countDrink"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="0."-->
-            <!--android:textStyle="bold"-->
-            <!--android:textSize="15dp"-->
-            <!--android:layout_gravity="bottom"/>-->
-
         <TextView
             android:id="@+id/tvnameProduct"
+            android:freezesText="true"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="left"
             android:textStyle="bold"
             android:textSize="15dp"
             android:layout_weight="1"
-            android:text="HHHHH"
+            android:text=""
             android:layout_gravity="bottom"/>
 
     </LinearLayout>
@@ -72,6 +65,7 @@
 
                 <TextView
                     android:id="@+id/tvtotalproduct"
+                    android:freezesText="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
@@ -109,19 +103,10 @@
                         android:textColor="#03d222"
                         android:textSize="12sp"/>
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/tvwithdrawpercent"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_alignParentTop="true"-->
-                        <!--android:layout_toRightOf="@id/textB"-->
-                        <!--android:text="0.0%"-->
-                        <!--android:gravity="center"-->
-                        <!--android:textColor="#2cb92f"-->
-                        <!--android:textSize="12sp"/>-->
 
                     <TextView
                         android:id="@+id/textd"
+                        android:freezesText="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ขวด"
@@ -184,6 +169,7 @@
 
                     <TextView
                         android:id="@+id/tvpurchaseProduct"
+                        android:freezesText="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -215,17 +201,6 @@
                         android:textColor="#f21b1b"
                         android:textSize="12sp"/>
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/tventertainpercent"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_alignParentTop="true"-->
-                        <!--android:layout_toRightOf="@id/textEntertain"-->
-                        <!--android:text="0.0%"-->
-                        <!--android:gravity="center"-->
-                        <!--android:textColor="#2cb92f"-->
-                        <!--android:textSize="12sp"/>-->
-
                     <TextView
                         android:id="@+id/textg"
                         android:layout_width="wrap_content"
@@ -237,6 +212,7 @@
 
                     <TextView
                         android:id="@+id/tventertainProduct"
+                        android:freezesText="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"

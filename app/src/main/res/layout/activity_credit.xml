@@ -110,6 +110,7 @@
 
                         <TextView
                             android:id="@+id/tvcreditall"
+                            android:freezesText="true"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -232,6 +233,7 @@
 
                                             <TextView
                                                 android:id="@+id/tvamaxt"
+                                                android:freezesText="true"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/prompt_regular"
@@ -260,6 +262,7 @@
 
                                             <TextView
                                                 android:id="@+id/tvjcbt"
+                                                android:freezesText="true"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/prompt_regular"
@@ -287,6 +290,7 @@
 
                                             <TextView
                                                 android:id="@+id/tvmastert"
+                                                android:freezesText="true"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/prompt_regular"
@@ -315,6 +319,7 @@
 
                                             <TextView
                                                 android:id="@+id/tvunipayt"
+                                                android:freezesText="true"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/prompt_regular"
@@ -344,6 +349,7 @@
 
                                             <TextView
                                                 android:id="@+id/tvvisat"
+                                                android:freezesText="true"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/prompt_regular"
@@ -375,6 +381,7 @@
 
                                             <TextView
                                                 android:id="@+id/tvtotalt"
+                                                android:freezesText="true"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:fontFamily="@font/prompt_regular"
@@ -505,6 +512,7 @@
 
                                             <TextView
                                                 android:id="@+id/tvamaxk"
+                                                android:freezesText="true"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:gravity="right"
@@ -533,6 +541,7 @@
 
                                             <TextView
                                                 android:id="@+id/tvjcbk"
+                                                android:freezesText="true"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:gravity="right"
@@ -560,6 +569,7 @@
 
                                             <TextView
                                                 android:id="@+id/tvmasterk"
+                                                android:freezesText="true"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:gravity="right"
@@ -588,6 +598,7 @@
 
                                             <TextView
                                                 android:id="@+id/tvunipayk"
+                                                android:freezesText="true"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:gravity="right"
@@ -617,6 +628,7 @@
 
                                             <TextView
                                                 android:id="@+id/tvvisak"
+                                                android:freezesText="true"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:gravity="right"
@@ -648,6 +660,7 @@
 
                                             <TextView
                                                 android:id="@+id/tvtotalk"
+                                                android:freezesText="true"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:fontFamily="@font/prompt_regular"

@@ -106,6 +106,7 @@
                                 <TextView
                                     android:id="@+id/tvtotalpd"
                                     style="@style/font_notpay"
+                                    android:freezesText="true"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/prompt_regular"
@@ -158,6 +159,7 @@
                         <TextView
                             android:id="@+id/tvwithdrawpd"
                             style="@style/font_notpay"
+                            android:freezesText="true"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/prompt_regular"
@@ -195,6 +197,7 @@
                         <TextView
                             android:id="@+id/tvpurchasepd"
                             style="@style/font_notpay"
+                            android:freezesText="true"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/prompt_regular"
@@ -232,6 +235,7 @@
                                 <TextView
                                     android:id="@+id/tventertainpd"
                                     style="@style/font_notpay"
+                                    android:freezesText="true"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:fontFamily="@font/prompt_regular"

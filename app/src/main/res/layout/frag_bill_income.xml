@@ -79,6 +79,7 @@
 
                     <TextView
                         android:id="@+id/tvincomebill"
+                        android:freezesText="true"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/prompt_regular"
@@ -148,6 +149,7 @@
                                 <TextView
                                     android:id="@+id/tvserivceDrinkCharge"
                                     style="@style/font_card_bill"
+                                    android:freezesText="true"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/prompt_regular"
@@ -201,6 +203,7 @@
                                 <TextView
                                     android:id="@+id/tvmemberCharge"
                                     style="@style/font_card_bill"
+                                    android:freezesText="true"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/prompt_regular"
@@ -254,6 +257,7 @@
                                 <TextView
                                     android:id="@+id/tvserviceCharge"
                                     style="@style/font_card_bill"
+                                    android:freezesText="true"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/prompt_regular"
@@ -305,6 +309,7 @@
                                 <TextView
                                     android:id="@+id/tvproductPrice"
                                     style="@style/font_card_bill"
+                                    android:freezesText="true"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/prompt_regular"
@@ -357,6 +362,7 @@
                                 <TextView
                                     android:id="@+id/tvfoodPrice"
                                     style="@style/font_card_bill"
+                                    android:freezesText="true"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/prompt_regular"
@@ -409,6 +415,7 @@
                                 <TextView
                                     android:id="@+id/tvopenMemberAccount"
                                     style="@style/font_card_bill"
+                                    android:freezesText="true"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/prompt_regular"
@@ -463,6 +470,7 @@
 
                                     android:id="@+id/tvserviceDringQty"
                                     style="@style/font_card_bill"
+                                    android:freezesText="true"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/prompt_regular"
@@ -515,6 +523,7 @@
                                 <TextView
                                     android:id="@+id/tvpax"
                                     style="@style/font_card_bill"
+                                    android:freezesText="true"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/prompt_regular"

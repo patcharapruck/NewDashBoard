@@ -102,12 +102,14 @@
 
     <dimen name="card_mar_l">5dp</dimen>
     <dimen name="card_mar_r">5dp</dimen>
-    <dimen name="card_mar_t">20dp</dimen>
+    <dimen name="card_mar_t">22dp</dimen>
     <dimen name="card_mar_b">2dp</dimen>
     <dimen name="card_elevation">15dp</dimen>
-    <dimen name="card_radius">5dp</dimen>
-    <dimen name="card_text_mar_t">15dp</dimen>
+    <dimen name="card_radius">3dp</dimen>
+
+    <dimen name="card_text_mar_t">20dp</dimen>
     <dimen name="card_text_mar_b">5dp</dimen>
+
     <dimen name="card_text_size">30sp</dimen>
     <dimen name="card_in_w">100dp</dimen>
     <dimen name="card_in_h">30dp</dimen>
@@ -115,21 +117,21 @@
     <dimen name="card_in_mara_r">10dp</dimen>
     <dimen name="card_in_radius">5dp</dimen>
     <dimen name="card_in_text_size">18sp</dimen>
-    <dimen name="linear_group_card_h">100dp</dimen>
-    <dimen name="linear_group_card_pad_l">15dp</dimen>
-    <dimen name="linear_group_card_pad_r">15dp</dimen>
-    <dimen name="card_in_linear_group_mar_l">8dp</dimen>
+    <dimen name="linear_group_card_h">80dp</dimen>
+    <dimen name="linear_group_card_pad_l">10dp</dimen>
+    <dimen name="linear_group_card_pad_r">10dp</dimen>
+    <dimen name="card_in_linear_group_mar_l">5dp</dimen>
     <dimen name="card_in_linear_group_mar_t">5dp</dimen>
-    <dimen name="card_in_linear_group_mar_r">8dp</dimen>
+    <dimen name="card_in_linear_group_mar_r">5dp</dimen>
     <dimen name="card_in_linear_group_mar_b">10dp</dimen>
     <dimen name="card_in_linear_group_elevation">15dp</dimen>
     <dimen name="card2_in_linear_group_text_mar_l">10dp</dimen>
-    <dimen name="card2_in_linear_group_text_mar_t">10dp</dimen>
+    <dimen name="card2_in_linear_group_text_mar_t">5dp</dimen>
     <dimen name="card2_in_linear_group_text_size">15sp</dimen>
     <dimen name="card2_in_linear_group_text2_mar_l">10dp</dimen>
-    <dimen name="card2_in_linear_group_text2_mar_t">5dp</dimen>
+    <dimen name="card2_in_linear_group_text2_mar_t">1dp</dimen>
     <dimen name="card2_in_linear_group_text2_mar_r">5dp</dimen>
-    <dimen name="card2_in_linear_group_text2_mar_b">5dp</dimen>
+    <dimen name="card2_in_linear_group_text2_mar_b">10dp</dimen>
     <dimen name="card2_in_linear_group_text2_size">18sp</dimen>
     <dimen name="hade_card_txt_mar_l">15dp</dimen>
     <dimen name="hade_card_txt_mar_t">10dp</dimen>

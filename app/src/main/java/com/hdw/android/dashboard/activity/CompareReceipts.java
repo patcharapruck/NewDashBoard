@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.icu.text.NumberFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,11 +15,15 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.YAxis;
 import com.hdw.android.dashboard.Dao.CompareDao;
 import com.hdw.android.dashboard.R;
 import com.hdw.android.dashboard.manager.CompareManager;
 import com.hdw.android.dashboard.manager.Contextor;
 import com.hdw.android.dashboard.manager.http.HttpManager;
+import com.hdw.android.dashboard.util.Formatcompare;
+import com.hdw.android.dashboard.util.MyFormatCredit;
 import com.hdw.android.dashboard.util.SharedPrefDateManager;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -30,6 +35,7 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,7 +57,8 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
     Toolbar toolbar;
     ArrayList<Float> income;
     ArrayList<Float> revenue;
-    ArrayList<String> dateOnLine;
+    ArrayList<String> incomeFormat;
+    ArrayList<String> revenueFormat;
 
     Date testdate1=null;
     Date testdate2=null;
@@ -68,6 +75,7 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare_receipts);
         InitInstant();
+
     }
 
     private void teqAPICompare() {
@@ -177,9 +185,14 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         lineChart = (LineChart) findViewById(R.id.lineChart);
 
         LineDataSet lineDataSet = new LineDataSet(dataValues1(),"รายรับจริง");
-        lineDataSet.setColor(Color.parseColor("#ff6d00"));
+        lineDataSet.setColor(Color.parseColor("#ffa500"));
+        lineDataSet.setCircleColor(Color.parseColor("#006400"));
+        lineDataSet.setCircleRadius(4f);
+
         LineDataSet lineDataSet1 = new LineDataSet(dataValues2(),"รายรับตามบิล");
-        lineDataSet.setColor(Color.parseColor("#283593"));
+        lineDataSet1.setColor(Color.parseColor("#006400"));
+        lineDataSet1.setCircleColor(Color.parseColor("#ffa500"));
+        lineDataSet1.setCircleRadius(4f);
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet);
@@ -187,7 +200,8 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         dataSets1.add(lineDataSet1);
         LineData data = new LineData(lineDataSet,lineDataSet1);
 
-        data.setValueTextSize(10f);
+        data.setValueFormatter(new Formatcompare());
+        data.setValueTextSize(12f);
         lineDataSet.setLineWidth(3f);
         lineDataSet1.setLineWidth(3f);
         lineChart.setData(data);
@@ -195,8 +209,18 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         lineChart.getAxisLeft().setEnabled(true);
         lineChart.getAxisRight().setDrawAxisLine(true);
         lineChart.getAxisRight().setDrawGridLines(false);
-        lineChart.getXAxis().setDrawAxisLine(false);
+        lineChart.getXAxis().setDrawAxisLine(true);
         lineChart.getXAxis().setDrawGridLines(false);
+
+        YAxis rightAxis = lineChart.getAxisRight();
+        rightAxis.setEnabled(false);
+
+//        YAxis lefttAxis = lineChart.getAxisLeft();
+//        lefttAxis.setEnabled(false);
+
+        Description description = new Description();
+        description.setText("by HandyWings.co.,ltd");
+        lineChart.setDescription(description);
     }
     private ArrayList<Entry> dataValues1(){
         ArrayList<Entry> dataVals = new ArrayList<Entry>();
@@ -356,5 +380,8 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
         dialog.show();
 
     }
+
+
+
 
 }

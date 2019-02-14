@@ -1,0 +1,87 @@
+<resources>
+
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/prompt_regular</item>
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="marginCVmenu">
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+    </style>
+
+    <style name="marginCVbill">
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginLeft">2.5dp</item>
+        <item name="android:layout_marginRight">2.5dp</item>
+    </style>
+
+    <!-- หน้า main แก้ไขแล้ว -->
+    <style name="font_card_main">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/main_menu_text_size</item>
+    </style>
+
+    <style name="font_head_pay" parent="font_card_main">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="font_card_bill">
+        <item name="android:textColor">#01A2FF</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="font_pay" parent="font_pay_data">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="font_pay_data">
+        <item name="android:textColor">@color/color_pay</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="font_notpay" parent="font_notpay_data">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="font_notpay_data" parent="font_pay_data">
+        <item name="android:textColor">@color/color_not_pay</item>
+    </style>
+
+    <style name="textPay">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:gravity">right</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@color/colorfontpay</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="marginCardBank">
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+    </style>
+
+    <style name="headerctDrink">
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textSize">@dimen/ct_sizefontdrink</item>
+    </style>
+
+</resources>

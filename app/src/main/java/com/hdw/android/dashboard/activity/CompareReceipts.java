@@ -186,12 +186,13 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
 
         LineDataSet lineDataSet = new LineDataSet(dataValues1(),"รายรับจริง");
         lineDataSet.setColor(Color.parseColor("#ffa500"));
-        lineDataSet.setCircleColor(Color.parseColor("#006400"));
+        lineDataSet.setCircleColor(Color.parseColor("#8b008b"));
         lineDataSet.setCircleRadius(4f);
+
 
         LineDataSet lineDataSet1 = new LineDataSet(dataValues2(),"รายรับตามบิล");
         lineDataSet1.setColor(Color.parseColor("#006400"));
-        lineDataSet1.setCircleColor(Color.parseColor("#ffa500"));
+        lineDataSet1.setCircleColor(Color.parseColor("#8b008b"));
         lineDataSet1.setCircleRadius(4f);
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();

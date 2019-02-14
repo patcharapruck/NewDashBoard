@@ -26,6 +26,7 @@ import com.hdw.android.dashboard.adapter.PayMentAdapter;
 import com.hdw.android.dashboard.manager.Contextor;
 import com.hdw.android.dashboard.manager.PayManager;
 import com.hdw.android.dashboard.manager.http.HttpManager;
+import com.hdw.android.dashboard.util.SharedPrefDateManager;
 import com.hdw.android.dashboard.util.SharedPrefDatePayManager;
 
 import java.util.ArrayList;
@@ -119,7 +120,7 @@ public class FragmentPay extends Fragment implements View.OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-        reqAPIpay();
+        reqAPIpay(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
         cardsearchpay.setOnClickListener(this);
     }
 
@@ -149,9 +150,12 @@ public class FragmentPay extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void reqAPIpay() {
+    private void reqAPIpay(String date) {
         final Context mcontext = Contextor.getInstance().getContext();
-        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 21 and f:salesShift.isOpening = 1\"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
+        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 21 and " +
+                "(f:salesShift.openDate >= '"+date+" 00:00:00' AND f:salesShift.openDate <= '"+date+" 23:59:59')\"}," +
+                "\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"]," +
+                "\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
         Call<PayItemColleationDao> call = HttpManager.getInstance().getService().loadAPIPay(requestBody);
         call.enqueue(new Callback<PayItemColleationDao>() {
@@ -160,7 +164,7 @@ public class FragmentPay extends Fragment implements View.OnClickListener {
                 if(response.isSuccessful()){
                     PayItemColleationDao dao = response.body();
                     PayManager.getInstance().setPayItemColleationDao(dao);
-                    payMentAdapter.notifyDataSetChanged();
+
                     SharedPrefDatePayManager.getInstance(Contextor.getInstance().getContext())
                             .savePay(dao.getPagination().getTotalItem());
                 }else {
@@ -173,6 +177,7 @@ public class FragmentPay extends Fragment implements View.OnClickListener {
                 Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อได้",Toast.LENGTH_LONG).show();
             }
         });
+
     }
 
     @Override
@@ -181,13 +186,16 @@ public class FragmentPay extends Fragment implements View.OnClickListener {
         if (v == cardsearchpay || v == icon_searchPay){
             DataSearch = edSearchPay.getText().toString();
 
-            Searchreq(typeSearch,DataSearch);
+            Searchreq(typeSearch,DataSearch,SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
         }
     }
 
-    private void Searchreq(String typeSearch, String dataSearch) {
+    private void Searchreq(String typeSearch, String dataSearch, String date) {
         final Context mcontext = Contextor.getInstance().getContext();
-        String nn = "{\"criteria\":{\""+typeSearch+"\":\""+dataSearch+"\",\"sql-obj-command\":\"f:documentStatus.id = 21 and f:salesShift.isOpening = 1\"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
+        String nn = "{\"criteria\":{\""+typeSearch+"\":\""+dataSearch+"\"," +
+                "\"sql-obj-command\":\"f:documentStatus.id = 21 and (f:salesShift.openDate >= '"+date+" 00:00:00' AND f:salesShift.openDate <= '"+date+" 23:59:59')\"}," +
+                "\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\"," +
+                "\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
         Call<PayItemColleationDao> call = HttpManager.getInstance().getService().loadAPIPay(requestBody);
         call.enqueue(new Callback<PayItemColleationDao>() {

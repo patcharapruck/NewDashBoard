@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void getDateTime() {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
+        DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         DateFormat dateFormatth = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
 
         Date date = new Date();
@@ -142,11 +143,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int year = calendar.get(Calendar.YEAR);
 
         String formatDateTime = dateFormat.format(calendar.getTime());
+        String formatDateTime2 = dateFormat2.format(calendar.getTime());
         String formatDateTimetoday = dateFormat.format(calendartoday.getTime());
         String formatDategeneral = dateFormatth.format(calendar.getTime());
 
         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
-                .saveDatereq(formatDateTime);
+                .saveDatereq(formatDateTime,formatDateTime2);
 
         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                 .saveDateMax(formatDateTimetoday);
@@ -253,18 +255,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (dayOfMonth < 10){
                             dd = "0"+dayOfMonth;
                         }
-                        String datecalendat;
+                        String datecalendat, datecalendat2;
                         String fulldate;
                         mainImgDate.setText(dd+ "/" + mm + "/" +year);
                         datecalendat = year+ "/" + mm + "/" +dd;
+                        datecalendat2 = year+ "-" + mm + "-" +dd;
                         fulldate = dd+ "/" + mm + "/" +year;
 
                         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
-                                .saveDatereq(datecalendat);
+                                .saveDatereq(datecalendat,datecalendat2);
 
                         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).saveDateFull(fulldate);
 
                         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
+                        reqAPIpay(datecalendat2);
+                        reqAPInotpay(datecalendat2);
 
                         SharedPrefDateManager.getInstance(Contextor.getInstance().getContext())
                                 .saveDateCalendar(dayOfMonth,month,year);
@@ -304,8 +309,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
-        reqAPIpay();
-        reqAPInotpay();
         mainImgDate.setText(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull());
         reqAPI(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getreqDate());
     }
@@ -317,7 +320,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onResume() {
-        super.onResume();
+            super.onResume();
+
+        reqAPIpay(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
+        reqAPInotpay(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
     }
 
     @Override
@@ -325,9 +331,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onPause();
     }
 
-    private void reqAPInotpay() {
+    private void reqAPInotpay(String date) {
         final Context mcontext = Contextor.getInstance().getContext();
-        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 22 and f:salesShift.isOpening = 1 \"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
+        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 22 and " +
+                "(f:salesShift.openDate >= '"+date+" 00:00:00' AND f:salesShift.openDate <= '"+date+" 23:59:59')\"}," +
+                "\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"]," +
+                "\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
         Call<NotPayItemColleationDao> call = HttpManager.getInstance().getService().loadAPINotPay(requestBody);
         call.enqueue(new Callback<NotPayItemColleationDao>() {
@@ -351,9 +360,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
     }
-    private void reqAPIpay() {
+    private void reqAPIpay(String date) {
         final Context mcontext = Contextor.getInstance().getContext();
-        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 21 and f:salesShift.isOpening = 1\"},\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"],\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
+        String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 21 and " +
+                "(f:salesShift.openDate >= '"+date+" 00:00:00' AND f:salesShift.openDate <= '"+date+" 23:59:59')\"}," +
+                "\"property\":[\"memberAccount->customerMemberAccount\",\"sales->employee\",\"place\",\"transactionPaymentList\",\"documentStatus\",\"salesShift\"]," +
+                "\"pagination\":{},\"orderBy\":{\"InvoiceDocument-id\":\"DESC\"}}";
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),nn);
         Call<PayItemColleationDao> call = HttpManager.getInstance().getService().loadAPIPay(requestBody);
         call.enqueue(new Callback<PayItemColleationDao>() {

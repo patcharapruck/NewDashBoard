@@ -109,10 +109,13 @@ public class FragmentNotPay extends Fragment implements View.OnClickListener {
     }
 
     private void createTypeSearchData() {
-        mTypeSearch.add("เลขที่เอกสาร");
-        mTypeSearch.add("ชื่อหัวบิล");
-        mTypeSearch.add("Table/Room");
-        mTypeSearch.add("รหัส Sale");
+
+        if (mTypeSearch.isEmpty()){
+            mTypeSearch.add("เลขที่เอกสาร");
+            mTypeSearch.add("ชื่อหัวบิล");
+            mTypeSearch.add("Table/Room");
+            mTypeSearch.add("รหัส Sale");
+        }
     }
 
     @Override

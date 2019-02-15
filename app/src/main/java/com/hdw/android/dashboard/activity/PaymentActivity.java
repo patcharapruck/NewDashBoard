@@ -117,12 +117,14 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     setPager();
 
                 }else {
+                    progress.dismiss();
                     Toast.makeText(mcontext,"เกิดข้อผิดพลาด",Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<NotPayItemColleationDao> call, Throwable t) {
+                progress.dismiss();
                 Toast.makeText(mcontext,"ไม่สามารถเชื่อมต่อได้",Toast.LENGTH_LONG).show();
             }
         });

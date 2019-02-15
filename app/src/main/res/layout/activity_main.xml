@@ -83,7 +83,11 @@
                         android:paddingBottom="@dimen/date_pad_bot_main_menu"
                         android:text="12/02/2019"
                         android:textColor="@color/date_text_main"
-                        android:textSize="@dimen/date_text_size_main_menu" />
+                        android:textSize="@dimen/date_text_size_main_menu"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="8sp"
+                        app:autoSizeMaxTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"/>
 
                 </RelativeLayout>
 
@@ -140,7 +144,11 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="รายรับตามบิล"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        app:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="14sp"
+                        android:autoSizeStepGranularity="2sp"/>
 
                 </LinearLayout>
 
@@ -182,7 +190,11 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="รายรับจริง"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        app:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="14sp"
+                        android:autoSizeStepGranularity="2sp"/>
 
                 </LinearLayout>
 
@@ -224,7 +236,11 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="บัตรเครดิต"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        app:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="14sp"
+                        android:autoSizeStepGranularity="2sp"/>
 
                 </LinearLayout>
 
@@ -264,7 +280,11 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="ปริมาณเครื่องดื่ม"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        app:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="14sp"
+                        android:autoSizeStepGranularity="2sp"/>
 
                 </LinearLayout>
 
@@ -304,7 +324,11 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_regular"
                         android:text="ยอดชำระปัจจุบัน"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        app:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="14sp"
+                        android:autoSizeStepGranularity="2sp"/>
 
                 </LinearLayout>
 
@@ -345,7 +369,11 @@
                         android:fontFamily="@font/prompt_regular"
                         android:text="เปรียบเทียบรายรับ"
                         android:gravity="center"
-                        android:maxLines="1" />
+                        android:maxLines="1"
+                        app:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="14sp"
+                        android:autoSizeStepGranularity="2sp"/>
 
                 </LinearLayout>
 

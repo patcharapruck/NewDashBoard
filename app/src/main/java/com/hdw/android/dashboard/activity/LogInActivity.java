@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -38,7 +39,6 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-        adjustFontScale( getResources().getConfiguration());
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         if(SharedPrefManager.getInstance(Contextor.getInstance().getContext()).getToken().length()>0){
@@ -50,6 +50,12 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         InitInstances();
 
 
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        adjustFontScale( getResources().getConfiguration());
     }
 
     private void InitInstances(){

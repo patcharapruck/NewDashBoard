@@ -4,12 +4,15 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -55,6 +58,8 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        adjustFontScale( getResources().getConfiguration());
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_real_income);
 
         initInstances();
@@ -131,7 +136,6 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
     protected void onStart() {
         super.onStart();
         date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         toolbar.setTitle("รายรับจริง");
         toolbar.setSubtitle(date);
         setSupportActionBar(toolbar);
@@ -258,5 +262,15 @@ public class RealIncomeActivity extends AppCompatActivity implements View.OnClic
         progress.setMessage("Wait while loading...");
         progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
         progress.show();
+    }
+
+    public void adjustFontScale(Configuration configuration) {
+
+        configuration.fontScale = (float) 1.0;
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(metrics);
+        metrics.scaledDensity = configuration.fontScale * metrics.density;
+        getBaseContext().getResources().updateConfiguration(configuration, metrics);
     }
 }

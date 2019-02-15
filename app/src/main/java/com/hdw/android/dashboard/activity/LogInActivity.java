@@ -3,10 +3,13 @@ package com.hdw.android.dashboard.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -35,6 +38,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+        adjustFontScale( getResources().getConfiguration());
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         if(SharedPrefManager.getInstance(Contextor.getInstance().getContext()).getToken().length()>0){
@@ -129,5 +133,15 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
          reqLogin(user,pass);
         }
+    }
+
+    public void adjustFontScale(Configuration configuration) {
+
+        configuration.fontScale = (float) 1.0;
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(metrics);
+        metrics.scaledDensity = configuration.fontScale * metrics.density;
+        getBaseContext().getResources().updateConfiguration(configuration, metrics);
     }
 }

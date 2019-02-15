@@ -1,6 +1,9 @@
 package com.hdw.android.dashboard;
 
 import android.app.Application;
+import android.content.res.Configuration;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
 
 public class MainApplication extends Application {
 
@@ -16,4 +19,5 @@ public class MainApplication extends Application {
     public void onTerminate() {
         super.onTerminate();
     }
+
 }

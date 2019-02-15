@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,8 +14,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -63,6 +66,8 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
+        adjustFontScale( getResources().getConfiguration());
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         initInstances();
     }
@@ -270,8 +275,6 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         super.onStart();
 
         showProgress();
-
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         date = SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDateFull();
         reqAPIpay(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
         reqAPInotpay(SharedPrefDateManager.getInstance(Contextor.getInstance().getContext()).getKeyDatePay());
@@ -324,5 +327,15 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onPause() {
         super.onPause();
+    }
+
+    public void adjustFontScale(Configuration configuration) {
+
+        configuration.fontScale = (float) 1.0;
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(metrics);
+        metrics.scaledDensity = configuration.fontScale * metrics.density;
+        getBaseContext().getResources().updateConfiguration(configuration, metrics);
     }
 }

@@ -4,11 +4,14 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
@@ -18,6 +21,7 @@ import android.widget.Toast;
 import com.hdw.android.dashboard.Dao.DashBoardDao;
 import com.hdw.android.dashboard.Dao.NotPayItemColleationDao;
 import com.hdw.android.dashboard.Dao.PayItemColleationDao;
+import com.hdw.android.dashboard.MainApplication;
 import com.hdw.android.dashboard.R;
 import com.hdw.android.dashboard.manager.Contextor;
 import com.hdw.android.dashboard.manager.DashBoradManager;
@@ -53,12 +57,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ImageView imgbill,imgpay,imgdrink,imgreal,imgcredit,imggraph;
         Button mainImgDate;
 
+
         TextView logout;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+            adjustFontScale( getResources().getConfiguration());
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
             initInstances();
 
@@ -388,5 +394,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+    }
+
+    public void adjustFontScale(Configuration configuration) {
+        configuration.fontScale = (float) 1.0;
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(metrics);
+        metrics.scaledDensity = configuration.fontScale * metrics.density;
+        getBaseContext().getResources().updateConfiguration(configuration, metrics);
     }
 }

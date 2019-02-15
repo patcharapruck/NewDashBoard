@@ -3,14 +3,17 @@ package com.hdw.android.dashboard.activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.icu.text.NumberFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
@@ -73,6 +76,7 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        adjustFontScale( getResources().getConfiguration());
         setContentView(R.layout.activity_compare_receipts);
         InitInstant();
 
@@ -383,6 +387,15 @@ public class CompareReceipts extends AppCompatActivity implements View.OnClickLi
     }
 
 
+    public void adjustFontScale(Configuration configuration) {
+
+        configuration.fontScale = (float) 1.0;
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(metrics);
+        metrics.scaledDensity = configuration.fontScale * metrics.density;
+        getBaseContext().getResources().updateConfiguration(configuration, metrics);
+    }
 
 
 }

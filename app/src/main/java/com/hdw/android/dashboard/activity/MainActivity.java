@@ -365,6 +365,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
     }
+
     private void reqAPIpay(String date) {
         final Context mcontext = Contextor.getInstance().getContext();
         String nn = "{\"criteria\":{\"sql-obj-command\":\"f:documentStatus.id = 21 and " +
